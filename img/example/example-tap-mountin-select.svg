@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 89.5 40">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-5 {
+        fill: #fffdea;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 2.99 1.99;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke: #999;
+      }
+
+      .cls-3 {
+        stroke-dasharray: 2.92 1.92;
+      }
+
+      .cls-6 {
+        fill: #211f21;
+      }
+
+      .cls-7 {
+        letter-spacing: 0em;
+      }
+
+      .cls-8 {
+        letter-spacing: -.12em;
+      }
+
+      .cls-9 {
+        fill: #231f20;
+        font-family: OnulSijak-Regular-KSCpc-EUC-H, OnulSijak;
+        font-size: 17.82px;
+      }
+
+      .cls-10 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="89.5" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g class="cls-10">
+        <path class="cls-6" d="M89.5,10.16c0-5.23-3.07-9.55-7.03-10.16H7.03C3.07.62,0,4.93,0,10.16,0,13.39,1.17,16.25,3,18.12v4.05c-1.66,1.88-2.71,4.61-2.71,7.66,0,5.23,3.07,9.54,7.03,10.16h74.88c3.96-.62,7.03-4.93,7.03-10.16,0-3.06-1.06-5.79-2.72-7.66v-4.05c1.82-1.88,3-4.73,3-7.96"/>
+        <rect class="cls-5" x="8.06" y="3" width="73.44" height="33" rx="1" ry="1"/>
+        <line class="cls-3" x1="11.12" y1="10.78" x2="11.12" y2="29.18"/>
+        <line class="cls-2" x1="15.5" y1="32.5" x2="74.17" y2="32.5"/>
+        <line class="cls-3" x1="77.56" y1="28.22" x2="77.56" y2="9.82"/>
+        <line class="cls-2" x1="73.18" y1="6.5" x2="14.5" y2="6.5"/>
+        <path class="cls-4" d="M13.51,6.5h-1.49c-.5,0-.9.4-.9.9v1.46M77.56,8.86v-1.46c0-.5-.4-.9-.9-.9h-1.49M75.16,32.5h1.49c.5,0,.9-.4.9-.9v-1.46M11.12,30.14v1.46c0,.5.4.9.9.9h1.49"/>
+      </g>
+      <text class="cls-9" transform="translate(28 24.69) scale(1 1.01)"><tspan class="cls-8" x="0" y="0">산</tspan><tspan class="cls-7" x="15.7" y="0">지</tspan></text>
+    </g>
+  </g>
+</svg>

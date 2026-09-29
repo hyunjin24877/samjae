@@ -1,0 +1,7 @@
+/* Decorations are anchored to their text, so paragraph changes keep them aligned. */
+.deco-pen { width: 80px; top: -55px; left: 30%; }
+.deco-money1 { width: 80px; top: -27px; right: 16%; }
+.deco-boat { width: 70px; top: -15px; left: -9px; }
+.deco-fire { width: 70px; top: -30px; right: 15%; }
+.deco-money2 { width: 30px; top: 12px; left: 62%; }
+.deco-song { width: 250px; top: -32px; right: 18%; }

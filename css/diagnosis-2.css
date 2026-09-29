@@ -1,0 +1,122 @@
+/* =========================
+   Q2 선택지 영역
+========================= */
+
+.diagnosis-choices {
+  position: absolute;
+
+  top: 450px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 25px;
+
+  z-index: 30;
+}
+
+
+/* =========================
+   Q2 선택 카드 기본
+========================= */
+
+.diagnosis-choice {
+  position: relative;
+
+  display: block;
+  width: 328px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  outline: 0;
+  background: transparent;
+
+  appearance: none;
+
+  cursor: pointer;
+
+  flex: 0 0 auto;
+
+  transform: scale(1);
+  transform-origin: center center;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+
+.diagnosis-choice img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  pointer-events: none;
+
+  transition:
+    filter 0.3s ease;
+}
+
+
+/* =========================
+   선택됨
+========================= */
+
+/* 선택한 카드 110% */
+
+.diagnosis-choice.is-selected {
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+
+/* 선택한 카드 밝게 */
+
+.diagnosis-choice.is-selected img {
+  filter: brightness(100%);
+}
+
+
+/* =========================
+   나머지 카드
+========================= */
+
+/* 선택 안 된 카드 90% */
+
+.diagnosis-choices.has-selection
+.diagnosis-choice:not(.is-selected) {
+  transform: scale(0.9);
+}
+
+
+/* 선택 안 된 카드 어둡게 */
+
+.diagnosis-choices.has-selection
+.diagnosis-choice:not(.is-selected) img {
+  filter: brightness(40%);
+}
+
+/* =========================
+   Q2 카드 hover
+========================= */
+
+/* 아직 아무것도 선택하지 않았을 때만 hover */
+.diagnosis-choices:not(.has-selection)
+.diagnosis-choice:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+
+/* hover 시 흰색 glow */
+.diagnosis-choices:not(.has-selection)
+.diagnosis-choice:hover img {
+  filter: brightness(100%);
+}

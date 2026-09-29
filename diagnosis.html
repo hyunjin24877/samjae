@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <script src="/js/diagnosis-session.js"></script>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>당신의 삼재를 진단해드립니다.</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/font.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/background.css">
+  <link rel="stylesheet" href="/css/diagnosis-common.css">
+  <link rel="stylesheet" href="/css/diagnosis-1.css">
+  <link rel="stylesheet" href="/css/diagnosis-scroll.css">
+  <script src="/js/site-cursor.js" defer></script>
+  <link rel="stylesheet" href="/css/page-stage.css">
+  <script src="/js/page-stage.js" defer></script>
+</head>
+
+
+<body>
+
+  <!-- =====================
+       배경
+  ====================== -->
+
+  <img
+    src="/img/back/back-dote.webp"
+    class="back-dote"
+    alt=""
+  >
+
+   <video src="/img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
+
+  <img
+    src="/img/back/back-grey-gradient.webp"
+    class="back-grey-gradient"
+    alt=""
+  >
+
+  <div class="black-overlay"></div>
+
+
+  <!-- =====================
+       옆 문
+  ====================== -->
+
+  <div class="doors">
+
+    <img
+      src="/img/door.svg"
+      class="door door-left"
+      alt=""
+    >
+
+    <img
+      src="/img/door.svg"
+      class="door door-right"
+      alt=""
+    >
+
+  </div>
+
+
+  <!-- =====================
+       헤더
+  ====================== -->
+
+  <header class="header">
+
+    <!-- 왼쪽 원형 버튼 -->
+
+    <div class="header-controls">
+
+      <!-- 홈 -->
+
+      <button
+        type="button"
+        class="circle-btn"
+        onclick="location.href='landing.html'"
+      >
+        <span class="inner-circle">
+          <img
+            src="/img/home.svg"
+            alt="홈"
+          >
+        </span>
+      </button>
+
+
+      <!-- 이전 -->
+
+      <button
+        type="button"
+        class="circle-btn"
+        onclick="history.back()"
+      >
+        <span class="inner-circle">
+          <img
+            src="/img/prev.svg"
+            alt="이전"
+          >
+        </span>
+      </button>
+
+
+      <!-- 다음 -->
+
+      <button
+        type="button"
+        class="circle-btn"
+        onclick="history.forward()"
+      >
+        <span class="inner-circle">
+          <img
+            src="/img/next.svg"
+            alt="다음"
+          >
+        </span>
+      </button>
+
+    </div>
+
+
+    <!-- =====================
+         GNB
+    ====================== -->
+
+    <nav class="gnb">
+
+      <!-- 인삿말 -->
+
+      <a
+        href="welcome.html"
+        class="gnb-button"
+      >
+        <img
+          class="menu-default"
+          src="/img/header-menu-welcome.svg"
+          alt="인삿말"
+        >
+
+        <img
+          class="menu-hover"
+          src="/img/header-menu-welcome-hover.svg"
+          alt=""
+        >
+      </a>
+
+
+      <!-- 진단 -->
+
+      <a
+        href="diagnosis.html"
+        class="gnb-button current"
+      >
+        <img
+          class="menu-default"
+          src="/img/header-menu-diagnosis-select.svg"
+          alt="진단"
+        >
+
+        <img
+          class="menu-hover"
+          src="/img/header-menu-diagnosis-hover.svg"
+          alt=""
+        >
+      </a>
+
+
+      <!-- 도감 -->
+
+      <a
+        href="gather.html"
+        class="gnb-button"
+      >
+        <img
+          class="menu-default"
+          src="/img/header-menu-gather.svg"
+          alt="도감"
+        >
+
+        <img
+          class="menu-hover"
+          src="/img/header-menu-gather-hover.svg"
+          alt=""
+        >
+      </a>
+
+
+      <!-- 증언 -->
+
+      <a
+        href="testimony.html"
+        class="gnb-button"
+      >
+        <img
+          class="menu-default"
+          src="/img/header-menu-testimony.svg"
+          alt="증언"
+        >
+
+        <img
+          class="menu-hover"
+          src="/img/header-menu-testimony-hover.svg"
+          alt=""
+        >
+      </a>
+
+
+      <!-- 사례 -->
+
+      <a
+        href="example.html"
+        class="gnb-button"
+      >
+        <img
+          class="menu-default"
+          src="/img/header-menu-example.svg"
+          alt="사례"
+        >
+
+        <img
+          class="menu-hover"
+          src="/img/header-menu-example-hover.svg"
+          alt=""
+        >
+      </a>
+
+
+      <!-- 삼재록 -->
+
+      <a
+        href="samjaerok.html"
+        class="gnb-button"
+      >
+        <img
+          class="menu-default"
+          src="/img/header-menu-samjaerok.svg"
+          alt="삼재록"
+        >
+
+        <img
+          class="menu-hover"
+          src="/img/header-menu-samjaerok-hover.svg"
+          alt=""
+        >
+      </a>
+
+    </nav>
+
+  </header>
+
+
+
+
+
+      <!-- =====================
+           공통 열린 족자
+      ====================== -->
+
+      <div
+        class="diagnosis-open-wrap"
+        id="diagnosisOpen"
+      >
+
+        <div class="diagnosis-scroll-motion" id="diagnosisScrollMotion" aria-busy="true">
+          <div class="diagnosis-scroll-paper" aria-hidden="true">
+            <img src="/img/diagnosis/scroll-middle.svg" alt="">
+          </div>
+          <img class="diagnosis-scroll-rod diagnosis-scroll-top" src="/img/diagnosis/scroll-top.svg" alt="">
+          <img class="diagnosis-scroll-rod diagnosis-scroll-bottom" src="/img/diagnosis/scroll-dowon.svg" alt="">
+
+        <!-- =====================
+             공통 질문 영역
+        ====================== -->
+
+        <div class="diagnosis-result">
+
+
+          <!-- 질문 번호 -->
+
+          <img class="diagnosis-result-number" src="/img/diagnosis/1.svg" alt="1단계">
+
+
+          <!-- 진행 불 -->
+
+          <div class="diagnosis-result-drops">
+
+            <img
+              src="/img/diagnosis/diagnosis-fire.svg"
+              class="diagnosis-fire active"
+              alt=""
+            >
+
+            <img
+              src="/img/diagnosis/diagnosis-fire.svg"
+              class="diagnosis-fire"
+              alt=""
+            >
+
+            <img
+              src="/img/diagnosis/diagnosis-fire.svg"
+              class="diagnosis-fire"
+              alt=""
+            >
+
+            <img
+              src="/img/diagnosis/diagnosis-fire.svg"
+              class="diagnosis-fire"
+              alt=""
+            >
+
+            <img
+              src="/img/diagnosis/diagnosis-fire.svg"
+              class="diagnosis-fire"
+              alt=""
+            >
+
+          </div>
+
+
+          <!-- 질문 -->
+
+          <p class="diagnosis-result-text body2">
+            당신의 이름과 최근 당신을 가장 불안하게<br>
+            만들었던 일 또는 상황을 적어주세요.
+          </p>
+
+
+        </div>
+
+
+        </div><!-- diagnosis-scroll-motion -->
+
+        <!-- =====================
+             Q1 전용 입력창
+        ====================== -->
+
+        <div class="diagnosis-form">
+
+
+          <!-- 이름 -->
+
+          <div class="diagnosis-input-wrap">
+
+            <img
+              src="/img/diagnosis/diagnosis-input-before.svg"
+              class="diagnosis-input-img input-before"
+              alt=""
+            >
+
+            <img
+              src="/img/diagnosis/diagnosis-input-after.svg"
+              class="diagnosis-input-img input-after"
+              alt=""
+            >
+
+            <input
+              type="text"
+              id="diagnosisName"
+              class="diagnosis-input body1-left"
+              placeholder="이름을 입력해주세요."
+            >
+
+          </div>
+
+
+          <!-- 상황 -->
+
+          <div class="diagnosis-input-wrap">
+
+            <img
+              src="/img/diagnosis/diagnosis-input-before.svg"
+              class="diagnosis-input-img input-before"
+              alt=""
+            >
+
+            <img
+              src="/img/diagnosis/diagnosis-input-after.svg"
+              class="diagnosis-input-img input-after"
+              alt=""
+            >
+
+            <input
+              type="text"
+              id="diagnosisSituation"
+              maxlength="20"
+              class="diagnosis-input body1-left"
+              placeholder="상황을 입력해주세요."
+            >
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================
+         공통 하단 컨트롤
+    ====================== -->
+
+    <div class="diagnosis-controls">
+
+
+      <!-- 미완료 팝업 -->
+
+      <img
+        src="/img/diagnosis/diagnosis-popup.svg"
+        class="diagnosis-popup"
+        id="diagnosisPopup"
+        alt=""
+      >
+
+
+      <!-- 이전 + 다음 -->
+
+      <div class="diagnosis-button-row">
+
+
+        <!-- 이전 -->
+
+        <button
+          type="button"
+          class="diagnosis-btn"
+          id="diagnosisPrev"
+        >
+          <img
+            src="/img/diagnosis/diagnosis-pre.svg"
+            class="diagnosis-btn-img"
+            alt="이전"
+          >
+        </button>
+
+
+        <!-- 다음 -->
+
+        <button
+          type="button"
+          class="diagnosis-btn is-disabled"
+          id="diagnosisNext"
+        >
+          <img
+            src="/img/diagnosis/diagnosis-next-disable.svg"
+            class="diagnosis-btn-img"
+            id="diagnosisNextImg"
+            alt="다음"
+          >
+        </button>
+
+
+      </div>
+
+
+      <!-- 다시 하기 -->
+
+      <button
+        type="button"
+        class="diagnosis-reset button-filter"
+        id="diagnosisReset"
+      >
+        다시하기
+      </button>
+
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================
+       JS
+  ====================== -->
+<script src="/js/diagnosis-common.js"></script>
+  <script src="/js/diagnosis.js"></script>
+
+  <script src="/js/diagnosis-transition.js"></script>
+</body>
+
+</html>

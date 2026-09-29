@@ -1,0 +1,574 @@
+/* =========================
+   사례 기본 종이
+========================= */
+
+.example-main {
+  position: fixed;
+
+  top: 132px;
+  left: 128px;
+  right: 128px;
+  bottom: 37px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  z-index: 10;
+}
+
+.example-paper-wrap {
+  position: relative;
+
+  width: 855px;
+  height: 903px;
+
+  overflow: visible;
+}
+
+.example-paper {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: fill;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+.example-content {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   사례 필터
+========================= */
+
+.example-filter {
+  position: absolute;
+
+  top: 50px;
+  left: 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: max-content;
+
+  z-index: 10;
+}
+
+.example-filter-btn {
+  position: relative;
+
+  display: block;
+
+  flex: 0 0 auto;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  cursor: pointer;
+
+  z-index: 1;
+}
+
+.example-filter-btn img {
+  display: block;
+
+  width: auto;
+  height: 40px;
+
+  object-fit: contain;
+
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: none;
+}
+
+/* =========================
+   사례 지도
+========================= */
+
+.example-map {
+  position: absolute;
+
+  top: 114px; /* 필터 상단 50px + 높이 40px + 간격 24px */
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: calc(100% - 60px);
+  height: calc(100% - 150px);
+
+  object-fit: fill;
+
+  z-index: 3;
+  pointer-events: none;
+}
+
+
+/* =========================
+   집 아이콘 레이어
+========================= */
+
+.example-home-layer,
+.example-cloud-layer {
+  position: absolute;
+
+  top: 114px;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: calc(100% - 60px);
+  height: calc(100% - 150px);
+
+  z-index: 4;
+  pointer-events: none;
+}
+
+.example-cloud-layer {
+  z-index: 4;
+}
+
+.example-home-layer {
+  z-index: 5;
+}
+
+.example-cloud {
+  position: absolute;
+  display: block;
+  width: 5.4%;
+  height: auto;
+  translate: -50% -50%;
+  animation: exampleCloudFloat 7s ease-in-out infinite alternate;
+}
+
+.cloud-north-large { left: 8.5%; top: 18.2%; scale: -1 1; }
+.cloud-north-small { left: 13.6%; top: 20.9%; width: 4.3%; scale: -1 1; animation-delay: -3s; }
+.cloud-south-large { left: 90.8%; top: 84.7%; animation-delay: -2s; }
+.cloud-south-small { left: 85.6%; top: 87.6%; width: 4.3%; animation-delay: -5s; }
+
+@keyframes exampleCloudFloat {
+  from { transform: translate(-3px, 1px); }
+  to { transform: translate(3px, -2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .example-cloud { animation: none; }
+}
+
+.example-home {
+  position: absolute;
+
+  width: 46px;
+  height: 36px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: auto;
+  cursor: pointer;
+
+  z-index: 1;
+}
+
+/* 필터로 선택된 집 전체를 다른 집보다 위로 */
+.example-home.is-highlighted {
+  z-index: 100;
+}
+
+.example-home img {
+  display: block;
+
+  width: 46px;
+  height: 36px;
+
+  object-fit: contain;
+
+  pointer-events: none;
+}
+
+/* =========================
+   필터 선택 시 집 확대
+========================= */
+.example-home > img {
+  width: 46px;
+  height: 36px;
+
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+.example-home.is-highlighted > img {
+  transform: scale(1.2);
+
+}
+
+
+/* =========================
+   집 아이콘
+========================= */
+
+.example-home {
+  overflow: visible;
+  --home-offset-x: 0px;
+  --home-offset-y: 0px;
+}
+
+/* 기본 라벨 + 두 글자 라벨 공통 */
+.example-home-label,
+.example-home-label-2,
+.example-home-label-3 {
+  position: absolute;
+
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translate(calc(-50% + var(--home-offset-x)), var(--home-offset-y));
+
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+  z-index: 30;
+}
+
+
+/* 기본 라벨 */
+.example-home-label {
+  width: 150px;
+
+  background:
+    url("/img/example/example-location-label.svg")
+    center / 100% 100% no-repeat;
+}
+
+
+/* 두 글자용 라벨 */
+.example-home-label-2 {
+  width: 90px;
+
+  background:
+    url("/img/example/example-location-label2.svg")
+    center / 100% 100% no-repeat;
+}
+
+/* 3글자용 */
+.example-home-label-3 {
+  width: 110px;
+
+  background:
+    url("/img/example/example-location-label3.svg")
+    center / 100% 100% no-repeat;
+}
+
+
+
+/* 선택됐을 때 둘 다 표시 */
+.example-home.is-highlighted .example-home-label,
+.example-home.is-highlighted .example-home-label-2 {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =========================
+   ALL 상태 Hover
+========================= */
+
+.example-home.is-hovered {
+  z-index: 100;
+}
+
+
+/* 집만 120% 확대 + 외부광선 */
+.example-home.is-hovered > img {
+  transform: scale(1.2);
+
+}
+
+
+/* hover한 집 라벨 표시 */
+.example-home.is-hovered .example-home-label,
+.example-home.is-hovered .example-home-label-2,
+.example-home.is-hovered .example-home-label-3 {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 라벨 배경은 유지하고 글자만 2px 위로 */
+.example-home-label,
+.example-home-label-2,
+.example-home-label-3 {
+  box-sizing: border-box;
+  padding-top: 0;
+  padding-bottom: 4px;
+}
+
+.example-home.is-highlighted :is(
+  .example-home-label,
+  .example-home-label-2,
+  .example-home-label-3
+),
+.example-home.is-hovered :is(
+  .example-home-label,
+  .example-home-label-2,
+  .example-home-label-3
+) {
+  opacity: 1;
+  visibility: visible;
+
+}
+
+/* 지정한 집의 라벨만 위쪽으로 */
+.example-home.label-top :is(
+  .example-home-label,
+  .example-home-label-2,
+  .example-home-label-3
+) {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+
+/* 집별 레이어 묶음 해제 — 기존 중앙 위치 유지 */
+.example-home,
+.example-home.is-highlighted,
+.example-home.is-hovered {
+  transform: none;
+  z-index: auto;
+  margin-left: -23px;
+  margin-top: -18px;
+}
+
+/* 집 이미지는 아래 */
+.example-home > img {
+  position: relative;
+  left: var(--home-offset-x);
+  top: var(--home-offset-y);
+  z-index: 1;
+}
+
+/* 모든 검정 라벨은 집 이미지보다 위 */
+.example-home :is(
+  .example-home-label,
+  .example-home-label-2,
+  .example-home-label-3
+) {
+  z-index: 10;
+}
+
+.example-popup {
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  width: min(620px, calc(1920px - 40px));
+  max-height: calc(1080px - 40px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  overflow: auto;
+}
+
+.example-popup-panel {
+  --popup-frame: url("../img/example/popup-1.svg");
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  padding: 36px 64px 40px;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+/* 상·하단과 모서리는 32px로 유지하고 가운데 영역만 늘린다. */
+.example-popup-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  box-sizing: border-box;
+  border: 32px solid transparent;
+  border-image-source: var(--popup-frame);
+  border-image-slice: 32 fill;
+  border-image-width: 32px;
+  border-image-repeat: stretch;
+  pointer-events: none;
+}
+
+.example-popup::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Unroll horizontally from the center. Text keeps its original size;
+   both ends of the existing frame follow the opening paper. */
+.example-popup[open] .example-popup-panel {
+  animation: example-scroll-reveal 850ms both;
+}
+
+.example-popup[open] .example-popup-panel::before {
+  animation: example-scroll-frame 850ms both;
+}
+
+.example-popup[open] .example-popup-close {
+  animation: example-scroll-close 850ms both;
+}
+
+.example-popup[open] #examplePopupTitle,
+.example-popup[open] #examplePopupText {
+  animation: example-scroll-text 220ms ease-out 850ms both;
+}
+
+@keyframes example-scroll-text {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes example-scroll-reveal {
+  0% {
+    clip-path: inset(0 calc(50% - 32px));
+    animation-timing-function: cubic-bezier(.45, 0, .2, 1);
+  }
+  76% {
+    clip-path: inset(0);
+    animation-timing-function: ease-out;
+  }
+  87% {
+    clip-path: inset(0 5px);
+    animation-timing-function: ease-in-out;
+  }
+  100% { clip-path: inset(0); }
+}
+
+@keyframes example-scroll-frame {
+  0% {
+    left: calc(50% - 32px);
+    right: calc(50% - 32px);
+    animation-timing-function: cubic-bezier(.45, 0, .2, 1);
+  }
+  76% {
+    left: 0;
+    right: 0;
+    animation-timing-function: ease-out;
+  }
+  87% {
+    left: 5px;
+    right: 5px;
+    animation-timing-function: ease-in-out;
+  }
+  100% { left: 0; right: 0; }
+}
+
+@keyframes example-scroll-close {
+  0%, 76% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .example-popup[open] .example-popup-panel,
+  .example-popup[open] .example-popup-panel::before,
+  .example-popup[open] .example-popup-close,
+  .example-popup[open] #examplePopupTitle,
+  .example-popup[open] #examplePopupText {
+    animation: none;
+  }
+}
+
+.example-popup-panel p {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+/* 지역명 — 글자 스타일은 공통 클래스 사용 */
+#examplePopupTitle {
+  display: table;
+  margin: 0 auto 24px;
+  color: #fff;
+  font-weight: 400;
+}
+
+/* 설명 — 글자 스타일은 공통 클래스 사용 */
+#examplePopupText {
+  margin: 0;
+  color: #fff;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.example-popup-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 35px;
+  height: 35px;
+  margin: 20px auto 0;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.example-popup-close img {
+  display: block;
+  width: 15px;
+  height: 15px;
+  padding: 0px;
+  object-fit: contain;
+}
+
+.example-popup-close:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+#examplePopupTitle {
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .example-popup-panel {
+    padding: 28px 24px;
+  }
+}

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <script src="/js/diagnosis-session.js"></script>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>삼재 진단 결과</title>
+
+
+  <!-- =====================
+       CSS
+  ====================== -->
+
+  <link
+    rel="stylesheet" href="/css/font.css">
+
+  <link rel="stylesheet" href="/css/header.css">
+
+  <link rel="stylesheet" href="/css/background.css">
+    <link rel="stylesheet" href="/css/result-common.css">
+  <link rel="stylesheet" href="/css/result-01.css">
+
+  <script src="/js/site-cursor.js" defer></script>
+
+</head>
+
+
+<body data-receipt-type="내륙종교공동체">
+
+
+  <!-- =====================
+       배경
+  ====================== -->
+
+  <img
+    src="/img/back/back-dote.webp"
+    class="back-dote"
+    alt=""
+  >
+   <video src="/img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
+  <img
+    src="/img/back/back-grey-gradient.webp"
+    class="back-grey-gradient"
+    alt=""
+  >
+
+  <div class="black-overlay"></div>
+
+
+  <!-- =====================
+       좌우 문
+  ====================== -->
+
+  <div class="doors">
+
+    <img
+      src="/img/door.svg"
+      class="door door-left"
+      alt=""
+    >
+
+    <img
+      src="/img/door.svg"
+      class="door door-right"
+      alt=""
+    >
+
+  </div>
+
+
+  <!-- =====================
+       헤더
+  ====================== -->
+
+  <header class="header">
+
+    <div class="header-controls">
+
+
+      <!-- 홈 -->
+
+      <button
+        type="button"
+        class="circle-btn"
+        onclick="location.href='/landing.html'"
+      >
+
+        <span class="inner-circle">
+
+          <img
+            src="/img/home.svg"
+            alt="홈"
+          >
+
+        </span>
+
+      </button>
+
+
+      <!-- 이전 -->
+
+      <button
+        type="button"
+        class="circle-btn"
+        onclick="history.back()"
+      >
+
+        <span class="inner-circle">
+
+          <img
+            src="/img/prev.svg"
+            alt="이전"
+          >
+
+        </span>
+
+      </button>
+
+
+      <!-- 다음 -->
+
+      <button
+        type="button"
+        class="circle-btn"
+        onclick="history.forward()"
+      >
+
+        <span class="inner-circle">
+
+          <img
+            src="/img/next.svg"
+            alt="다음"
+          >
+
+        </span>
+
+      </button>
+
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================
+       결과 콘텐츠
+       여기부터 결과 디자인 넣기
+  ====================== -->
+<!-- =====================
+     결과 콘텐츠
+====================== -->
+
+<main class="result-main">
+  <article class="result-paper" aria-labelledby="resultTitle">
+    <img class="result-paper-bottom" src="/img/result/stroke-up.svg" alt="" aria-hidden="true">
+    <header class="result-heading">
+      <div class="result-title-layout">
+        <img class="result-stroke-up" src="/img/result/stroke-up.svg" alt="" aria-hidden="true">
+        <h1 id="resultTitle" class="result-title-logos" aria-label="陸宗共 — 내륙 종교 공동체">
+          <img src="/img/result/logo/logo-inside.svg" alt="" aria-hidden="true">
+          <img src="/img/result/logo/logo-religion.svg" alt="" aria-hidden="true">
+          <img src="/img/result/logo/logo-community.svg" alt="" aria-hidden="true">
+        </h1>
+        <div class="result-title-bottom" aria-hidden="true">
+          <img src="/img/result/stroke-up-2.svg" alt="">
+          <img src="/img/result/stroke-up-2.svg" alt="">
+        </div>
+      </div>
+      <img class="result-title-divider" src="/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+      <ul class="result-tags" aria-label="진단 유형">
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="flat"><img class="result-tag-frame" src="/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>내륙</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="religion"><img class="result-tag-frame" src="/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>종교</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="community"><img class="result-tag-frame" src="/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>공동체</span></button></li>
+      </ul>
+      <img class="result-tags-divider" src="/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+    </header>
+
+    <figure class="result-portrait">
+      <img class="result-art-back" src="/img/result/result-back.svg" alt="">
+      <img class="result-dragon" src="/img/keyvisual/rabbit4.svg" alt="내륙종교공동체 유형의 토끼">
+      <img class="result-art-logo" src="/img/result/result-logo.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-left" src="/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-right" src="/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-top" src="/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-bottom" src="/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+    </figure>
+
+    <div class="result-introduction samjaerok-body-center">
+      <p>내륙 지역에서 행해지던 종교적 의례와 공동체 중심의 재앙 해소 방식을 바탕으로 구성된 삼재풀이이다. 여러 사람이 함께 부적을 연등에 달아 하늘로 띄우며, 공동의 기원을 통해 재앙을 멀리 보내고 평안을 바라는 특징을 가진다.</p>
+      <p>믿음을 나누고, 함께 기원하며 극복하는 방식.</p>
+      <p>이 방식은 불안을 혼자 감당하기보다 공동의 믿음과 의례를 통해 서로의 불안을 나누는 데 초점을 둡니다. 당신은 주변 사람들과 마음을 모으고 서로에게 의지하며, 함께 문제를 헤쳐 나갑니다.</p>
+    </div>
+
+    <div class="result-divider" aria-hidden="true"></div>
+    <section class="result-method" aria-labelledby="resultMethodTitle">
+      <h2 id="resultMethodTitle" class="samjaerok-body-left ">풀이방법</h2>
+      <dl class="result-details samjaerok-body-left ">
+        <dt><span class="body1-center-underline">준비물</span></dt>
+        <dd>삼재부적, 붓, 연등</dd>
+        <dt><span class="body1-center-underline">인원</span></dt><dd>2인 이상 (다인원일수록 좋음)</dd>
+        <dt><span class="body1-center-underline">방법</span></dt>
+        <dd>
+          <ol class="result-steps">
+            <li>입춘이 되면 삼재 부적에 당사자의 이름과 생년월일을 적는다.
+              <img src="/img/result/pen.gif" class="method-deco deco-pen" alt="">
+              <img src="/img/result/money1.gif" class="method-deco deco-money1" alt=""></li>
+            <li>작성한 부적은 연등에 매달고, 여러 사람이 함께 모여 의식을 치른 뒤 연등을 하늘로 띄운다.
+              <img src="/img/result/boat.gif" class="method-deco deco-boat" alt="">
+              <img src="/img/result/fire.gif" class="method-deco deco-fire" alt=""></li>
+            <li>연등이 멀리 떠오를 때까지 건강과 평안을 기원하며, 한 해 동안 삼재가 무사히 지나가기를 빈다.
+              <img src="/img/result/money2.gif" class="method-deco deco-money2" alt=""></li>
+            <li>개인이 홀로 행하기보다 공동체가 함께 참여하는 의례로 이루어지는 경우가 많다.</li>
+          </ol>
+        </dd>
+        <dt><span class="body1-center-underline">해설</span></dt>
+        <dd class="result-explanation">부적은 재앙의 대상을 명확히 하여 액운을 대신 담아내는 매개체로 여겨졌으며, 생년월일을 적는 행위는 그 효력을 당사자에게 연결하는 의미를 가진다. 연등은 어둠을 밝히는 빛이자 소망을 하늘에 전하는 상징으로, 부적을 매달아 띄우는 것은 액운을 멀리 보내고 새로운 한 해의 평안을 기원하는 행위이다. 또한 여러 사람이 함께 연등을 띄우는 과정은 개인의 불안을 공동체가 함께 나누고 극복한다는 공동체적 의미를 담고 있다.
+          <img src="/img/result/song.gif" class="method-deco deco-song" alt="">
+        </dd>
+      </dl>
+    </section>
+  </article>
+
+  <nav class="result-controls" aria-label="결과 활용">
+    <button type="button" class="result-action button-filter" id="resultPrint"><span>점지법 출력하기</span></button>
+    <a class="result-action  button-filter" href="/gather.html"><span>다른 방법도 보러가기</span></a>
+    <button type="button" class="result-retry button-filter" id="resultRetry">다시하기</button>
+  </nav>
+</main>
+<script src="/js/result.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="/js/diagnosis-session.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>증언</title>
+
+  <link rel="stylesheet" href="/css/font.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/background.css">
+  <link rel="stylesheet" href="/css/testimony.css?v=top-unroll-5">
+  <script src="/js/site-cursor.js" defer></script>
+  <link rel="stylesheet" href="/css/page-stage.css">
+  <script src="/js/page-stage.js" defer></script>
+</head>
+
+
+<body>
+
+  <!-- =====================
+       배경
+  ====================== -->
+
+  <img
+    src="/img/back/back-dote.webp"
+    class="back-dote"
+    alt=""
+  >
+
+   <video src="/img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
+
+  <img
+    src="/img/back/back-grey-gradient.webp"
+    class="back-grey-gradient"
+    alt=""
+  >
+
+  <div class="black-overlay"></div>
+
+
+  <!-- =====================
+       옆 문
+  ====================== -->
+
+  <div class="doors">
+
+    <img
+      src="/img/door.svg"
+      class="door door-left"
+      alt=""
+    >
+
+    <img
+      src="/img/door.svg"
+      class="door door-right"
+      alt=""
+    >
+
+  </div>
+
+
+  <!-- =====================
+       헤더
+  ====================== -->
+
+  <header class="header">
+
+    <!-- 왼쪽 원형 버튼 -->
+    <div class="header-controls">
+
+      <button
+        class="circle-btn"
+        onclick="location.href='landing.html'"
+        type="button"
+      >
+        <span class="inner-circle">
+          <img src="/img/home.svg" alt="홈">
+        </span>
+      </button>
+
+
+      <button
+        class="circle-btn"
+        onclick="history.back()"
+        type="button"
+      >
+        <span class="inner-circle">
+          <img src="/img/prev.svg" alt="이전">
+        </span>
+      </button>
+
+
+      <button
+        class="circle-btn"
+        onclick="history.forward()"
+        type="button"
+      >
+        <span class="inner-circle">
+          <img src="/img/next.svg" alt="다음">
+        </span>
+      </button>
+
+    </div>
+
+
+    <!-- 메뉴 -->
+    <nav class="gnb">
+
+      <!-- 인삿말 -->
+      <a href="welcome.html" class="gnb-button">
+
+        <img
+          class="menu-default"
+          src="/img/header-menu-welcome.svg"
+          alt="인삿말"
+        >
+
+        <img
+          class="menu-hover"
+          src="/img/header-menu-welcome-hover.svg"
+          alt=""
+        >
+
+      </a>
+
+
+      <!-- 진단 -->
+      <a href="diagnosis.html" class="gnb-button">
+
+        <img
+          class="menu-default"
+          src="/img/header-menu-diagnosis.svg"
+          alt="진단"
+        >
+
+        <img
+          class="menu-hover"
+          src="/img/header-menu-diagnosis-hover.svg"
+          alt=""
+        >
+
+      </a>
+
+
+      <!-- 도감 -->
+      <a href="gather.html" class="gnb-button">
+
+        <img
+          class="menu-default"
+          src="/img/header-menu-gather.svg"
+          alt="도감"
+        >
+
+        <img
+          class="menu-hover"
+          src="/img/header-menu-gather-hover.svg"
+          alt=""
+        >
+
+      </a>
+
+
+      <!-- 증언 -->
+      <a
+        href="testimony.html"
+        class="gnb-button current"
+      >
+
+        <img
+          class="menu-default"
+          src="/img/header-menu-testimony-select.svg"
+          alt="증언"
+        >
+
+        <img
+          class="menu-hover"
+          src="/img/header-menu-testimony-hover.svg"
+          alt=""
+        >
+
+      </a>
+
+
+      <!-- 사례 -->
+      <a href="example.html" class="gnb-button">
+
+        <img
+          class="menu-default"
+          src="/img/header-menu-example.svg"
+          alt="사례"
+        >
+
+        <img
+          class="menu-hover"
+          src="/img/header-menu-example-hover.svg"
+          alt=""
+        >
+
+      </a>
+
+
+      <!-- 삼재록 -->
+      <a href="samjaerok.html" class="gnb-button">
+
+        <img
+          class="menu-default"
+          src="/img/header-menu-samjaerok.svg"
+          alt="삼재록"
+        >
+
+        <img
+          class="menu-hover"
+          src="/img/header-menu-samjaerok-hover.svg"
+          alt=""
+        >
+
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =====================
+       증언 본문
+  ====================== -->
+
+  <main class="testimony-main">
+
+    <div class="testimony-layout">
+
+
+      <!-- =====================
+           왼쪽 증언 목록
+      ====================== -->
+
+      <div class="testimony-list-wrap">
+
+        <!-- 위 두루마리 -->
+        <img
+          class="testimony-list-scroll testimony-list-scroll-top"
+          src="/img/testimony/scroll-front.svg"
+          alt=""
+        >
+
+
+        <!-- 실제 목록 -->
+        <section class="testimony-list">
+
+          <!-- 제목 -->
+          <div class="testimony-list-head body2-left">
+
+            <span>순번</span>
+
+            <span>이름</span>
+
+            <span>
+              고향/거주지/연령/종교
+            </span>
+
+          </div>
+
+
+         <button
+            class="testimony-row"
+            data-id="1"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">01</span>
+            <span class="testimony-name body1-no-underline">도○우</span>
+            <span class="testimony-info body2-left">화성시 동탄구/천안시 동남구/20대/무교</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="2"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">02</span>
+            <span class="testimony-name body1-no-underline">김○윤</span>
+            <span class="testimony-info body2-left">구미/천안/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="3"
+            data-preview="img/keyvisual/rabbit4.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">03</span>
+            <span class="testimony-name body1-no-underline">이○현</span>
+            <span class="testimony-info body2-left">울산/천안/20대/기독교</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="4"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">04</span>
+            <span class="testimony-name body1-no-underline">박○우</span>
+            <span class="testimony-info body2-left">아산/천안/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="5"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">05</span>
+            <span class="testimony-name body1-no-underline">최○진</span>
+            <span class="testimony-info body2-left">평택/대전/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="6"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">06</span>
+            <span class="testimony-name body1-no-underline">정○재</span>
+            <span class="testimony-info body2-left">아산/아산/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="7"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">07</span>
+            <span class="testimony-name body1-no-underline">한○린</span>
+            <span class="testimony-info body2-left">마산/천안/20대/불교</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="8"
+            data-preview="img/keyvisual/dragon3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">08</span>
+            <span class="testimony-name body1-no-underline">윤○준</span>
+            <span class="testimony-info body2-left">인천/인천, 천안/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="9"
+            data-preview="img/keyvisual/rabbit4.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">09</span>
+            <span class="testimony-name body1-no-underline">강○은</span>
+            <span class="testimony-info body2-left">광주/천안/20대/기독교</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="10"
+            data-preview="img/keyvisual/snake4.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">10</span>
+            <span class="testimony-name body1-no-underline">송○우</span>
+            <span class="testimony-info body2-left">강릉/파주/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="11"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">11</span>
+            <span class="testimony-name body1-no-underline">임○원</span>
+            <span class="testimony-info body2-left">대구/천안/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="12"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">12</span>
+            <span class="testimony-name body1-no-underline">오○훈</span>
+            <span class="testimony-info body2-left">대구/대구/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="13"
+            data-preview="img/keyvisual/snake4.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">13</span>
+            <span class="testimony-name body1-no-underline">배○빈</span>
+            <span class="testimony-info body2-left">강릉/판교/30대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="14"
+            data-preview="img/keyvisual/dragon3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">14</span>
+            <span class="testimony-name body1-no-underline">권○서</span>
+            <span class="testimony-info body2-left">부산/천안/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="15"
+            data-preview="img/keyvisual/snake4.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">15</span>
+            <span class="testimony-name body1-no-underline">조○윤</span>
+            <span class="testimony-info body2-left">경상남도/천안/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="16"
+            data-preview="img/keyvisual/rabbit4.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">16</span>
+            <span class="testimony-name body1-no-underline">신○현</span>
+            <span class="testimony-info body2-left">충남 아산/대구광역시/20대/기독교</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="17"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">17</span>
+            <span class="testimony-name body1-no-underline">문○아</span>
+            <span class="testimony-info body2-left">아산/아산/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="18"
+            data-preview="img/keyvisual/rabbit4.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">18</span>
+            <span class="testimony-name body1-no-underline">백○은</span>
+            <span class="testimony-info body2-left">서울/천안/20대/천주교</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="19"
+            data-preview="img/keyvisual/rabbit4.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">19</span>
+            <span class="testimony-name body1-no-underline">유○민</span>
+            <span class="testimony-info body2-left">아산시/아산시/20대/기독교</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="20"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">20</span>
+            <span class="testimony-name body1-no-underline">홍○아</span>
+            <span class="testimony-info body2-left">서울/천안/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="21"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">21</span>
+            <span class="testimony-name body1-no-underline">안○윤</span>
+            <span class="testimony-info body2-left">대구/서울/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="22"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">22</span>
+            <span class="testimony-name body1-no-underline">서○연</span>
+            <span class="testimony-info body2-left">서울/천안/군포/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="23"
+            data-preview="img/keyvisual/dragon3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">23</span>
+            <span class="testimony-name body1-no-underline">노○혁</span>
+            <span class="testimony-info body2-left">부산/천안/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="24"
+            data-preview="img/keyvisual/rabbit4.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">24</span>
+            <span class="testimony-name body1-no-underline">전○나</span>
+            <span class="testimony-info body2-left">천안/서울/20대/불교, 기독교</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="25"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">25</span>
+            <span class="testimony-name body1-no-underline">황○준</span>
+            <span class="testimony-info body2-left">파주/천안/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="26"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">26</span>
+            <span class="testimony-name body1-no-underline">고○채</span>
+            <span class="testimony-info body2-left">서울시 마포구/서울시 마곡동/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="27"
+            data-preview="img/keyvisual/rabbit3.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">27</span>
+            <span class="testimony-name body1-no-underline">양○호</span>
+            <span class="testimony-info body2-left">서울/서울 및 천안/20대/없음</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="28"
+            data-preview="img/keyvisual/snake1.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">28</span>
+            <span class="testimony-name body1-no-underline">차○연</span>
+            <span class="testimony-info body2-left">전북/충청남도 아산/50대/불교</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="29"
+            data-preview="img/keyvisual/snake1.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">29</span>
+            <span class="testimony-name body1-no-underline">류○석</span>
+            <span class="testimony-info body2-left">전북 정읍/충남 아산/50대/불교</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="30"
+            data-preview="img/keyvisual/rabbit4.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">30</span>
+            <span class="testimony-name body1-no-underline">남○진</span>
+            <span class="testimony-info body2-left">청주시/청주시/20대/기독교</span>
+          </button>
+
+          <button
+            class="testimony-row"
+            data-id="31"
+            data-preview="img/keyvisual/rabbit4.svg"
+            type="button"
+          >
+            <span class="testimony-num body1-no-underline">31</span>
+            <span class="testimony-name body1-no-underline">최○원</span>
+            <span class="testimony-info body2-left">청주시/청주시/20대/기독교</span>
+          </button>
+
+
+
+
+   </section><!-- testimony-list 끝 -->
+
+   <!-- 스크롤되지 않는 호버 이미지 -->
+<img
+  id="testimonyPreview"
+  class="testimony-preview"
+  alt=""
+  aria-hidden="true"
+  hidden
+>
+
+<!-- 왼쪽 스크롤바 -->
+<div class="testimony-scrollbar">
+  <div class="testimony-scrollbar-thumb"></div>
+</div>
+
+<!-- 아래 두루마리 -->
+<img
+  class="testimony-list-scroll testimony-list-scroll-bottom"
+  src="img/testimony/scroll-down.svg"
+  alt=""
+>
+
+</div><!-- testimony-list-wrap 끝 -->
+
+
+
+      <!-- =====================
+           오른쪽 증언 상세
+      ====================== -->
+
+      <section class="testimony-detail">
+
+
+        <!-- 기본 안내 -->
+        <div class="testimony-guide">
+        <img
+          class="testimony-guide-image"
+          src="img/testimony/testimony-right-scroll.svg"
+          alt=""
+        >
+
+        <p class="testimony-guide-text button-filter-white">
+          궁금한 증언을 클릭해주세요.
+        </p>
+      </div>
+
+
+       <!-- 클릭 후 펼쳐지는 두루마리 -->
+<div class="testimony-answer-scroll" hidden>
+  <img
+    class="testimony-answer-top"
+    src="img/testimony/scroll-front.svg"
+    alt=""
+  >
+
+  <div
+    class="testimony-detail-content"
+    id="testimonyDetail"
+    tabindex="0"
+    aria-label="선택한 증언 내용"
+  ><div class="testimony-detail-body" id="testimonyDetailBody"></div></div>
+
+  <!-- 스크롤바도 두루마리 안에 배치 -->
+  <div class="testimony-detail-scrollbar" aria-hidden="true">
+    <div class="testimony-detail-thumb"></div>
+  </div>
+
+  <img
+    class="testimony-answer-bottom"
+    src="img/testimony/scroll-all.svg"
+    alt=""
+  >
+</div>
+
+</section><!-- testimony-detail 끝 -->
+  </main>
+
+
+  <script src="/js/testimony.js?v=top-unroll-5"></script>
+
+</body>
+
+</html>

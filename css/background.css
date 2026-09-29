@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  position: relative;
+}
+
+
+/* =========================
+   배경 이미지
+========================= */
+
+.back-dote {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+
+.back-grey-gradient {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  opacity: 0.5;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+
+/* 검정 60% */
+.black-overlay {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+.back2 {
+  position: fixed;
+
+  width: 1664px;
+  height: 1080px;
+
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-50%);
+
+  object-fit: contain;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* =========================
+   헤더
+========================= */
+
+.header {
+  z-index: 100;
+}
+
+
+/* =========================
+   문
+========================= */
+
+.doors {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 20;
+}
+
+.door {
+  position: absolute;
+  top: 0;
+
+  width: 128px;
+  height: 1080px;
+}
+
+.door-left {
+  left: 0;
+}
+
+.door-right {
+  right: 0;
+  transform: scaleX(-1);
+}
+

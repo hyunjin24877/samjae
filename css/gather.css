@@ -1,0 +1,89 @@
+/* 도감 전체 */
+.gather-main {
+  position: relative;
+  z-index: 10;
+  width: calc(100% - 256px);
+  max-width: 1664px;
+  min-height: 1080px;
+  margin: 0 auto;
+  padding: 130px 0 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 원판 기준 영역 */
+.gather-wrap {
+  position: relative;
+  width: 895px;
+  max-width: 100%;
+  aspect-ratio: 895 / 898;
+}
+
+/* 원판 */
+.gather-wheel {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 화살표 */
+.gather-arrow {
+  position: absolute;
+  top: -33px;
+  left: 50%;
+  width: 32px;
+  height: 58px;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gather-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 136px;
+  height: 149px;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 9999;
+
+  transform-origin: 0 0;
+  transform: rotate(0deg);
+  rotate: none;
+  transition: none;
+  animation: none;
+}
+
+#gatherCursor {
+  filter:
+    drop-shadow(0 0 3px #b51c1c)
+}
+
+.gather-cursor[hidden] {
+  display: none;
+}
+
+.gather-main.has-custom-cursor {
+  cursor: none;
+}
+
+
+
+@media (hover: hover) and (pointer: fine) {
+  .gather-main.has-custom-cursor {
+    cursor: none;
+  }
+}
+
+.gather-wheel {
+  transform-origin: 50% 50%;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.gather-wrap.is-spinning {
+  pointer-events: none;
+}

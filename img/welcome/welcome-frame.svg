@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 522">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-5 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-6 {
+        font-size: 41.11px;
+      }
+
+      .cls-6, .cls-7, .cls-8 {
+        font-family: OnulSijak-Regular-KSCpc-EUC-H, OnulSijak;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+        stroke-width: 1.52px;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke: #000;
+      }
+
+      .cls-3 {
+        stroke-width: 1.67px;
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-10 {
+        letter-spacing: 0em;
+      }
+
+      .cls-11 {
+        letter-spacing: 0em;
+      }
+
+      .cls-12 {
+        letter-spacing: 0em;
+      }
+
+      .cls-13 {
+        font-family: SeoulNamsanCM, SeoulNamsanC;
+        font-size: 25.32px;
+      }
+
+      .cls-13, .cls-7, .cls-8 {
+        fill: #231f20;
+      }
+
+      .cls-14 {
+        letter-spacing: -.09em;
+      }
+
+      .cls-15 {
+        letter-spacing: -.1em;
+      }
+
+      .cls-16 {
+        letter-spacing: -.1em;
+      }
+
+      .cls-17 {
+        letter-spacing: -.09em;
+      }
+
+      .cls-18 {
+        letter-spacing: -.09em;
+      }
+
+      .cls-19 {
+        letter-spacing: -.11em;
+      }
+
+      .cls-20 {
+        letter-spacing: -.11em;
+      }
+
+      .cls-21 {
+        letter-spacing: -.11em;
+      }
+
+      .cls-22 {
+        letter-spacing: -.08em;
+      }
+
+      .cls-23 {
+        letter-spacing: -.08em;
+      }
+
+      .cls-24 {
+        letter-spacing: -.09em;
+      }
+
+      .cls-25 {
+        letter-spacing: -.06em;
+      }
+
+      .cls-26 {
+        letter-spacing: -.08em;
+      }
+
+      .cls-27 {
+        letter-spacing: -.07em;
+      }
+
+      .cls-28 {
+        letter-spacing: -.18em;
+      }
+
+      .cls-29 {
+        letter-spacing: -.19em;
+      }
+
+      .cls-30 {
+        letter-spacing: -.19em;
+      }
+
+      .cls-31 {
+        letter-spacing: -.19em;
+      }
+
+      .cls-32 {
+        letter-spacing: -.18em;
+      }
+
+      .cls-33 {
+        letter-spacing: -.19em;
+      }
+
+      .cls-34 {
+        letter-spacing: -.19em;
+      }
+
+      .cls-35 {
+        letter-spacing: -.2em;
+      }
+
+      .cls-36 {
+        letter-spacing: -.21em;
+      }
+
+      .cls-37 {
+        letter-spacing: -.15em;
+      }
+
+      .cls-38 {
+        letter-spacing: -.15em;
+      }
+
+      .cls-39 {
+        letter-spacing: -.15em;
+      }
+
+      .cls-40 {
+        letter-spacing: -.16em;
+      }
+
+      .cls-41 {
+        letter-spacing: -.15em;
+      }
+
+      .cls-42 {
+        letter-spacing: -.16em;
+      }
+
+      .cls-43 {
+        letter-spacing: -.17em;
+      }
+
+      .cls-44 {
+        letter-spacing: -.17em;
+      }
+
+      .cls-45 {
+        letter-spacing: -.17em;
+      }
+
+      .cls-46 {
+        letter-spacing: -.18em;
+      }
+
+      .cls-47 {
+        letter-spacing: -.18em;
+      }
+
+      .cls-48 {
+        letter-spacing: -.18em;
+      }
+
+      .cls-49 {
+        letter-spacing: -.18em;
+      }
+
+      .cls-50 {
+        letter-spacing: -.18em;
+      }
+
+      .cls-51 {
+        letter-spacing: -.18em;
+      }
+
+      .cls-52 {
+        letter-spacing: -.18em;
+      }
+
+      .cls-53 {
+        letter-spacing: -.18em;
+      }
+
+      .cls-54 {
+        letter-spacing: -.18em;
+      }
+
+      .cls-55 {
+        letter-spacing: -.19em;
+      }
+
+      .cls-56 {
+        letter-spacing: -.19em;
+      }
+
+      .cls-57 {
+        letter-spacing: -.19em;
+      }
+
+      .cls-58 {
+        letter-spacing: -.17em;
+      }
+
+      .cls-59 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-60 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-61 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-62 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-63 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-64 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-65 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-66 {
+        letter-spacing: -.14em;
+      }
+
+      .cls-67 {
+        letter-spacing: -.14em;
+      }
+
+      .cls-68 {
+        letter-spacing: -.14em;
+      }
+
+      .cls-69 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-70 {
+        letter-spacing: -.14em;
+      }
+
+      .cls-71 {
+        letter-spacing: -.14em;
+      }
+
+      .cls-72 {
+        letter-spacing: -.15em;
+      }
+
+      .cls-73 {
+        letter-spacing: -.15em;
+      }
+
+      .cls-74 {
+        letter-spacing: -.15em;
+      }
+
+      .cls-75 {
+        letter-spacing: -.15em;
+      }
+
+      .cls-76 {
+        letter-spacing: -.14em;
+      }
+
+      .cls-77 {
+        letter-spacing: -.16em;
+      }
+
+      .cls-78 {
+        letter-spacing: -.16em;
+      }
+
+      .cls-79 {
+        letter-spacing: -.16em;
+      }
+
+      .cls-80 {
+        letter-spacing: -.14em;
+      }
+
+      .cls-81 {
+        letter-spacing: -.14em;
+      }
+
+      .cls-82 {
+        letter-spacing: -.14em;
+      }
+
+      .cls-83 {
+        letter-spacing: -.11em;
+      }
+
+      .cls-84 {
+        letter-spacing: -.11em;
+      }
+
+      .cls-85 {
+        letter-spacing: -.11em;
+      }
+
+      .cls-86 {
+        letter-spacing: -.11em;
+      }
+
+      .cls-87 {
+        letter-spacing: -.12em;
+      }
+
+      .cls-88 {
+        letter-spacing: -.12em;
+      }
+
+      .cls-89 {
+        letter-spacing: -.12em;
+      }
+
+      .cls-90 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-91 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-7 {
+        font-size: 25.58px;
+      }
+
+      .cls-8 {
+        font-size: 20px;
+      }
+
+      .cls-92 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-93 {
+        letter-spacing: .04em;
+      }
+
+      .cls-94 {
+        letter-spacing: .03em;
+      }
+
+      .cls-4 {
+        stroke-width: 5px;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="800" height="522" rx="12" ry="12"/>
+    </clipPath>
+    <radialGradient id="radial-gradient" cx="720.45" cy="-2918.46" fx="720.45" fy="-2918.46" r="1" gradientTransform="translate(-288141.2622 -1168580.6413) scale(400.5 -400.5)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".02" stop-color="#fff"/>
+      <stop offset=".06" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff"/>
+    </radialGradient>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" width="800" height="522"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_3" data-name="Layer 3">
+    <g class="cls-92">
+      <rect class="cls-5" width="800" height="522"/>
+    </g>
+    <g class="cls-9">
+      <rect class="cls-4" x="21.71" y="20.96" width="756.59" height="480.08" rx="5.5" ry="5.5"/>
+      <rect class="cls-3" x="28.37" y="27.63" width="743.26" height="466.75"/>
+    </g>
+    <g>
+      <text class="cls-8" transform="translate(344.74 450.4)"><tspan class="cls-16" x="0" y="0">-</tspan><tspan class="cls-64" x="8.42" y="0">삼</tspan><tspan class="cls-82" x="25.82" y="0">재</tspan><tspan x="42.96" y="0">관 </tspan><tspan class="cls-47" x="67.36" y="0">지</tspan><tspan class="cls-28" x="83.76" y="0">킴</tspan><tspan class="cls-17" x="100.08" y="0">이</tspan><tspan x="118.18" y="0">-</tspan></text>
+      <text class="cls-13" transform="translate(209.64 170.54) scale(1 1.15)"><tspan class="cls-93" x="0" y="0">三</tspan><tspan class="cls-94" x="22.79" y="0">災</tspan><tspan class="cls-11" x="45.27" y="0">館</tspan></text>
+      <text class="cls-7" transform="translate(278.05 167.77)"><tspan class="cls-34" x="0" y="0">)</tspan><tspan class="cls-12" x="8.36" y="0">은 </tspan><tspan class="cls-54" x="39.57" y="0">재</tspan><tspan class="cls-14" x="60.62" y="0">앙</tspan><tspan x="83.89" y="0">을 </tspan><tspan class="cls-44" x="115.1" y="0">이</tspan><tspan class="cls-40" x="136.38" y="0">해</tspan><tspan class="cls-73" x="157.76" y="0">하</tspan><tspan x="179.5" y="0">고 </tspan><tspan class="cls-29" x="210.71" y="0">처</tspan><tspan class="cls-58" x="231.53" y="0">리</tspan><tspan class="cls-27" x="252.65" y="0">하</tspan><tspan x="276.36" y="0">는 </tspan><tspan class="cls-83" x="307.57" y="0">방</tspan><tspan class="cls-56" x="330.43" y="0">식</tspan><tspan x="351.23" y="0">이 </tspan></text>
+      <text class="cls-7" transform="translate(167.52 203.58)"><tspan class="cls-48" x="0" y="0">지</tspan><tspan class="cls-42" x="20.97" y="0">역</tspan><tspan x="42.46" y="0">과 </tspan><tspan class="cls-71" x="73.66" y="0">환</tspan><tspan class="cls-46" x="95.74" y="0">경</tspan><tspan x="116.73" y="0">에 </tspan><tspan class="cls-69" x="147.94" y="0">따</tspan><tspan x="170.27" y="0">라 </tspan><tspan class="cls-37" x="201.47" y="0">다</tspan><tspan class="cls-18" x="223.11" y="0">르</tspan><tspan x="246.26" y="0">게 </tspan><tspan class="cls-45" x="277.46" y="0">형</tspan><tspan class="cls-58" x="298.72" y="0">성</tspan><tspan class="cls-53" x="319.84" y="0">된</tspan><tspan class="cls-23" x="340.89" y="0">다</tspan><tspan x="364.43" y="0">는 </tspan><tspan class="cls-49" x="395.63" y="0">점</tspan><tspan x="416.6" y="0">에 </tspan></text>
+      <text class="cls-7" transform="translate(139.52 239.39)"><tspan class="cls-22" x="0" y="0">주</tspan><tspan class="cls-67" x="23.66" y="0">목</tspan><tspan class="cls-74" x="45.66" y="0">하</tspan><tspan class="cls-91" x="67.4" y="0">고</tspan><tspan x="91.85" y="0">, </tspan><tspan class="cls-57" x="110.78" y="0">이</tspan><tspan class="cls-58" x="131.54" y="0">러</tspan><tspan x="152.67" y="0">한 </tspan><tspan class="cls-79" x="183.88" y="0">해</tspan><tspan x="205.41" y="0">석 </tspan><tspan class="cls-39" x="236.62" y="0">체</tspan><tspan class="cls-59" x="258.23" y="0">계</tspan><tspan x="280.43" y="0">를 </tspan><tspan class="cls-90" x="311.63" y="0">분</tspan><tspan class="cls-52" x="333.99" y="0">석</tspan><tspan class="cls-21" x="355.09" y="0">하</tspan><tspan x="377.85" y="0">여 </tspan><tspan class="cls-53" x="409.06" y="0">개</tspan><tspan class="cls-32" x="430.11" y="0">인</tspan><tspan class="cls-78" x="451.03" y="0">에</tspan><tspan x="472.62" y="0">게 </tspan></text>
+      <text class="cls-7" transform="translate(158.93 275.2)"><tspan class="cls-51" x="0" y="0">적</tspan><tspan class="cls-70" x="21.1" y="0">합</tspan><tspan x="43.2" y="0">한 </tspan><tspan class="cls-61" x="74.4" y="0">삼</tspan><tspan class="cls-65" x="96.61" y="0">재</tspan><tspan class="cls-84" x="118.83" y="0">풀</tspan><tspan x="141.57" y="0">이 </tspan><tspan class="cls-83" x="172.77" y="0">방</tspan><tspan class="cls-81" x="195.64" y="0">식</tspan><tspan x="217.56" y="0">을 </tspan><tspan class="cls-80" x="248.77" y="0">추</tspan><tspan class="cls-43" x="270.68" y="0">천</tspan><tspan class="cls-27" x="291.84" y="0">하</tspan><tspan x="315.55" y="0">는 </tspan><tspan class="cls-65" x="346.75" y="0">공</tspan><tspan class="cls-89" x="368.98" y="0">간</tspan><tspan class="cls-35" x="391.51" y="0">입</tspan><tspan class="cls-46" x="412" y="0">니</tspan><tspan class="cls-19" x="433" y="0">다</tspan><tspan x="455.81" y="0">. </tspan></text>
+      <text class="cls-7" transform="translate(162.77 349.31)"><tspan class="cls-60" x="0" y="0">삼</tspan><tspan class="cls-75" x="22.2" y="0">재</tspan><tspan class="cls-86" x="44.04" y="0">관</tspan><tspan class="cls-76" x="66.73" y="0">에</tspan><tspan x="88.6" y="0">서 </tspan><tspan class="cls-15" x="119.8" y="0">당</tspan><tspan class="cls-32" x="142.82" y="0">신</tspan><tspan class="cls-77" x="163.75" y="0">에</tspan><tspan class="cls-12" x="185.33" y="0">게 </tspan><tspan class="cls-87" x="216.54" y="0">알</tspan><tspan class="cls-24" x="238.94" y="0">맞</tspan><tspan x="262.12" y="0">는 </tspan><tspan class="cls-59" x="293.32" y="0">삼</tspan><tspan class="cls-65" x="315.52" y="0">재</tspan><tspan class="cls-84" x="337.75" y="0">풀</tspan><tspan class="cls-12" x="360.49" y="0">이 </tspan><tspan class="cls-59" x="391.69" y="0">방</tspan><tspan class="cls-68" x="413.89" y="0">법</tspan><tspan x="435.84" y="0">을 </tspan></text>
+      <text class="cls-7" transform="translate(169.64 385.11)"><tspan class="cls-30" x="0" y="0">진</tspan><tspan x="20.82" y="0">단 </tspan><tspan class="cls-41" x="52.02" y="0">받</tspan><tspan x="73.74" y="0">고 </tspan><tspan class="cls-20" x="104.94" y="0">간</tspan><tspan class="cls-50" x="127.71" y="0">접</tspan><tspan class="cls-67" x="148.66" y="0">적</tspan><tspan class="cls-26" x="170.65" y="0">으</tspan><tspan x="194.29" y="0">로 </tspan><tspan class="cls-84" x="225.49" y="0">풀</tspan><tspan class="cls-81" x="248.23" y="0">이</tspan><tspan x="270.15" y="0">를 </tspan><tspan class="cls-58" x="301.35" y="0">진</tspan><tspan class="cls-37" x="322.48" y="0">행</tspan><tspan class="cls-69" x="344.12" y="0">해</tspan><tspan class="cls-73" x="366.45" y="0">보</tspan><tspan class="cls-62" x="388.19" y="0">세</tspan><tspan class="cls-25" x="410.34" y="0">요</tspan><tspan class="cls-12" x="434.35" y="0">.</tspan></text>
+      <line class="cls-2" x1="163.39" y1="115.84" x2="619.72" y2="115.84"/>
+      <text class="cls-6" transform="translate(163.39 99.09)"><tspan class="cls-66" x="0" y="0">삼</tspan><tspan class="cls-38" x="35.36" y="0">재</tspan><tspan class="cls-88" x="70.14" y="0">관</tspan><tspan x="106.36" y="0">에 </tspan><tspan class="cls-36" x="156.52" y="0">오</tspan><tspan class="cls-33" x="189" y="0">신</tspan><tspan x="222.18" y="0">걸 </tspan><tspan class="cls-63" x="272.34" y="0">환</tspan><tspan class="cls-31" x="308.19" y="0">영</tspan><tspan class="cls-72" x="341.65" y="0">합</tspan><tspan class="cls-55" x="376.64" y="0">니</tspan><tspan class="cls-85" x="410.07" y="0">다</tspan><tspan class="cls-10" x="446.49" y="0">.</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ko" class="custom-cursor-page">
+
+<head>
+  <script src="/js/diagnosis-session.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>삼재록</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/background.css">
+  <link rel="stylesheet" href="css/samjaerok.css">
+  <link rel="stylesheet" href="/css/page-stage.css">
+  <script src="/js/page-stage.js" defer></script>
+</head>
+
+
+<body>
+
+  <!-- =====================
+       배경
+  ====================== -->
+
+  <img
+    src="img/back/back-dote.webp"
+    class="back-dote"
+    alt=""
+  >
+
+   <video src="/img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
+
+  <img
+    src="img/back/back-grey-gradient.webp"
+    class="back-grey-gradient"
+    alt=""
+  >
+
+  <div class="black-overlay"></div>
+
+
+  <!-- =====================
+       옆 문
+  ====================== -->
+
+  <div class="doors">
+
+    <img
+      src="img/door.svg"
+      class="door door-left"
+      alt=""
+    >
+
+    <img
+      src="img/door.svg"
+      class="door door-right"
+      alt=""
+    >
+
+  </div>
+
+
+  <!-- =====================
+       헤더
+  ====================== -->
+
+  <header class="header">
+
+    <!-- 왼쪽 원형 버튼 -->
+    <div class="header-controls">
+
+      <button
+        class="circle-btn"
+        onclick="location.href='landing.html'"
+      >
+        <span class="inner-circle">
+          <img src="img/home.svg" alt="홈">
+        </span>
+      </button>
+
+
+      <button
+        class="circle-btn"
+        onclick="history.back()"
+      >
+        <span class="inner-circle">
+          <img src="img/prev.svg" alt="이전">
+        </span>
+      </button>
+
+
+      <button
+        class="circle-btn"
+        onclick="history.forward()"
+      >
+        <span class="inner-circle">
+          <img src="img/next.svg" alt="다음">
+        </span>
+      </button>
+
+    </div>
+
+
+    <!-- 메뉴 -->
+    <nav class="gnb">
+
+      <!-- 인삿말 -->
+      <a href="welcome.html" class="gnb-button">
+
+        <img
+          class="menu-default"
+          src="img/header-menu-welcome.svg"
+          alt="인삿말"
+        >
+
+        <img
+          class="menu-hover"
+          src="img/header-menu-welcome-hover.svg"
+          alt=""
+        >
+
+      </a>
+
+
+      <!-- 진단 -->
+      <a href="diagnosis.html" class="gnb-button">
+
+        <img
+          class="menu-default"
+          src="img/header-menu-diagnosis.svg"
+          alt="진단"
+        >
+
+        <img
+          class="menu-hover"
+          src="img/header-menu-diagnosis-hover.svg"
+          alt=""
+        >
+
+      </a>
+
+
+      <!-- 도감 -->
+      <a href="gather.html" class="gnb-button">
+
+        <img
+          class="menu-default"
+          src="img/header-menu-gather.svg"
+          alt="도감"
+        >
+
+        <img
+          class="menu-hover"
+          src="img/header-menu-gather-hover.svg"
+          alt=""
+        >
+
+      </a>
+
+
+      <!-- 증언 -->
+      <a href="testimony.html" class="gnb-button">
+
+        <img
+          class="menu-default"
+          src="img/header-menu-testimony.svg"
+          alt="증언"
+        >
+
+        <img
+          class="menu-hover"
+          src="img/header-menu-testimony-hover.svg"
+          alt=""
+        >
+
+      </a>
+
+
+      <!-- 사례 -->
+      <a href="example.html" class="gnb-button">
+
+        <img
+          class="menu-default"
+          src="img/header-menu-example.svg"
+          alt="사례"
+        >
+
+        <img
+          class="menu-hover"
+          src="img/header-menu-example-hover.svg"
+          alt=""
+        >
+
+      </a>
+
+
+      <!-- 삼재록 -->
+      <a href="samjaerok.html" class="gnb-button current">
+
+        <img
+          class="menu-default"
+          src="img/header-menu-samjaerok-select.svg"
+          alt="삼재록"
+        >
+
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =====================
+       삼재록
+  ====================== -->
+
+  <main class="samjaerok-main">
+
+  <!-- =====================
+       닫힌 책
+  ====================== -->
+
+  <div class="samjaerok-cover" id="samjaerokCover">
+
+    <img
+      class="samjaerok-cover-back"
+      src="img/samjaerok/samjaerok-note1.svg"
+      alt=""
+      aria-hidden="true"
+    >
+
+    <img
+      class="samjaerok-cover-img"
+      src="img/samjaerok/samjaerok-note.svg"
+      alt="삼재록"
+    >
+
+    <!-- 닫힌 책용 탭 -->
+    <div class="samjaerok-tabs">
+    <button class="samjaerok-tab" type="button" data-page="page1">
+      <img src="img/samjaerok/samjaerok-tab1.svg" alt="삼재 · 삼재재앙">
+    </button>
+
+    <button class="samjaerok-tab" type="button" data-page="page-flow">
+      <img src="img/samjaerok/samjaerok-tab2.svg" alt="삼재 유형 · 흐름">
+    </button>
+
+    <button class="samjaerok-tab" type="button" data-page="page-check">
+      <img src="img/samjaerok/samjaerok-tab3.svg" alt="확인법">
+    </button>
+
+    <button class="samjaerok-tab" type="button" data-page="page-method">
+      <img src="img/samjaerok/samjaerok-tab4.svg" alt="재앙별 풀이 · 방법">
+    </button>
+
+    <button class="samjaerok-tab" type="button" data-page="page3">
+      <img src="img/samjaerok/samjaerok-tab5.svg" alt="삼재막기">
+    </button>
+  </div>
+
+  </div>
+
+
+
+  <!-- =====================
+     펼쳐진 책
+====================== -->
+
+<div class="samjaerok-open" id="samjaerokOpen">
+
+  <!-- 검은색 뒷판 -->
+  <img
+    class="samjaerok-book-back "
+    src="img/samjaerok/samjaerok-note-back.svg"
+    alt=""
+  >
+
+  <img
+    class="samjaerok-page-back samjaerok-page-back-left"
+    src="/img/samjaerok/page-back-left.svg"
+    alt=""
+  >
+
+  <img
+    class="samjaerok-page-back samjaerok-page-back-right"
+    src="img/samjaerok/page-back-right.svg"
+    alt=""
+  ><img
+    class="samjaerok-page-back samjaerok-page-back-left"
+    src="img/samjaerok/page-back-left.svg"
+    alt=""
+  >
+
+  <img
+    class="samjaerok-page-back samjaerok-page-back-right"
+    src="img/samjaerok/page-back-right.svg"
+    alt=""
+  >
+
+  <!-- 페이지를 넘기는 동안 현재 반쪽을 유지하고 양면 종이를 회전 -->
+  <div class="page-turn-stationary" id="pageTurnStationary" aria-hidden="true"></div>
+  <div class="page-turn-cast-shadow" id="pageTurnCastShadow" aria-hidden="true"></div>
+  <div class="page-turn-sheet" id="pageTurnSheet" aria-hidden="true">
+    <div class="page-turn-face page-turn-face-front"></div>
+    <div class="page-turn-face page-turn-face-back"></div>
+  </div>
+
+  <!-- 펼친 책용 오른쪽 탭 -->
+  <div class="samjaerok-open-tabs">
+    <button class="samjaerok-tab active" type="button" data-page="page1" data-default="img/samjaerok/samjaerok-tab1.svg" data-select="img/samjaerok/samjaerok-tab1-select.svg">
+      <img src="img/samjaerok/samjaerok-tab1-select.svg" alt="삼재 · 삼재재앙">
+    </button>
+
+    <button class="samjaerok-tab" type="button" data-page="page-flow" data-default="img/samjaerok/samjaerok-tab2.svg" data-select="img/samjaerok/samjaerok-tab2-select.svg">
+      <img src="img/samjaerok/samjaerok-tab2.svg" alt="삼재 유형 · 흐름">
+    </button>
+
+    <button class="samjaerok-tab" type="button" data-page="page-check" data-default="img/samjaerok/samjaerok-tab3.svg" data-select="img/samjaerok/samjaerok-tab3-select.svg">
+      <img src="img/samjaerok/samjaerok-tab3.svg" alt="확인법">
+    </button>
+
+    <button class="samjaerok-tab" type="button" data-page="page-method" data-default="img/samjaerok/samjaerok-tab4.svg" data-select="img/samjaerok/samjaerok-tab4-select.svg">
+      <img src="img/samjaerok/samjaerok-tab4.svg" alt="재앙별 풀이 · 방법">
+    </button>
+
+    <button class="samjaerok-tab" type="button" data-page="page3" data-default="img/samjaerok/samjaerok-tab5.svg" data-select="img/samjaerok/samjaerok-tab5-select.svg">
+      <img src="img/samjaerok/samjaerok-tab5.svg" alt="삼재막기">
+    </button>
+  </div>
+
+
+  <!-- 왼쪽 종이 -->
+  <img
+    class="samjaerok-page samjaerok-page-left"
+    src="img/samjaerok/page-left.svg"
+    alt=""
+  >
+
+  <!-- 오른쪽 종이 -->
+  <img
+    class="samjaerok-page samjaerok-page-right"
+    src="img/samjaerok/page-right.svg"
+    alt=""
+  >
+
+
+
+  <!-- ==================================
+       PAGE 1 : 삼재 · 삼재재앙
+  =================================== -->
+
+  <div class="samjaerok-spread active" id="page1">
+
+    <!-- 왼쪽 -->
+    <div class="page-content page-content-left">
+
+      <div class="page-inner-frame">
+
+        <div class="page-heading">
+
+          <h2 class="page-title samjaerok-title">
+            삼재
+          </h2>
+
+          <div class="page-heading-line"></div>
+
+        </div>
+
+
+        <div class="page-body samjaerok-body-left">
+
+          <ol>
+
+            <li>
+              9년 주기로 찾아와 3년간 머무르며 천재(물), 지재(불),
+              인재(바람) 등 3가지 재난과 8가지 재앙(삼재팔난)을
+              겪는다는 민간 신앙 및 운세 개념
+            </li>
+
+            <li>
+              천, 지, 인의 세 가지를 이르는 말
+            </li>
+
+            <li>
+              불교에서는 인간의 계산으로 미치지 못하는 긴 세월인
+              겁(劫)의 말(末)에 일어나는 재해
+            </li>
+
+            <li>
+              우리 몸[身], 말[口], 생각[意]으로 인하여 생기는
+              재앙이 삼재
+            </li>
+
+          </ol>
+
+
+          <p class="page-note body2-left"><span class="note-marker">*</span><span class="note-text">9년마다 주기적으로 돌아오는 삼재 드는 해라고 해서 반드시 나쁜 것만은
+	            아니다. 개인의 사주와 운세의 흐름에 따라 복삼재가 될 수 있으며 
+	            복삼재가 들면 아무 탈이 없고 오히려 복이 온다고 한다.</span></p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- 오른쪽 -->
+    <div class="page-content page-content-right">
+
+      <div class="page-inner-frame">
+
+        <div class="page-heading">
+
+          <h2 class="page-title samjaerok-title">
+            삼재 재앙
+          </h2>
+
+          <div class="page-heading-line"></div>
+
+        </div>
+
+
+        <div class="page-body samjaerok-body-left">
+
+          <p>
+            삼재팔난은 삼재로 인해 발생한다고 여겨지는 세 가지 재난과 여덟 가지 고난을 통틀어 이르는 말이다. 전통적으로는 자연재해와 인간관계, 재물, 건강 등 삶 전반에서 겪을 수 있는 다양한 어려움을 포함하는 개념으로 이해되었다. 
+팔난은 삼재 기간에 겪을 수 있다고 여겨지는 여덟 가지 고난을 뜻한다.
+          </p>
+
+
+          <ol>
+            <li>재물의 손실</li>
+            <li>술과 이성으로 인한 문제</li>
+            <li>건강 악화와 질환</li>
+            <li>부모와 관련된 어려움</li>
+            <li>형제·가족 간의 갈등</li>
+            <li>배우자와의 문제</li>
+            <li>소송, 관청, 법적 분쟁</li>
+            <li>학업이나 시험에서의 어려움</li>
+          </ol>
+
+          <p>또한 전통 문헌에서는 삼재의 대표적인 재난으로 
+수재水災, 화재火災, 풍재風災를 비롯해 병난兵難,
+ 역질疫疾, 기근饑饉 등을 함께 언급하기도 한다.</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- 두 번째 펼침면: 삼재 유형 · 흐름 -->
+  <div class="samjaerok-spread" id="page-flow">
+<div class="page-content page-content-left">
+
+  <div class="page-inner-frame">
+
+    <div class="page-heading">
+
+      <h2 class="page-title samjaerok-title">
+        삼재 유형
+      </h2>
+
+      <div class="page-heading-line"></div>
+
+    </div>
+
+
+    <div class="page-body samjaerok-body-left">
+
+      <p>
+        삼재가 드는 해라고 해서 모두 같은 의미를 가지는 것은 아니다.
+        개인의 사주와 운세의 흐름에 따라 삼재는 크게 복삼재, 평삼재,
+        악삼재로 구분되기도 한다.
+      </p>
+
+     <ol class="samjae-type-list">
+  <li>
+    <span class="type-name">복삼재福三災</span>
+    <p>
+      삼재의 시기에도 오히려 좋은 기회와 복이 찾아오는 경우를
+      말한다. 큰 탈 없이 지나가거나, 어려움을 계기로 더 좋은
+      결과를 얻는 전화위복의 삼재로 여겨진다.
+    </p>
+  </li>
+
+  <li>
+    <span class="type-name">평삼재 平三災</span>
+    <p>
+      특별한 재앙이나 큰 변화 없이 무난하게 지나가는 삼재를
+      말한다. 일상 속 작은 어려움은 있을 수 있지만, 큰 문제
+      없이 삼재 기간을 보내는 경우이다.
+    </p>
+  </li>
+
+  <li>
+    <span class="type-name">악삼재 惡三災</span>
+    <p>
+      재앙과 불운이 크게 나타나는 삼재를 말한다. 반복되는
+      문제나 예상치 못한 어려움을 겪을 수 있으며, 전통적으로는
+      방심과 지나친 집착이 불운을 더욱 키울 수 있다고 여겨졌다.
+    </p>
+  </li>
+</ol>
+
+    </div>
+
+  </div>
+
+</div>
+<div class="page-content page-content-right">
+      <div class="page-inner-frame">
+        <div class="page-heading">
+          <h2 class="page-title samjaerok-title">삼재의 흐름</h2>
+          <div class="page-heading-line"></div>
+        </div>
+        <div class="page-body samjaerok-body-left">
+          <p>삼재는 한 번 시작되면 3년에 걸쳐 진행되며, 이를 들삼재, 눌삼재, 날삼재로 구분한다. 이를 각각 입삼재入三災, 중삼재中三災, 출삼재出三災라고 부르기도 한다.</p>
+          <ol class="samjae-type-list">
+            <li>
+              <span class="type-name">들삼재入三災</span>
+              <p>삼재가 시작되는 첫해로, 재앙의 기운이 들어오는 시기라고 여겨진다. 새로운 불안이나 변화가 시작되는 해로 인식되며, 일반적으로 가장 조심해야 하는 시기로 여겨진다.</p>
+            </li>
+            <li>
+              <span class="type-name">눌삼재中三災</span>
+              <p>삼재가 머무는 둘째 해이다. 들삼재에 시작된 액운이 이어지는 시기로, 큰 변화 없이 불안이 지속된다고 여겨진다.</p>
+            </li>
+            <li>
+              <span class="type-name">날삼재出三災</span>
+              <p>삼재가 끝나며 빠져나가는 마지막 해이다. 액운이 완전히 사라지기 전까지 예상치 못한 일이 발생할 수 있다고 믿어 마지막까지 주의를 기울이는 시기로 여겨진다.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================
+       PAGE 3 : 확인법 · 나의 삼재
+  =================================== -->
+
+  <div class="samjaerok-spread" id="page-check">
+<div class="page-content page-content-left">
+
+      <div class="page-inner-frame">
+
+        <div class="page-heading">
+
+          <h2 class="page-title samjaerok-title">
+            삼재 확인법
+          </h2>
+
+          <div class="page-heading-line"></div>
+
+        </div>
+
+
+        <div class="page-body samjaerok-body-left">
+
+          <p>
+            삼재는 십간십이지干支가운데 지지地支만을 기준으로 판단하는 개념이다. 
+            해마다 바뀌는 띠를 기준으로 삼재가 드는 띠를 정하며, 
+            한 번 삼재가 시작되면 들삼재, 눌삼재, 날삼재의 순서로 3년 동안 이어진다.
+            따라서 특정 연도를 기준으로 그해의 띠와 앞뒤 한 해에 해당하는 띠를 가진 
+            사람들은 삼재에 든 것으로 본다. 예를 들어 2026년을 기준으로 하면 
+            2025년, 2026년, 2027년에 해당하는 띠의 사람들은 삼재 기간에 속한다고 여긴다.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+<div class="page-content page-content-right">
+      <div class="page-inner-frame">
+        <div class="page-heading">
+          <h2 class="page-title samjaerok-title">나의 삼재</h2>
+          <div class="page-heading-line"></div>
+        </div>
+        <div class="page-body samjaerok-body-left">
+          <p>삼재는 모든 사람에게 같은 해에 찾아오는 것이 아니라, 자신이 태어난 해의 띠에 따라 삼재가 시작되는 시기가 달라진다. 이를 확인하기 위해서는 먼저 자신이 태어난 해의 간지를 알아야 한다.</p>
+          <p>간지는 십간十干과 십이지十二支를 차례로 조합한 육십갑자六十甲子를 기준으로 한다. 갑자甲子에서 시작해 을축乙丑, 병인丙寅과 같이 이어지며, 총 60개의 조합이 한 주기를 이룬다. 우리가 흔히 말하는 열두 띠는 이 가운데 십이지에 해당한다.</p>
+          <p>따라서 자신의 출생연도에 해당하는 육십갑자를 찾으면, 그 안의 십이지를 통해 자신의 띠를 확인할 수 있다. 이후 띠를 기준으로 삼재에 해당하는 세 해를 찾아 자신의 들삼재, 눌삼재, 날삼재 시기를 확인한다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ==================================
+       PAGE 4 : 재앙별 풀이 · 방법
+  =================================== -->
+
+  <div class="samjaerok-spread" id="page-method">
+    <div class="page-content page-content-left">
+      <div class="page-inner-frame">
+        <div class="page-heading">
+          <h2 class="page-title samjaerok-title">신수에 따른 재앙</h2>
+          <div class="page-heading-line"></div>
+        </div>
+        <div class="page-body samjaerok-body-left">
+          <p>삼재풀이는 앞으로 닥칠 것으로 여겨지는 재앙의 종류와 운수에 따라 서로 다른 방식으로 행해졌다. 물, 불, 거리에서 붙은 액, 죽음과 관련된 큰 액 등 재앙의 성격을 구분하고 이에 맞는 의례를 행했다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-content page-content-right">
+      <div class="page-inner-frame">
+        <div class="page-heading">
+          <h2 class="page-title samjaerok-title">신수에 따른 삼재풀이</h2>
+          <div class="page-heading-line"></div>
+        </div>
+        <div class="page-body samjaerok-body-left">
+          <ol class="samjae-type-list">
+            <li>
+              <span class="type-name">수재水災</span>
+              <p>새 바가지에 쌀과 초를 준비하고 불을 밝혀 물에 띄운다. 큰 액이 예상될 경우 닭을 대리물로 삼아 물에 띄우거나 묻으며 재앙을 대신 가져가기를 기원했다.</p>
+            </li>
+            <li>
+              <span class="type-name">거리에서 든 액</span>
+              <p>해 질 무렵 제물과 당사자의 옷을 가지고 삼거리로 나가 치성을 드린다. 옷으로 북어를 감싸 몸 둘레를 세 번 돌린 뒤 땅에 묻어, 거리에서 붙은 액이 당사자에게서 떨어져 나가기를 기원했다.</p>
+            </li>
+            <li>
+              <span class="type-name">대수대명代數代命</span>
+              <p>속옷이나 옷, 명태, 계란, 동전 등을 당사자를 대신하는 상징물로 사용한다. 이를 삼거리에서 비손한 뒤 묻거나 태우거나 길 밖으로 내보내며 액운이 대신 사라지기를 기원했다.</p>
+            </li>
+            <li>
+              <span class="type-name">집단 삼재풀이</span>
+              <p>동지·입춘·정월대보름 등에 사찰에서 여러 사람이 함께 삼재막이를 행하기도 한다. 촛불을 밝히고 비손한 뒤, 삼재부적과 속옷 등을 태우며 삼재의 소멸을 기원한다.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 5 : 삼재막기 -->
+  <div class="samjaerok-spread" id="page3">
+
+    <!-- 왼쪽 -->
+    <div class="page-content page-content-left">
+
+      <div class="page-inner-frame">
+
+        <div class="page-heading">
+
+          <h2 class="page-title samjaerok-title">
+            삼재막기
+          </h2>
+
+          <div class="page-heading-line"></div>
+
+        </div>
+
+
+        <div class="page-body samjaerok-body-left">
+
+          <p>
+            삼재를 막기 위한 민속적 대응은 크게 민간에서 전해 내려오는 의례와 무당이나 법사가 주관하는 굿으로 나뉜다. 사람들은 삼재가 들면 재앙을 예방하고 액운을 막기 위해 다양한 삼재풀이를 행했으며, 이를 삼재풀이, 삼재막이, 삼재맥이, 삼재내기, 삼재막지 등 여러 이름으로 불렀다.
+            </p>
+
+            <p>삼재풀이는 주로 음력 정월 열나흗날이나 입춘 이전에 진행되었다. 정월 열나흗날은 한 해의 액운을 막기에 가장 효험이 있는 날로 여겨졌으며, 늦어도 입춘 이전에는 의례를 마쳐 새로운 한 해를 평안하게 맞이하고자 하였다.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- 오른쪽 -->
+    <div class="page-content page-content-right">
+
+      <div class="page-inner-frame">
+
+        <div class="page-heading">
+
+          <h2 class="page-title samjaerok-title">
+            삼재막기 방식
+          </h2>
+
+          <div class="page-heading-line"></div>
+
+        </div>
+
+
+        <div class="page-body samjaerok-body-left">
+
+  <ol class="samjae-type-list">
+
+    <li>
+      <span class="type-name">부적법符籍法</span>
+      <p>
+      삼재부三災符 또는 삼재소멸부를 만들어 방문 위에 붙이거나
+      몸에 지니고 다니는 방식이다. 부적은 몸에 가까이 보관하거나
+      태워 물과 함께 마시기도 하였으며, 동지가 지나면 효험이 다한다고
+      여겨 새 부적으로 교체하였다.
+      </p>
+    </li>
+
+    <li>
+      <span class="type-name">삼재 상징물</span>
+      <p>
+      삼재를 상징하는 물건을 만들어 부적과 함께 두기도 하였다.
+      빈 병 세 개를 묶어 삼재귀를 가두고, 삼재가 든 사람의 나이 수만큼
+      쌀알을 세어 병 안에 넣는다. 이후 복숭아나무로 만든 마개를 끼워
+      방문 위 부적 옆에 거꾸로 매달아 액운이 집 안으로 들어오지
+      못하도록 하였다.
+      </p>
+    </li>
+
+    <li>
+      <span class="type-name">삼재풀이 의례</span>
+      <p>
+      무당이나 법사, 또는 절의 스님이 삼재가 든 사람을 위해 의례를
+      진행하는 방식이다. 주로 음력 정초와 정월 열나흗날에 행해졌으며,
+      지역에 따라 집에서 가족이 직접 진행하기도 했지만 대부분은
+      무당이나 법사가 의례를 주관하였다.
+      </p>
+    </li>
+
+  </ol>
+
+</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+</main>
+
+
+  <!-- =====================
+       붓 커서
+  ====================== -->
+
+  <div
+    class="custom-cursor"
+    id="cursor"
+  ></div>
+
+
+  <!-- JS -->
+  <script src="js/samjaerok.js"></script>
+
+</body>
+</html>

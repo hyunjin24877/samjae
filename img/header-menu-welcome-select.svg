@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 119.83 61.89">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        fill: none;
+      }
+
+      .cls-2, .cls-4, .cls-5 {
+        stroke: #e2aa52;
+      }
+
+      .cls-7 {
+        fill: #fffdea;
+      }
+
+      .cls-3 {
+        stroke: #231f20;
+        stroke-width: 1.11px;
+      }
+
+      .cls-8 {
+        fill: #b51c1c;
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-4 {
+        stroke-dasharray: 3.06 2.06;
+      }
+
+      .cls-10 {
+        letter-spacing: 0em;
+      }
+
+      .cls-5 {
+        stroke-dasharray: 3.05 2.05;
+      }
+
+      .cls-11 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-12 {
+        fill: #231f20;
+        font-family: OnulSijak-Regular-KSCpc-EUC-H, OnulSijak;
+        font-size: 23.76px;
+      }
+
+      .cls-6 {
+        stroke: #000;
+      }
+
+      .cls-13 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" x="0" y="0" width="119.83" height="61.89"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="0" y="0" width="119.83" height="61.89"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g>
+      <g class="cls-13">
+        <path class="cls-8" d="M92.32,2.1c-.85-.88-2.54-1.6-3.76-1.6H31.27c-1.23,0-2.91.72-3.76,1.6L1.14,29.35c-.85.88-.85,2.31,0,3.19l26.36,27.25c.85.88,2.54,1.6,3.76,1.6h57.29c1.23,0,2.91-.71,3.76-1.6l26.36-27.25c.85-.88.85-2.31,0-3.19L92.32,2.1Z"/>
+        <path class="cls-6" d="M92.32,2.1c-.85-.88-2.54-1.6-3.76-1.6H31.27c-1.23,0-2.91.72-3.76,1.6L1.14,29.35c-.85.88-.85,2.31,0,3.19l26.36,27.25c.85.88,2.54,1.6,3.76,1.6h57.29c1.23,0,2.91-.71,3.76-1.6l26.36-27.25c.85-.88.85-2.31,0-3.19L92.32,2.1Z"/>
+      </g>
+      <rect class="cls-7" x="12.16" y="6.5" width="94.61" height="48.89"/>
+      <rect class="cls-3" x="12.16" y="6.5" width="94.61" height="48.89"/>
+      <g class="cls-9">
+        <line class="cls-4" x1="15.11" y1="14.04" x2="15.11" y2="48.88"/>
+        <line class="cls-5" x1="19.68" y1="52.45" x2="100.28" y2="52.45"/>
+        <line class="cls-4" x1="103.83" y1="47.85" x2="103.83" y2="13.01"/>
+        <line class="cls-5" x1="99.25" y1="9.45" x2="18.66" y2="9.45"/>
+        <path class="cls-2" d="M17.63,9.45h-1.52c-.55,0-1,.45-1,1v1.53M103.83,11.98v-1.53c0-.55-.45-1-1-1h-1.53M101.3,52.45h1.53c.55,0,1-.45,1-1v-1.53M15.11,49.92v1.53c0,.55.45,1,1,1h1.52"/>
+      </g>
+      <text class="cls-12" transform="translate(36.7 38.15) scale(1 1.01)"><tspan class="cls-11" x="0" y="0">맞</tspan><tspan class="cls-10" x="20.77" y="0">이</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,461 @@
+/* =========================
+   진단 전체
+========================= */
+
+/* =========================
+   진단 전체
+========================= */
+
+.diagnosis-main {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+}
+
+
+/* =========================
+   Q3 주석
+========================= */
+
+.diagnosis-annotation {
+  margin: 12px 0 0;
+
+  color: rgba(0, 0, 0, 0.35);
+
+  text-align: center;
+}
+
+
+/* =========================
+   열린 족자
+========================= */
+
+.diagnosis-open-wrap {
+  position: absolute;
+
+  top: 20px;
+  left: 50%;
+
+  width: 857px;
+  height: 372px;
+
+  transform: translateX(-50%);
+
+  z-index: 20;
+}
+
+
+.diagnosis-open {
+  display: block;
+
+  width: 857px;
+  height: auto;
+}
+
+
+/* =========================
+   족자 내부 질문
+========================= */
+
+.diagnosis-result {
+  position: absolute;
+
+  top: 70px;
+  left: 50%;
+
+  width: 600px;
+
+  transform: translateX(-50%);
+
+  text-align: center;
+
+  z-index: 5;
+}
+
+
+/* 결과 전환: 좌우 문과 상단 이동 버튼은 기존 레이어에 유지 */
+.is-revealing-result .diagnosis-main,
+.is-revealing-result .gnb {
+  visibility: hidden;
+}
+
+.diagnosis-result-reveal {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+}
+
+.result-reveal-black {
+  position: absolute;
+  inset: 0;
+  background: #000;
+}
+
+.result-reveal-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(600px, calc(100% - 280px));
+  text-align: center;
+  color: #fff;
+}
+
+.result-reveal-fires {
+  display: flex;
+  justify-content: center;
+  gap: -20px;
+}
+
+.result-reveal-fires img {
+  width: 100px;
+  height: 102px;
+  object-fit: contain;
+  transform-origin: center bottom;
+}
+
+.result-reveal-loading p {
+  margin: 30px 0 0;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.result-reveal-wheel-wrap {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(980px, calc(1920px - 280px), 950.4px);
+  aspect-ratio: 895 / 898;
+  opacity: 0;
+}
+
+.result-reveal-wheel {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+}
+
+.result-reveal-arrow {
+  position: absolute;
+  top: -29px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 58px;
+}
+
+/* 질문 번호 */
+
+.diagnosis-result-number {
+  display: block;
+  width: 55px;
+  height: 46px;
+  margin: 5px auto 0;
+}
+
+
+/* =========================
+   진행 불
+========================= */
+
+.diagnosis-result-drops {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 24px;
+}
+
+
+.diagnosis-fire {
+  display: block;
+
+  width: auto;
+  height: 26px;
+
+  opacity: 0.3;
+}
+
+
+.diagnosis-fire.active {
+  opacity: 1;
+}
+
+
+/* =========================
+   질문
+========================= */
+
+.diagnosis-result-text {
+  margin: 28px 0 0;
+}
+
+.diagnosis-annotation {
+  transform: scale(0.7);
+  transform-origin: center top;
+}
+
+/* =========================
+   선택 버튼 공통
+========================= */
+
+.choice-button {
+  position: relative;
+
+  display: block;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+
+  appearance: none;
+
+  cursor: pointer;
+
+  flex: 0 0 auto;
+
+  transform: scale(1);
+  transform-origin: center center;
+
+  transition: transform 0.3s ease;
+}
+
+
+.choice-button img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  pointer-events: none;
+
+  filter: brightness(100%);
+
+  transition: filter 0.3s ease;
+}
+
+
+/* 선택된 버튼 */
+
+.choice-button.is-selected {
+  transform: scale(1.1);
+}
+
+
+.choice-button.is-selected img {
+  filter: brightness(100%);
+}
+
+
+/* 선택되지 않은 버튼 */
+
+.diagnosis-choices.has-selection
+.choice-button:not(.is-selected) {
+  transform: scale(0.9);
+}
+
+
+.diagnosis-choices.has-selection
+.choice-button:not(.is-selected) img {
+  filter: brightness(40%);
+}
+
+
+/* =========================
+   하단 컨트롤
+========================= */
+
+.diagnosis-controls {
+  position: fixed;
+
+  left: 50%;
+  bottom: 20px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 8px;
+
+  z-index: 50;
+}
+
+
+/* 이전 + 다음 */
+
+.diagnosis-button-row {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 0;
+}
+
+
+/* =========================
+   이전 / 다음 버튼
+========================= */
+
+.diagnosis-btn {
+  display: block;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+
+  appearance: none;
+
+  font-family: inherit;
+
+  cursor: pointer;
+}
+
+
+.diagnosis-btn-img {
+  display: block;
+
+  width: auto;
+  height: 43px;
+}
+
+
+#diagnosisNext.is-disabled {
+  cursor: default;
+}
+
+
+/* =========================
+   다시 하기
+========================= */
+
+.diagnosis-reset {
+  display: block;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+
+  appearance: none;
+
+  font-family: inherit;
+
+  color: #c2c2c2;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   미완료 팝업
+========================= */
+
+.diagnosis-popup {
+  display: none;
+  position: absolute;
+
+  left: 50%;
+  bottom: calc(100% + 35px);
+
+  transform: translateX(-50%);
+
+  width: 302px;
+  height: 50px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  z-index: 60;
+}
+
+
+.diagnosis-popup.is-show {
+  display: block;
+  visibility: visible;
+  animation: diagnosisPopupFade 2.3s ease-in-out 3 forwards;
+}
+
+/* 0.6초 등장 → 0.8초 유지 → 0.6초 사라짐 → 0.3초 간격 */
+@keyframes diagnosisPopupFade {
+  0% { opacity: 0; }
+  26.086957%, 60.869565% { opacity: 1; }
+  86.956522%, 100% { opacity: 0; }
+}
+
+/* Q2/Q4: separate the shared paper, static illustration and live text. */
+.diagnosis-choices .diagnosis-card .diagnosis-card-back {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.diagnosis-choices .diagnosis-card .diagnosis-card-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.diagnosis-choices .diagnosis-card .diagnosis-card-label {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 8px;
+  margin: 0;
+  color: white;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.diagnosis-choices.has-selection .diagnosis-card:not(.is-selected) .diagnosis-card-label {
+  opacity: 0.4;
+}
+
+/* Keep illustrations still until selected; selection uses the existing scale. */
+.diagnosis-choices:not(.has-selection) .diagnosis-choice.diagnosis-card:hover {
+  transform: scale(1);
+}
+
+.diagnosis-choices .diagnosis-card .diagnosis-card-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.diagnosis-choices .diagnosis-card.is-selected.is-video-playing .diagnosis-card-video {
+  visibility: visible;
+}
+
+.diagnosis-card.is-selected.is-video-playing .diagnosis-card-art {
+  visibility: hidden;
+}
+
+/* Identical source frame, aspect ratio and artwork bounds before/after playback. */
+.diagnosis-choices .diagnosis-card[data-value="shamanism"] .diagnosis-card-art,
+.diagnosis-choices .diagnosis-card[data-value="shamanism"] .diagnosis-card-video {
+  object-fit: contain;
+  transform: scale(.76);
+  transform-origin: 50% 46%;
+}

@@ -1,0 +1,1801 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background: #d9d9d9;
+}
+
+
+/* =========================
+   LANDING
+========================= */
+
+.landing {
+  /* 참고 영상: 30fps, 110프레임 반복 */
+  --scene-motion-duration: 3.666667s;
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+
+  isolation: isolate;
+  background: #d9d9d9;
+}
+
+.landing::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("/img/back/back-grey-gradient.webp") center / cover no-repeat;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* 문 양옆 배경에만 적용하는 페더 마스크 */
+.landing-side-background {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  -webkit-mask-image: url("/img/landing/side-feather-mask.svg");
+  mask-image: url("/img/landing/side-feather-mask.svg");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-mode: alpha;
+}
+
+.landing-door,
+.door-glow {
+  position: absolute;
+  left: 50%;
+  top: 62px;
+  width: calc(804px * 879.13 / 907.09);
+  height: 804px;
+  aspect-ratio: 879.13 / 907.09;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.landing-door {
+  --door-angle: 146deg;
+  z-index: 5;
+  perspective: 1800px;
+  transition: transform 1.6s cubic-bezier(.65, 0, .35, 1);
+}
+
+.door-glow {
+  display: flex;
+  transform: translateX(-50%) scale(1.04);
+  filter: brightness(0) invert(1) blur(22px)
+    drop-shadow(0 0 32px rgba(255, 255, 255, 0.85));
+  opacity: 0.85;
+  z-index: 4;
+}
+
+.door-glow img,
+.door-all-back {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.door-all-back {
+  z-index: 0;
+}
+
+.door-samjae {
+  position: absolute;
+  top: calc(70px - 62px); /* 문 영역의 top 62px을 포함해 상단 여백 70px */
+  left: 50%;
+  width: 758px;
+  height: 199px;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.door-leaf {
+  position: absolute;
+  bottom: calc(100% * 95 / 907.09);
+  width: calc(100% * 336 / 879.13);
+  aspect-ratio: 336.15 / 599.55;
+  z-index: 1;
+  transform-style: preserve-3d;
+  transition: transform 2s cubic-bezier(.45, 0, .2, 1);
+}
+
+.door-leaf-left {
+  left: calc(50% - 100% * 336 / 879.13);
+  transform-origin: left center;
+}
+
+.door-leaf-right {
+  right: calc(50% - 100% * 336 / 879.13);
+  transform-origin: right center;
+}
+
+.door-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.door-back {
+  transform: rotateY(180deg);
+}
+
+.door-knob {
+  position: absolute;
+  top: 40%;
+  width: calc(100% * 47.3 / 336.15);
+  height: auto;
+  transform: translateZ(1px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
+}
+
+.door-leaf-left .door-knob {
+  right: 4%;
+  transform: translateZ(1px) scaleX(-1);
+}
+
+.door-leaf-right .door-knob {
+  left: 4%;
+}
+
+.door-leaf-left .door-front {
+  transform: scaleX(-1);
+}
+
+.door-leaf-right .door-back {
+  transform: rotateY(180deg) scaleX(-1);
+}
+
+.landing.is-entering .door-leaf-left {
+  transform: rotateY(calc(-1 * var(--door-angle)));
+}
+
+.landing.is-entering .door-leaf-right {
+  transform: rotateY(var(--door-angle));
+}
+
+/* =========================
+   TIGER
+========================= */
+
+.landing-tiger {
+  position: absolute;
+
+  display: block;
+
+  width: 306px;
+  height: 450.9px;
+  border: 0;
+
+  bottom: 66px;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+
+/* 왼쪽 호랑이 */
+
+.tiger-left {
+  left: calc(50% - 550px);
+    transform: scaleX(-1);
+}
+
+
+/* 오른쪽 호랑이 */
+
+.tiger-right {
+  right: calc(50% - 550px);
+}
+
+/* =========================
+   ENTER BUTTON
+========================= */
+
+.landing-enter {
+  position: absolute;
+
+  left: 50%;
+  bottom: 37px;
+
+  transform: translateX(-50%);
+
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+  z-index: 20;
+}
+
+.landing-enter img {
+  display: block;
+
+  width: 301px;
+  height: auto;
+}
+
+/* =========================
+   UP COTTON
+========================= */
+
+/* =========================
+   UP COTTON
+========================= */
+
+/* =========================
+   SIDE CURTAIN
+========================= */
+
+.landing-curtain {
+  position: absolute;
+  top: 0;
+
+  display: flex;
+  align-items: flex-start;
+
+  height: 100%;
+  z-index: 3;
+
+  pointer-events: none;
+}
+
+.curtain-left {
+  left: 0;
+}
+
+.curtain-right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+
+/* =========================
+   CURTAIN ANIMATION
+========================= */
+
+.curtain-line {
+  display: block;
+
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+
+  transform: translateY(0);
+
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+
+/* 모든 커튼 줄이 동시에 올라갔다가 복귀 */
+.curtain-line {
+  animation-name: curtain-lift;
+}
+
+@keyframes curtain-lift {
+  0%, 16%, 100% {
+    transform: translateY(0);
+  }
+  8% {
+    transform: translateY(-10px);
+  }
+}
+
+/* 노랑 */
+.line-1 {
+  width: 27px;
+  height: 362px;
+  background: #690f0f;
+}
+
+/* 주황 */
+.line-2 {
+  width: 11px;
+  height: 340px;
+  background: #690f0f;
+  border-left: none;
+}
+
+/* 주황 */
+.line-3 {
+  width: 10px;
+  height: 340px;
+  background: #000;
+}
+
+/* 주황 */
+.line-4 {
+  width: 10px;
+  height: 340px;
+  background: #690f0f;
+}
+
+/* 노랑 얇은 띠 */
+.line-5 {
+  width: 30px;
+  height: 320px;
+  background: #b51c1c;
+  border-left: none;
+}
+
+/* 청록 */
+.line-6 {
+  width: 8px;
+  height: 300px;
+  background: #1c8791;
+  border-left: none;
+}
+
+/* 검정 */
+.line-7 {
+  width: 25px;
+  height: 300px;
+  background: #000;
+}
+
+/* 빨강 */
+.line-8 {
+  width: 11px;
+  height: 300px;
+  background: #1c8791;
+}
+
+/* 짙은 빨강 */
+.line-9 {
+  width: 6px;
+  height: 290px;
+  background: #ffce52;
+  border-left: none;
+}
+
+.line-10 {
+  width: 9px;
+  height: 280px;
+  background: #e34d26;
+  border-left: none;
+}
+.line-11 {
+  width: 9px;
+  height: 258px;
+  background: #e34d26;
+  border-left: none;
+}
+.line-12 {
+  width: 9px;
+  height: 245px;
+  background: #e34d26;
+  border-left: none;
+}
+.line-13 {
+  width: 9px;
+  height: 216px;
+  background: #ffce52;
+  border-left: none;
+}
+
+
+/* =========================
+   FAN
+========================= */
+
+/* =========================
+   FAN
+========================= */
+
+.landing-fan {
+  position: absolute;
+
+  width: 190px;
+  height: auto;
+
+  top: 220px;
+
+  z-index: 9;
+  pointer-events: none;
+}
+
+.fan-left {
+  left: calc(50% - 900px);
+
+  transform-origin: bottom center;
+  animation: fan-left-move 1s ease-in-out infinite alternate;
+}
+
+.fan-right {
+  right: calc(50% - 900px);
+
+  transform-origin: bottom center;
+  animation: fan-right-move 1s ease-in-out infinite alternate;
+}
+
+
+/* 왼쪽 부채 */
+@keyframes fan-left-move {
+  from {
+    transform: rotate(45deg);
+  }
+
+  to {
+    transform: rotate(35deg);
+  }
+}
+
+
+/* 오른쪽 부채 */
+@keyframes fan-right-move {
+  from {
+    transform: scaleX(-1) rotate(45deg);
+  }
+
+  to {
+    transform: scaleX(-1) rotate(35deg);
+  }
+}
+
+.landing-cotton,
+.landing-fan {
+  transition: opacity 0.4s ease;
+}
+
+.landing.is-entering .landing-cotton,
+.landing.is-entering .landing-fan {
+  opacity: 0;
+}
+
+/* =========================
+   CARPET
+========================= */
+
+.landing-carpet {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  transform: translateX(-50%);
+
+  width: 1181px;
+  height: auto;
+
+  z-index: 5;
+
+  pointer-events: none;
+}
+
+/* =========================
+   FURNITURE
+========================= */
+
+.landing-furniture {
+  position: absolute;
+
+  width: 390px;
+  height: auto;
+
+  bottom: 240px;
+
+  z-index: 3;
+
+  pointer-events: none;
+}
+
+/* 왼쪽 */
+.furniture-left {
+  left: calc(50% - 700px);
+  transform: scaleX(-1);
+  animation: furniture-left-sway var(--scene-motion-duration) ease-in-out infinite;
+}
+
+/* 오른쪽 */
+.furniture-right {
+  right: calc(50% - 700px);
+  animation: furniture-right-sway var(--scene-motion-duration) ease-in-out infinite;
+}
+
+@keyframes furniture-left-sway {
+  0%, 54.545455%, 100% { transform: translateX(0) scaleX(-1); }
+  27.272727% { transform: translateX(-30px) scaleX(-1); }
+}
+
+@keyframes furniture-right-sway {
+  0%, 54.545455%, 100% { transform: translateX(0); }
+  27.272727% { transform: translateX(30px); }
+}
+
+/* =========================
+   FIRE
+========================= */
+
+.landing-fire {
+  position: absolute;
+
+  width: 65px;
+  height: calc(65px * 333 / 228);
+  border: 0;
+
+  bottom: 438px;
+
+  z-index: 4; /* furniture보다 앞 / 문보다 뒤 */
+
+  pointer-events: none;
+}
+
+/* 왼쪽 촛불 */
+.fire-left {
+  left: calc(50% - 650px);
+  transform: scaleX(-1);
+  animation: furniture-left-sway var(--scene-motion-duration) ease-in-out infinite;
+}
+
+/* 오른쪽 촛불 */
+.fire-right {
+  right: calc(50% - 650px);
+  animation: furniture-right-sway var(--scene-motion-duration) ease-in-out infinite;
+}
+
+.landing-floor {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 100%;
+  height: 238px;
+
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    to bottom,
+    #d2d4c7 0,
+    #d2d4c7 74px,
+    #e8e5d4 74px,
+    #e8e5d4 100%
+  );
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* =========================
+   JEOGORI
+========================= */
+
+.landing-jeogori {
+  position: absolute;
+  top: 0;
+
+  height: auto;
+
+  z-index: 9;
+  pointer-events: none;
+}
+
+
+/* 왼쪽 */
+
+.jeogori-1-left {
+  width: 19px;
+  left: 230px;
+  top: -5px;
+}
+
+.jeogori-2-left {
+  width: 40px;
+  left: 185px;
+  top: -5px;
+}
+
+
+/* 오른쪽 */
+
+.jeogori-1-right {
+  width: 19px;
+  right: 230px;
+  top: -5px;
+
+  transform: scaleX(-1);
+}
+
+.jeogori-2-right {
+  width: 40px;
+  right: 185px;
+  top: -5px;
+
+  transform: scaleX(-1);
+}
+
+/* =========================
+   JEOGORI MOTION
+========================= */
+
+.jeogori-1-left,
+.jeogori-1-right {
+  animation: jeogori-float-1 1s ease-in-out infinite alternate;
+}
+
+.jeogori-2-left,
+.jeogori-2-right {
+  animation: jeogori-float-2 1.2s ease-in-out infinite alternate;
+}
+
+
+@keyframes jeogori-float-1 {
+  from {
+    translate: 0 0;
+  }
+
+  to {
+    translate: 0 6px;
+  }
+}
+
+@keyframes jeogori-float-2 {
+  from {
+    translate: 0 0;
+  }
+
+  to {
+    translate: 0 6px;
+  }
+}
+
+/* =========================
+   BOOK TABLE
+========================= */
+
+.landing-book-table {
+  position: absolute;
+
+  width: 260px;
+  height: auto;
+
+  bottom: 475px;
+
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* 왼쪽 */
+.book-table-left {
+  left: calc(50% - 540px);
+  transform: scaleX(-1)
+}
+
+/* 오른쪽 */
+.book-table-right {
+  right: calc(50% - 540px);;
+}
+
+/* 30fps 기준: 20f 대기 → 1초 10f에 30px 이동 → 2초에 복귀 */
+.book-table-left,
+.book-pot-left {
+  animation: book-shift-left var(--scene-motion-duration) ease-in-out infinite;
+}
+
+.book-table-right,
+.book-pot-right {
+  animation: book-shift-right var(--scene-motion-duration) ease-in-out infinite;
+}
+
+@keyframes book-shift-left {
+  0%, 18.181818%, 54.545455%, 100% { translate: 0 0; }
+  36.363636% { translate: -30px 0; }
+}
+
+@keyframes book-shift-right {
+  0%, 18.181818%, 54.545455%, 100% { translate: 0 0; }
+  36.363636% { translate: 30px 0; }
+}
+
+/* =========================
+   BOOK WOOD
+========================= */
+
+.landing-book-wood {
+  --wood-motion-duration: 5s;
+  position: absolute;
+  width: 279px;
+  height: 310px;
+  bottom: 36px;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.landing-book-wood img {
+  position: absolute;
+  display: block;
+}
+
+.book-wood-upper {
+  position: absolute;
+  inset: 0;
+  animation: book-wood-upper-jump var(--wood-motion-duration) ease-in-out infinite;
+}
+
+.book-wood-sticks {
+  --wood-group-left: 180px;
+  --wood-group-bottom: 180px;
+  position: absolute;
+  left: calc(var(--wood-group-left) + 5px);
+  bottom: calc(var(--wood-group-bottom) + 5px);
+  width: 60px;
+  height: 108px;
+  transform-origin: center center;
+  animation: book-wood-group-scale var(--wood-motion-duration) ease-in-out infinite;
+}
+
+.book-wood-book-bottom {
+  width: 279px;
+  height: 150px;
+  left: -15px;
+  bottom: 0;
+  animation: book-wood-bottom-jump var(--wood-motion-duration) ease-in-out infinite;
+}
+
+.book-wood-book-top {
+  width: 169px;
+  height: 89px;
+  left: 110px;
+  bottom: 110px;
+}
+
+.book-wood-stick {
+  width: 30px;
+  height: 90px;
+  left: calc(var(--wood-left) - var(--wood-group-left));
+  bottom: calc(var(--wood-bottom) - var(--wood-group-bottom));
+  animation: book-wood-jump-1 var(--wood-motion-duration) ease-in-out infinite;
+}
+
+/* 책 기준 좌표. 부모 그룹의 이동량은 위에서 빼 중복 적용을 막는다. */
+.book-wood-stick-1 { --wood-left: 195px; --wood-bottom: 190px; }
+.book-wood-stick-2 { --wood-left: 180px; --wood-bottom: 172px; animation-name: book-wood-jump-2; }
+.book-wood-stick-3 { --wood-left: 210px; --wood-bottom: 175px; animation-name: book-wood-jump-3; }
+
+/* 0–1.8초: 대나무 순차 점프 → 2–2.8초: 대나무 그룹 확대·복귀
+   → 2.8–3.5초: 위 책과 대나무 함께 점프 → 3.5–4.2초: 아래 책 점프 → 5초까지 휴식.
+   지연 대신 같은 주기의 키프레임을 사용해 매 반복의 순서를 유지한다. */
+@keyframes book-wood-jump-1 {
+  0%, 12%, 100% { transform: translateY(0); }
+  6% { transform: translateY(-12px); }
+}
+
+@keyframes book-wood-jump-2 {
+  0%, 12%, 24%, 100% { transform: translateY(0); }
+  18% { transform: translateY(-12px); }
+}
+
+@keyframes book-wood-jump-3 {
+  0%, 24%, 36%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-12px); }
+}
+
+@keyframes book-wood-group-scale {
+  0%, 40%, 56%, 100% { transform: scale(1); }
+  48% { transform: scale(1.1); }
+}
+
+@keyframes book-wood-upper-jump {
+  0%, 56%, 70%, 100% { transform: translateY(0); }
+  63% { transform: translateY(-12px); }
+}
+
+@keyframes book-wood-bottom-jump {
+  0%, 70%, 84%, 100% { transform: translateY(0); }
+  77% { transform: translateY(-12px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-wood-upper,
+  .book-wood-sticks,
+  .book-wood-book-bottom,
+  .book-wood-stick {
+    animation: none;
+  }
+}
+
+/* 왼쪽 */
+.book-wood-left {
+  left: 25px;
+  transform: scaleX(-1);
+}
+
+/* 오른쪽 */
+.book-wood-right {
+  right: 20px;
+}
+
+/* =========================
+   BOOK POT
+========================= */
+
+.landing-book-pot {
+  position: absolute;
+
+  width: 70px;
+  height: 90px;
+
+  top: 298px;
+
+  z-index: 7;
+  pointer-events: none;
+}
+
+.landing-book-pot img {
+  position: absolute;
+  display: block;
+  height: auto;
+  left: 35%;
+  translate: -50% 0;
+}
+
+.book-pot-body {
+  width: 90%;
+  bottom: 16px; /* 아래 책 높이: 72 × 39.87 / 176.06 */
+  z-index: 2;
+}
+
+.book-pot-book {
+  width: 100%;
+  bottom: 0;
+  z-index: 1;
+}
+
+.book-pot-lid {
+  width: 75%;
+  top: 2%;
+  z-index: 3;
+  transform-origin: center bottom;
+  animation: book-pot-lid-rise var(--scene-motion-duration) ease-in-out infinite;
+}
+
+@keyframes book-pot-lid-rise {
+  0%, 18.181818%, 54.545455%, 100% { transform: translateY(0); }
+  36.363636% { transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-book-pot,
+  .landing-book-pot img {
+    animation: none;
+  }
+}
+
+.book-pot-left {
+  left: calc(50% - 500px);
+}
+
+.book-pot-right {
+  right: calc(50% - 500px);
+  transform: scaleX(-1);
+}
+
+/* =========================
+   FENCE
+========================= */
+
+.landing-fence {
+  position: absolute;
+
+  left: 50%;
+  bottom: 310px;
+  opacity: 0.7;
+
+  width: 1700px;
+  height: auto;
+
+  transform: translateX(-50%);
+
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* =========================
+   FIREWORK JAR
+========================= */
+.landing-firework-jar {
+  position: absolute;
+
+  width: 80px;
+  height: auto;
+
+  bottom: 210px;
+
+  z-index: 5;
+  pointer-events: none;
+
+}
+
+
+/* 왼쪽 */
+.firework-jar-left {
+  left: calc(50% - 735px);
+  transform-origin: right bottom;
+
+  animation: jar-left-motion 5s ease-in-out infinite;
+}
+
+
+/* 오른쪽 */
+.firework-jar-right {
+  right: calc(50% - 735px);
+  transform-origin: left bottom;
+
+  animation: jar-right-motion 5s ease-in-out infinite;
+}
+
+/* 왼쪽 */
+@keyframes jar-left-motion {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+
+
+  30% {
+    transform: rotate(-18deg);
+  }
+
+
+  95% {
+    transform: rotate(-18deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes jar-right-motion {
+  0% {
+    transform: rotate(0deg) translateX(100%) scaleX(-1);
+  }
+
+  25% {
+    transform: rotate(0deg) translateX(100%) scaleX(-1);
+  }
+
+  30% {
+    transform: rotate(18deg) translateX(100%) scaleX(-1);
+  }
+
+  95% {
+    transform: rotate(18deg) translateX(100%) scaleX(-1);
+  }
+
+  100% {
+    transform: rotate(0deg) translateX(100%) scaleX(-1);
+  }
+}
+
+/* =========================
+   SCROLL
+========================= */
+
+.landing-scroll {
+  position: absolute;
+
+  width: 142px;
+  height: 139px;
+
+  bottom: 28px;
+
+  z-index: 11;
+  pointer-events: none;
+}
+
+.landing-scroll .scroll-row {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  z-index: 1;
+}
+
+.landing-scroll .scroll-row:nth-child(1) {
+  bottom: 48px;
+  left: 33px;
+  z-index: 3;
+}
+
+.landing-scroll .scroll-row:nth-child(2) {
+  bottom: 24px;
+  left: 16.5px;
+  z-index: 2;
+}
+
+.landing-scroll .scroll-row img {
+  position: relative;
+  display: block;
+  width: 76px;
+  height: auto;
+  flex: 0 0 76px;
+  z-index: 1;
+}
+
+/* Overlap the diagonal bodies while keeping the rolled ends visible. */
+.landing-scroll .scroll-row img + img {
+  margin-left: -43px;
+  z-index: 2;
+}
+
+.landing-scroll .scroll-row img:nth-child(3) {
+  z-index: 1;
+}
+
+/* Only the top scroll rolls inward; the right pile mirrors the motion. */
+.landing-scroll .scroll-row:first-child img {
+  --roll-distance: 150px;
+  --roll-turn: 540deg;
+  --roll-drop: 48px;
+  transform-origin: 50% 55%;
+  animation: scroll-roll-off var(--scene-motion-duration) linear infinite;
+}
+
+@keyframes scroll-roll-off {
+  0%, 16%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  24% {
+    transform: translate(8px, -5px) rotate(15deg);
+    opacity: 1;
+  }
+  38% {
+    transform: translate(calc(var(--roll-distance) * 0.25), calc(var(--roll-drop) * 0.5 - 12px)) rotate(100deg);
+  }
+  50% {
+    transform: translate(calc(var(--roll-distance) * 0.48), calc(var(--roll-drop) - 12px)) rotate(220deg);
+  }
+  59% {
+    transform: translate(calc(var(--roll-distance) * 0.65), calc(var(--roll-drop) - 28px)) rotate(330deg);
+  }
+  69% {
+    transform: translate(calc(var(--roll-distance) * 0.84), calc(var(--roll-drop) - 20px)) rotate(calc(var(--roll-turn) * 0.85));
+    opacity: 1;
+  }
+  78% {
+    transform: translate(var(--roll-distance), calc(var(--roll-drop) - 30px)) rotate(var(--roll-turn));
+    opacity: 1;
+  }
+  85% {
+    transform: translate(calc(var(--roll-distance) + 8px), calc(var(--roll-drop) - 32px)) rotate(calc(var(--roll-turn) + 25deg));
+    opacity: 0;
+  }
+  86%, 91% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-scroll .scroll-row:first-child img {
+    animation: none;
+  }
+}
+
+.scroll-left {
+  left: calc(50% - 672px);
+  transform: rotate(9deg);
+}
+
+.scroll-right {
+  right: calc(50% - 700px);
+  transform: scaleX(-1)rotate(9deg);
+}
+
+.landing-furniture-back {
+  position: absolute;
+
+  width: 154px;
+  height: auto;
+  opacity: 0.5;
+
+  bottom: 480px;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+.furniture-back-left {
+  left: 280px;
+  transform: scaleX(-1);
+  animation: furniture-back-left-sway var(--scene-motion-duration) ease-in-out infinite;
+}
+
+.furniture-back-right {
+  right: 280px;
+  animation: furniture-back-right-sway var(--scene-motion-duration) ease-in-out infinite;
+}
+
+/* 30fps 기준: 20f 시작 → 38f 최대 이동 → 65f 복귀 */
+@keyframes furniture-back-left-sway {
+  0%, 18.181818%, 59.090909%, 100% { translate: 0 0; }
+  34.545455% { translate: -30px 0; }
+}
+
+@keyframes furniture-back-right-sway {
+  0%, 18.181818%, 59.090909%, 100% { translate: 0 0; }
+  34.545455% { translate: 30px 0; }
+}
+
+/* =========================
+   STROKE
+========================= */
+/* =========================
+   STROKE
+========================= */
+.stroke-dashed {
+  fill: none;
+  stroke: #000;
+  stroke-width: 5.4;
+
+  /* 핵심: round + dash 길이 0 = 동그라미 */
+  stroke-linecap: round;
+  stroke-dasharray: 0 15px;
+}
+
+.landing-stroke {
+  position: absolute;
+  width: 184px;
+  top: 0px;
+
+  z-index: 4;
+  pointer-events: none;
+}
+
+.stroke-left {
+  left: calc(50% - 520px);
+
+}
+
+.stroke-right {
+  right: calc(50% - 520px);
+  /* 가로로만 뒤집기 */
+  transform: scaleX(-1);
+}
+
+.stroke-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+
+/* 원래 SVG의 점선 스타일 유지 */
+
+.dash-1 {
+  stroke-dasharray: 0 15.3;
+}
+
+.dash-2 {
+  stroke-dasharray: 0 17.25;
+}
+
+
+/* =========================
+   TRIM PATH용 MASK
+========================= */
+.stroke-reveal {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 18;
+  stroke-linecap: round;
+
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+
+  animation: stroke-trim 2.2s ease-in-out infinite;
+}
+
+@keyframes stroke-trim {
+  0% {
+    stroke-dashoffset: 1;
+  }
+
+  65% {
+    stroke-dashoffset: 0;
+  }
+
+  82% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+/* =========================
+   ONE + STAR DECORATION
+========================= */
+
+.landing-deco {
+  position: absolute;
+  top: 0;
+
+  width: 430px;
+  height: 520px;
+
+  z-index: 4;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.deco-left {
+  left: 80px;
+}
+
+.deco-right {
+  right: 80px;
+  transform: scaleX(-1);
+}
+
+.deco-item {
+  position: absolute;
+  display: block;
+  height: auto;
+}
+
+
+/* =========================
+   ONE
+========================= */
+
+.one-1 {
+  width: 33px;
+  left: 100px;
+  top: 550px;
+
+  transform-origin: center center;
+
+  animation:
+    one1-scale 5.33s ease-in-out infinite,
+    one1-rotate 5.33s linear infinite;
+}
+
+/* 스케일 */
+@keyframes one1-scale {
+  0% {
+    scale: 1;
+  }
+
+  25% {
+    scale: 1.5;
+  }
+
+  50% {
+    scale: 1;
+  }
+
+  75% {
+    scale: 1.2;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+/* 계속 회전 */
+@keyframes one1-rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+.one-2 {
+  width: 20px;
+  left: 150px;
+  top: 580px;
+transform-origin: center center;
+  animation: one2-move 3s ease-in-out infinite;
+}
+
+@keyframes one2-move {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  30% {
+    transform: translateY(-60px) scale(1.25);
+  }
+
+  70% {
+    transform: translateY(-60px) scale(1.25);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.one-3 {
+  width: 14px;
+  left: 295px;
+  top: 240px;
+transform-origin: center center;
+  animation: one3-motion 3s ease-in-out infinite;
+}
+
+@keyframes one3-motion {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(20px, 20px) scale(1.1) rotate(18deg);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+.one-4 {
+  width: 35px;
+  left: 300px;
+  top: 280px;
+transform-origin: center center;
+  animation: one4-motion 5s ease-in-out infinite;
+}
+
+@keyframes one4-motion {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate(-100px, 100px) scale(1.18);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+.one-5 {
+ width: 45px;
+  left: 360px;
+  top: 198px;
+animation: one5-scale 2.5s ease-in-out infinite;
+}
+
+@keyframes one5-scale {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  60% {
+    transform: scale(1.15);
+  }
+
+  70% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* =========================
+   STAR
+========================= */
+
+.star-1 {
+  width: 71px;
+  left: 370px;
+  top: 58px;
+animation: star-spin 4s linear infinite;
+}
+
+@keyframes star-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.star-2 {
+  width: 35px;
+  left: 310px;
+  top: 125px;
+animation: star-spin 6s linear infinite;
+}
+
+
+/* =========================
+   STROKE 2 / 3
+========================= */
+
+.landing-stroke2,
+.landing-stroke3 {
+  position: absolute;
+  pointer-events: none;
+  z-index: 4;
+  overflow: visible;
+}
+
+/* =========================
+   STROKE 2 / 3
+========================= */
+
+.landing-stroke2,
+.landing-stroke3 {
+  position: absolute;
+  pointer-events: none;
+  z-index: 4;
+  overflow: visible;
+}
+
+
+/* =========================
+   STROKE 2
+========================= */
+
+.landing-stroke2 {
+  width: 250px;
+  top: 470px;
+}
+
+.stroke2-left {
+  left: -160px;
+}
+
+.stroke2-right {
+  right: -160px;
+  transform: scaleX(-1);
+}
+
+
+/* =========================
+   STROKE 3
+========================= */
+
+.landing-stroke3 {
+  width: 235px;
+  top: 403px;
+}
+
+.stroke3-left {
+  left: -120px;
+}
+
+.stroke3-right {
+  right: -120px;
+  transform: scaleX(-1);
+}
+
+
+/* =========================
+   SVG
+========================= */
+
+.landing-stroke2 svg,
+.landing-stroke3 svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+
+/* =========================
+   STROKE 2 STYLE
+========================= */
+
+.stroke2-blue {
+  fill: none;
+  stroke: #00a1b8;
+  stroke-width: 9px;
+}
+
+.stroke2-red {
+  fill: none;
+  stroke: #b51c1c;
+  stroke-width: 9px;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  stroke-dasharray: 0 25.69px;
+}
+
+
+/* =========================
+   STROKE 3 STYLE
+========================= */
+
+.stroke3-blue {
+  fill: none;
+  stroke: #00a1b8;
+  stroke-width: 9px;
+}
+
+.stroke3-red {
+  fill: none;
+  stroke: #b51c1c;
+  stroke-width: 9px;
+
+  stroke-linecap: butt;
+  stroke-dasharray: 26.22px 17.22px;
+}
+
+
+/* =========================
+   TRIM PATH
+========================= */
+
+.trim-reveal {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 20px;
+  stroke-linecap: round;
+
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+
+  animation: trim-stroke 3s ease-in-out infinite;
+}
+
+
+/* =========================
+   TRIM ANIMATION
+========================= */
+
+@keyframes trim-stroke {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 1;
+  }
+
+  45% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  80% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+
+/* =========================
+   RESPONSIVE
+   기준 화면 : 1920 × 1080
+========================= */
+
+/* 기본 */
+.landing {
+  width: 1920px;
+  height: 1080px;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   1920 이하
+========================= */
+
+@media (max-width: 1919px) {
+  .landing {
+    zoom: 0.9;
+  }
+}
+
+
+/* =========================
+   1600 이하
+========================= */
+
+@media (max-width: 1600px) {
+  .landing {
+    zoom: 0.8;
+  }
+}
+
+
+/* =========================
+   1440 이하
+========================= */
+
+@media (max-width: 1440px) {
+  .landing {
+    zoom: 0.72;
+  }
+}
+
+
+/* =========================
+   1280 이하
+========================= */
+
+@media (max-width: 1280px) {
+  .landing {
+    zoom: 0.64;
+  }
+}
+
+
+/* =========================
+   1024 이하
+========================= */
+
+@media (max-width: 1024px) {
+  .landing {
+    zoom: 0.52;
+  }
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+  .landing {
+    zoom: 0.39;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .landing {
+    zoom: 0.24;
+  }
+}
+
+/* =========================
+   나머지 요소 전부 사라짐
+========================= */
+
+.landing.is-entering .landing-curtain,
+.landing.is-entering .landing-fan,
+.landing.is-entering .landing-carpet,
+.landing.is-entering .landing-furniture,
+.landing.is-entering .landing-fire,
+.landing.is-entering .landing-floor,
+.landing.is-entering .landing-jeogori,
+.landing.is-entering .landing-book-table,
+.landing.is-entering .landing-book-wood,
+.landing.is-entering .landing-book-pot,
+.landing.is-entering .landing-fence,
+.landing.is-entering .landing-firework-jar,
+.landing.is-entering .landing-scroll,
+.landing.is-entering .landing-furniture-back,
+.landing.is-entering .landing-stroke,
+.landing.is-entering .landing-stroke2,
+.landing.is-entering .landing-stroke3,
+.landing.is-entering .landing-deco,
+.landing.is-entering .landing-tiger,
+.landing.is-entering .landing-enter,
+.landing.is-entering .door-glow {
+  opacity: 0;
+  transition: opacity 2s ease 0.3s;
+  pointer-events: none;
+}
+
+/* 문이 완전히 열린 다음 확대 */
+.landing.is-zooming .landing-door {
+  transform: translateX(-50%) scale(5);
+}
+
+.landing-enter {
+  position: absolute;
+  left: 50%;
+  bottom: 37px;
+  transform: translateX(-50%);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.landing-enter {
+  transition: transform 0.2s ease;
+}
+
+.landing-enter:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* 두 이미지 동일한 크기 */
+.landing-enter img {
+  display: block;
+  width: 301px;
+  height: auto;
+}
+
+/* hover 이미지를 기본 이미지 위에 겹치기 */
+.landing-enter .go-hover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+/* 마우스 올리거나 클릭할 때 */
+.landing-enter:hover .go-normal,
+.landing-enter:active .go-normal {
+  opacity: 0;
+}
+
+.landing-enter:hover .go-hover,
+.landing-enter:active .go-hover {
+  opacity: 1;
+}
