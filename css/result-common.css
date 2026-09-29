@@ -121,7 +121,7 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
 .result-steps li { position: relative; padding-left: 45px; margin: 0; counter-increment: step; }
 .result-steps li::before { content: counter(step) '.'; position: absolute; left: 0; }
 .result-explanation { position: relative; }
-.method-deco { position: absolute; object-fit: contain; pointer-events: none; }
+.method-deco { position: absolute; z-index: 5; object-fit: contain; pointer-events: none; }
 .method-deco[hidden] { display: none; }
 .result-controls { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 70px auto 35px; }
 .result-action {
