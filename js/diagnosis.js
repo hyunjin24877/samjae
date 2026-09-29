@@ -43,7 +43,7 @@ async function playDiagnosisEntrance() {
   const timings = { drop: 1100, bounce: 1050, shrink: 850, unfold: 950, question: 400 };
   const easing = "cubic-bezier(0.22, 0.61, 0.36, 1)";
   function animate(element, frames, duration, extra = {}) {
-    const animation = element.animate(frames, { duration, easing, fill: "both", ...extra });
+    const animation = element.animate(frames, { easing, fill: "both", ...extra, duration: duration * 0.4, delay: (extra.delay || 0) * 0.4 });
     animations.push(animation);
     return animation.finished;
   }
@@ -64,7 +64,7 @@ async function playDiagnosisEntrance() {
   try {
     if (preference.matches) return;
     // 디코딩 전에 빈 막대가 보이지 않도록 필요한 세 이미지가 준비된 후 시작.
-    await Promise.all([openedRodsReady, ...[...motion.querySelectorAll("img")].map(image => image.decode().catch(() => {}))]);
+    await window.waitForSiteAssets(Promise.all([openedRodsReady, ...[...motion.querySelectorAll("img")].map(image => image.decode().catch(() => {}))]));
     if (stopped) return;
     // 메뉴 페이드의 마지막 100ms와 낙하 시작을 겹쳐 한 흐름으로 연결.
     const menuExit = menu ? animate(menu, [
