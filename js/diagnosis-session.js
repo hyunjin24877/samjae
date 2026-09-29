@@ -1,4 +1,12 @@
 (() => {
+  // Decorative images must never indefinitely block navigation or input.
+  window.waitForSiteAssets = (ready, milliseconds = 500) => new Promise(resolve => {
+    const timer = setTimeout(resolve, milliseconds);
+    Promise.resolve(ready).catch(() => {}).then(() => {
+      clearTimeout(timer);
+      resolve();
+    });
+  });
   const keys = [
     'diagnosisName', 'diagnosisSituation', 'diagnosisMethod',
     'diagnosisEnvironment', 'diagnosisBelief', 'diagnosisSubject'

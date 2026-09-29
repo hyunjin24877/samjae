@@ -79,7 +79,7 @@ body {
   --door-angle: 146deg;
   z-index: 5;
   perspective: 1800px;
-  transition: transform 1.6s cubic-bezier(.65, 0, .35, 1);
+  transition: transform 0.6s cubic-bezier(.65, 0, .35, 1);
 }
 
 .door-glow {
@@ -123,7 +123,7 @@ body {
   aspect-ratio: 336.15 / 599.55;
   z-index: 1;
   transform-style: preserve-3d;
-  transition: transform 2s cubic-bezier(.45, 0, .2, 1);
+  transition: transform 0.75s cubic-bezier(.45, 0, .2, 1);
 }
 
 .door-leaf-left {
@@ -1745,7 +1745,7 @@ animation: star-spin 6s linear infinite;
 .landing.is-entering .landing-enter,
 .landing.is-entering .door-glow {
   opacity: 0;
-  transition: opacity 2s ease 0.3s;
+  transition: opacity 0.65s ease 0.1s;
   pointer-events: none;
 }
 

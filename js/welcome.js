@@ -12,7 +12,7 @@
   const timings = { enter: 700, hold: 450, lower: 1000, open: 1100, letter: 1800, settle: 1200 };
   function animate(element, frames, duration, delay = 0) {
     const animation = element.animate(frames, {
-      duration, delay, fill: 'both', easing: 'cubic-bezier(0.33, 0, 0.2, 1)'
+      duration: duration * 0.4, delay: delay * 0.4, fill: 'both', easing: 'cubic-bezier(0.33, 0, 0.2, 1)'
     });
     animations.push(animation);
     return animation.finished;
@@ -28,7 +28,7 @@
   async function play() {
     try {
       if (preference.matches) return;
-      await Promise.all([...scene.querySelectorAll('img')].map(img => img.decode().catch(() => {})));
+      await window.waitForSiteAssets(Promise.all([...scene.querySelectorAll('img')].map(img => img.decode().catch(() => {}))));
       if (stopped) return;
       const sceneRect = scene.getBoundingClientRect();
       const closedRect = closed.getBoundingClientRect();

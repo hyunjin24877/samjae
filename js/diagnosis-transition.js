@@ -116,9 +116,15 @@
     return animation;
   }
   async function prepare(index) {
-    const response = await fetch(paths[index]);
-    if (!response.ok) throw new Error(`질문 로딩 실패: ${response.status}`);
-    const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    let html;
+    try {
+      const response = await fetch(paths[index], { signal: controller.signal });
+      if (!response.ok) throw new Error(`질문 로딩 실패: ${response.status}`);
+      html = await response.text();
+    } finally { clearTimeout(timeout); }
+    const doc = new DOMParser().parseFromString(html, 'text/html');
     const next = extract(doc);
     const motion = next.querySelector('.diagnosis-scroll-motion');
     motion.classList.add('is-ready'); motion.removeAttribute('aria-busy');
@@ -128,11 +134,17 @@
     next.querySelector('.diagnosis-result').style.opacity = '0';
     const link = document.createElement('link');
     link.rel = 'stylesheet'; link.href = `/samjae/css/diagnosis-${index + 1}.css`; link.media = 'not all';
-    const loaded = new Promise((resolve, reject) => { link.onload = resolve; link.onerror = reject; });
+    let cssTimeout;
+    const loaded = new Promise((resolve, reject) => {
+      cssTimeout = setTimeout(() => reject(new Error('질문 스타일 로딩 시간 초과')), 8000);
+      link.onload = resolve;
+      link.onerror = () => reject(new Error('질문 스타일 로딩 실패'));
+    });
     document.head.append(link);
     try {
-      await Promise.all([loaded, ...[...next.querySelectorAll('img')].map(img => img.decode().catch(() => {}))]);
+      await Promise.all([loaded, window.waitForSiteAssets(Promise.all([...next.querySelectorAll('img')].map(img => img.decode().catch(() => {}))))]);
     } catch (error) { link.remove(); throw error; }
+    finally { clearTimeout(cssTimeout); link.onload = link.onerror = null; }
     return { next, link };
   }
   async function fold(open) {
@@ -141,8 +153,8 @@
       [$('.diagnosis-scroll-top'), { top: '50%', transform: 'translateY(-100%)' }, { top: '0%', transform: 'translateY(0%)' }],
       [$('.diagnosis-scroll-bottom'), { bottom: '50%', transform: 'translateY(100%)' }, { bottom: '0%', transform: 'translateY(0%)' }]
     ];
-    const animations = frames.map(([el, closed, opened]) => animate(el, open ? [closed, opened] : [opened, closed], 850));
-    if (open) animations.push(animate($('.diagnosis-result'), [{ opacity: 0 }, { opacity: 1 }], 350, 700));
+    const animations = frames.map(([el, closed, opened]) => animate(el, open ? [closed, opened] : [opened, closed], 280));
+    if (open) animations.push(animate($('.diagnosis-result'), [{ opacity: 0 }, { opacity: 1 }], 120, 220));
     await Promise.all(animations.map(a => a.finished));
     // 종료 스타일을 먼저 고정하고 애니메이션을 제거한다.
     frames.forEach(([el, closed, opened]) => Object.assign(el.style, open ? opened : closed));
@@ -151,13 +163,13 @@
   }
   async function go(index, push = true) {
     if (busy || index === current || index < 0 || index > 4) return;
-    busy = true; stage.inert = true;
+    busy = true; stage.inert = true; stage.setAttribute('aria-busy', 'true');
     let prepared;
     let swapped = false;
     try {
       // 새 질문을 준비하는 동안 현재 질문을 유지한다.
       prepared = await prepare(index);
-      const fade = animate($('.diagnosis-result'), [{ opacity: 1 }, { opacity: 0 }], 250);
+      const fade = animate($('.diagnosis-result'), [{ opacity: 1 }, { opacity: 0 }], 100);
       await fade.finished;
       $('.diagnosis-result').style.opacity = '0'; fade.cancel();
       await fold(false);
@@ -181,10 +193,10 @@
     } catch (error) {
       console.error(error);
       if (!swapped) prepared?.link.remove();
-      await fold(true);
-      alert('질문을 불러오지 못했습니다. 다시 눌러주세요.');
+      // A regular navigation is a reliable fallback when partial loading fails.
+      location.assign(paths[index]);
     } finally {
-      busy = false; stage.inert = false;
+      busy = false; stage.inert = false; stage.removeAttribute('aria-busy');
       if (pendingPop !== null) {
         const index = pendingPop; pendingPop = null;
         go(index, false);
@@ -233,7 +245,7 @@
     const number = url.match(/-(\d{2})\.html$/)?.[1];
     const section = wheelResults.indexOf(number);
     if (section < 0) return;
-    const timings = { hold: 1000, extinguish: 550, reveal: 500, spin: 6500, settle: 800 };
+    const timings = { hold: 250, extinguish: 160, reveal: 200, spin: 1800, settle: 250 };
     const overlay = document.createElement('section');
     overlay.className = 'diagnosis-result-reveal';
     overlay.setAttribute('role', 'status');
@@ -242,7 +254,7 @@
       <div class="result-reveal-black"></div>
       <div class="result-reveal-loading">
         <div class="result-reveal-fires" aria-hidden="true">
-          ${Array.from({ length: 3 }, () => '<img src="/samjae/img/diagnosis/fire2.gif" alt="">').join('')}
+          ${Array.from({ length: 3 }, () => '<img src="/samjae/img/diagnosis/fire2.webp" alt="">').join('')}
         </div>
         <p class="body2">당신에게 맞는 삼재풀이 방식을 점지하고 있습니다.<br>조금만 기다려주세요.</p>
       </div>
@@ -267,7 +279,7 @@
     document.body.classList.add('is-revealing-result');
     document.body.append(overlay);
     try {
-      await Promise.all([...overlay.querySelectorAll('img')].map(img => img.decode().catch(() => {})));
+      await window.waitForSiteAssets(Promise.all([...overlay.querySelectorAll('img')].map(img => img.decode().catch(() => {}))));
       if (cancelled) return;
       const loading = overlay.querySelector('.result-reveal-loading');
       await run(loading, [{ opacity: 1 }, { opacity: 1 }], timings.hold);
