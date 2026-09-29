@@ -1,60 +1,114 @@
 (() => {
   const method = document.querySelector('.result-method');
   const icons = [...(method?.querySelectorAll('.method-deco[data-src]') || [])];
-  if (method && icons.length) {
-    // DOM order follows the steps from top to bottom. Move only decorative
-    // images so their random positions use the whole method section.
+  const details = method?.querySelector('.result-details');
+  if (method && details && icons.length) {
     icons.forEach(icon => method.append(icon));
 
-    async function playIconsOnce() {
-      for (const icon of icons) {
-        const loaded = new Promise(resolve => {
-          const timer = setTimeout(() => resolve(false), 15000);
-          icon.onload = () => { clearTimeout(timer); resolve(true); };
-          icon.onerror = () => { clearTimeout(timer); resolve(false); };
-        });
-        icon.src = icon.dataset.src;
-        if (!(await loaded)) {
-          icon.hidden = true;
-          icon.removeAttribute('src');
-          continue;
+    function visibleBounds(width, height) {
+      if (document.hidden) return null;
+      const rect = method.getBoundingClientRect();
+      const area = details.getBoundingClientRect();
+      const scaleX = rect.width / method.clientWidth;
+      const scaleY = rect.height / method.clientHeight;
+      if (!(scaleX > 0 && scaleY > 0)) return null;
+      const left = (Math.max(area.left, 16) - rect.left) / scaleX;
+      const right = (Math.min(area.right, innerWidth - 16) - rect.left) / scaleX;
+      const top = (Math.max(area.top, 16) - rect.top) / scaleY;
+      const bottom = (Math.min(area.bottom, innerHeight - 16) - rect.top) / scaleY;
+      if (right - left < width || bottom - top < height) return null;
+      return { left, right: right - width, top, bottom: bottom - height };
+    }
+
+    function waitForVisibleSpace(width, height) {
+      return new Promise(resolve => {
+        function check() {
+          const bounds = visibleBounds(width, height);
+          if (!bounds) return;
+          window.removeEventListener('scroll', check);
+          window.removeEventListener('resize', check);
+          document.removeEventListener('visibilitychange', check);
+          resolve(bounds);
         }
+        window.addEventListener('scroll', check, { passive: true });
+        window.addEventListener('resize', check);
+        document.addEventListener('visibilitychange', check);
+        check();
+      });
+    }
 
-        const style = getComputedStyle(icon);
-        const maxWidth = parseFloat(style.maxWidth) || Infinity;
-        const width = Math.min(parseFloat(style.width) || 80, maxWidth, method.clientWidth);
-        const height = width * icon.naturalHeight / icon.naturalWidth;
-        const rect = method.getBoundingClientRect();
-        const heading = method.querySelector('h2');
-        const minTop = Math.min(method.clientHeight - height,
-          Math.max(heading.offsetTop + heading.offsetHeight, -rect.top + 12, 0));
-        const maxTop = Math.max(minTop,
-          Math.min(method.clientHeight - height, innerHeight - rect.top - height - 12));
-        icon.style.left = `${Math.round(Math.random() * Math.max(0, method.clientWidth - width))}px`;
-        icon.style.top = `${Math.round(minTop + Math.random() * (maxTop - minTop))}px`;
-        icon.style.right = 'auto';
-        icon.style.bottom = 'auto';
-        icon.hidden = false;
+    function loadImage(image, source) {
+      return new Promise(resolve => {
+        const finish = success => {
+          clearTimeout(timer);
+          image.onload = image.onerror = null;
+          resolve(success);
+        };
+        const timer = setTimeout(() => finish(false), 15000);
+        image.onload = () => finish(image.naturalWidth > 0);
+        image.onerror = () => finish(false);
+        image.src = source;
+      });
+    }
 
-        // Start the clock after the first frame has a chance to paint.
-        await new Promise(resolve => requestAnimationFrame(resolve));
-        await new Promise(resolve => setTimeout(resolve, Number(icon.dataset.loopMs)));
-        icon.hidden = true;
-        icon.removeAttribute('src');
+    async function prepareIcon(icon) {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+      let previewURL;
+      try {
+        const response = await fetch(icon.dataset.src, { signal: controller.signal });
+        if (!response.ok) throw new Error(`아이콘 로딩 실패: ${response.status}`);
+        const blob = await response.blob();
+        const preview = new Image();
+        previewURL = URL.createObjectURL(blob);
+        if (!(await loadImage(preview, previewURL))) return null;
+        return { icon, blob, width: preview.naturalWidth, height: preview.naturalHeight };
+      } catch (error) {
+        console.error('아이콘 준비 오류:', error);
+        return null;
+      } finally {
+        clearTimeout(timeout);
+        if (previewURL) URL.revokeObjectURL(previewURL);
       }
     }
 
-    const details = method.querySelector('.result-details');
-    if ('IntersectionObserver' in window && details) {
-      const observer = new IntersectionObserver(entries => {
-        if (!entries.some(entry => entry.isIntersecting)) return;
-        observer.disconnect();
-        playIconsOnce();
-      }, { threshold: 0.1 });
-      observer.observe(details);
-    } else {
-      playIconsOnce();
+    function showIcon(asset, bounds) {
+      const { icon, blob } = asset;
+      // A fresh resource starts GIF/WebP at frame one instead of revealing
+      // an animation that was already running while hidden during preload.
+      const source = URL.createObjectURL(blob);
+      icon.style.left = `${bounds.left + Math.random() * (bounds.right - bounds.left)}px`;
+      icon.style.top = `${bounds.top + Math.random() * (bounds.bottom - bounds.top)}px`;
+      icon.style.right = 'auto';
+      icon.style.bottom = 'auto';
+      icon.removeAttribute('hidden');
+      const hide = () => {
+        icon.hidden = true;
+        icon.removeAttribute('src');
+        URL.revokeObjectURL(source);
+      };
+      loadImage(icon, source).then(loaded => {
+        if (!loaded) { hide(); return; }
+        setTimeout(hide, Number(icon.dataset.loopMs));
+      });
     }
+
+    async function playIconsOnce() {
+      // Finish network loading before starting the one-second launch schedule.
+      const prepared = await Promise.all(icons.map(prepareIcon));
+      for (const asset of prepared) {
+        if (!asset) continue;
+        const style = getComputedStyle(asset.icon);
+        const width = Math.min(parseFloat(style.width) || 80,
+          parseFloat(style.maxWidth) || Infinity, method.clientWidth);
+        const height = width * asset.height / asset.width;
+        const bounds = await waitForVisibleSpace(width, Math.max(height, Math.min(120, details.clientHeight)));
+        // Recalculate for the actual icon height once there is enough visible space.
+        showIcon(asset, visibleBounds(width, height) || bounds);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+    }
+    playIconsOnce().catch(error => console.error('아이콘 재생 오류:', error));
   }
 
   // 점지법 이름과 실제 영수증 PNG 경로를 연결합니다.
