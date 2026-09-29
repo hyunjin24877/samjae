@@ -1,4 +1,62 @@
 (() => {
+  const method = document.querySelector('.result-method');
+  const icons = [...(method?.querySelectorAll('.method-deco[data-src]') || [])];
+  if (method && icons.length) {
+    // DOM order follows the steps from top to bottom. Move only decorative
+    // images so their random positions use the whole method section.
+    icons.forEach(icon => method.append(icon));
+
+    async function playIconsOnce() {
+      for (const icon of icons) {
+        const loaded = new Promise(resolve => {
+          const timer = setTimeout(() => resolve(false), 15000);
+          icon.onload = () => { clearTimeout(timer); resolve(true); };
+          icon.onerror = () => { clearTimeout(timer); resolve(false); };
+        });
+        icon.src = icon.dataset.src;
+        if (!(await loaded)) {
+          icon.hidden = true;
+          icon.removeAttribute('src');
+          continue;
+        }
+
+        const style = getComputedStyle(icon);
+        const maxWidth = parseFloat(style.maxWidth) || Infinity;
+        const width = Math.min(parseFloat(style.width) || 80, maxWidth, method.clientWidth);
+        const height = width * icon.naturalHeight / icon.naturalWidth;
+        const rect = method.getBoundingClientRect();
+        const heading = method.querySelector('h2');
+        const minTop = Math.min(method.clientHeight - height,
+          Math.max(heading.offsetTop + heading.offsetHeight, -rect.top + 12, 0));
+        const maxTop = Math.max(minTop,
+          Math.min(method.clientHeight - height, innerHeight - rect.top - height - 12));
+        icon.style.left = `${Math.round(Math.random() * Math.max(0, method.clientWidth - width))}px`;
+        icon.style.top = `${Math.round(minTop + Math.random() * (maxTop - minTop))}px`;
+        icon.style.right = 'auto';
+        icon.style.bottom = 'auto';
+        icon.hidden = false;
+
+        // Start the clock after the first frame has a chance to paint.
+        await new Promise(resolve => requestAnimationFrame(resolve));
+        await new Promise(resolve => setTimeout(resolve, Number(icon.dataset.loopMs)));
+        icon.hidden = true;
+        icon.removeAttribute('src');
+      }
+    }
+
+    const details = method.querySelector('.result-details');
+    if ('IntersectionObserver' in window && details) {
+      const observer = new IntersectionObserver(entries => {
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        observer.disconnect();
+        playIconsOnce();
+      }, { threshold: 0.1 });
+      observer.observe(details);
+    } else {
+      playIconsOnce();
+    }
+  }
+
   // 점지법 이름과 실제 영수증 PNG 경로를 연결합니다.
   const receipts = {
     "해안무속공동체": "/img/result/paper/ocean-shamanism-community.png",
