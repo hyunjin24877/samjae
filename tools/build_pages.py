@@ -3,6 +3,7 @@ import argparse
 from pathlib import Path
 import re
 import shutil
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -15,9 +16,12 @@ def build(output, base):
     # Only rewrite URLs to actual site directories/pages, preserving selectors
     # such as img[src$="/home.svg"] and external URLs.
     pattern = re.compile(r'''(["'`(])/((?:img|css|js|font|diagnosis-result)/|(?:landing|welcome|diagnosis|example|gather|samjaerok|testimony|index)(?=[.\-$]))''')
-    paths = list(ROOT.glob('*.html'))
-    for directory in ('css', 'js', 'font', 'img', 'diagnosis-result'):
-        paths.extend(p for p in (ROOT / directory).rglob('*') if p.is_file() and p.name != '.DS_Store')
+    tracked = subprocess.check_output(['git', 'ls-files', '-z'], cwd=ROOT).split(b'\0')
+    directories = {'css', 'js', 'font', 'img', 'diagnosis-result'}
+    paths = [ROOT / item.decode() for item in tracked if item and (
+        (b'/' not in item and item.endswith(b'.html'))
+        or item.decode().split('/', 1)[0] in directories
+    )]
     for source in paths:
         target = output / source.relative_to(ROOT)
         target.parent.mkdir(parents=True, exist_ok=True)
