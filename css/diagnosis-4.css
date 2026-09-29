@@ -1,0 +1,138 @@
+/* =========================
+   Q4 주석
+========================= */
+
+.diagnosis-annotation {
+  margin: 12px 0 0;
+
+  color: rgba(0, 0, 0, 0.35);
+
+  text-align: center;
+}
+
+/* 4번째 fire opacity */
+.diagnosis-result-drops
+.diagnosis-fire:nth-child(3) {
+  opacity: 1;
+}
+.diagnosis-result-drops
+.diagnosis-fire:nth-child(4) {
+  opacity: 1;
+}
+
+
+/* =========================
+   Q4 선택지 영역
+========================= */
+
+.diagnosis-choices {
+  position: absolute;
+
+  top: 450px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 25px;
+
+  z-index: 30;
+}
+
+
+/* =========================
+   Q4 선택 카드 기본
+========================= */
+
+.diagnosis-choice {
+  position: relative;
+
+  display: block;
+
+  width: 328px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  appearance: none;
+  cursor: pointer;
+
+  flex: 0 0 auto;
+
+  transform: scale(1);
+  transform-origin: center center;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+.diagnosis-choice img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  pointer-events: none;
+
+  transition:
+    filter 0.3s ease;
+}
+
+
+/* =========================
+   선택 전 hover
+========================= */
+
+.diagnosis-choices:not(.has-selection)
+.diagnosis-choice:hover {
+  transform: scale(1.05);
+
+  z-index: 2;
+}
+
+
+.diagnosis-choices:not(.has-selection)
+.diagnosis-choice:hover img {
+  filter: brightness(100%);
+}
+
+
+/* =========================
+   선택된 카드
+========================= */
+
+.diagnosis-choice.is-selected {
+  transform: scale(1.1);
+
+  z-index: 2;
+}
+
+
+.diagnosis-choice.is-selected img {
+  filter: brightness(100%);
+}
+
+
+/* =========================
+   선택되지 않은 카드
+========================= */
+
+.diagnosis-choices.has-selection
+.diagnosis-choice:not(.is-selected) {
+  transform: scale(0.9);
+}
+
+
+.diagnosis-choices.has-selection
+.diagnosis-choice:not(.is-selected) img {
+  filter: brightness(40%);
+}

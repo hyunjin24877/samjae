@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 118.83 60.89">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-6 {
+        fill: #757575;
+        font-family: OnulSijak-Regular-KSCpc-EUC-H, OnulSijak;
+        font-size: 23.76px;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 3.05 2.05;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke: #231f20;
+      }
+
+      .cls-3 {
+        stroke-width: 1.11px;
+      }
+
+      .cls-4 {
+        stroke-dasharray: 3.06 2.06;
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-10 {
+        letter-spacing: 0em;
+      }
+
+      .cls-11 {
+        fill: #b3b2b3;
+      }
+
+      .cls-12 {
+        opacity: .3;
+      }
+
+      .cls-13 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-14 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" x="0" y="0" width="118.83" height="60.89"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="0" y="0" width="118.83" height="60.89"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" x="0" y="0" width="118.83" height="60.89"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="cls-1" x="5.11" y=".45" width="107.72" height="53"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g class="cls-14">
+      <g class="cls-7">
+        <path d="M91.82,1.6c-.85-.88-2.54-1.6-3.76-1.6H30.77c-1.23,0-2.91.72-3.76,1.6L.64,28.85c-.85.88-.85,2.31,0,3.19l26.36,27.25c.85.88,2.54,1.6,3.76,1.6h57.29c1.23,0,2.91-.71,3.76-1.6l26.36-27.25c.85-.88.85-2.31,0-3.19L91.82,1.6Z"/>
+      </g>
+      <rect class="cls-11" x="11.66" y="6" width="94.61" height="48.89"/>
+      <rect class="cls-3" x="11.66" y="6" width="94.61" height="48.89"/>
+      <g class="cls-9">
+        <g class="cls-12">
+          <g class="cls-8">
+            <line class="cls-4" x1="14.61" y1="13.54" x2="14.61" y2="48.38"/>
+            <line class="cls-2" x1="19.18" y1="51.95" x2="99.78" y2="51.95"/>
+            <line class="cls-4" x1="103.33" y1="47.35" x2="103.33" y2="12.51"/>
+            <line class="cls-2" x1="98.75" y1="8.95" x2="18.16" y2="8.95"/>
+            <path class="cls-5" d="M17.13,8.95h-1.53c-.55,0-1,.45-1,1v1.53M103.33,11.48v-1.53c0-.55-.45-1-1-1h-1.53M100.8,51.95h1.53c.55,0,1-.45,1-1v-1.53M14.61,49.42v1.53c0,.55.45,1,1,1h1.53"/>
+          </g>
+        </g>
+      </g>
+      <text class="cls-6" transform="translate(36.2 37.65) scale(1 1.01)"><tspan class="cls-13" x="0" y="0">맞</tspan><tspan class="cls-10" x="20.77" y="0">이</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36.03 64.62">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="36.03" height="64.62"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <path class="cls-1" d="M4.9,23.3c0,10.21,6.59,24.03,10.42,31.22,1.08,2.03,4.42,2.06,5.56.06,3.86-6.82,10.25-19.84,10.25-31.28,0-10.61-5.87-17.21-13.12-17.21S4.9,12.69,4.9,23.3"/>
+    </clipPath>
+    <radialGradient id="radial-gradient" cx="2130.46" cy="-6658.35" fx="2130.46" fy="-6658.35" r="1" gradientTransform="translate(-46916.0089 -279413.255) scale(22.03 -41.969)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#dcddde"/>
+      <stop offset="0" stop-color="#dcddde"/>
+      <stop offset=".03" stop-color="#dcddde"/>
+      <stop offset=".05" stop-color="#dddedf"/>
+      <stop offset=".35" stop-color="#f0f0f1"/>
+      <stop offset=".66" stop-color="#fbfbfb"/>
+      <stop offset="1" stop-color="#fff"/>
+    </radialGradient>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g class="cls-5">
+      <path d="M0,22.25C0,8.53,8.07,0,18.02,0s18.02,8.53,18.02,22.25c0,14.8-8.78,31.63-14.08,40.45-1.56,2.59-6.14,2.55-7.63-.08C9.05,53.33,0,35.45,0,22.25"/>
+      <path class="cls-4" d="M4.9,23.3c0-10.61,5.87-17.21,13.12-17.21s13.12,6.6,13.12,17.21c0,11.44-6.39,24.46-10.25,31.28-1.14,2.01-4.47,1.97-5.56-.06-3.84-7.19-10.42-21.02-10.42-31.22"/>
+      <path d="M0,22.25C0,8.53,8.07,0,18.02,0s18.02,8.53,18.02,22.25c0,14.8-8.78,31.63-14.08,40.45-1.56,2.59-6.14,2.55-7.63-.08C9.05,53.33,0,35.45,0,22.25"/>
+    </g>
+    <g class="cls-3">
+      <rect class="cls-2" x="4.9" y="6.09" width="26.23" height="50.5"/>
+    </g>
+  </g>
+</svg>

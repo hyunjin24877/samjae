@@ -1,0 +1,302 @@
+@font-face {
+  font-family: "OnulSijak";
+  src: url("../font/OnulSijak-Regular.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 공통 커서가 활성화된 페이지에서만 기본 포인터 숨김 */
+html.site-cursor-active,
+html.site-cursor-active *,
+html.site-cursor-active *::before,
+html.site-cursor-active *::after {
+  cursor: none !important;
+}
+
+.site-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 27px;
+  height: 44px;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 2147483647;
+  transform-origin: 0 0;
+  transform: rotate(33deg) scale(1);
+  filter: drop-shadow(0 0 3px #b51c1c);
+  transition: transform 160ms ease-out;
+}
+
+.site-cursor.is-pressed {
+  transform: rotate(33deg) scale(1.18);
+}
+
+.site-cursor[hidden] {
+  display: none;
+}
+
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: "OnulSijak", sans-serif;
+}
+
+
+/* =========================
+   기본 단락
+========================= */
+
+.text-default {
+  font-family: "OnulSijak", sans-serif;
+  letter-spacing: -10px;
+}
+
+
+/* =========================
+   제목
+========================= */
+
+.title-main {
+  font-family: "OnulSijak", sans-serif;
+}
+
+.title-section {
+  font-family: "OnulSijak", sans-serif;
+}
+
+.title-section-underline {
+  font-family: "OnulSijak", sans-serif;
+  text-decoration: underline;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.button-large {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.button-large-disabled {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: -10px;
+  color: #757575;
+}
+
+.category {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: -10px;
+}
+
+.button-small {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 20px;
+  line-height: 33px;
+}
+
+.button-filter {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 18px;
+  line-height: 33px;
+    word-spacing: 0px;
+  letter-spacing: -2px;
+}
+
+.button-filter-white {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 20px;
+  line-height: 33px;
+  letter-spacing: -1px;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+.test-number {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 35px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.body1-left {
+  font-family: "OnulSijak", sans-serif;
+  text-align: left;
+  font-size: 20px;
+  line-height: 1.2;
+  text-justify: inter-character;
+  word-spacing: 0.2rem;
+  letter-spacing: -3px;
+  margin-bottom: 2px;
+}
+
+.body1-left-underline {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 22px;
+  line-height: 28px;
+  text-align: left;
+  text-decoration: underline;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  margin-bottom: 2px;
+}
+
+.body1 {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 22px;
+  line-height: 28px;
+  text-align: left;
+  text-decoration: underline;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 5px;
+  margin-bottom: 2px;
+}
+
+.body1-no-underline {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 22px;
+  line-height: 28px;
+  text-align: left;
+   letter-spacing: -2px;
+}
+
+.body1-center-underline {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 22px;
+  line-height: 22px;
+  text-align: center;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 8px;
+   word-spacing: 2px;
+   margin-bottom: 8px;
+  letter-spacing: -1.3px;
+}
+
+.body2 {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  margin-bottom: 2px;
+  text-align: center;
+  word-spacing: 2px;
+  letter-spacing: -1.3Px;
+}
+
+.body2-center {
+  font-family: "OnulSijak", sans-serif;
+  text-align: center;
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 2px;
+}
+
+.body2-left {
+  font-family: "OnulSijak", sans-serif;
+  text-align: left;
+  font-size: 18px;
+  line-height: 25px;
+  margin-bottom: 7px;
+  letter-spacing: -2px;
+  word-spacing: 0.04em;
+}
+
+
+/* =========================
+   삼재록
+========================= */
+
+.samjaerok-title {
+  font-family: "OnulSijak", sans-serif;
+  text-align: center;
+  font-size: 40px;
+  line-height: 40px;
+  letter-spacing: -5px;
+  word-spacing: 4px;
+}
+
+.samjaerok-body-left {
+  font-family: "OnulSijak", sans-serif;
+  text-align: left;
+  font-size: 20px;
+  line-height: 31px;
+  word-spacing: 1px;
+  letter-spacing: -2.5px;
+  margin-bottom: 20px;
+  hyphens: auto;
+-webkit-hyphens: auto;
+}
+
+.samjaerok-body-center {
+  font-family: "OnulSijak", sans-serif;
+  text-align: center;
+  font-size: 20px;
+  line-height: 29px;
+  word-spacing: -0.9px;
+  letter-spacing: -1.5px;
+}
+
+.testimony-body-q{
+  font-family: "OnulSijak", sans-serif;
+  text-align: left;
+  font-size: 22px;
+  line-height: 31px;
+  word-spacing: 0.05em;
+  letter-spacing: -0.013em;
+}
+
+/* 진단 결과 유형: 해안 · 무속 · 공동체 */
+.result-type-label {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: -1.8px;
+  text-align: center;
+  color: #000;
+}
+
+/* 풀이방법·삼재록 공통 주석 */
+.result-method-note,
+.page-body .page-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6em;
+  font-family: "OnulSijak", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: left;
+  letter-spacing: -1px;
+  word-spacing: 0.04em;
+  color: #999999;
+  margin-top: 24px;
+  margin-bottom: 0;
+  padding-left: 1.4em;
+}
+
+/* 별표는 고정하고, 본문만 같은 시작점에서 자동 줄바꿈합니다. */
+.result-method-note > .note-marker,
+.page-note > .note-marker {
+  flex: 0 0 0.6em;
+}
+
+.result-method-note > .note-text,
+.page-note > .note-text {
+  flex: 1 1 0%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,679 @@
+/* =========================
+   삼재록 페이지 커서
+========================= */
+
+body,
+body * {
+  cursor: none !important;
+}
+
+/* =========================
+   삼재록 페이지 전환
+========================= */
+
+.samjaerok-spread {
+  display: none;
+}
+
+.samjaerok-spread.active {
+  display: block;
+}
+
+
+/* =========================
+   삼재록 전체 영역
+========================= */
+
+.samjaerok-main {
+  position: fixed;
+
+  top: 132px;
+  left: 128px;
+  right: 128px;
+  bottom: 37px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  z-index: 10;
+
+  overflow: visible;
+}
+
+
+/* =========================
+   내지 뒤에 보이는 페이지
+========================= */
+
+.samjaerok-page-back {
+  position: absolute;
+
+  width: calc(626 / 1273 * 100%);
+  height: calc(839 / 863 * 100%);
+
+  top: 50%;
+
+  object-fit: fill;
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+/* 왼쪽 */
+.samjaerok-page-back-left {
+  right: 50%;
+  transform: translateY(-50%);
+}
+
+/* 오른쪽 */
+.samjaerok-page-back-right {
+  left: 50%;
+  transform: translateY(-50%);
+}
+
+/* =========================
+   삼재록 겉지
+========================= */
+
+.samjaerok-cover {
+  position: relative;
+
+  width: min(38.75rem, 768px);
+  aspect-ratio: 620 / 823;
+
+  flex-shrink: 0;
+
+  overflow: visible;
+}
+
+
+.samjaerok-cover-back {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-43%, -50%);
+  width: 700px;
+  height: 810px;
+  object-fit: contain;
+  z-index: 18;
+  pointer-events: none;
+}
+
+.samjaerok-cover-img {
+  position: relative;
+  z-index: 20;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+
+}
+
+
+/* =========================
+   닫힌 책 오른쪽 탭
+========================= */
+
+.samjaerok-tabs {
+  position: absolute;
+
+  top: 95px;
+  left: calc(100% - 16px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  z-index: 19;
+  overflow: visible;
+}
+
+
+/* =========================
+   탭 버튼
+========================= */
+
+.samjaerok-tab {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+
+  appearance: none;
+
+  flex-shrink: 0;
+}
+
+
+/* SVG 자체 */
+.samjaerok-tab img {
+  display: block;
+
+  width: auto;
+  height: 50px;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   펼친 책 오른쪽 탭
+========================= */
+
+.samjaerok-open-tabs {
+  position: absolute;
+
+  top: 95px;
+
+  /* 오른쪽 내지의 정확한 끝 */
+  left: calc(98.704% - 1px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  z-index: 2;
+  overflow: visible;
+
+  pointer-events: auto;
+}
+
+/* =========================
+   펼쳐진 삼재록
+========================= */
+
+.samjaerok-open {
+  position: relative;
+
+  width: min(1273px, calc(1920px - 256px));
+  aspect-ratio: 1273 / 863;
+
+  display: none;
+
+  overflow: visible;
+}
+
+
+/* =========================
+   뒤 검은색 책판
+========================= */
+
+.samjaerok-book-back {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+
+  z-index: 1;
+}
+
+
+/* =========================
+   내지 종이
+========================= */
+
+.samjaerok-page {
+  position: absolute;
+
+  width: calc(620 / 1273 * 100%);
+  height: calc(840 / 863 * 100%);
+
+  top: 50%;
+
+  object-fit: fill;
+
+  z-index: 3;
+
+  pointer-events: none;
+}
+
+/* 왼쪽 종이 */
+
+.samjaerok-page-left {
+  right: 50%;
+
+  transform: translateY(-50%);
+}
+
+
+/* 오른쪽 종이 */
+
+.samjaerok-page-right {
+  left: 50%;
+
+  transform: translateY(-50%);
+}
+
+
+/* =========================
+   내지 콘텐츠 전체
+========================= */
+
+.page-content {
+  position: absolute;
+
+  top: 50%;
+
+  width: calc(620 / 1273 * 100%);
+  height: calc(840 / 863 * 100%);
+
+  transform: translateY(-50%);
+
+  box-sizing: border-box;
+
+  color: #000;
+
+  z-index: 4;
+
+  pointer-events: none;
+}
+
+
+/* 왼쪽 콘텐츠 */
+
+.page-content-left {
+  right: 50%;
+}
+
+
+/* 오른쪽 콘텐츠 */
+
+.page-content-right {
+  left: 50%;
+}
+
+
+/* =========================
+   내지 안쪽 프레임
+========================= */
+
+/* 공통 */
+.page-inner-frame {
+  position: absolute;
+
+  top: 3.81%;
+  height: 92.381%;
+
+  box-sizing: border-box;
+
+  border: 4px solid #000;
+}
+
+
+/* 왼쪽 페이지
+   왼쪽 = 바깥쪽 29
+   오른쪽 = 책등쪽 55
+*/
+.page-content-left .page-inner-frame {
+  left: 4.677%;   /* 29 / 620 */
+  right: 8.871%;  /* 55 / 620 */
+}
+
+
+/* 오른쪽 페이지
+   왼쪽 = 책등쪽 55
+   오른쪽 = 바깥쪽 29
+*/
+.page-content-right .page-inner-frame {
+  left: 8.871%;   /* 55 / 620 */
+  right: 4.677%;  /* 29 / 620 */
+}
+
+/* 안쪽 가는 네모선 */
+.page-inner-frame::before {
+  content: "";
+
+  position: absolute;
+  inset: 2px;
+
+  border: 1px solid #000;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   제목 영역
+========================= */
+
+.page-heading {
+  position: relative;
+
+  width: 100%;
+
+  /* 75 / 776 */
+  height: 9.665%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+
+.page-title {
+  position: relative;
+  top: -3px;
+}
+
+
+/* 제목 아래 선 */
+
+.page-heading-line {
+  position: absolute;
+
+  width: 92.208%;
+  height: 5px;
+
+  left: 50%;
+  bottom: 0;
+
+  transform: translateX(-50%);
+}
+
+
+/* 위쪽 굵은 선 */
+.page-heading-line::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: #000;
+}
+
+
+/* 아래쪽 가는 선 */
+.page-heading-line::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: #000;
+}
+
+/* =========================
+   내지 본문
+========================= */
+
+/* =========================
+   내지 본문
+========================= */
+
+.page-body {
+  box-sizing: border-box;
+
+  width: 100%;
+
+  margin-top: 33px;
+
+  /* 디자인 기준 좌우 26px */
+  padding-left: 4.85%;
+  padding-right: 4.85%;
+
+  text-align: left;
+  word-break: keep-all;
+
+  overflow-wrap: break-word;
+}
+
+
+/* 일반 문단 */
+.page-body {
+  box-sizing: border-box;
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding-left: 4.85%;
+  padding-right: 4.85%;
+
+  text-align: left;
+  word-break: keep-all;
+}
+
+
+/* 일반 문단 */
+.page-body p {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+
+/* 번호 목록 */
+.page-body ol {
+  box-sizing: border-box;
+
+  margin-top: 0;
+  margin-bottom: 0;
+
+  padding-left: 1.4em;
+}
+
+
+/* 삼재 유형: 번호와 설명 모두 본문 왼쪽에서 시작 */
+.page-body .samjae-type-list {
+  padding-left: 0;
+}
+
+.page-body .samjae-type-list > li {
+  padding-left: 0;
+}
+
+.page-body .samjae-type-list .type-name {
+  display: block;
+  padding-left: 1.4em;
+}
+
+.page-body .samjae-type-list > li > p {
+  margin-left: 0;
+  padding-left: 0;
+  text-indent: 0;
+}
+
+/* 각 항목 사이 간격 */
+.page-body li {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+
+/* 주석 스타일은 font.css에서 공통 관리합니다. */
+
+/* =========================
+   붓 커서
+========================= */
+
+.custom-cursor {
+  position: fixed;
+
+  left: 0;
+  top: 0;
+
+  width: 1px;
+  height: 1px;
+
+  pointer-events: none;
+
+  z-index: 99999;
+}
+
+
+/* 실제 붓 */
+
+.custom-cursor::after {
+  content: "";
+
+  position: absolute;
+
+  width: 30px;
+  height: 227px;
+
+  left: -60px;
+  bottom: 0;
+
+  background:
+    url("/samjae/img/samjaerok/samjaerok-mouse.svg")
+    no-repeat
+    center / contain;
+
+  transform: rotate(35deg);
+
+  transform-origin: 50% 100%;
+
+}
+
+/* 제본을 중심으로 회전하는 양면 종이 */
+.samjaerok-open {
+  perspective: 2200px;
+  perspective-origin: 50% 50%;
+  isolation: isolate;
+}
+
+.page-turn-sheet,
+.page-turn-stationary {
+  position: absolute;
+  top: calc((1 - 840 / 863) * 50%);
+  width: calc(620 / 1273 * 100%);
+  height: calc(840 / 863 * 100%);
+  pointer-events: none;
+  display: none;
+}
+
+.page-turn-sheet {
+  left: 50%;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  z-index: 6;
+}
+
+.page-turn-sheet.is-turning {
+  display: block;
+  will-change: transform;
+}
+
+.page-turn-sheet.is-backward {
+  left: auto;
+  right: 50%;
+  transform-origin: right center;
+}
+
+.page-turn-stationary { z-index: 5; }
+.page-turn-stationary.is-visible { display: block; }
+.page-turn-stationary.on-left { right: 50%; }
+.page-turn-stationary.on-right { left: 50%; }
+
+.page-turn-cast-shadow {
+  position: absolute;
+  top: calc((1 - 840 / 863) * 50%);
+  left: 50%;
+  width: calc(620 / 1273 * 100%);
+  height: calc(840 / 863 * 100%);
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.18) 30%, transparent 85%);
+  transform-origin: left center;
+}
+
+.page-turn-cast-shadow.is-backward {
+  left: auto;
+  right: 50%;
+  transform-origin: right center;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.18) 30%, transparent 85%);
+}
+
+.page-turn-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(0deg);
+}
+
+.page-turn-face-back { transform: rotateY(180deg); }
+
+.page-turn-face > img,
+.page-turn-stationary > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.page-turn-face > .page-content,
+.page-turn-stationary > .page-content {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+}
+
+.page-turn-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  opacity: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .25), transparent 65%);
+  pointer-events: none;
+}
+
+.page-turn-face-back .page-turn-shade {
+  background: linear-gradient(270deg, rgba(0, 0, 0, .25), transparent 65%);
+}
+
+
+/* 번호 시작점에서 45px 떨어진 위치에 본문 정렬 */
+.page-body ol {
+  list-style: none;
+  counter-reset: item;
+  padding-left: 0;
+}
+
+.page-body ol > li {
+  position: relative;
+  padding-left: 45px;
+  counter-increment: item;
+}
+
+.page-body ol > li::before {
+  content: counter(item) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+}

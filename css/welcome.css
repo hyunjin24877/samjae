@@ -1,0 +1,110 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 50;
+}
+
+.modal {
+  position: relative;
+
+  width: 827px;
+  height: 550px;
+}
+
+.welcome-frame {
+  position: absolute;
+  inset: 0;
+
+  width: 827px;
+  height: 520px;
+
+  display: block;
+  z-index: 0;
+}
+
+.welcome-text {
+  position: absolute;
+  inset: 70px 130px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  z-index: 1;
+}
+
+.welcome-sign {
+  display: block;
+}
+
+.welcome-intro {
+  perspective: 1600px;
+  pointer-events: none;
+}
+
+.welcome-intro .modal {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 360px);
+  translate: -50% 0;
+  width: 790px;
+  height: 620px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.welcome-intro .welcome-frame {
+  width: 100%;
+  height: 100%;
+}
+
+.welcome-envelope {
+  /* 앞면과 편지지가 서로 다른 순서로 겹치도록 별도 stacking context를 만들지 않는다. */
+  display: contents;
+}
+
+.welcome-envelope img {
+  position: absolute;
+  left: 50%;
+  bottom: calc(50% - 220px);
+  width: 827px;
+  height: auto;
+  translate: -50% 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.welcome-envelope .welcome-envelope-back {
+  bottom: 249px;
+  width: 829px;
+  z-index: 1;
+}
+.welcome-envelope .welcome-envelope-front {
+  bottom: 62px;
+  width: 829px;
+  z-index: 3;
+}
+.welcome-envelope-closed { z-index: 4; }
+
+.welcome-intro .modal.is-over-envelope,
+.welcome-intro.is-complete .modal {
+  z-index: 5;
+  transform: translateY(30px) rotate(-3deg);
+}
+.welcome-intro.is-complete .modal { opacity: 1; }
+.welcome-intro.is-complete .welcome-envelope-back,
+.welcome-intro.is-complete .welcome-envelope-front { opacity: 1; }
+.welcome-intro.is-complete .welcome-envelope-closed { display: none; }
+
+/* 앞면의 리본 꼬리(약 100px)를 제외한 봉투 몸통 하단에 맞춘다. */
+.welcome-envelope .welcome-envelope-closed {
+  width: 829px;
+  bottom: 162px;
+}

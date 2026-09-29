@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" data-name="Layer 2" viewBox="0 0 839.58 454">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 0 9.96 0 9.96;
+        stroke-dashoffset: 9.97px;
+      }
+
+      .cls-2, .cls-3, .cls-5, .cls-6, .cls-7, .cls-8 {
+        stroke: #000;
+      }
+
+      .cls-2, .cls-3, .cls-5, .cls-6, .cls-8 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 5px;
+      }
+
+      .cls-9 {
+        fill: #231f20;
+      }
+
+      .cls-4 {
+        stroke: #231f20;
+      }
+
+      .cls-4, .cls-7 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-10 {
+        fill: #1c8791;
+      }
+
+      .cls-5 {
+        stroke-dasharray: .27 10.23 .27 10.23;
+        stroke-dashoffset: 10.5px;
+      }
+
+      .cls-6 {
+        stroke-dasharray: .06 10.02 .06 10.02;
+        stroke-dashoffset: 10.09px;
+      }
+
+      .cls-11 {
+        clip-path: url(#clippath-10);
+      }
+
+      .cls-12 {
+        fill: #b51c1c;
+      }
+
+      .cls-13 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-14 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-15 {
+        clip-path: url(#clippath-4);
+      }
+
+      .cls-16 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-17 {
+        clip-path: url(#clippath-7);
+      }
+
+      .cls-18 {
+        clip-path: url(#clippath-6);
+      }
+
+      .cls-19 {
+        clip-path: url(#clippath-9);
+      }
+
+      .cls-20 {
+        clip-path: url(#clippath-8);
+      }
+
+      .cls-21 {
+        clip-path: url(#clippath-5);
+      }
+
+      .cls-22 {
+        fill: #fff;
+      }
+
+      .cls-23 {
+        opacity: .5;
+      }
+
+      .cls-24 {
+        fill: #241f21;
+      }
+
+      .cls-25 {
+        fill: #a30d0d;
+      }
+
+      .cls-26 {
+        fill: #ff751a;
+      }
+
+      .cls-27 {
+        fill: #edc41c;
+      }
+
+      .cls-28 {
+        fill: #005ed1;
+      }
+
+      .cls-29 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-30 {
+        fill: #610d0d;
+      }
+
+      .cls-31 {
+        fill: #eb4a26;
+      }
+
+      .cls-8 {
+        stroke-dasharray: .07 10.02 .07 10.02;
+        stroke-dashoffset: 10.09px;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" x="8.44" y="2.95" width="828.83" height="442.05" />
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="8.44" y="2.95" width="828.83" height="442.05" />
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" x="8.44" y="2.95" width="822.7" height="442.05" />
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="cls-1" y="177.2" width="839.58" height="56.49" />
+    </clipPath>
+    <clipPath id="clippath-4">
+      <rect class="cls-1" x="8.44" y="2.95" width="828.83" height="442.05" />
+    </clipPath>
+    <clipPath id="clippath-5">
+      <rect class="cls-1" x="392.85" width="14.94" height="454" />
+    </clipPath>
+    <clipPath id="clippath-6">
+      <rect class="cls-1" x="447.56" width="14.94" height="454" />
+    </clipPath>
+    <clipPath id="clippath-7">
+      <rect class="cls-1" x="385.88" y="183.69" width="61.44" height="61.44" />
+    </clipPath>
+    <clipPath id="clippath-8">
+      <rect class="cls-1" x="8.44" y="2.95" width="828.83" height="442.05" />
+    </clipPath>
+    <clipPath id="clippath-9">
+      <rect class="cls-1" x="385.88" y="267.03" width="61.44" height="61.44" />
+    </clipPath>
+    <clipPath id="clippath-10">
+      <rect class="cls-1" x="8.44" y="2.95" width="828.83" height="442.05" />
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g class="cls-29">
+      <g class="cls-16">
+        <g class="cls-23">
+          <g class="cls-14">
+            <rect class="cls-9" x="8.93" y="185.2" width="821.71" height="47.49" />
+          </g>
+        </g>
+        <path class="cls-26" d="M821.38,9.06H17.37c-4.66,0-8.44,3.81-8.44,8.5v171.15c0,15.66,12.6,28.35,28.14,28.35h764.61c15.54,0,28.14-12.69,28.14-28.35V17.56c0-4.7-3.78-8.5-8.44-8.5" />
+        <path class="cls-4" d="M821.38,9.06H17.37c-4.66,0-8.44,3.81-8.44,8.5v171.15c0,15.66,12.6,28.35,28.14,28.35h764.61c15.54,0,28.14-12.69,28.14-28.35V17.56c0-4.7-3.78-8.5-8.44-8.5Z" />
+        <line class="cls-5" x1="13.73" y1="176.58" x2="13.73" y2="24.22" />
+        <line class="cls-6" x1="29.34" y1="13.36" x2="815.16" y2="13.36" />
+        <line class="cls-5" x1="825.79" y1="29.34" x2="825.79" y2="181.69" />
+        <path class="cls-2" d="M823.85,196.65c-3.21,7.67-10.1,13.43-18.47,15.07" />
+        <line class="cls-8" x1="790.48" y1="212.19" x2="44.06" y2="212.19" />
+        <path class="cls-2" d="M29.41,210.3c-7.72-3.18-13.52-10.05-15.19-18.4" />
+        <path class="cls-3" d="M13.73,186.94h0v-.14M39.09,212.19h-.04M800.47,212.19h-.04M825.79,186.81v.14h0M825.24,16.56c.35.73.55,1.55.55,2.42v.14M820.13,13.36h.03c.86,0,1.68.19,2.4.54M16.96,13.9c.73-.34,1.54-.54,2.4-.54h.03M13.73,19.11v-.14c0-.87.2-1.68.55-2.42" />
+        <path class="cls-12" d="M37.07,208.56c-10.86,0-19.7-8.9-19.7-19.84V17.56h804v171.15c0,10.94-8.84,19.84-19.7,19.84H37.07Z" />
+      </g>
+      <rect x="732.61" y="17.56" width="23" height="191.13" />
+      <rect x="646.69" y="17.56" width="23" height="191.13" />
+      <rect x="560.78" y="17.56" width="23" height="191.13" />
+      <rect x="474.86" y="17.56" width="23" height="191.13" />
+      <rect x="388.94" y="17.56" width="23" height="191.13" />
+      <rect x="303.02" y="17.56" width="23" height="191.13" />
+      <rect x="217.1" y="17.56" width="23" height="191.13" />
+      <rect x="131.18" y="17.56" width="23" height="191.13" />
+      <rect x="45.26" y="17.56" width="23" height="191.13" />
+      <rect x="776.61" y="17.56" width="23" height="191.13" />
+      <rect x="690.69" y="17.56" width="23" height="191.13" />
+      <rect x="604.78" y="17.56" width="23" height="191.13" />
+      <rect x="518.86" y="17.56" width="23" height="191.13" />
+      <rect x="432.94" y="17.56" width="23" height="191.13" />
+      <rect x="347.02" y="17.56" width="23" height="191.13" />
+      <rect x="261.1" y="17.56" width="23" height="191.13" />
+      <rect x="175.18" y="17.56" width="23" height="191.13" />
+      <rect x="89.26" y="17.56" width="23" height="191.13" />
+      </g>
+  </g>
+</svg>

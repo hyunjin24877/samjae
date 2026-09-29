@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 94.2 48">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-6 {
+        fill: #d2d4c7;
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke: #3e3f3f;
+      }
+
+      .cls-3 {
+        stroke-dasharray: 2.95 1.95;
+      }
+
+      .cls-4 {
+        stroke-dasharray: 2.94 1.94;
+      }
+
+      .cls-9 {
+        opacity: .5;
+      }
+
+      .cls-5 {
+        stroke: #231f20;
+      }
+
+      .cls-10 {
+        letter-spacing: -.18em;
+      }
+
+      .cls-11 {
+        fill: #231f20;
+        font-family: OnulSijak-Regular-KSCpc-EUC-H, OnulSijak;
+        font-size: 17.82px;
+      }
+
+      .cls-12 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" x="6" y="5" width="82.2" height="43"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="6" y="5" width="82.2" height="43"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" width="94.2" height="46"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g class="cls-12">
+      <g class="cls-7">
+        <rect class="cls-6" x="6.5" y="5.5" width="81.2" height="42" rx="3" ry="3"/>
+        <rect class="cls-5" x="6.5" y="5.5" width="81.2" height="42" rx="3" ry="3"/>
+        <g class="cls-9">
+          <g class="cls-8">
+            <line class="cls-4" x1="9.5" y1="12.81" x2="9.5" y2="41.16"/>
+            <line class="cls-3" x1="13.82" y1="44.5" x2="81.36" y2="44.5"/>
+            <line class="cls-4" x1="84.7" y1="40.19" x2="84.7" y2="11.84"/>
+            <line class="cls-3" x1="80.38" y1="8.5" x2="12.85" y2="8.5"/>
+            <path class="cls-2" d="M11.87,8.5h-1.47c-.5,0-.9.4-.9.9v1.47M84.7,10.87v-1.47c0-.5-.4-.9-.9-.9h-1.47M82.33,44.5h1.47c.5,0,.9-.4.9-.9v-1.47M9.5,42.13v1.47c0,.5.4.9.9.9h1.47"/>
+          </g>
+        </g>
+      </g>
+      <text class="cls-11" transform="translate(30 31.9) scale(1 1.01)"><tspan class="cls-10" x="0" y="0">이</tspan><tspan x="14.54" y="0">전</tspan></text>
+    </g>
+  </g>
+</svg>

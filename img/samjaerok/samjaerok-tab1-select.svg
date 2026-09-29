@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 137.87 50">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-6 {
+        fill: #fffdea;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 2.96 1.96;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke: #231f20;
+      }
+
+      .cls-3 {
+        stroke-width: 1.11px;
+      }
+
+      .cls-4 {
+        stroke-dasharray: 3.06 2.06;
+      }
+
+      .cls-7 {
+        fill: #b51c1c;
+      }
+
+      .cls-8 {
+        fill: #231f20;
+        font-family: OnulSijak-Regular-KSCpc-EUC-H, OnulSijak;
+        font-size: 19.8px;
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="137.87" height="50"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_3" data-name="Layer 3">
+    <rect class="cls-7" x=".56" y=".56" width="136.76" height="48.89"/>
+    <g class="cls-9">
+      <rect class="cls-3" x=".56" y=".56" width="136.76" height="48.89"/>
+      <rect class="cls-6" x="4" y="3.5" width="129.87" height="43" rx="1" ry="1"/>
+      <line class="cls-4" x1="4" y1="8.09" x2="4" y2="42.94"/>
+      <line class="cls-2" x1="8.44" y1="46.5" x2="130.42" y2="46.5"/>
+      <line class="cls-4" x1="133.87" y1="41.91" x2="133.87" y2="7.06"/>
+      <line class="cls-2" x1="129.44" y1="3.5" x2="7.46" y2="3.5"/>
+      <path class="cls-5" d="M6.48,3.5h-1.48c-.55,0-1,.45-1,1v1.53M133.87,6.03v-1.53c0-.55-.45-1-1-1h-1.48M131.39,46.5h1.48c.55,0,1-.45,1-1v-1.53M4,43.97v1.53c0,.55.45,1,1,1h1.48"/>
+    </g>
+    <g>
+      <text class="cls-8" transform="translate(103.48 31) scale(1 1.01)"><tspan x="0" y="0">앙</tspan></text>
+      <text class="cls-8" transform="translate(88.19 31) scale(1 1.01)"><tspan x="0" y="0">재</tspan></text>
+      <text class="cls-8" transform="translate(72.56 31) scale(1 1.01)"><tspan x="0" y="0">재</tspan></text>
+      <text class="cls-8" transform="translate(56.4 31) scale(1 1.01)"><tspan x="0" y="0">삼</tspan></text>
+      <text class="cls-8" transform="translate(56.68 31) scale(1 1.01)"><tspan x="0" y="0"> </tspan></text>
+      <text class="cls-8" transform="translate(47.45 31) scale(1 1.01)"><tspan x="0" y="0">,</tspan></text>
+      <text class="cls-8" transform="translate(30.21 31) scale(1 1.01)"><tspan x="0" y="0">재</tspan></text>
+      <text class="cls-8" transform="translate(14.05 31) scale(1 1.01)"><tspan x="0" y="0">삼</tspan></text>
+    </g>
+  </g>
+</svg>

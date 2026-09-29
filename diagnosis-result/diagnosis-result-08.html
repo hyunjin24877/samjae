@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <script src="/samjae/js/diagnosis-session.js"></script>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>삼재 진단 결과</title>
+
+
+  <!-- =====================
+       CSS
+  ====================== -->
+
+  <link
+    rel="stylesheet" href="/samjae/css/font.css">
+
+  <link rel="stylesheet" href="/samjae/css/header.css">
+
+  <link rel="stylesheet" href="/samjae/css/background.css">
+    <link rel="stylesheet" href="/samjae/css/result-common.css">
+  <link rel="stylesheet" href="/samjae/css/result-01.css">
+
+  <script src="/samjae/js/site-cursor.js" defer></script>
+
+</head>
+
+
+<body data-receipt-type="해안종교개인">
+
+
+  <!-- =====================
+       배경
+  ====================== -->
+
+  <img
+    src="/samjae/img/back/back-dote.webp"
+    class="back-dote"
+    alt=""
+  >
+   <video src="/samjae/img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
+  <img
+    src="/samjae/img/back/back-grey-gradient.webp"
+    class="back-grey-gradient"
+    alt=""
+  >
+
+  <div class="black-overlay"></div>
+
+
+  <!-- =====================
+       좌우 문
+  ====================== -->
+
+  <div class="doors">
+
+    <img
+      src="/samjae/img/door.svg"
+      class="door door-left"
+      alt=""
+    >
+
+    <img
+      src="/samjae/img/door.svg"
+      class="door door-right"
+      alt=""
+    >
+
+  </div>
+
+
+  <!-- =====================
+       헤더
+  ====================== -->
+
+  <header class="header">
+
+    <div class="header-controls">
+
+
+      <!-- 홈 -->
+
+      <button
+        type="button"
+        class="circle-btn"
+        onclick="location.href='/samjae/landing.html'"
+      >
+
+        <span class="inner-circle">
+
+          <img
+            src="/samjae/img/home.svg"
+            alt="홈"
+          >
+
+        </span>
+
+      </button>
+
+
+      <!-- 이전 -->
+
+      <button
+        type="button"
+        class="circle-btn"
+        onclick="history.back()"
+      >
+
+        <span class="inner-circle">
+
+          <img
+            src="/samjae/img/prev.svg"
+            alt="이전"
+          >
+
+        </span>
+
+      </button>
+
+
+      <!-- 다음 -->
+
+      <button
+        type="button"
+        class="circle-btn"
+        onclick="history.forward()"
+      >
+
+        <span class="inner-circle">
+
+          <img
+            src="/samjae/img/next.svg"
+            alt="다음"
+          >
+
+        </span>
+
+      </button>
+
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================
+       결과 콘텐츠
+       여기부터 결과 디자인 넣기
+  ====================== -->
+<!-- =====================
+     결과 콘텐츠
+====================== -->
+
+<main class="result-main">
+  <article class="result-paper" aria-labelledby="resultTitle">
+    <img class="result-paper-bottom" src="/samjae/img/result/stroke-up.svg" alt="" aria-hidden="true">
+    <header class="result-heading">
+      <div class="result-title-layout">
+        <img class="result-stroke-up" src="/samjae/img/result/stroke-up.svg" alt="" aria-hidden="true">
+        <h1 id="resultTitle" class="result-title-logos" aria-label="海宗個 — 해안 종교 개인">
+          <img src="/samjae/img/result/logo/logo-ocean.svg" alt="" aria-hidden="true">
+          <img src="/samjae/img/result/logo/logo-religion.svg" alt="" aria-hidden="true">
+          <img src="/samjae/img/result/logo/logo-individual.svg" alt="" aria-hidden="true">
+        </h1>
+        <div class="result-title-bottom" aria-hidden="true">
+          <img src="/samjae/img/result/stroke-up-2.svg" alt="">
+          <img src="/samjae/img/result/stroke-up-2.svg" alt="">
+        </div>
+      </div>
+      <img class="result-title-divider" src="/samjae/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+      <ul class="result-tags" aria-label="진단 유형">
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="ocean"><img class="result-tag-frame" src="/samjae/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>해안</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="religion"><img class="result-tag-frame" src="/samjae/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>종교</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="individual"><img class="result-tag-frame" src="/samjae/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>개인</span></button></li>
+      </ul>
+      <img class="result-tags-divider" src="/samjae/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+    </header>
+
+    <figure class="result-portrait">
+      <img class="result-art-back" src="/samjae/img/result/result-back.svg" alt="">
+      <img class="result-dragon" src="/samjae/img/keyvisual/dragon4.svg" alt="해안종교개인 유형의 용">
+      <img class="result-art-logo" src="/samjae/img/result/result-logo.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-left" src="/samjae/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-right" src="/samjae/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-top" src="/samjae/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-bottom" src="/samjae/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+    </figure>
+
+    <div class="result-introduction samjaerok-body-center">
+      <p>해안 지역에서 행해지던 종교적 의례와 개인 중심의 재앙 해소 방식을 바탕으로 구성된 삼재풀이이다. 부적을 몸에 지니고 일부는 태워 바다에 흘려보내며, 개인의 믿음을 통해 재앙을 자연의 흐름 밖으로 떠나보내는 특징을 가진다.</p>
+      <p>믿음을 의지하며, 스스로 마음을 다스리는 방식.</p>
+      <p>이 방식은 불안을 붙잡아두기보다 종교적 믿음과 의례를 통해 자연스럽게 흘려보내는 데 초점을 둡니다. 당신은 자신의 신념을 바탕으로 상황을 받아들이고, 스스로 불안을 정리하며 앞으로 나아갑니다</p>
+    </div>
+
+    <div class="result-divider" aria-hidden="true"></div>
+    <section class="result-method" aria-labelledby="resultMethodTitle">
+      <h2 id="resultMethodTitle" class="samjaerok-body-left ">풀이방법</h2>
+      <dl class="result-details samjaerok-body-left ">
+        <dt><span class="body1-center-underline">준비물</span></dt>
+        <dd>삼재 부적 2개, 라이터, 치성을 드릴 간단한 음식</dd>
+        <dt><span class="body1-center-underline">인원</span></dt><dd>1인</dd>
+        <dt><span class="body1-center-underline">방법</span></dt>
+        <dd>
+          <ol class="result-steps">
+            <li>절에서 삼재 부적 두 장을 구입한다.
+              <img src="/samjae/img/result/pen.gif" class="method-deco deco-pen" alt="">
+              <img src="/samjae/img/result/money1.gif" class="method-deco deco-money1" alt=""></li>
+            <li>한 장은 몸에 지니고, 다른 한 장은 해안가에서 불에 태운다.
+              <img src="/samjae/img/result/boat.gif" class="method-deco deco-boat" alt="">
+              <img src="/samjae/img/result/fire.gif" class="method-deco deco-fire" alt=""></li>
+            <li>부적이 모두 타면 남은 재를 바다에 흘려보낸다.
+              <img src="/samjae/img/result/money2.gif" class="method-deco deco-money2" alt=""></li>
+            <li>간단한 제물을 차려 절을 올리거나 축원을 외우며 치성을 드린다.</li>
+          </ol>
+        </dd>
+        <dt><span class="body1-center-underline">해설</span></dt>
+        <dd class="result-explanation">몸에 지니는 부적은 재앙을 막아주는 보호의 의미를 가지며, 태우는 부적은 액운을 대신 담아 소멸시키는 상징이다. 불은 재앙을 정화하고, 바다는 액운을 멀리 흘려보내는 공간으로 여겨진다. 마지막 치성은 남은 한 해의 평안과 무사함을 기원하는 의미를 담고 있다.
+          <img src="/samjae/img/result/song.gif" class="method-deco deco-song" alt="">
+        </dd>
+      </dl>
+    </section>
+  </article>
+
+  <nav class="result-controls" aria-label="결과 활용">
+    <button type="button" class="result-action button-filter" id="resultPrint"><span>점지법 출력하기</span></button>
+    <a class="result-action  button-filter" href="/samjae/gather.html"><span>다른 방법도 보러가기</span></a>
+    <button type="button" class="result-retry button-filter" id="resultRetry">다시하기</button>
+  </nav>
+</main>
+<script src="/samjae/js/result.js" defer></script>
+</body>
+</html>

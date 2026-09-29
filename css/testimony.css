@@ -1,0 +1,738 @@
+.text {
+  hyphens: auto;
+}
+
+/* =========================
+   증언 전체
+========================= */
+
+.testimony-main {
+  position: fixed;
+
+  top: 132px;
+  left: 128px;
+  right: 128px;
+  bottom: 37px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  z-index: 10;
+}
+
+
+/* =========================
+   증언 레이아웃
+   왼쪽 2단 + 오른쪽 2단
+========================= */
+
+.testimony-layout {
+  display: grid;
+
+  grid-template-columns: 619px 619px;
+  column-gap: 8px;
+
+  width: 1246px;
+
+  align-items: start;
+}
+
+
+/* =========================
+   왼쪽 증언 목록 전체
+========================= */
+
+.testimony-list-wrap {
+  position: relative;
+
+  width: 619px;
+  height: 614px;
+
+  overflow: visible;
+}
+
+
+/* 왼쪽 위/아래 두루마리 */
+.testimony-list-scroll {
+  position: absolute;
+
+  left: 0;
+
+  width: 619px;
+  height: auto;
+
+  display: block;
+
+  z-index: 5;
+
+  pointer-events: none;
+}
+
+.testimony-list-scroll-top {
+  top: 0;
+}
+
+.testimony-list-scroll-bottom {
+  bottom: 0;
+}
+
+
+.testimony-list {
+  position: absolute;
+
+  top: 10px;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 585px;
+  height: 603px;
+
+  padding: 20px 26px 0 26px;
+
+  box-sizing: border-box;
+
+  background: #fff;
+  border: 1px solid #000;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  z-index: 1;
+
+  /* 기본 스크롤바 숨김 */
+  scrollbar-width: none;
+}
+
+.testimony-list::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* 커스텀 스크롤바 트랙 */
+.testimony-scrollbar {
+  position: absolute;
+
+  top: 26px;
+  bottom: 26px;
+
+  right: 17px;
+
+  width: 10px;
+
+  background: #c2c2c2;
+  border-left: 1px solid #000;
+   border-right: 1px solid #000;
+
+
+  z-index: 3;
+}
+
+/* 움직이는 검정 막대 */
+.testimony-scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  min-height: 40px;
+
+  background: #000;
+  border-radius: 4px;
+
+  touch-action: none;
+  cursor: grab;
+}
+
+
+/* =========================
+   목록 헤더
+========================= */
+
+.testimony-list-head {
+  display: grid;
+
+  grid-template-columns: 58px 96px 1fr;
+  align-items: center;
+
+  height: 46px;
+
+  box-sizing: border-box;
+
+  border-bottom: 1.5px solid #000;
+}
+
+
+/* =========================
+   증언 한 줄
+========================= */
+
+.testimony-row {
+  position: relative;
+   width: 100%;
+  height: auto;
+  min-height: 0;
+
+  display: grid;
+  align-items: center;
+
+  /* 위아래 18px / 좌우 0 */
+  padding: 20px 0;
+
+  box-sizing: border-box;
+  border: 0;
+  border-bottom: 1px solid #000;
+
+  background: transparent;
+  color: #000;
+  text-align: left;
+  cursor: pointer;
+}
+
+.testimony-list-head,
+.testimony-row {
+  display: grid;
+  grid-template-columns: 60px 106px minmax(0, 1fr);
+  align-items: center;
+}
+
+.testimony-num {
+  padding-left: 0;
+}
+
+.testimony-name {
+}
+
+.testimony-info {
+}
+
+.testimony-list-head {
+  margin-bottom: 0;
+}
+
+.testimony-row {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.testimony-list > .testimony-row:last-child {
+  margin-bottom: 10px;
+}
+
+.testimony-row:is(:hover, .is-selected) > .testimony-num,
+.testimony-row:is(:hover, .is-selected) > .testimony-name {
+  transform: translateX(20px);
+}
+/* =========================
+   hover / 선택
+========================= */
+
+.testimony-row:hover,
+.testimony-row.is-selected {
+  background: #00a0b8;
+}
+
+
+/* 안쪽 점선 */
+.testimony-row:hover::before,
+.testimony-row.is-selected::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 3px;
+
+  border: 1.5px dashed #2d6977;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+/* 기존 이름 왼쪽 화살표 제거 */
+.testimony-row:hover .testimony-name::before,
+.testimony-row.is-selected .testimony-name::before {
+  content: none;
+}
+
+/* 화살표가 글자 바로 옆에 붙도록 */
+.testimony-row > .testimony-info {
+  display: flex;
+  align-items: center;
+  justify-self: start;
+  gap: 6px;
+  max-width: 100%;
+}
+
+/* 호버·선택 시 양쪽 화살표 */
+.testimony-row:is(:hover, .is-selected) .testimony-info::before,
+.testimony-row:is(:hover, .is-selected) .testimony-info::after {
+  content: "";
+  position: static;
+  inset: auto;
+  transform: none;
+
+flex: 0 0 16px;
+width: 16px;
+  height: 20px;
+
+  border: 0;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* 왼쪽 → */
+.testimony-row:is(:hover, .is-selected) .testimony-info::before {
+  background-image: url("../img/next.svg");
+}
+
+/* 오른쪽 ← */
+.testimony-row:is(:hover, .is-selected) .testimony-info::after {
+  background-image: url("../img/prev.svg");
+}
+
+/* 마지막 흐린 행 */
+.testimony-row-fade {
+  opacity: 0.2;
+}
+
+.testimony-row-fade:hover,
+.testimony-row-fade.is-selected {
+  opacity: 1;
+}
+
+
+/* 오른쪽 증언 영역 */
+.testimony-detail {
+  position: relative;
+  width: 618px;
+  overflow: visible;
+}
+
+.testimony-guide {
+  position: relative;
+  width: 618px;
+  height: auto;
+  padding: 0;
+}
+
+.testimony-guide-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.testimony-guide-text {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0 30px;
+  color: #fff;
+  text-align: center;
+}
+
+/* 가운데 검정 본체 */
+.testimony-guide-center {
+  position: relative;
+  inset: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px 20px;
+  box-sizing: border-box;
+
+  background: #000;
+  color: #fff;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* 위·아래 두루마리 */
+.testimony-guide .scroll-front,
+.testimony-guide .scroll-down {
+  position: absolute;
+  left: 0;
+
+  width: 100%;
+  height: auto;
+  display: block;
+
+  z-index: 3;
+  pointer-events: none;
+}
+
+.testimony-guide .scroll-front {
+  top: 0;
+}
+
+.testimony-guide .scroll-down {
+  bottom: 0;
+}
+
+
+/* =========================
+   오른쪽 상세 내용
+========================= */
+
+.testimony-detail-content {
+  display: none;
+
+  position: relative;
+
+  width: 584px;
+  min-height: 500px;
+
+  margin-left: 8px;
+
+  padding: 32px 26px;
+
+  box-sizing: border-box;
+
+  background: #fff;
+  color: #000;
+
+  z-index: 1;
+}
+
+.testimony-detail-content.is-open {
+  display: block;
+}
+
+
+/* =========================
+   상세 질문 / 답변
+========================= */
+
+.testimony-question {
+  margin-bottom: 28px;
+}
+
+.testimony-question-title {
+  margin: 0 0 8px;
+}
+
+.testimony-answer {
+  margin: 0;
+
+  opacity: 0.55;
+
+  line-height: 1.6;
+}
+
+.testimony-row {
+  align-items: center;
+}
+
+.testimony-row > span,
+.testimony-row.body1-no-underline > span {
+  align-self: center;
+  margin: 0;
+  padding: 0;
+  line-height: 28px;
+}
+
+.testimony-list-head > span {
+  position: relative;
+}
+
+.testimony-list-head > span::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+
+  box-sizing: border-box;
+  width: 6px;
+  height: 6px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.testimony-preview {
+  position: absolute;
+
+  right: calc((100% - 585px) / 2 + 26px);
+  top: calc(10px + 603px - 50px - 382px);
+
+  width: 320px;
+  height: 382px;
+  object-fit: contain;
+
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.testimony-preview[hidden] {
+  display: none;
+}
+
+/* 오른쪽 펼친 두루마리 */
+.testimony-answer-scroll {
+  position: relative;
+  width: 618px;
+}
+
+.testimony-answer-scroll[hidden] {
+  display: none;
+}
+
+.testimony-answer-top,
+.testimony-answer-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.testimony-answer-top {
+  top: 0;
+}
+
+.testimony-answer-bottom {
+  bottom: 0;
+}
+
+/* 질문·답변 종이 */
+.testimony-answer-scroll .testimony-detail-content {
+  display: block;
+  position: relative;
+
+  box-sizing: border-box;
+  width: calc(100% - 28px);
+  height: calc(1080px - 169px);
+  min-height: 0;
+  margin: 0 14px;
+  padding: 42px 26px 40px;
+
+  border: 1px solid #000;
+  background:
+    radial-gradient(
+      ellipse at center,
+      #ededed 0%,
+      #fff 75%
+    );
+
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #000 transparent;
+}
+
+.testimony-detail-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.testimony-detail-content::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 4px;
+}
+
+/* Q&A 묶음: 답변 → 20px → 구분선 → 20px → 다음 질문 */
+.testimony-detail-content .testimony-question {
+  margin: 0 0 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #000;
+}
+
+.testimony-detail-content .testimony-question:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/* 질문 */
+.testimony-detail-content .testimony-question-title {
+  margin: 0 0 12px;
+
+  font-family: "OnulSijak", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: -2;
+  text-align: left;
+  word-break: keep-all;
+  word-spacing: -2px;
+  letter-spacing: -1.8px;
+}
+
+/* 회색 답변 */
+.testimony-detail-content .testimony-answer {
+  margin: 0;
+  padding-left: 45px;
+  font-family: "OnulSijak", sans-serif;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: left;
+  word-break: keep-all;
+  word-spacing: 2px;
+  letter-spacing: -2px;
+
+  color: #888;
+  opacity: 1;
+}
+
+/* 기본 스크롤바 숨김 */
+.testimony-answer-scroll .testimony-detail-content {
+  scrollbar-width: none;
+}
+
+.testimony-answer-scroll .testimony-detail-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* 오른쪽 커스텀 스크롤바 */
+.testimony-detail-scrollbar {
+  position: absolute;
+  top: 26px;
+  bottom: 26px;
+  right: 14px;
+  width: 10px;
+
+  background: #c2c2c2;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.testimony-detail-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #000;
+  border-radius: 4px;
+  touch-action: none;
+  cursor: grab;
+}
+
+.testimony-detail-thumb:active {
+  cursor: grabbing;
+}
+
+/* Load after testimony.css, or paste at its end. */
+.testimony-detail-content .testimony-question-title {
+  display: grid;
+  grid-template-columns: 45px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 12px;
+  margin: 0 0 8px;
+}
+.testimony-detail-content .testimony-answer {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 10px;
+  margin: 0;
+  padding-left: 58px;
+  color: #000 0.5;
+  opacity: 1;
+}
+.testimony-question-title > span,
+.testimony-answer > span {
+  min-width: 0;
+}
+
+.testimony-question-title > span:first-child,
+.testimony-answer > span:first-child {
+  white-space: nowrap;
+}
+
+.testimony-question-title > span:last-child,
+.testimony-answer > span:last-child {
+  overflow-wrap: anywhere;
+}
+
+.testimony-list-head {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+}
+
+.testimony-list-head::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20px;
+  height: 20px;
+  background: #fff;
+}
+
+.testimony-list-wrap::after {
+  content: "";
+  position: absolute;
+
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+
+  width: 585px;
+  height: 65px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  );
+
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* 종이와 텍스트는 원래 크기를 유지하고 잘라내기/투명도만 전환합니다. */
+.testimony-guide[hidden] { display: none; }
+.testimony-detail-body { opacity: 0; }
+.testimony-answer-scroll.is-transitioning { pointer-events: none; }
+.testimony-answer-scroll.is-transitioning .testimony-detail-content { overflow: hidden; }
+/* 원본 종이는 고정 크기로 두고, 하단 봉의 윗변까지 노출합니다. */
+.testimony-answer-scroll {
+  --paper-edge: 0px;
+  --top-rod-height: 35px;
+}
+.testimony-answer-scroll .testimony-detail-content {
+  clip-path: inset(0px 0px calc(100% - var(--paper-edge)) 0px);
+}
+.testimony-answer-top {
+  z-index: 4;
+}
+.testimony-answer-bottom {
+  top: var(--paper-edge);
+  bottom: auto;
+  /* 종이 위에서 항상 온전한 말린 봉을 표시합니다. 시작점에서는 상단과 정확히 겹칩니다. */
+  display: block;
+  z-index: 5;
+  clip-path: none;
+}
+
+/* 투명한 봉 중앙을 통해 닫힌 종이가 비치지 않도록 초기 준비 중 숨깁니다. */
+.testimony-answer-scroll.is-preparing {
+  visibility: hidden;
+}
+
+/* 클릭한 이후에만 생성되는 연결 이미지. 대기 화면의 배치에는 관여하지 않습니다. */
+.testimony-scroll-bridge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+}

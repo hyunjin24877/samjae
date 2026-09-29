@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 620 839.56">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-7 {
+        opacity: .1;
+      }
+
+      .cls-2 {
+        stroke: #231f20;
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="620" height="839.56"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <path class="cls-1" d="M619.5.5v838.56H8.5c-4.42,0-8-3.58-8-8V8.5C.5,4.08,4.08.5,8.5.5h611Z"/>
+    </clipPath>
+    <radialGradient id="radial-gradient" cx="3493.35" cy="-2195.37" fx="3493.35" fy="-2195.37" r="1" gradientTransform="translate(1050147.6502 1670863.3186) rotate(-90) scale(478.2046)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#dcddde"/>
+      <stop offset="0" stop-color="#dcddde"/>
+      <stop offset=".03" stop-color="#dcddde"/>
+      <stop offset=".05" stop-color="#dddedf"/>
+      <stop offset=".35" stop-color="#f0f0f1"/>
+      <stop offset=".66" stop-color="#fbfbfb"/>
+      <stop offset="1" stop-color="#fff"/>
+    </radialGradient>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" width="620" height="839.56"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="cls-1" x="590.61" y="-9" width="29" height="857.56"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g class="cls-8">
+      <g class="cls-4">
+        <rect class="cls-3" x=".5" y=".5" width="619" height="838.56"/>
+      </g>
+      <g class="cls-6">
+        <path class="cls-2" d="M619.5,839.06H8.5c-4.42,0-8-3.58-8-8V8.5C.5,4.08,4.08.5,8.5.5h611v838.56Z"/>
+        <g class="cls-7">
+          <g class="cls-5">
+            <rect x="598.61" width="20" height="839.56"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

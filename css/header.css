@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  position: fixed;
+
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 1664px;
+  max-width: 1664px;
+
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+
+  z-index: 100;
+}
+
+
+/* =========================
+   왼쪽 원형 버튼
+========================= */
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: 12px;
+  margin-right: 6px;
+}
+
+.gnb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  flex: 1;
+}
+
+
+.circle-btn {
+  width: 3.125rem;
+  height: 3.125rem;
+
+  padding: 0;
+
+  border: 1px solid #000;
+  border-radius: 50%;
+
+  background: #fffdea;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+
+.inner-circle {
+  width: 2.6875rem;
+  height: 2.6875rem;
+
+  border: 1px dashed #9a9a8e;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.inner-circle img {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  display: block;
+  object-fit: contain;
+  transition: filter 0.2s ease;
+}
+
+/* 삼각형의 무게중심을 원의 중앙에 맞춘 시각 보정 */
+.inner-circle img[src$="/prev.svg"] {
+  transform: translateX(-2px);
+}
+
+.inner-circle img[src$="/next.svg"] {
+  transform: translateX(2px);
+}
+
+.circle-btn:is(:hover, :focus-visible) {
+  background-color: #000;
+  border-color: #fff;
+}
+
+.circle-btn:is(:hover, :focus-visible) .inner-circle img {
+  filter: brightness(0) invert(1);
+}
+
+
+/* =========================
+   GNB
+========================= */
+
+/* =========================
+   GNB
+========================= */
+
+.gnb-button {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.gnb-button img {
+  display: block;
+  height: 60px;
+  width: auto;
+}
+
+
+/* hover 이미지는 기본적으로 숨김 */
+.gnb-button .menu-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  opacity: 0;
+}
+
+
+/* =========================
+   선택되지 않은 메뉴만 HOVER
+========================= */
+
+.gnb-button:not(.current):hover .menu-default {
+  opacity: 0;
+}
+
+.gnb-button:not(.current):hover .menu-hover {
+  opacity: 1;
+}
+
+
+/* =========================
+   현재 선택된 메뉴
+   hover해도 절대 변경 안 됨
+========================= */
+
+.gnb-button.current .menu-default {
+  opacity: 1;
+}
+
+.gnb-button.current .menu-hover {
+  opacity: 0;
+}

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" data-name="Layer 2" viewBox="0 0 47.3 134">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 0 1.96;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        stroke-width: .9px;
+      }
+
+      .cls-2, .cls-4, .cls-5 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-2, .cls-4, .cls-5, .cls-6 {
+        stroke: #000;
+      }
+
+      .cls-8 {
+        fill: #4171cc;
+      }
+
+      .cls-9 {
+        fill: #8efb87;
+      }
+
+      .cls-10 {
+        fill: #d85636;
+      }
+
+      .cls-11 {
+        fill: #f3ba4c;
+      }
+
+      .cls-3 {
+        stroke-dasharray: 2.78 1.88;
+      }
+
+      .cls-3, .cls-7 {
+        stroke: #221f20;
+      }
+
+      .cls-4 {
+        stroke-dasharray: 0 1.96;
+      }
+
+      .cls-12 {
+        fill: #2c4c7e;
+      }
+
+      .cls-13 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-14 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-6 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-15 {
+        fill: #6ebe3c;
+      }
+
+      .cls-16 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-17 {
+        fill: #f6cf68;
+      }
+
+      .cls-18 {
+        fill: #fcf16f;
+      }
+
+      .knob-cord { animation: knob-curve 2.8s ease-in-out infinite; }
+      @keyframes knob-curve {
+        0%, 50%, 100% { d: path("M23.68 45.78 Q23.68 78.89 23.68 112"); }
+        25% { d: path("M23.68 45.78 Q23.68 78.89 31.68 112"); }
+        75% { d: path("M23.68 45.78 Q23.68 78.89 15.68 112"); }
+      }
+
+      .knob-bead-1 {
+        transform-box: view-box;
+        transform-origin: 23.68px 71.92px;
+        animation: knob-bead-1-sway 2.8s ease-in-out infinite;
+      }
+      @keyframes knob-bead-1-sway {
+        0%, 50%, 100% { transform: translateX(0) rotate(0deg); }
+        25% { transform: translateX(1.2466px) rotate(-5.4483deg); }
+        75% { transform: translateX(-1.2466px) rotate(5.4483deg); }
+      }
+
+      .knob-bead-2 {
+        transform-box: view-box;
+        transform-origin: 23.68px 82.93px;
+        animation: knob-bead-2-sway 2.8s ease-in-out infinite;
+      }
+      @keyframes knob-bead-2-sway {
+        0%, 50%, 100% { transform: translateX(0) rotate(0deg); }
+        25% { transform: translateX(2.5178px) rotate(-7.7194deg); }
+        75% { transform: translateX(-2.5178px) rotate(7.7194deg); }
+      }
+
+      .knob-bead-3 {
+        transform-box: view-box;
+        transform-origin: 23.68px 89.6px;
+        animation: knob-bead-3-sway 2.8s ease-in-out infinite;
+      }
+      @keyframes knob-bead-3-sway {
+        0%, 50%, 100% { transform: translateX(0) rotate(0deg); }
+        25% { transform: translateX(3.5031px) rotate(-9.0840deg); }
+        75% { transform: translateX(-3.5031px) rotate(9.0840deg); }
+      }
+
+      .knob-tassel {
+        transform-box: view-box;
+        transform-origin: 23.68px 112px;
+        animation: knob-tassel-sway 2.8s ease-in-out infinite;
+      }
+      @keyframes knob-tassel-sway {
+        0%, 50%, 100% { transform: translateX(0) rotate(0deg); }
+        25% { transform: translateX(8.0000px) rotate(-13.5834deg); }
+        75% { transform: translateX(-8.0000px) rotate(13.5834deg); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .knob-hanging, .knob-hanging * { animation: none; }
+      }
+</style>
+    <clipPath id="clippath">
+      <rect class="cls-1" x="0" width="47.3" height="130.3" />
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="0" width="47.3" height="130.3" />
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" x="0" width="47.3" height="130.3" />
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <rect class="cls-11" x="7.6" y="7.15" width="32.1" height="33" transform="translate(-9.8 23.65) rotate(-45)" />
+      <g class="cls-16">
+        <rect class="cls-7" x="7.6" y="7.15" width="32.1" height="33" transform="translate(-9.8 23.65) rotate(-45)" />
+      </g>
+      <rect class="cls-10" x="13.28" y="13.06" width="20.1" height="20.1" transform="translate(-9.51 23.27) rotate(-45)" />
+      <rect class="cls-7" x="13.28" y="13.06" width="20.1" height="20.1" transform="translate(-9.51 23.27) rotate(-45)" />
+      <line class="cls-3" x1="21.02" y1="8.94" x2="8.5" y2="21.46" />
+      <line class="cls-3" x1="9.16" y1="25.42" x2="21.68" y2="37.94" />
+      <line class="cls-3" x1="25.65" y1="37.28" x2="38.17" y2="24.76" />
+      <line class="cls-3" x1="37.5" y1="20.79" x2="24.98" y2="8.27" />
+      <path class="cls-7" d="M24.31,7.61l-.98-.98-.98.98M38.83,24.09l.98-.98-.98-.98M22.35,38.61l.98.98.98-.98M7.83,22.12l-.98.98.98.98" />
+      <g class="knob-hanging">
+        <path class="cls-6 knob-cord" d="M23.68 45.78 Q23.68 78.89 23.68 112" />
+        <g class="cls-13">
+          <g class="knob-bead-1">
+            <path class="cls-8" d="M29.41,71.92c0,3.17-2.57,5.73-5.73,5.73s-5.73-2.56-5.73-5.73,2.57-5.73,5.73-5.73,5.73,2.57,5.73,5.73" />
+            <path class="cls-6" d="M29.41,71.92c0,3.17-2.57,5.73-5.73,5.73s-5.73-2.56-5.73-5.73,2.57-5.73,5.73-5.73,5.73,2.57,5.73,5.73Z" />
+            <path class="cls-17" d="M27.58,71.92c0,2.15-1.75,3.9-3.9,3.9s-3.9-1.74-3.9-3.9,1.74-3.9,3.9-3.9,3.9,1.74,3.9,3.9" />
+            <path class="cls-6" d="M27.58,71.92c0,2.15-1.75,3.9-3.9,3.9s-3.9-1.74-3.9-3.9,1.74-3.9,3.9-3.9,3.9,1.74,3.9,3.9Z" />
+          </g>
+          <g class="knob-bead-2">
+            <path class="cls-9" d="M28.06,82.93c0,2.42-1.96,4.38-4.38,4.38s-4.38-1.96-4.38-4.38,1.96-4.38,4.38-4.38,4.38,1.96,4.38,4.38" />
+            <path class="cls-6" d="M28.06,82.93c0,2.42-1.96,4.38-4.38,4.38s-4.38-1.96-4.38-4.38,1.96-4.38,4.38-4.38,4.38,1.96,4.38,4.38Z" />
+            <path class="cls-17" d="M26.63,82.93c0,1.63-1.32,2.95-2.95,2.95s-2.95-1.32-2.95-2.95,1.32-2.95,2.95-2.95,2.95,1.32,2.95,2.95" />
+            <path class="cls-6" d="M26.41,81.81c.14.35.22.73.22,1.13s-.08.78-.22,1.13M22.55,80.21c.35-.14.73-.22,1.13-.22s.78.08,1.13.22M20.96,84.06c-.14-.35-.22-.73-.22-1.13s.08-.78.22-1.13M24.81,85.66c-.35.14-.73.22-1.13.22s-.78-.08-1.13-.22" />
+          </g>
+          <g class="knob-bead-3">
+            <path class="cls-9" d="M25.65,89.6c0,1.08-.88,1.97-1.97,1.97s-1.97-.88-1.97-1.97.88-1.97,1.97-1.97,1.97.88,1.97,1.97" />
+            <path class="cls-6" d="M25.65,89.6c0,1.08-.88,1.97-1.97,1.97s-1.97-.88-1.97-1.97.88-1.97,1.97-1.97,1.97.88,1.97,1.97Z" />
+            <path class="cls-17" d="M24.93,89.6c0,.69-.56,1.25-1.25,1.25s-1.25-.56-1.25-1.25.56-1.25,1.25-1.25,1.25.56,1.25,1.25" />
+            <path class="cls-4" d="M23.68,90.85c.34,0,.66-.14.88-.37" />
+            <path class="cls-2" d="M22.43,89.6c0,.35.14.66.37.88" />
+            <path class="cls-4" d="M23.68,88.35c-.34,0-.66.14-.88.37" />
+            <path class="cls-4" d="M24.93,89.6c0-.35-.14-.66-.37-.88" />
+            <path class="cls-5" d="M24.93,89.6h0M23.68,88.35h0M22.43,89.6h0M23.68,90.85h0" />
+          </g>
+        </g>
+        <g class="knob-tassel">
+          <rect class="cls-18" x="14.73" y="112" width="17.85" height="17.85" />
+          <g class="cls-14">
+            <rect class="cls-7" x="14.73" y="112" width="17.85" height="17.85" />
+          </g>
+          <rect class="cls-15" x="17.58" y="114.86" width="12.14" height="12.14" />
+          <rect class="cls-7" x="17.58" y="114.86" width="12.14" height="12.14" />
+          <rect class="cls-12" x="19.52" y="116.8" width="8.25" height="8.25" />
+          <rect class="cls-7" x="19.52" y="116.8" width="8.25" height="8.25" />
+          <path class="cls-7" d="M27.27,113.7h3.61v3.62M16.42,117.31v-3.62h3.61M20.04,128.16h-3.61v-3.62M30.88,124.54v3.62h-3.61" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

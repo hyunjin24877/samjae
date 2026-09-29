@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 80.94 50">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-6 {
+        fill: #757575;
+        font-family: OnulSijak-Regular-KSCpc-EUC-H, OnulSijak;
+        font-size: 19.8px;
+      }
+
+      .cls-2 {
+        stroke-width: 1.11px;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke: #231f20;
+      }
+
+      .cls-3 {
+        stroke-dasharray: 3.06 2.06;
+      }
+
+      .cls-4 {
+        stroke-dasharray: 3.07 2.07;
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-9 {
+        fill: #b3b2b3;
+      }
+
+      .cls-10 {
+        opacity: .3;
+      }
+
+      .cls-11 {
+        letter-spacing: -.24em;
+      }
+
+      .cls-12 {
+        letter-spacing: -.17em;
+      }
+
+      .cls-13 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="80.94" height="50"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" width="80.94" height="50"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" x="-6" y="-5" width="92.94" height="53"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_3" data-name="Layer 3">
+    <g class="cls-13">
+      <rect class="cls-9" x=".56" y=".56" width="79.83" height="48.89"/>
+      <g class="cls-7">
+        <rect class="cls-2" x=".56" y=".56" width="79.83" height="48.89"/>
+        <g class="cls-10">
+          <g class="cls-8">
+            <line class="cls-3" x1="3.5" y1="8.09" x2="3.5" y2="42.94"/>
+            <line class="cls-4" x1="8.1" y1="46.5" x2="73.88" y2="46.5"/>
+            <line class="cls-3" x1="77.44" y1="41.91" x2="77.44" y2="7.06"/>
+            <line class="cls-4" x1="72.84" y1="3.5" x2="7.07" y2="3.5"/>
+            <path class="cls-5" d="M6.03,3.5h-1.53c-.55,0-1,.45-1,1v1.53M77.44,6.03v-1.53c0-.55-.45-1-1-1h-1.53M74.91,46.5h1.53c.55,0,1-.45,1-1v-1.53M3.5,43.97v1.53c0,.55.45,1,1,1h1.53"/>
+          </g>
+        </g>
+      </g>
+      <text class="cls-6" transform="translate(13.1 31) scale(1 1.01)"><tspan class="cls-12" x="0" y="0">확</tspan><tspan class="cls-11" x="16.39" y="0">인</tspan><tspan x="31.44" y="0">법</tspan></text>
+    </g>
+  </g>
+</svg>

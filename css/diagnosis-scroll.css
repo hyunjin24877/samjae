@@ -1,0 +1,77 @@
+/* Q1 족자 진입: 입력창을 움직이지 않도록 내부 족자만 애니메이션 */
+#diagnosisOpen .diagnosis-scroll-motion {
+  --scroll-rod-height: calc(48.92 / 372.99 * 100%);
+  --scroll-seam-overlap: 4px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  --scroll-intro-width: 1039px;
+  --scroll-intro-rod-height: 70px; /* 접힌 족자 전체 높이: 140px */
+  width: var(--scroll-intro-width);
+  aspect-ratio: 857.31 / 372.99;
+  translate: -50% 0;
+  transform-origin: 50% 12.76%;
+  opacity: 0;
+}
+
+.diagnosis-scroll-paper {
+  position: absolute;
+  /* 몸통을 두 막대 뒤로 각각 4px 연장해 투명 경계와 반올림 틈을 없앤다. */
+  top: calc(var(--scroll-rod-height) - var(--scroll-seam-overlap));
+  bottom: calc(var(--scroll-rod-height) - var(--scroll-seam-overlap));
+  left: 50%;
+  width: calc(777.82 / 857.31 * 100%);
+  transform: translateX(-50%);
+  clip-path: inset(50% 0 50% 0);
+}
+
+.diagnosis-scroll-paper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.diagnosis-scroll-rod {
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: var(--scroll-rod-height);
+  z-index: 2;
+}
+
+.diagnosis-scroll-top { top: 50%; transform: translateY(calc(-100% + 2px)); }
+.diagnosis-scroll-bottom { bottom: 50%; transform: translateY(calc(100% - 2px)); }
+
+#diagnosisOpen .diagnosis-scroll-motion:not(.is-ready) .diagnosis-scroll-rod {
+  height: var(--scroll-intro-rod-height);
+}
+
+#diagnosisOpen .diagnosis-scroll-motion .diagnosis-result {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#diagnosisOpen .diagnosis-scroll-motion.is-ready {
+  width: 857px;
+  opacity: 1;
+  transform: none;
+}
+
+.diagnosis-scroll-motion.is-ready .diagnosis-scroll-paper { clip-path: inset(0); }
+.diagnosis-scroll-motion.is-ready .diagnosis-scroll-top { top: 0; transform: none; }
+.diagnosis-scroll-motion.is-ready .diagnosis-scroll-bottom { bottom: 0; transform: none; }
+#diagnosisOpen .diagnosis-scroll-motion.is-ready .diagnosis-result {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #diagnosisOpen .diagnosis-scroll-motion { width: 857px; opacity: 1; }
+  .diagnosis-scroll-paper { clip-path: inset(0); }
+  .diagnosis-scroll-top { top: 0; transform: none; }
+  .diagnosis-scroll-bottom { bottom: 0; transform: none; }
+  #diagnosisOpen .diagnosis-scroll-motion .diagnosis-result { opacity: 1; visibility: visible; }
+}
+
+.gnb.is-intro-hidden { opacity: 0; visibility: hidden; pointer-events: none; }

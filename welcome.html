@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <script src="/samjae/js/diagnosis-session.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>삼재관에 어서오세요</title>
+
+  <!-- CSS 연결 -->
+      <link rel="stylesheet" href="/samjae/css/font.css">
+      <link rel="stylesheet" href="css/header.css">
+      <link rel="stylesheet" href="css/background.css">
+      <link rel="stylesheet" href="css/welcome.css">
+      
+  <script src="/samjae/js/site-cursor.js" defer></script>
+  <link rel="stylesheet" href="/samjae/css/page-stage.css">
+  <script src="/samjae/js/page-stage.js" defer></script>
+</head>
+
+
+<body>
+
+ <img src="/samjae/img/back/back-dote.webp" class="back-dote" alt="">
+  <video src="/samjae/img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
+ <img src="/samjae/img/back/back-grey-gradient.webp" class="back-grey-gradient" alt="">
+ <div class="black-overlay"></div>
+
+
+   <!-- =====================
+       옆에 문
+  ====================== -->
+   <div class="doors">
+        <img src="img/door.svg" class="door door-left" alt="">
+        <img src="img/door.svg" class="door door-right" alt="">
+    </div>
+
+<!-- =====================
+     헤더
+====================== -->
+<header class="header">
+
+  <!-- 왼쪽 원형 버튼 -->
+  <div class="header-controls">
+
+    <button class="circle-btn" onclick="location.href='landing.html'">
+      <span class="inner-circle">
+        <img src="/samjae/img/home.svg" alt="홈">
+      </span>
+    </button>
+
+    <button class="circle-btn" onclick="history.back()">
+      <span class="inner-circle">
+        <img src="/samjae/img/prev.svg" alt="이전">
+      </span>
+    </button>
+
+    <button class="circle-btn" onclick="history.forward()">
+      <span class="inner-circle">
+        <img src="/samjae/img/next.svg" alt="다음">
+      </span>
+    </button>
+
+  </div>
+
+  <!-- 메뉴 -->
+ <nav class="gnb">
+
+  <!-- 현재 페이지 -->
+  <a href="welcome.html" class="gnb-button current">
+
+  <img class="menu-default"
+       src="img/header-menu-welcome-select.svg"
+       alt="인삿말">
+
+  <img class="menu-hover"
+       src="img/header-menu-welcome-hover.svg"
+       alt="">
+
+</a>
+
+
+  <!-- 진단 -->
+  <a href="diagnosis.html" class="gnb-button">
+    <img class="menu-default"
+         src="img/header-menu-diagnosis.svg"
+         alt="진단">
+
+    <img class="menu-hover"
+         src="img/header-menu-diagnosis-hover.svg"
+         alt="">
+  </a>
+
+
+  <!-- 도감 -->
+  <a href="gather.html" class="gnb-button">
+    <img class="menu-default"
+         src="img/header-menu-gather.svg"
+         alt="도감">
+
+    <img class="menu-hover"
+         src="img/header-menu-gather-hover.svg"
+         alt="">
+  </a>
+
+
+  <!-- 증언 -->
+  <a href="testimony.html" class="gnb-button">
+    <img class="menu-default"
+         src="img/header-menu-testimony.svg"
+         alt="증언">
+
+    <img class="menu-hover"
+         src="img/header-menu-testimony-hover.svg"
+         alt="">
+  </a>
+
+
+  <!-- 사례 -->
+  <a href="example.html" class="gnb-button">
+    <img class="menu-default"
+         src="img/header-menu-example.svg"
+         alt="사례">
+
+    <img class="menu-hover"
+         src="img/header-menu-example-hover.svg"
+         alt="">
+  </a>
+
+
+  <!-- 삼재록 -->
+  <a href="samjaerok.html" class="gnb-button">
+    <img class="menu-default"
+         src="img/header-menu-samjaerok.svg"
+         alt="삼재록">
+
+    <img class="menu-hover"
+         src="img/header-menu-samjaerok-hover.svg"
+         alt="">
+  </a>
+
+</nav>
+
+</header>
+
+
+  <!-- =====================
+       페이지 콘텐츠
+  ====================== -->
+  <main class="content">
+
+  </main>
+
+
+  <!-- =====================
+       팝업
+  ====================== -->
+  <!-- =====================
+     인삿말 팝업
+====================== -->
+<div class="modal-overlay welcome-intro" aria-busy="true">
+  <div class="welcome-envelope" aria-hidden="true">
+    <img class="welcome-envelope-back" src="/samjae/img/welcome/letter-2-back.svg" alt="">
+    <img class="welcome-envelope-front" src="/samjae/img/welcome/letter-2-front.svg" alt="">
+    <img class="welcome-envelope-closed" src="/samjae/img/welcome/letter-1.svg" alt="">
+  </div>
+
+  <div class="modal">
+
+    <!-- 장식 프레임 -->
+    <img
+      src="/samjae/img/welcome/welcome-frame.svg"
+      class="welcome-frame"
+      alt=""
+    >
+
+    <!-- 팝업 안의 텍스트 -->
+    <div class="welcome-text">
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<noscript><style>.welcome-intro .modal { opacity: 1; } .welcome-envelope { display: none; }</style></noscript>
+<script src="/samjae/js/welcome.js"></script>
+</body>
+</html>

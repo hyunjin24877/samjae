@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <filter id="feather" filterUnits="userSpaceOnUse" x="-200" y="-200" width="2320" height="1480" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <!-- Extend beyond the stage to feather only the inner boundaries. -->
+  <g fill="white" filter="url(#feather)">
+    <path d="M-100-100H730L580 120L560 1180H-100Z"/>
+    <path d="M2020-100H1190L1340 120L1360 1180H2020Z"/>
+  </g>
+</svg>

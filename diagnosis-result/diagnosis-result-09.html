@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <script src="/samjae/js/diagnosis-session.js"></script>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>삼재 진단 결과</title>
+
+
+  <!-- =====================
+       CSS
+  ====================== -->
+
+  <link
+    rel="stylesheet" href="/samjae/css/font.css">
+
+  <link rel="stylesheet" href="/samjae/css/header.css">
+
+  <link rel="stylesheet" href="/samjae/css/background.css">
+    <link rel="stylesheet" href="/samjae/css/result-common.css">
+  <link rel="stylesheet" href="/samjae/css/result-01.css">
+
+  <script src="/samjae/js/site-cursor.js" defer></script>
+
+</head>
+
+
+<body data-receipt-type="내륙무속공동체">
+
+
+  <!-- =====================
+       배경
+  ====================== -->
+
+  <img
+    src="/samjae/img/back/back-dote.webp"
+    class="back-dote"
+    alt=""
+  >
+   <video src="/samjae/img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
+  <img
+    src="/samjae/img/back/back-grey-gradient.webp"
+    class="back-grey-gradient"
+    alt=""
+  >
+
+  <div class="black-overlay"></div>
+
+
+  <!-- =====================
+       좌우 문
+  ====================== -->
+
+  <div class="doors">
+
+    <img
+      src="/samjae/img/door.svg"
+      class="door door-left"
+      alt=""
+    >
+
+    <img
+      src="/samjae/img/door.svg"
+      class="door door-right"
+      alt=""
+    >
+
+  </div>
+
+
+  <!-- =====================
+       헤더
+  ====================== -->
+
+  <header class="header">
+
+    <div class="header-controls">
+
+
+      <!-- 홈 -->
+
+      <button
+        type="button"
+        class="circle-btn"
+        onclick="location.href='/samjae/landing.html'"
+      >
+
+        <span class="inner-circle">
+
+          <img
+            src="/samjae/img/home.svg"
+            alt="홈"
+          >
+
+        </span>
+
+      </button>
+
+
+      <!-- 이전 -->
+
+      <button
+        type="button"
+        class="circle-btn"
+        onclick="history.back()"
+      >
+
+        <span class="inner-circle">
+
+          <img
+            src="/samjae/img/prev.svg"
+            alt="이전"
+          >
+
+        </span>
+
+      </button>
+
+
+      <!-- 다음 -->
+
+      <button
+        type="button"
+        class="circle-btn"
+        onclick="history.forward()"
+      >
+
+        <span class="inner-circle">
+
+          <img
+            src="/samjae/img/next.svg"
+            alt="다음"
+          >
+
+        </span>
+
+      </button>
+
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================
+       결과 콘텐츠
+       여기부터 결과 디자인 넣기
+  ====================== -->
+<!-- =====================
+     결과 콘텐츠
+====================== -->
+
+<main class="result-main">
+  <article class="result-paper" aria-labelledby="resultTitle">
+    <img class="result-paper-bottom" src="/samjae/img/result/stroke-up.svg" alt="" aria-hidden="true">
+    <header class="result-heading">
+      <div class="result-title-layout">
+        <img class="result-stroke-up" src="/samjae/img/result/stroke-up.svg" alt="" aria-hidden="true">
+        <h1 id="resultTitle" class="result-title-logos" aria-label="陸巫共 — 내륙 무속 공동체">
+          <img src="/samjae/img/result/logo/logo-inside.svg" alt="" aria-hidden="true">
+          <img src="/samjae/img/result/logo/shamanism.svg" alt="" aria-hidden="true">
+          <img src="/samjae/img/result/logo/logo-community.svg" alt="" aria-hidden="true">
+        </h1>
+        <div class="result-title-bottom" aria-hidden="true">
+          <img src="/samjae/img/result/stroke-up-2.svg" alt="">
+          <img src="/samjae/img/result/stroke-up-2.svg" alt="">
+        </div>
+      </div>
+      <img class="result-title-divider" src="/samjae/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+      <ul class="result-tags" aria-label="진단 유형">
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="flat"><img class="result-tag-frame" src="/samjae/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>내륙</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="shamanism"><img class="result-tag-frame" src="/samjae/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>무속</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="community"><img class="result-tag-frame" src="/samjae/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>공동체</span></button></li>
+      </ul>
+      <img class="result-tags-divider" src="/samjae/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+    </header>
+
+    <figure class="result-portrait">
+      <img class="result-art-back" src="/samjae/img/result/result-back.svg" alt="">
+      <img class="result-dragon" src="/samjae/img/keyvisual/rabbit3.svg" alt="내륙무속공동체 유형의 토끼">
+      <img class="result-art-logo" src="/samjae/img/result/result-logo.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-left" src="/samjae/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-right" src="/samjae/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-top" src="/samjae/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-bottom" src="/samjae/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+    </figure>
+
+    <div class="result-introduction samjaerok-body-center">
+      <p>내륙 지역에서 행해지던 무속 의례와 공동체 중심의 재앙 해소 방식을 바탕으로 구성된 삼재풀이이다. 삼거리에서 여러 사람이 함께 제물을 묻고 칼을 던지며, 액운이 머무는 방향을 바깥으로 돌려 재앙을 내보내는 특징을 가진다.</p>
+      <p>힘을 모으고, 적극적으로 재앙을 밀어내는 방식.</p>
+      <p>이 방식은 재앙이 스스로 지나가기를 기다리기보다 함께 의례를 수행하며 불안을 외부로 몰아내는 데 초점을 둡니다. 당신은 문제를 혼자 감당하기보다 주변 사람들과 힘을 모으고, 적극적인 행동을 통해 상황을 해결해 나갑니다.</p>
+    </div>
+
+    <div class="result-divider" aria-hidden="true"></div>
+    <section class="result-method" aria-labelledby="resultMethodTitle">
+      <h2 id="resultMethodTitle" class="samjaerok-body-left ">풀이방법</h2>
+      <dl class="result-details samjaerok-body-left ">
+        <dt><span class="body1-center-underline">준비물</span></dt>
+        <dd>훔친칼(세 성을 쓰는 집에서 훔쳐온다), 북어</dd>
+        <dt><span class="body1-center-underline">인원</span></dt><dd>1인(*칼이 공동체 역할을 한다)</dd>
+        <dt><span class="body1-center-underline">방법</span></dt>
+        <dd>
+          <ol class="result-steps">
+            <li>훔친 칼을 들고 삼거리에 가 흙바닥에 십자가 모양을 그린다.
+              <img src="/samjae/img/result/pen.gif" class="method-deco deco-pen" alt="">
+              <img src="/samjae/img/result/money1.gif" class="method-deco deco-money1" alt=""></li>
+            <li>이후 제물인 북어를 땅에 묻고, 칼의 머리가 바깥쪽을 향할 때까지 여러 번 던져 액운을 밖으로 내보내는 의례를 진행한다.
+              <img src="/samjae/img/result/boat.gif" class="method-deco deco-boat" alt="">
+              <img src="/samjae/img/result/fire.gif" class="method-deco deco-fire" alt="">
+              <img src="/samjae/img/result/money2.gif" class="method-deco deco-money2" alt=""></li>
+          </ol>
+        </dd>
+        <dt><span class="body1-center-underline">해설</span></dt>
+        <dd class="result-explanation">삼거리는 서로 다른 길이 만나는 경계의 공간으로, 액운을 다른 방향으로 흩어 보내는 장소로 여겨졌다. 칼은 재앙을 끊어내는 도구이며, 북어는 액운을 대신 받아 땅에 묻는 제물의 역할을 한다. 칼끝이 바깥을 향하는 것은 재앙이 집이나 개인이 아닌 외부로 떠났음을 상징한다.
+          <img src="/samjae/img/result/song.gif" class="method-deco deco-song" alt="">
+        </dd>
+      </dl>
+    </section>
+  </article>
+
+  <nav class="result-controls" aria-label="결과 활용">
+    <button type="button" class="result-action button-filter" id="resultPrint"><span>점지법 출력하기</span></button>
+    <a class="result-action  button-filter" href="/samjae/gather.html"><span>다른 방법도 보러가기</span></a>
+    <button type="button" class="result-retry button-filter" id="resultRetry">다시하기</button>
+  </nav>
+</main>
+<script src="/samjae/js/result.js" defer></script>
+</body>
+</html>
