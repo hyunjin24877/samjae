@@ -712,7 +712,7 @@ width: 16px;
   z-index: 4;
 }
 .testimony-answer-bottom {
-  top: var(--paper-edge);
+    top: calc(var(--paper-edge) - 35px);
   bottom: auto;
   /* 종이 위에서 항상 온전한 말린 봉을 표시합니다. 시작점에서는 상단과 정확히 겹칩니다. */
   display: block;

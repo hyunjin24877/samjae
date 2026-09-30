@@ -3982,6 +3982,9 @@ const testimonyMotion = (() => {
   let bridge = null;
   const scroll = document.querySelector('.testimony-answer-scroll');
   const top = document.querySelector('.testimony-answer-top');
+  const closedTopSource = top.src;
+  const openedTop = new Image();
+  openedTop.src = new URL('scroll-front.svg', closedTopSource).href;
   const bottom = document.querySelector('.testimony-answer-bottom');
   const track = document.querySelector('.testimony-detail-scrollbar');
   const body = document.getElementById('testimonyDetailBody');
@@ -4065,6 +4068,7 @@ const testimonyMotion = (() => {
     animations.forEach(animation => animation.cancel());
     animations.clear();
     scroll.hidden = true;
+    top.src = closedTopSource;
     scroll.classList.remove('is-preparing');
     guide.hidden = false;
     bridge?.remove();
@@ -4083,11 +4087,12 @@ const testimonyMotion = (() => {
     lock(true);
     try {
       // 봉 이미지의 실제 높이가 확정된 후 닫힌 위치를 계산합니다.
-      await Promise.all([top.decode(), bottom.decode()]);
+      await Promise.all([top.decode(), bottom.decode(), openedTop.decode()]);
       if (token !== generation) return;
       if (selected) {
         await motion(body, [{opacity: 1}, {opacity: 0}], 180, token);
         track.style.visibility = 'hidden';
+        top.src = closedTopSource;
         await unfold(false, token);
       } else {
         // 첫 화면은 그대로 두고, 클릭 후 문구부터 지웁니다.
@@ -4131,6 +4136,7 @@ const testimonyMotion = (() => {
       scroll.classList.remove('is-preparing');
       // 전체 낙하/반동 없이 상단은 처음부터 최종 위치에 고정합니다.
       await unfold(true, token);
+      top.src = openedTop.src;
       await motion(body, [{opacity: 0}, {opacity: 1}], 240, token);
       track.style.visibility = '';
       detail.dispatchEvent(new Event('scroll'));
