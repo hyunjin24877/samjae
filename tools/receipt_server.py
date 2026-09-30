@@ -8,17 +8,22 @@ import subprocess
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+PAGES_ORIGIN = 'https://hyunjin24877.github.io'  # GitHub Pages deployment.
 WIDTH_BYTES = 72
 CUT = b'\x1dV\x42\x20'  # Feed to cutter + 32 motion units, then partial cut.
+STRIP_ROWS = 1024  # Fewer GS v 0 commands means fewer motor stops between strips.
+# Standard mode; left margin 0; print area exactly 576 dots.
+# GS ( K fn 50: print speed level 9, then 13. Levels a model lacks are ignored.
+HEADER = (b'\x1b@\x1bS\x1dL\x00\x00\x1dW\x40\x02'
+          b'\x1d(K\x02\x00\x32\x09\x1d(K\x02\x00\x32\x0d')
 
 
 def encode_raster(raster):
     if not raster or len(raster) % WIDTH_BYTES:
         raise ValueError('576dots 래스터 데이터 길이가 올바르지 않습니다.')
-    # Standard mode; left margin 0; print area exactly 576 dots.
-    job = bytearray(b'\x1b@\x1bS\x1dL\x00\x00\x1dW\x40\x02')
-    for offset in range(0, len(raster), WIDTH_BYTES * 128):
-        strip = raster[offset:offset + WIDTH_BYTES * 128]
+    job = bytearray(HEADER)
+    for offset in range(0, len(raster), WIDTH_BYTES * STRIP_ROWS):
+        strip = raster[offset:offset + WIDTH_BYTES * STRIP_ROWS]
         rows = len(strip) // WIDTH_BYTES
         job.extend(b'\x1dv0\x00' + bytes((WIDTH_BYTES, 0, rows & 255, rows >> 8)))
         job.extend(strip)
@@ -33,6 +38,8 @@ class Handler(SimpleHTTPRequestHandler):
 
     def allowed(self):
         origin = self.headers.get('Origin', '')
+        if origin == PAGES_ORIGIN:
+            return True
         parsed = urlsplit(origin)
         return parsed.scheme == 'http' and parsed.hostname in ('localhost', '127.0.0.1')
 
@@ -57,6 +64,9 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_response(204)
         self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        # Chrome asks before a public HTTPS page may reach this local server.
+        if self.headers.get('Access-Control-Request-Private-Network') == 'true':
+            self.send_header('Access-Control-Allow-Private-Network', 'true')
         self.end_headers()
 
     def do_POST(self):
