@@ -43,7 +43,7 @@ async function playDiagnosisEntrance() {
   const timings = { drop: 1100, bounce: 1050, shrink: 850, unfold: 950, question: 400 };
   const easing = "cubic-bezier(0.22, 0.61, 0.36, 1)";
   function animate(element, frames, duration, extra = {}) {
-    const animation = element.animate(frames, { easing, fill: "both", ...extra, duration: duration * 0.4, delay: (extra.delay || 0) * 0.4 });
+    const animation = element.animate(frames, { duration, easing, fill: "both", ...extra });
     animations.push(animation);
     return animation.finished;
   }
