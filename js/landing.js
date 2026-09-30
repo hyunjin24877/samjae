@@ -21,7 +21,7 @@
     zoomStarted = true;
     clearTimeout(openingFallback);
     landing.classList.add("is-zooming");
-    navigationFallback = setTimeout(navigate, 750);
+    navigationFallback = setTimeout(navigate, 1800);
   };
 
   enterButton.addEventListener("click", () => {
@@ -29,7 +29,7 @@
     isEntering = true;
     enterButton.disabled = true;
     landing.classList.add("is-entering");
-    openingFallback = setTimeout(startZoom, 900);
+    openingFallback = setTimeout(startZoom, 2200);
   });
 
   leaf.addEventListener("transitionend", (event) => {

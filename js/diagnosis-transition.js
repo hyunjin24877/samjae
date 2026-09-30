@@ -153,8 +153,8 @@
       [$('.diagnosis-scroll-top'), { top: '50%', transform: 'translateY(-100%)' }, { top: '0%', transform: 'translateY(0%)' }],
       [$('.diagnosis-scroll-bottom'), { bottom: '50%', transform: 'translateY(100%)' }, { bottom: '0%', transform: 'translateY(0%)' }]
     ];
-    const animations = frames.map(([el, closed, opened]) => animate(el, open ? [closed, opened] : [opened, closed], 280));
-    if (open) animations.push(animate($('.diagnosis-result'), [{ opacity: 0 }, { opacity: 1 }], 120, 220));
+    const animations = frames.map(([el, closed, opened]) => animate(el, open ? [closed, opened] : [opened, closed], 850));
+    if (open) animations.push(animate($('.diagnosis-result'), [{ opacity: 0 }, { opacity: 1 }], 350, 700));
     await Promise.all(animations.map(a => a.finished));
     // 종료 스타일을 먼저 고정하고 애니메이션을 제거한다.
     frames.forEach(([el, closed, opened]) => Object.assign(el.style, open ? opened : closed));
@@ -169,7 +169,7 @@
     try {
       // 새 질문을 준비하는 동안 현재 질문을 유지한다.
       prepared = await prepare(index);
-      const fade = animate($('.diagnosis-result'), [{ opacity: 1 }, { opacity: 0 }], 100);
+      const fade = animate($('.diagnosis-result'), [{ opacity: 1 }, { opacity: 0 }], 250);
       await fade.finished;
       $('.diagnosis-result').style.opacity = '0'; fade.cancel();
       await fold(false);
@@ -245,7 +245,7 @@
     const number = url.match(/-(\d{2})\.html$/)?.[1];
     const section = wheelResults.indexOf(number);
     if (section < 0) return;
-    const timings = { hold: 250, extinguish: 160, reveal: 200, spin: 1800, settle: 250 };
+    const timings = { hold: 1000, extinguish: 550, reveal: 500, spin: 6500, settle: 800 };
     const overlay = document.createElement('section');
     overlay.className = 'diagnosis-result-reveal';
     overlay.setAttribute('role', 'status');
