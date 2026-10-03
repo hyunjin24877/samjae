@@ -1,10 +1,39 @@
 # TM-T83III USB 영수증 출력
 
-macOS에서 실행:
+## macOS 자동 실행
+
+LaunchAgent 원본: `tools/com.samjae.receipt-server.plist`.
+설치 위치: `~/Library/LaunchAgents/com.samjae.receipt-server.plist`.
+로그인 후 백그라운드에서 실행하며 종료 시 launchd가 5초 간격으로 재시작합니다.
+실행 시간 제한은 없습니다. 동일 LaunchAgent는 하나의 프로세스만 관리하고,
+127.0.0.1:8765 포트 바인딩이 중복 서버의 실행을 막습니다.
+
+현재 환경에서 확인한 실행 경로:
+- Python: `/Library/Developer/CommandLineTools/usr/bin/python3`
+- 서버: `/Users/hyeonjin/Desktop/samjae_wep/tools/receipt_server.py`
+
+프로젝트가 Desktop에 있으므로 macOS가 백그라운드 Python의 접근을 차단하면
+시스템 설정 → 개인정보 보호 및 보안 → 전체 디스크 접근 권한에서 위 Python을
+추가하고 활성화해야 합니다. 권한을 변경한 뒤 다시 등록합니다.
 
 ```sh
-python3 tools/receipt_server.py
+launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.samjae.receipt-server.plist"
 ```
+
+상태 확인 / 재시작 / 현재 로그인 세션에서 중지:
+
+```sh
+launchctl print "gui/$(id -u)/com.samjae.receipt-server"
+launchctl kickstart -k "gui/$(id -u)/com.samjae.receipt-server"
+launchctl bootout "gui/$(id -u)/com.samjae.receipt-server"
+```
+
+로그: `~/Library/Logs/SamjaeReceipt/server.log`, `error.log`.
+자동 실행을 영구 중지하려면 bootout 후 설치 위치의 plist를 제거합니다.
+수동 실행이 필요하면 LaunchAgent를 먼저 중지한 뒤 `python3 tools/receipt_server.py`를 실행합니다.
+
+서버 코드에는 2시간 종료 타이머가 없습니다. 30초 요청 수신 제한과 60초 CUPS
+작업 접수 제한은 서버 수명과 무관하며 기존 출력 동작을 보호하므로 유지합니다.
 
 서버가 실행된 상태에서 http://127.0.0.1:8765/landing.html 에 접속합니다.
 기존 localhost/127.0.0.1 HTTP 개발 서버와 GitHub Pages

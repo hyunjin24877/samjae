@@ -118,16 +118,16 @@
       // 팝업 배경 이미지
       // =========================
 
-      let popupBg = "/img/example/popup-1.svg";
+      let popupBg = sitePath("img/example/popup-1.svg");
 
       // 부산
       if (location.includes("부산")) {
-        popupBg = "/img/example/popup-2.svg";
+        popupBg = sitePath("img/example/popup-2.svg");
       }
 
       // 고대리 안섬
       else if (location.includes("고대리 안섬")) {
-        popupBg = "/img/example/popup-3.svg";
+        popupBg = sitePath("img/example/popup-3.svg");
       }
 
       // 별도 SVG가 없는 지역은 기본 외곽을 사용한다.

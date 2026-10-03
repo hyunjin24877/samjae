@@ -1,9 +1,9 @@
-/* 결과 01: 해안무속공동체 — diagnosis-result-01.html
+/* 결과 08: 해안종교개인 — diagnosis-result-08.html
  * PC 모션은 기존 무작위 배치를 유지합니다. 고정하려면 해당 --motion-top/left를
  * 직접 지정하고 반대편 right/bottom은 auto로 두세요. 모바일 값도 에셋별 조절 가능합니다. */
 
-.result-character-01 {
-  --character-width: 220px;
+.result-character-08 {
+  --character-width: 250px;
   --character-height: auto;
   --character-top: 50%;
   --character-left: 50%;
@@ -13,7 +13,7 @@
   --character-mobile-width: min(220px, 29.233cqw);
 }
 
-.result-01-motion-pen-1 {
+.result-08-motion-writer-1 {
   --motion-width: 80px;
   --motion-height: auto;
   --motion-top: var(--motion-random-top, -55px);
@@ -26,34 +26,8 @@
   --motion-mobile-transform: none;
 }
 
-.result-01-motion-cloth-1 {
-  --motion-width: 80px;
-  --motion-height: auto;
-  --motion-top: var(--motion-random-top, -27px);
-  --motion-left: var(--motion-random-left, auto);
-  --motion-right: auto;
-  --motion-bottom: auto;
-  --motion-transform: none;
-  --motion-mobile-width: min(80px, 60px, 18%);
-  --motion-mobile-height: 64px;
-  --motion-mobile-transform: none;
-}
-
-.result-01-motion-money1-1 {
-  --motion-width: 30px;
-  --motion-height: auto;
-  --motion-top: var(--motion-random-top, 12px);
-  --motion-left: var(--motion-random-left, 62%);
-  --motion-right: auto;
-  --motion-bottom: auto;
-  --motion-transform: none;
-  --motion-mobile-width: min(30px, 60px, 18%);
-  --motion-mobile-height: 64px;
-  --motion-mobile-transform: none;
-}
-
-.result-01-motion-fire-1 {
-  --motion-width: 70px;
+.result-08-motion-burning-amulet-1 {
+  --motion-width: 100px;
   --motion-height: auto;
   --motion-top: var(--motion-random-top, -30px);
   --motion-left: var(--motion-random-left, auto);
@@ -65,20 +39,20 @@
   --motion-mobile-transform: none;
 }
 
-.result-01-motion-money2-1 {
-  --motion-width: 30px;
+.result-08-motion-chiseong-1 {
+  --motion-width: 80px;
   --motion-height: auto;
-  --motion-top: var(--motion-random-top, 12px);
-  --motion-left: var(--motion-random-left, 62%);
+  --motion-top: var(--motion-random-top, -55px);
+  --motion-left: var(--motion-random-left, 30%);
   --motion-right: auto;
   --motion-bottom: auto;
   --motion-transform: none;
-  --motion-mobile-width: min(30px, 60px, 18%);
+  --motion-mobile-width: min(80px, 60px, 18%);
   --motion-mobile-height: 64px;
   --motion-mobile-transform: none;
 }
 
-.result-01-motion-boat-1 {
+.result-08-motion-pray-1 {
   --motion-width: 70px;
   --motion-height: auto;
   --motion-top: var(--motion-random-top, -15px);
@@ -91,8 +65,8 @@
   --motion-mobile-transform: none;
 }
 
-.result-01-motion-song-1 {
-  --motion-width: 250px;
+.result-08-motion-song-1 {
+  --motion-width: 150px;
   --motion-height: auto;
   --motion-top: var(--motion-random-top, -32px);
   --motion-left: var(--motion-random-left, auto);

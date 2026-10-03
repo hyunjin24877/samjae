@@ -37,14 +37,14 @@ function setNextButton(active) {
     diagnosisNext.classList.remove("is-disabled");
 
     diagnosisNextImg.src =
-      "/img/diagnosis/diagnosis-next.svg";
+      sitePath("img/diagnosis/diagnosis-next.svg");
 
   } else {
 
     diagnosisNext.classList.add("is-disabled");
 
     diagnosisNextImg.src =
-      "/img/diagnosis/diagnosis-next-disable.svg";
+      sitePath("img/diagnosis/diagnosis-next-disable.svg");
 
   }
 

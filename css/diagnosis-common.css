@@ -405,13 +405,50 @@
   height: auto;
 }
 
-.diagnosis-choices .diagnosis-card .diagnosis-card-art {
+/* 모든 카드의 이미지/영상 크기는 이 wrapper에서 함께 조절합니다. */
+.diagnosis-choices .diagnosis-card .diagnosis-card-art-wrap {
+  --diagnosis-art-width: 100%;
+  --diagnosis-art-height: 100%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--diagnosis-art-width);
+  height: var(--diagnosis-art-height);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.diagnosis-choices .diagnosis-card .diagnosis-card-art-wrap > img,
+.diagnosis-choices .diagnosis-card .diagnosis-card-art-wrap > video {
   position: absolute;
   inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
+  object-position: center;
   pointer-events: none;
+}
+
+.diagnosis-choices .diagnosis-card[data-value="burn"] .diagnosis-card-art {
+  inset: auto;
+  top: 45%;
+  left: 50%;
+  width: 211px;
+  height: 318px;
+  transform: translate(-50%, -50%);
+}
+
+/* 막고 싶다 영상의 투명 여백을 고려해 SVG의 실제 도형 크기와 중심을 맞춥니다. */
+.diagnosis-choices .diagnosis-card .diagnosis-card-art-wrap > .diagnosis-motion-obstruct {
+  --diagnosis-obstruct-x: 1.4%;
+  --diagnosis-obstruct-y: -3.4%;
+  --diagnosis-obstruct-scale: .80;
+
+  transform-origin: center;
+  transform: translate(var(--diagnosis-obstruct-x), var(--diagnosis-obstruct-y))
+    scale(var(--diagnosis-obstruct-scale));
 }
 
 .diagnosis-choices .diagnosis-card .diagnosis-card-label {
@@ -429,18 +466,16 @@
   opacity: 0.4;
 }
 
-/* Keep illustrations still until selected; selection uses the existing scale. */
-.diagnosis-choices:not(.has-selection) .diagnosis-choice.diagnosis-card:hover {
+/* 선택/hover 전후에도 카드와 그래픽의 표시 크기를 유지합니다. */
+.diagnosis-choices .diagnosis-choice.diagnosis-card,
+.diagnosis-choices .diagnosis-choice.diagnosis-card:hover,
+.diagnosis-choices.has-selection .diagnosis-choice.diagnosis-card:not(.is-selected) {
   transform: scale(1);
 }
 
+.diagnosis-choices .diagnosis-card { overflow: hidden; }
+
 .diagnosis-choices .diagnosis-card .diagnosis-card-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  pointer-events: none;
   visibility: hidden;
 }
 
@@ -452,10 +487,37 @@
   visibility: hidden;
 }
 
-/* Identical source frame, aspect ratio and artwork bounds before/after playback. */
-.diagnosis-choices .diagnosis-card[data-value="shamanism"] .diagnosis-card-art,
-.diagnosis-choices .diagnosis-card[data-value="shamanism"] .diagnosis-card-video {
-  object-fit: contain;
-  transform: scale(.76);
+/* 기존 무속 포스터의 여백 보정도 두 미디어의 공통 wrapper에 적용합니다. */
+.diagnosis-choices .diagnosis-card[data-value="shamanism"] .diagnosis-card-art-wrap {
+  transform: translate(-50%, -50%) scale(.76);
   transform-origin: 50% 46%;
+}
+
+/* diagnosis-religion-art.webm 영상 크기만 조절 */
+.diagnosis-choices .diagnosis-card .diagnosis-card-art-wrap > video.diagnosis-motion-religion {
+  transform: scale(.8);
+}
+
+/* 영상 원본의 투명 여백/방향만 보정합니다. 공통 wrapper 크기는 유지합니다.
+   x/y는 wrapper 대비 이동량, rotate는 회전각, scale은 균일 배율입니다. */
+.diagnosis-motion-flow {
+  /* 배 SVG와 WebM 첫 프레임의 실제 도형 영역/중심을 맞춥니다. */
+  --diagnosis-motion-x: -.08%;
+  --diagnosis-motion-y: -.30%;
+  --diagnosis-motion-rotate: 0deg;
+  --diagnosis-motion-scale: 1.008;
+}
+
+.diagnosis-motion-burn {
+  /* 불꽃이 없는 첫 프레임의 라이터 몸체를 기본 SVG와 정렬합니다. */
+  --diagnosis-motion-x: -5.8%;
+  --diagnosis-motion-y: -6%;
+  --diagnosis-motion-rotate: 0deg;
+  --diagnosis-motion-scale: 100%;
+}
+
+.diagnosis-choices .diagnosis-card .diagnosis-card-art-wrap > video:is(.diagnosis-motion-flow, .diagnosis-motion-burn) {
+  transform-origin: center;
+  transform: translate(var(--diagnosis-motion-x), var(--diagnosis-motion-y))
+    rotate(var(--diagnosis-motion-rotate)) scale(var(--diagnosis-motion-scale));
 }

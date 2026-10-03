@@ -2,7 +2,7 @@
 <html lang="ko">
 
 <head>
-  <script src="/js/diagnosis-session.js"></script>
+  <script src="../js/diagnosis-session.js?v=20261003-pages"></script>
   <meta charset="UTF-8">
 
   <meta
@@ -17,16 +17,17 @@
        CSS
   ====================== -->
 
+  <link rel="preload" href="../font/OnulSijak-Regular.woff" as="font" type="font/woff" crossorigin>
   <link
-    rel="stylesheet" href="/css/font.css">
+    rel="stylesheet" href="../css/font.css?v=20261003-pages">
 
-  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="../css/header.css?v=20261003-pages">
 
-  <link rel="stylesheet" href="/css/background.css">
-    <link rel="stylesheet" href="/css/result-common.css?v=icons-stagger-3">
-  <link rel="stylesheet" href="/css/result-01.css">
+  <link rel="stylesheet" href="../css/background.css?v=20261003-pages">
+    <link rel="stylesheet" href="../css/result-common.css?v=20261003-pages">
+  <link rel="stylesheet" href="../css/result-05.css?v=20261003-pages">
 
-  <script src="/js/site-cursor.js" defer></script>
+  <script src="../js/site-cursor.js?v=20261003-pages" defer></script>
 
 </head>
 
@@ -39,13 +40,13 @@
   ====================== -->
 
   <img
-    src="/img/back/back-dote.webp"
+    src="../img/back/back-dote.webp"
     class="back-dote"
     alt=""
   >
-   <video src="/img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
+   <video src="../img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
   <img
-    src="/img/back/back-grey-gradient.webp"
+    src="../img/back/back-grey-gradient.webp"
     class="back-grey-gradient"
     alt=""
   >
@@ -60,13 +61,13 @@
   <div class="doors">
 
     <img
-      src="/img/door.svg"
+      src="../img/door.svg"
       class="door door-left"
       alt=""
     >
 
     <img
-      src="/img/door.svg"
+      src="../img/door.svg"
       class="door door-right"
       alt=""
     >
@@ -88,13 +89,13 @@
       <button
         type="button"
         class="circle-btn"
-        onclick="location.href='/landing.html'"
+        onclick="location.href='../landing.html'"
       >
 
         <span class="inner-circle">
 
           <img
-            src="/img/home.svg"
+            src="../img/home.svg"
             alt="홈"
           >
 
@@ -114,7 +115,7 @@
         <span class="inner-circle">
 
           <img
-            src="/img/prev.svg"
+            src="../img/prev.svg"
             alt="이전"
           >
 
@@ -134,7 +135,7 @@
         <span class="inner-circle">
 
           <img
-            src="/img/next.svg"
+            src="../img/next.svg"
             alt="다음"
           >
 
@@ -158,37 +159,37 @@
 
 <main class="result-main">
   <article class="result-paper" aria-labelledby="resultTitle">
-    <img class="result-paper-bottom" src="/img/result/stroke-up.svg" alt="" aria-hidden="true">
+    <img class="result-paper-bottom" src="../img/result/stroke-up.svg" alt="" aria-hidden="true">
     <header class="result-heading">
       <div class="result-title-layout">
-        <img class="result-stroke-up" src="/img/result/stroke-up.svg" alt="" aria-hidden="true">
+        <img class="result-stroke-up" src="../img/result/stroke-up.svg" alt="" aria-hidden="true">
         <h1 id="resultTitle" class="result-title-logos" aria-label="山巫共 — 산지 무속 공동체">
-          <img src="/img/result/logo/logo-mountain.svg" alt="" aria-hidden="true">
-          <img src="/img/result/logo/shamanism.svg" alt="" aria-hidden="true">
-          <img src="/img/result/logo/logo-community.svg" alt="" aria-hidden="true">
+          <img src="../img/result/logo/logo-mountain.svg" alt="" aria-hidden="true">
+          <img src="../img/result/logo/shamanism.svg" alt="" aria-hidden="true">
+          <img src="../img/result/logo/logo-community.svg" alt="" aria-hidden="true">
         </h1>
         <div class="result-title-bottom" aria-hidden="true">
-          <img src="/img/result/stroke-up-2.svg" alt="">
-          <img src="/img/result/stroke-up-2.svg" alt="">
+          <img src="../img/result/stroke-up-2.svg" alt="">
+          <img src="../img/result/stroke-up-2.svg" alt="">
         </div>
       </div>
-      <img class="result-title-divider" src="/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+      <img class="result-title-divider" src="../img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
       <ul class="result-tags" aria-label="진단 유형">
-        <li><button type="button" class="result-type-button result-type-label" data-result-type="mountain"><img class="result-tag-frame" src="/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>산지</span></button></li>
-        <li><button type="button" class="result-type-button result-type-label" data-result-type="shamanism"><img class="result-tag-frame" src="/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>무속</span></button></li>
-        <li><button type="button" class="result-type-button result-type-label" data-result-type="community"><img class="result-tag-frame" src="/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>공동체</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="mountain"><img class="result-tag-frame" src="../img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>산지</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="shamanism"><img class="result-tag-frame" src="../img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>무속</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="community"><img class="result-tag-frame" src="../img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>공동체</span></button></li>
       </ul>
-      <img class="result-tags-divider" src="/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+      <img class="result-tags-divider" src="../img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
     </header>
 
     <figure class="result-portrait">
-      <img class="result-art-back" src="/img/result/result-back.svg" alt="">
-      <img class="result-dragon" src="/img/keyvisual/snake4.svg" alt="산지무속공동체 유형의 뱀" style="transform: translate(-50%, -50%) scaleX(-1);">
-      <img class="result-art-logo" src="/img/result/result-logo.svg" alt="" aria-hidden="true">
-      <img class="result-art-side side-left" src="/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
-      <img class="result-art-side side-right" src="/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
-      <img class="result-art-edge edge-top" src="/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
-      <img class="result-art-edge edge-bottom" src="/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+      <img class="result-art-back" src="../img/result/result-back.svg" alt="">
+      <img class="result-dragon result-character-05" src="../img/keyvisual/snake4.svg" alt="산지무속공동체 유형의 뱀">
+      <img class="result-art-logo" src="../img/result/result-logo.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-left" src="../img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-right" src="../img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-top" src="../img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-bottom" src="../img/result/result-stroke-2.svg" alt="" aria-hidden="true">
     </figure>
 
     <div class="result-introduction samjaerok-body-center">
@@ -208,12 +209,12 @@
         <dd>
           <ol class="result-steps">
             <li>북어를 그릇에 담아 제물을 준비한다.
-              <img data-src="/img/result/pollack.webp" data-loop-ms="5320" class="method-deco deco-pen" alt="" hidden></li>
+              <img data-src="../img/result/pollack.webp" data-loop-ms="5320" class="method-deco result-05-motion-pollack-1" alt="" hidden></li>
             <li>당사자가 아닌 다른 사람이 술을 땅에 뿌리며 고시레를 한다.
-              <img data-src="/img/result/gosire.webp" data-loop-ms="5320" class="method-deco deco-boat" alt="" hidden></li>
+              <img data-src="../img/result/gosire.webp" data-loop-ms="5320" class="method-deco result-05-motion-gosire-1" alt="" hidden></li>
             <li>이후 당사자가 북어를 불에 태우거나 땅에 묻어 의례를 마무리한다.
-              <img data-src="/img/result/pollack.webp" data-loop-ms="5320" class="method-deco deco-pen" alt="" hidden>
-              <img data-src="/img/result/fire.webp" data-loop-ms="5320" class="method-deco deco-fire" alt="" hidden></li>
+              <img data-src="../img/result/pollack.webp" data-loop-ms="5320" class="method-deco result-05-motion-pollack-2" alt="" hidden>
+              <img data-src="../img/result/fire.webp" data-loop-ms="5320" class="method-deco result-05-motion-fire-1" alt="" hidden></li>
           </ol>
           <p class="result-method-note"><span class="note-marker">*</span><span class="note-text">고시레는 야외에서 음식을 먹기 전, 첫 술을 떼어 땅이나 허공에 던지며 농경신이나 조상에게 감사를 표하고 풍년을 기원하는 한국의 전통 풍습</span></p>
         </dd>
@@ -226,10 +227,10 @@
 
   <nav class="result-controls" aria-label="결과 활용">
     <button type="button" class="result-action button-filter" id="resultPrint"><span>점지법 출력하기</span></button>
-    <a class="result-action  button-filter" href="/gather.html"><span>다른 방법도 보러가기</span></a>
+    <a class="result-action  button-filter" href="../gather.html"><span>다른 방법도 보러가기</span></a>
     <button type="button" class="result-retry button-filter" id="resultRetry">다시하기</button>
   </nav>
 </main>
-<script src="/js/result.js?v=icons-stagger-3" defer></script>
+<script src="../js/result.js?v=20261003-pages" defer></script>
 </body>
 </html>

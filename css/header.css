@@ -170,3 +170,13 @@
 .gnb-button.current .menu-hover {
   opacity: 0;
 }
+
+@media (max-width: 768px) {
+  .header { top: 12px; width: calc(100% - 24px); max-width: 100%; }
+  .header-controls { gap: 4px; margin-left: 0; }
+  .circle-btn { width: 36px; height: 36px; }
+  .inner-circle { width: 32px; height: 32px; }
+  .inner-circle img { width: 20px; height: 20px; }
+  .gnb { min-width: 0; overflow-x: auto; gap: 6px; }
+  .gnb-button img { height: 36px; }
+}

@@ -111,3 +111,9 @@ body {
   transform: scaleX(-1);
 }
 
+
+/* 좌우 문 장식은 스마트폰 폭에서만 제거합니다. */
+@media (max-width: 768px) {
+  .doors { display: none; }
+  html, body { overflow-x: clip; }
+}

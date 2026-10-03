@@ -13,7 +13,7 @@
 
   const navigate = () => {
     clearTimeout(navigationFallback);
-    location.href = "/welcome.html";
+    location.href = sitePath("welcome.html");
   };
 
   const startZoom = () => {

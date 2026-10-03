@@ -272,7 +272,7 @@
   width: 150px;
 
   background:
-    url("/img/example/example-location-label.svg")
+    url("../img/example/example-location-label.svg")
     center / 100% 100% no-repeat;
 }
 
@@ -282,7 +282,7 @@
   width: 90px;
 
   background:
-    url("/img/example/example-location-label2.svg")
+    url("../img/example/example-location-label2.svg")
     center / 100% 100% no-repeat;
 }
 
@@ -291,7 +291,7 @@
   width: 110px;
 
   background:
-    url("/img/example/example-location-label3.svg")
+    url("../img/example/example-location-label3.svg")
     center / 100% 100% no-repeat;
 }
 

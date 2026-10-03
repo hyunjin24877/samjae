@@ -439,7 +439,7 @@ width: 16px;
   align-self: center;
   margin: 0;
   padding: 0;
-  line-height: 28px;
+  line-height: 1.75rem;
 }
 
 .testimony-list-head > span {
@@ -559,14 +559,14 @@ width: 16px;
   margin: 0 0 12px;
 
   font-family: "OnulSijak", sans-serif;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 400;
-  line-height: 31px;
+  line-height: 1.9375rem;
   letter-spacing: -2;
   text-align: left;
   word-break: keep-all;
-  word-spacing: -2px;
-  letter-spacing: -1.8px;
+  word-spacing: -0.125rem;
+  letter-spacing: -0.1125rem;
 }
 
 /* 회색 답변 */
@@ -574,12 +574,12 @@ width: 16px;
   margin: 0;
   padding-left: 45px;
   font-family: "OnulSijak", sans-serif;
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 1.125rem;
+  line-height: 1.5625rem;
   text-align: left;
   word-break: keep-all;
-  word-spacing: 2px;
-  letter-spacing: -2px;
+  word-spacing: 0.125rem;
+  letter-spacing: -0.125rem;
 
   color: #888;
   opacity: 1;

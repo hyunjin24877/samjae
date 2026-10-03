@@ -24,7 +24,7 @@ async function playDiagnosisEntrance() {
   const top = motion.querySelector(".diagnosis-scroll-top");
   const bottom = motion.querySelector(".diagnosis-scroll-bottom");
   const question = motion.querySelector(".diagnosis-result");
-  const openedRodSources = ["/img/diagnosis/scroll-top2.svg", "/img/diagnosis/scroll-dowon2.svg"];
+  const openedRodSources = [sitePath("img/diagnosis/scroll-top2.svg"), sitePath("img/diagnosis/scroll-dowon2.svg")];
   const openedRodsReady = Promise.all(openedRodSources.map(src => {
     const image = new Image();
     image.src = src;

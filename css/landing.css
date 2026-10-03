@@ -43,7 +43,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: url("/img/back/back-grey-gradient.webp") center / cover no-repeat;
+  background: url("../img/back/back-grey-gradient.webp") center / cover no-repeat;
   opacity: 0.5;
   pointer-events: none;
 }
@@ -54,8 +54,8 @@ body {
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  -webkit-mask-image: url("/img/landing/side-feather-mask.svg");
-  mask-image: url("/img/landing/side-feather-mask.svg");
+  -webkit-mask-image: url("../img/landing/side-feather-mask.svg");
+  mask-image: url("../img/landing/side-feather-mask.svg");
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
@@ -1057,57 +1057,6 @@ body {
 
 .landing-scroll .scroll-row img:nth-child(3) {
   z-index: 1;
-}
-
-/* Only the top scroll rolls inward; the right pile mirrors the motion. */
-.landing-scroll .scroll-row:first-child img {
-  --roll-distance: 150px;
-  --roll-turn: 540deg;
-  --roll-drop: 48px;
-  transform-origin: 50% 55%;
-  animation: scroll-roll-off var(--scene-motion-duration) linear infinite;
-}
-
-@keyframes scroll-roll-off {
-  0%, 16%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-    opacity: 1;
-  }
-  24% {
-    transform: translate(8px, -5px) rotate(15deg);
-    opacity: 1;
-  }
-  38% {
-    transform: translate(calc(var(--roll-distance) * 0.25), calc(var(--roll-drop) * 0.5 - 12px)) rotate(100deg);
-  }
-  50% {
-    transform: translate(calc(var(--roll-distance) * 0.48), calc(var(--roll-drop) - 12px)) rotate(220deg);
-  }
-  59% {
-    transform: translate(calc(var(--roll-distance) * 0.65), calc(var(--roll-drop) - 28px)) rotate(330deg);
-  }
-  69% {
-    transform: translate(calc(var(--roll-distance) * 0.84), calc(var(--roll-drop) - 20px)) rotate(calc(var(--roll-turn) * 0.85));
-    opacity: 1;
-  }
-  78% {
-    transform: translate(var(--roll-distance), calc(var(--roll-drop) - 30px)) rotate(var(--roll-turn));
-    opacity: 1;
-  }
-  85% {
-    transform: translate(calc(var(--roll-distance) + 8px), calc(var(--roll-drop) - 32px)) rotate(calc(var(--roll-turn) + 25deg));
-    opacity: 0;
-  }
-  86%, 91% {
-    transform: translate(0, 0) rotate(0deg);
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .landing-scroll .scroll-row:first-child img {
-    animation: none;
-  }
 }
 
 .scroll-left {

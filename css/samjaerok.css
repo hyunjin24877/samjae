@@ -547,7 +547,7 @@ body * {
   bottom: 0;
 
   background:
-    url("/img/samjaerok/samjaerok-mouse.svg")
+    url("../img/samjaerok/samjaerok-mouse.svg")
     no-repeat
     center / contain;
 

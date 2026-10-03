@@ -2,7 +2,7 @@
 <html lang="ko">
 
 <head>
-  <script src="/js/diagnosis-session.js"></script>
+  <script src="../js/diagnosis-session.js?v=20261003-pages"></script>
   <meta charset="UTF-8">
 
   <meta
@@ -17,16 +17,17 @@
        CSS
   ====================== -->
 
+  <link rel="preload" href="../font/OnulSijak-Regular.woff" as="font" type="font/woff" crossorigin>
   <link
-    rel="stylesheet" href="/css/font.css">
+    rel="stylesheet" href="../css/font.css?v=20261003-pages">
 
-  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="../css/header.css?v=20261003-pages">
 
-  <link rel="stylesheet" href="/css/background.css">
-    <link rel="stylesheet" href="/css/result-common.css?v=icons-stagger-3">
-  <link rel="stylesheet" href="/css/result-01.css">
+  <link rel="stylesheet" href="../css/background.css?v=20261003-pages">
+    <link rel="stylesheet" href="../css/result-common.css?v=20261003-pages">
+  <link rel="stylesheet" href="../css/result-08.css?v=20261003-pages">
 
-  <script src="/js/site-cursor.js" defer></script>
+  <script src="../js/site-cursor.js?v=20261003-pages" defer></script>
 
 </head>
 
@@ -39,13 +40,13 @@
   ====================== -->
 
   <img
-    src="/img/back/back-dote.webp"
+    src="../img/back/back-dote.webp"
     class="back-dote"
     alt=""
   >
-   <video src="/img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
+   <video src="../img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
   <img
-    src="/img/back/back-grey-gradient.webp"
+    src="../img/back/back-grey-gradient.webp"
     class="back-grey-gradient"
     alt=""
   >
@@ -60,13 +61,13 @@
   <div class="doors">
 
     <img
-      src="/img/door.svg"
+      src="../img/door.svg"
       class="door door-left"
       alt=""
     >
 
     <img
-      src="/img/door.svg"
+      src="../img/door.svg"
       class="door door-right"
       alt=""
     >
@@ -88,13 +89,13 @@
       <button
         type="button"
         class="circle-btn"
-        onclick="location.href='/landing.html'"
+        onclick="location.href='../landing.html'"
       >
 
         <span class="inner-circle">
 
           <img
-            src="/img/home.svg"
+            src="../img/home.svg"
             alt="홈"
           >
 
@@ -114,7 +115,7 @@
         <span class="inner-circle">
 
           <img
-            src="/img/prev.svg"
+            src="../img/prev.svg"
             alt="이전"
           >
 
@@ -134,7 +135,7 @@
         <span class="inner-circle">
 
           <img
-            src="/img/next.svg"
+            src="../img/next.svg"
             alt="다음"
           >
 
@@ -158,37 +159,37 @@
 
 <main class="result-main">
   <article class="result-paper" aria-labelledby="resultTitle">
-    <img class="result-paper-bottom" src="/img/result/stroke-up.svg" alt="" aria-hidden="true">
+    <img class="result-paper-bottom" src="../img/result/stroke-up.svg" alt="" aria-hidden="true">
     <header class="result-heading">
       <div class="result-title-layout">
-        <img class="result-stroke-up" src="/img/result/stroke-up.svg" alt="" aria-hidden="true">
+        <img class="result-stroke-up" src="../img/result/stroke-up.svg" alt="" aria-hidden="true">
         <h1 id="resultTitle" class="result-title-logos" aria-label="海宗個 — 해안 종교 개인">
-          <img src="/img/result/logo/logo-ocean.svg" alt="" aria-hidden="true">
-          <img src="/img/result/logo/logo-religion.svg" alt="" aria-hidden="true">
-          <img src="/img/result/logo/logo-individual.svg" alt="" aria-hidden="true">
+          <img src="../img/result/logo/logo-ocean.svg" alt="" aria-hidden="true">
+          <img src="../img/result/logo/logo-religion.svg" alt="" aria-hidden="true">
+          <img src="../img/result/logo/logo-individual.svg" alt="" aria-hidden="true">
         </h1>
         <div class="result-title-bottom" aria-hidden="true">
-          <img src="/img/result/stroke-up-2.svg" alt="">
-          <img src="/img/result/stroke-up-2.svg" alt="">
+          <img src="../img/result/stroke-up-2.svg" alt="">
+          <img src="../img/result/stroke-up-2.svg" alt="">
         </div>
       </div>
-      <img class="result-title-divider" src="/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+      <img class="result-title-divider" src="../img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
       <ul class="result-tags" aria-label="진단 유형">
-        <li><button type="button" class="result-type-button result-type-label" data-result-type="ocean"><img class="result-tag-frame" src="/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>해안</span></button></li>
-        <li><button type="button" class="result-type-button result-type-label" data-result-type="religion"><img class="result-tag-frame" src="/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>종교</span></button></li>
-        <li><button type="button" class="result-type-button result-type-label" data-result-type="individual"><img class="result-tag-frame" src="/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>개인</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="ocean"><img class="result-tag-frame" src="../img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>해안</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="religion"><img class="result-tag-frame" src="../img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>종교</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="individual"><img class="result-tag-frame" src="../img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>개인</span></button></li>
       </ul>
-      <img class="result-tags-divider" src="/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+      <img class="result-tags-divider" src="../img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
     </header>
 
     <figure class="result-portrait">
-      <img class="result-art-back" src="/img/result/result-back.svg" alt="">
-      <img class="result-dragon" src="/img/keyvisual/dragon4.svg" alt="해안종교개인 유형의 용">
-      <img class="result-art-logo" src="/img/result/result-logo.svg" alt="" aria-hidden="true">
-      <img class="result-art-side side-left" src="/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
-      <img class="result-art-side side-right" src="/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
-      <img class="result-art-edge edge-top" src="/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
-      <img class="result-art-edge edge-bottom" src="/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+      <img class="result-art-back" src="../img/result/result-back.svg" alt="">
+      <img class="result-dragon result-character-08" src="../img/keyvisual/dragon4.svg" alt="해안종교개인 유형의 용">
+      <img class="result-art-logo" src="../img/result/result-logo.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-left" src="../img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-right" src="../img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-top" src="../img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-bottom" src="../img/result/result-stroke-2.svg" alt="" aria-hidden="true">
     </figure>
 
     <div class="result-introduction samjaerok-body-center">
@@ -208,19 +209,19 @@
         <dd>
           <ol class="result-steps">
             <li>절에서 삼재 부적 두 장을 구입한다.
-              <img data-src="/img/result/writer.webp" data-loop-ms="6000" class="method-deco deco-pen" alt="" hidden></li>
+              <img data-src="../img/result/writer.webp" data-loop-ms="6000" class="method-deco result-08-motion-writer-1" alt="" hidden></li>
             <li>한 장은 몸에 지니고, 다른 한 장은 해안가에서 불에 태운다.
-              <img data-src="/img/result/burning amulet.webp" data-loop-ms="5320" class="method-deco deco-fire" alt="" hidden></li>
+              <img data-src="../img/result/burning amulet.webp" data-loop-ms="5320" class="method-deco result-08-motion-burning-amulet-1" alt="" hidden></li>
             <li>부적이 모두 타면 남은 재를 바다에 흘려보낸다.</li>
             <li>간단한 제물을 차려 절을 올리거나 축원을 외우며 치성을 드린다.
-              <img data-src="/img/result/chiseong.gif" data-loop-ms="600" class="method-deco deco-pen" alt="" hidden>
-              <img data-src="/img/result/pray.gif" data-loop-ms="1320" class="method-deco deco-boat" alt="" hidden></li>
+              <img data-src="../img/result/chiseong.gif" data-loop-ms="600" class="method-deco result-08-motion-chiseong-1" alt="" hidden>
+              <img data-src="../img/result/pray.gif" data-loop-ms="1320" class="method-deco result-08-motion-pray-1" alt="" hidden></li>
           </ol>
         </dd>
         <dt><span class="body1-center-underline">해설</span></dt>
         <dd class="result-explanation">몸에 지니는 부적은 재앙을 막아주는 보호의 의미를 가지며, 태우는 부적은 액운을 대신 담아 소멸시키는 상징이다. 불은 재앙을 정화하고, 바다는 액운을 멀리 흘려보내는 공간으로 여겨진다. 마지막 치성은 남은 한 해의 평안과 무사함을 기원하는 의미를 담고 있다.
 
-          <img data-src="/img/result/song.gif" data-loop-ms="3320" class="method-deco deco-song" alt="" hidden>
+          <img data-src="../img/result/song.gif" data-loop-ms="3320" class="method-deco result-08-motion-song-1" alt="" hidden>
         </dd>
       </dl>
     </section>
@@ -228,10 +229,10 @@
 
   <nav class="result-controls" aria-label="결과 활용">
     <button type="button" class="result-action button-filter" id="resultPrint"><span>점지법 출력하기</span></button>
-    <a class="result-action  button-filter" href="/gather.html"><span>다른 방법도 보러가기</span></a>
+    <a class="result-action  button-filter" href="../gather.html"><span>다른 방법도 보러가기</span></a>
     <button type="button" class="result-retry button-filter" id="resultRetry">다시하기</button>
   </nav>
 </main>
-<script src="/js/result.js?v=icons-stagger-3" defer></script>
+<script src="../js/result.js?v=20261003-pages" defer></script>
 </body>
 </html>
