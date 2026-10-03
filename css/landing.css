@@ -1698,25 +1698,80 @@ animation: star-spin 6s linear infinite;
 }
 
 
-/* =========================
-   TABLET
-========================= */
-
+/* Keep the desktop composition above 768px. On smaller screens the
+   scene uses the actual viewport instead of shrinking a 1920px canvas. */
 @media (max-width: 768px) {
   .landing {
-    zoom: 0.39;
+    --door-width: min(88vw, 54svh, 560px);
+    zoom: 1;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 100svh;
+    min-height: 480px;
+    transform: none;
   }
+
+  .landing-side-background {
+    display: none;
+  }
+
+  .landing-door,
+  .door-glow {
+    top: max(24px, calc((100svh - var(--door-width) * 907.09 / 879.13 - 190px) / 2));
+    width: var(--door-width);
+    height: auto;
+    aspect-ratio: 879.13 / 907.09;
+  }
+
+  .door-samjae {
+    top: 1%;
+    width: 97%;
+    height: auto;
+  }
+
+  .landing-floor {
+    height: 22%;
+    background: linear-gradient(to bottom, #d2d4c7 0 31%, #e8e5d4 31% 100%);
+  }
+
+  .landing-carpet {
+    width: min(135vw, 950px);
+  }
+
+  .landing-tiger {
+    width: min(30vw, 165px);
+    height: auto;
+    aspect-ratio: 306 / 450.9;
+    bottom: clamp(95px, 13svh, 145px);
+  }
+
+  .tiger-left {
+    left: max(2vw, calc(50% - 330px));
+  }
+
+  .tiger-right {
+    right: max(2vw, calc(50% - 330px));
+  }
+
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 480px) {
+@media (max-width: 768px) and (max-height: 560px) {
   .landing {
-    zoom: 0.24;
+    min-height: 0;
+    --door-width: min(56vw, 68svh);
   }
+
+  .landing-door,
+  .door-glow {
+    top: 8px;
+  }
+
+  .landing-tiger {
+    width: min(19vw, 95px);
+    bottom: 54px;
+  }
+
 }
 
 /* =========================
@@ -1798,4 +1853,25 @@ animation: star-spin 6s linear infinite;
 .landing-enter:hover .go-hover,
 .landing-enter:active .go-hover {
   opacity: 1;
+}
+
+/* The button's desktop hover rules above come after the scene breakpoints. */
+@media (max-width: 768px) {
+  .landing-enter {
+    bottom: max(22px, env(safe-area-inset-bottom));
+  }
+
+  .landing-enter img {
+    width: clamp(170px, 46vw, 250px);
+  }
+}
+
+@media (max-width: 768px) and (max-height: 560px) {
+  .landing-enter {
+    bottom: 8px;
+  }
+
+  .landing-enter img {
+    width: min(32vw, 150px);
+  }
 }
