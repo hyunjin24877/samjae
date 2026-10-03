@@ -43,7 +43,7 @@ body.site-stage {
   body.site-stage .testimony-guide-text { padding-inline: 16px; font-size: 1.0625rem; line-height: 1.5; }
   body.site-stage .testimony-guide-center { white-space: normal; }
   body.site-stage .testimony-detail-content { width: calc(100% - 28px); margin-inline: 14px; padding-inline: 16px; }
-  body.site-stage .testimony-answer-scroll .testimony-detail-content { height: clamp(320px, 55svh, 614px); padding-inline: 16px; }
+  body.site-stage .testimony-answer-scroll .testimony-detail-content { height: clamp(360px, 65svh, 911px); padding-inline: 16px; }
   body.site-stage .testimony-detail-content .testimony-answer { padding-left: 0; }
 
   /* 사례: 지도의 컨테이너와 팝업을 화면 안으로 제한. */

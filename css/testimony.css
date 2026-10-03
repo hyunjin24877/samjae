@@ -514,7 +514,7 @@ width: 16px;
 
   box-sizing: border-box;
   width: calc(100% - 28px);
-  height: 614px;
+  height: calc(1080px - 169px);
   min-height: 0;
   margin: 0 14px;
   padding: 42px 26px 40px;
@@ -596,8 +596,8 @@ width: 16px;
 /* 오른쪽 커스텀 스크롤바 */
 .testimony-detail-scrollbar {
   position: absolute;
-  top: 26px;
-  bottom: 26px;
+  top: 40px;
+  bottom: 40px;
   right: 14px;
   width: 10px;
 
