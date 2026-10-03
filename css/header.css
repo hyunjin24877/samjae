@@ -134,6 +134,32 @@
   width: auto;
 }
 
+/* SVG는 장식만 담당하고, 글자는 페이지에 로드한 OnulSijak으로 그립니다. */
+.gnb-button::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: #757575;
+  font-family: "OnulSijak", sans-serif;
+  font-size: 1.485rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.12em;
+  transform: translate(-2px, -3px);
+}
+
+.gnb-button.current::after { color: #231f20; }
+.gnb-button[href$="welcome.html"]::after { content: "맞이"; }
+.gnb-button[href$="diagnosis.html"]::after { content: "점지"; }
+.gnb-button[href$="gather.html"]::after { content: "풀이첩"; }
+.gnb-button[href$="testimony.html"]::after { content: "증언록"; }
+.gnb-button[href$="example.html"]::after { content: "채록"; }
+.gnb-button[href$="samjaerok.html"]::after { content: "삼재록"; }
+
 
 /* hover 이미지는 기본적으로 숨김 */
 .gnb-button .menu-hover {
@@ -171,7 +197,7 @@
   opacity: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
   .header { top: 12px; width: calc(100% - 24px); max-width: 100%; }
   .header-controls { gap: 4px; margin-left: 0; }
   .circle-btn { width: 36px; height: 36px; }
@@ -179,4 +205,5 @@
   .inner-circle img { width: 20px; height: 20px; }
   .gnb { min-width: 0; overflow-x: auto; gap: 6px; }
   .gnb-button img { height: 36px; }
+  .gnb-button::after { font-size: 0.891rem; transform: translate(-1.2px, -1.8px); }
 }

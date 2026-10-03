@@ -17,8 +17,8 @@ body.site-stage {
   overflow: auto;
 }
 
-/* 모바일에서는 고정 PC 캔버스를 해제하고 실제 뷰포트 안에 배치합니다. */
-@media (max-width: 768px) {
+/* 모바일과 태블릿에서는 고정 PC 캔버스를 해제합니다. */
+@media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
   html:has(body.site-stage) { height: auto; min-height: 100%; overflow-x: clip; overflow-y: auto; }
   body.site-stage {
     position: relative; inset: auto; width: 100%; height: auto; min-height: 100svh;
@@ -28,6 +28,7 @@ body.site-stage {
     position: relative; inset: auto; width: calc(100% - 24px);
     margin: 100px auto 40px; min-width: 0;
   }
+  body.site-stage .testimony-main { max-width: 760px; }
   body.site-stage .gather-main { width: calc(100% - 24px); min-height: 100svh; padding-top: 120px; }
 
   /* 증언: 두 고정 열을 세로로 배치하고 종이 내부 폭도 함께 축소. */
@@ -42,7 +43,7 @@ body.site-stage {
   body.site-stage .testimony-guide-text { padding-inline: 16px; font-size: 1.0625rem; line-height: 1.5; }
   body.site-stage .testimony-guide-center { white-space: normal; }
   body.site-stage .testimony-detail-content { width: calc(100% - 28px); margin-inline: 14px; padding-inline: 16px; }
-  body.site-stage .testimony-answer-scroll .testimony-detail-content { height: clamp(360px, 65svh, 911px); padding-inline: 16px; }
+  body.site-stage .testimony-answer-scroll .testimony-detail-content { height: clamp(320px, 55svh, 614px); padding-inline: 16px; }
   body.site-stage .testimony-detail-content .testimony-answer { padding-left: 0; }
 
   /* 사례: 지도의 컨테이너와 팝업을 화면 안으로 제한. */

@@ -4019,14 +4019,26 @@ const testimonyMotion = (() => {
   }
 
   function closedPose() {
-    // 닫혔을 때 하단 봉의 윗변이 상단 봉의 윗변(0)에 정확히 겹칩니다.
-    return Math.max(0, detail.offsetHeight - bottom.offsetHeight);
+    // 닫혔을 때 하단 봉의 아랫변이 상단 봉의 윗변에 닿습니다.
+    return detail.offsetHeight;
   }
 
   function setPaperEdge(hiddenHeight) {
-    // 종이의 마지막 지점 = 하단 봉의 윗변. 두 요소가 이 좌표 하나를 공유합니다.
-    const edge = Math.max(0, detail.offsetHeight - bottom.offsetHeight - hiddenHeight);
+    // 종이와 하단 봉은 같은 가장자리를 기준으로 펼쳐집니다.
+    const edge = Math.max(0, detail.offsetHeight - hiddenHeight);
     scroll.style.setProperty('--paper-edge', `${edge}px`);
+  }
+
+  function imageReady(image) {
+    if (image.complete) {
+      return image.naturalWidth ? Promise.resolve() : Promise.reject(new Error('image load failed'));
+    }
+    return new Promise((resolve, reject) => {
+      const loaded = () => { image.removeEventListener('error', failed); resolve(); };
+      const failed = () => { image.removeEventListener('load', loaded); reject(new Error('image load failed')); };
+      image.addEventListener('load', loaded, { once: true });
+      image.addEventListener('error', failed, { once: true });
+    });
   }
 
   async function unfold(open, token) {
@@ -4087,7 +4099,7 @@ const testimonyMotion = (() => {
     lock(true);
     try {
       // 봉 이미지의 실제 높이가 확정된 후 닫힌 위치를 계산합니다.
-      await Promise.all([top.decode(), bottom.decode(), openedTop.decode()]);
+      await Promise.all([imageReady(top), imageReady(bottom), imageReady(openedTop)]);
       if (token !== generation) return;
       if (selected) {
         await motion(body, [{opacity: 1}, {opacity: 0}], 180, token);
@@ -4103,7 +4115,7 @@ const testimonyMotion = (() => {
         bridge.alt = '';
         bridge.setAttribute('aria-hidden', 'true');
         guide.append(bridge);
-        await bridge.decode();
+        await imageReady(bridge);
         if (token !== generation) return;
         // 상단 위치를 공유하며 기존 장식을 가려 단일 봉으로 연결합니다.
         await Promise.all([
@@ -4125,7 +4137,7 @@ const testimonyMotion = (() => {
       detail.scrollTop = 0;
       rows.forEach(item => item.classList.toggle('is-selected', item === row));
       const closed = closedPose();
-      scroll.style.setProperty('--top-rod-height', `${top.offsetHeight}px`);
+      scroll.style.setProperty('--bottom-rod-height', `${bottom.offsetHeight}px`);
       setPaperEdge(closed);
       // 같은 SVG·폭·좌표의 연결 이미지를 실제 하단 봉에 한 프레임 안에서 넘깁니다.
       // 연결 이미지를 상단에 남겨 두거나, 이동하는 봉을 clip으로 가리지 않습니다.

@@ -514,7 +514,7 @@ width: 16px;
 
   box-sizing: border-box;
   width: calc(100% - 28px);
-  height: calc(1080px - 169px);
+  height: 614px;
   min-height: 0;
   margin: 0 14px;
   padding: 42px 26px 40px;
@@ -562,7 +562,6 @@ width: 16px;
   font-size: 1.375rem;
   font-weight: 400;
   line-height: 1.9375rem;
-  letter-spacing: -2;
   text-align: left;
   word-break: keep-all;
   word-spacing: -0.125rem;
@@ -700,10 +699,10 @@ width: 16px;
 .testimony-detail-body { opacity: 0; }
 .testimony-answer-scroll.is-transitioning { pointer-events: none; }
 .testimony-answer-scroll.is-transitioning .testimony-detail-content { overflow: hidden; }
-/* 원본 종이는 고정 크기로 두고, 하단 봉의 윗변까지 노출합니다. */
+/* 종이는 하단 봉의 아랫변까지 펼쳐집니다. */
 .testimony-answer-scroll {
   --paper-edge: 0px;
-  --top-rod-height: 35px;
+  --bottom-rod-height: 35px;
 }
 .testimony-answer-scroll .testimony-detail-content {
   clip-path: inset(0px 0px calc(100% - var(--paper-edge)) 0px);
@@ -712,7 +711,7 @@ width: 16px;
   z-index: 4;
 }
 .testimony-answer-bottom {
-    top: calc(var(--paper-edge) - 35px);
+  top: calc(var(--paper-edge) - var(--bottom-rod-height));
   bottom: auto;
   /* 종이 위에서 항상 온전한 말린 봉을 표시합니다. 시작점에서는 상단과 정확히 겹칩니다. */
   display: block;

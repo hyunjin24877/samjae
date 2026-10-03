@@ -46,6 +46,12 @@ select {
   font-family: "OnulSijak", sans-serif;
 }
 
+/* iOS Safari가 좁은 열의 글자 크기를 임의로 키우지 않도록 합니다. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 
 /* =========================
    기본 단락
@@ -301,9 +307,19 @@ select {
   overflow-wrap: anywhere;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
   .body2, .samjaerok-body-left, .samjaerok-body-center, .testimony-body-q {
     font-size: clamp(1.0625rem, 3.8vw, 1.25rem); line-height: 1.5;
   }
   .samjaerok-title { font-size: clamp(1.5rem, 6vw, 2.5rem); line-height: 1.2; }
+
+  /* 데스크톱용 큰 음수 자간은 작은 화면에서 한글을 겹치게 합니다. */
+  :is(.text-default, .button-large-disabled, .category,
+      .button-filter, .button-filter-white, .body1-left,
+      .body1-no-underline, .body1-center-underline, .body2,
+      .body2-left, .samjaerok-title, .samjaerok-body-left,
+      .samjaerok-body-center, .result-type-label,
+      .result-method-note, .page-body .page-note) {
+    letter-spacing: -0.02em;
+  }
 }

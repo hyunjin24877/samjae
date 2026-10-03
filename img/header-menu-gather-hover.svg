@@ -12,8 +12,8 @@
 
       .cls-8 {
         fill: #757575;
-        font-family: OnulSijak-Regular-KSCpc-EUC-H, OnulSijak;
-        font-size: 23.76px;
+        font-family: OnulSijak;
+        font-size: 1.485rem;
       }
 
       .cls-2 {
@@ -83,7 +83,6 @@
         <line class="cls-2" x1="118.18" y1="9.45" x2="18.62" y2="9.45"/>
         <path class="cls-5" d="M17.62,9.44h-1.51c-.55,0-1,.45-1,1v1.53M122.7,11.98v-1.53c0-.55-.45-1-1-1h-1.51M120.19,52.44h1.51c.55,0,1-.45,1-1v-1.53M15.11,49.91v1.53c0,.55.45,1,1,1h1.51"/>
       </g>
-      <text class="cls-8" transform="translate(36.97 38.15) scale(1 1.01)"><tspan class="cls-13" x="0" y="0">풀</tspan><tspan class="cls-12" x="20.91" y="0">이</tspan><tspan class="cls-11" x="40.15" y="0">첩</tspan></text>
     </g>
   </g>
 </svg>

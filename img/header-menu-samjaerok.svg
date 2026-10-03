@@ -8,8 +8,8 @@
 
       .cls-6 {
         fill: #757575;
-        font-family: OnulSijak-Regular-KSCpc-EUC-H, OnulSijak;
-        font-size: 23.76px;
+        font-family: OnulSijak;
+        font-size: 1.485rem;
       }
 
       .cls-2 {
@@ -91,7 +91,6 @@
           </g>
         </g>
       </g>
-      <text class="cls-6" transform="translate(36.11 36.54) scale(1 1.01)"><tspan class="cls-12" x="0" y="0">삼</tspan><tspan class="cls-13" x="20.41" y="0">재</tspan><tspan x="40.87" y="0">록</tspan></text>
     </g>
   </g>
 </svg>
