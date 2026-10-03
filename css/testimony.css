@@ -597,7 +597,7 @@ width: 16px;
 .testimony-detail-scrollbar {
   position: absolute;
   top: 40px;
-  bottom: 40px;
+  bottom: 64px;
   right: 14px;
   width: 10px;
 
@@ -605,6 +605,7 @@ width: 16px;
   border-left: 1px solid #000;
   border-right: 1px solid #000;
   box-sizing: border-box;
+  overflow: hidden;
   z-index: 2;
 }
 
@@ -694,44 +695,4 @@ width: 16px;
   z-index: 4;
 }
 
-/* 종이와 텍스트는 원래 크기를 유지하고 잘라내기/투명도만 전환합니다. */
 .testimony-guide[hidden] { display: none; }
-.testimony-detail-body { opacity: 0; }
-.testimony-answer-scroll.is-transitioning { pointer-events: none; }
-.testimony-answer-scroll.is-transitioning .testimony-detail-content { overflow: hidden; }
-/* 종이는 하단 봉의 아랫변까지 펼쳐집니다. */
-.testimony-answer-scroll {
-  --paper-edge: 0px;
-  --bottom-rod-height: 35px;
-}
-.testimony-answer-scroll .testimony-detail-content {
-  clip-path: inset(0px 0px calc(100% - var(--paper-edge)) 0px);
-}
-.testimony-answer-top {
-  z-index: 4;
-}
-.testimony-answer-bottom {
-  top: calc(var(--paper-edge) - var(--bottom-rod-height));
-  bottom: auto;
-  /* 종이 위에서 항상 온전한 말린 봉을 표시합니다. 시작점에서는 상단과 정확히 겹칩니다. */
-  display: block;
-  z-index: 5;
-  clip-path: none;
-}
-
-/* 투명한 봉 중앙을 통해 닫힌 종이가 비치지 않도록 초기 준비 중 숨깁니다. */
-.testimony-answer-scroll.is-preparing {
-  visibility: hidden;
-}
-
-/* 클릭한 이후에만 생성되는 연결 이미지. 대기 화면의 배치에는 관여하지 않습니다. */
-.testimony-scroll-bridge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 4;
-}

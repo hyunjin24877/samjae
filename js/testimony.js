@@ -3974,197 +3974,39 @@ updateTestimonyScrollbar();
   });
 })();
 
-// 한 전환이 끝날 때까지 선택을 잠그고, 취소된 전환은 다음 단계로 진행하지 않습니다.
+// 증언을 선택하면 오른쪽 족자를 즉시 표시합니다.
 const testimonyMotion = (() => {
   const guide = document.querySelector('.testimony-guide');
-  const guideText = guide.querySelector('.testimony-guide-text');
-  const guideImage = guide.querySelector('.testimony-guide-image');
-  let bridge = null;
   const scroll = document.querySelector('.testimony-answer-scroll');
-  const top = document.querySelector('.testimony-answer-top');
-  const closedTopSource = top.src;
-  const openedTop = new Image();
-  openedTop.src = new URL('scroll-front.svg', closedTopSource).href;
-  const bottom = document.querySelector('.testimony-answer-bottom');
-  const track = document.querySelector('.testimony-detail-scrollbar');
   const body = document.getElementById('testimonyDetailBody');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const animations = new Set();
-  let busy = false;
-  let generation = 0;
   let selected = null;
 
-  function lock(value) {
-    busy = value;
-    rows.forEach(row => { row.disabled = value; });
-    scroll.classList.toggle('is-transitioning', value);
-    detail.setAttribute('aria-busy', String(value));
-    detail.inert = value;
-  }
-
-  async function motion(element, frames, duration, token, easing = 'ease-in-out') {
-    if (token !== generation) throw new Error('cancelled');
-    const animation = element.animate(frames, {
-      duration: reduced.matches ? 1 : duration, easing, fill: 'forwards',
-    });
-    animations.add(animation);
-    try {
-      await animation.finished;
-      if (token !== generation) throw new Error('cancelled');
-      Object.assign(element.style, frames[frames.length - 1]);
-    } finally {
-      animations.delete(animation);
-      animation.cancel();
-    }
-  }
-
-  function closedPose() {
-    // 닫혔을 때 하단 봉의 아랫변이 상단 봉의 윗변에 닿습니다.
-    return detail.offsetHeight;
-  }
-
-  function setPaperEdge(hiddenHeight) {
-    // 종이와 하단 봉은 같은 가장자리를 기준으로 펼쳐집니다.
-    const edge = Math.max(0, detail.offsetHeight - hiddenHeight);
-    scroll.style.setProperty('--paper-edge', `${edge}px`);
-  }
-
-  function imageReady(image) {
-    if (image.complete) {
-      return image.naturalWidth ? Promise.resolve() : Promise.reject(new Error('image load failed'));
-    }
-    return new Promise((resolve, reject) => {
-      const loaded = () => { image.removeEventListener('error', failed); resolve(); };
-      const failed = () => { image.removeEventListener('load', loaded); reject(new Error('image load failed')); };
-      image.addEventListener('load', loaded, { once: true });
-      image.addEventListener('error', failed, { once: true });
-    });
-  }
-
-  async function unfold(open, token) {
-    const closed = closedPose();
-    const from = open ? closed : 0;
-    const to = open ? 0 : closed;
-    const duration = reduced.matches ? 1 : (open ? 900 : 420);
-    await new Promise((resolve, reject) => {
-      let frame;
-      let started;
-      const task = {
-        cancel() {
-          cancelAnimationFrame(frame);
-          animations.delete(task);
-          reject(new Error('cancelled'));
-        },
-      };
-      animations.add(task);
-      function tick(time) {
-        if (token !== generation) { task.cancel(); return; }
-        if (started === undefined) started = time;
-        const progress = Math.min(1, (time - started) / duration);
-        // 초반에 빠르게 풀린 뒤 하단에 가까워질수록 부드럽게 감속합니다.
-        const eased = open ? 1 - Math.pow(1 - progress, 3) : progress * progress * (3 - 2 * progress);
-        setPaperEdge(from + (to - from) * eased);
-        if (progress < 1) {
-          frame = requestAnimationFrame(tick);
-        } else {
-          animations.delete(task);
-          resolve();
-        }
-      }
-      frame = requestAnimationFrame(tick);
-    });
-  }
-
   function reset() {
-    generation++;
-    animations.forEach(animation => animation.cancel());
-    animations.clear();
     scroll.hidden = true;
-    top.src = closedTopSource;
-    scroll.classList.remove('is-preparing');
     guide.hidden = false;
-    bridge?.remove();
-    bridge = null;
-    [guide, guideText, guideImage, scroll, top, bottom, detail, body, track].forEach(el => el.removeAttribute('style'));
     body.innerHTML = '';
     detail.classList.remove('is-open');
+    detail.scrollTop = 0;
     rows.forEach(row => row.classList.remove('is-selected'));
     selected = null;
-    lock(false);
   }
 
-  async function select(row) {
-    if (busy || selected === row) return;
-    const token = ++generation;
-    lock(true);
-    try {
-      // 봉 이미지의 실제 높이가 확정된 후 닫힌 위치를 계산합니다.
-      await Promise.all([imageReady(top), imageReady(bottom), imageReady(openedTop)]);
-      if (token !== generation) return;
-      if (selected) {
-        await motion(body, [{opacity: 1}, {opacity: 0}], 180, token);
-        track.style.visibility = 'hidden';
-        top.src = closedTopSource;
-        await unfold(false, token);
-      } else {
-        // 첫 화면은 그대로 두고, 클릭 후 문구부터 지웁니다.
-        await motion(guideText, [{opacity: 1}, {opacity: 0}], 180, token);
-        bridge = new Image();
-        bridge.className = 'testimony-scroll-bridge';
-        bridge.src = bottom.src;
-        bridge.alt = '';
-        bridge.setAttribute('aria-hidden', 'true');
-        guide.append(bridge);
-        await imageReady(bridge);
-        if (token !== generation) return;
-        // 상단 위치를 공유하며 기존 장식을 가려 단일 봉으로 연결합니다.
-        await Promise.all([
-          motion(guideImage, [
-            {clipPath: 'inset(0% 0 0% 0)', opacity: 1},
-            {clipPath: 'inset(0% 0 50% 0)', opacity: 0},
-          ], 240, token),
-          motion(bridge, [{opacity: 0}, {opacity: 1}], 240, token),
-        ]);
-      }
-      guide.hidden = true;
-      scroll.classList.add('is-preparing');
-      scroll.hidden = false;
-      body.style.opacity = '0';
-      track.style.visibility = 'hidden';
-      body.innerHTML = testimonyData[row.dataset.id] ||
-        '<p class="body2-left">이 증언의 내용은 준비 중입니다.</p>';
-      detail.classList.add('is-open');
-      detail.scrollTop = 0;
-      rows.forEach(item => item.classList.toggle('is-selected', item === row));
-      const closed = closedPose();
-      scroll.style.setProperty('--bottom-rod-height', `${bottom.offsetHeight}px`);
-      setPaperEdge(closed);
-      // 같은 SVG·폭·좌표의 연결 이미지를 실제 하단 봉에 한 프레임 안에서 넘깁니다.
-      // 연결 이미지를 상단에 남겨 두거나, 이동하는 봉을 clip으로 가리지 않습니다.
-      if (bridge) {
-        bridge.remove();
-        bridge = null;
-      }
-      scroll.classList.remove('is-preparing');
-      // 전체 낙하/반동 없이 상단은 처음부터 최종 위치에 고정합니다.
-      await unfold(true, token);
-      top.src = openedTop.src;
-      await motion(body, [{opacity: 0}, {opacity: 1}], 240, token);
-      track.style.visibility = '';
-      detail.dispatchEvent(new Event('scroll'));
-      selected = row;
-    } catch (error) {
-      if (token === generation) {
-        reset();
-        console.error('증언 족자 전환을 완료하지 못했습니다.', error);
-      }
-    } finally {
-      if (token === generation) lock(false);
-    }
+  function select(row) {
+    if (selected === row) return;
+    body.innerHTML = testimonyData[row.dataset.id] ||
+      '<p class="body2-left">이 증언의 내용은 준비 중입니다.</p>';
+    detail.classList.add('is-open');
+    detail.scrollTop = 0;
+    guide.hidden = true;
+    scroll.hidden = false;
+    rows.forEach(item => item.classList.toggle('is-selected', item === row));
+    selected = row;
+    detail.dispatchEvent(new Event('scroll'));
   }
+
   window.addEventListener('pagehide', reset);
   window.addEventListener('pageshow', event => { if (event.persisted) reset(); });
-  return { select, reset, get busy() { return busy; } };
+  return { select, reset, get busy() { return false; } };
 })();
 
 rows.forEach(row => row.addEventListener('click', () => testimonyMotion.select(row)));
