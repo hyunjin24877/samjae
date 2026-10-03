@@ -43,7 +43,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: url("/samjae/img/back/back-grey-gradient.webp") center / cover no-repeat;
+  background: url("../img/back/back-grey-gradient.webp") center / cover no-repeat;
   opacity: 0.5;
   pointer-events: none;
 }
@@ -54,8 +54,8 @@ body {
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  -webkit-mask-image: url("/samjae/img/landing/side-feather-mask.svg");
-  mask-image: url("/samjae/img/landing/side-feather-mask.svg");
+  -webkit-mask-image: url("../img/landing/side-feather-mask.svg");
+  mask-image: url("../img/landing/side-feather-mask.svg");
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
@@ -1059,57 +1059,6 @@ body {
   z-index: 1;
 }
 
-/* Only the top scroll rolls inward; the right pile mirrors the motion. */
-.landing-scroll .scroll-row:first-child img {
-  --roll-distance: 150px;
-  --roll-turn: 540deg;
-  --roll-drop: 48px;
-  transform-origin: 50% 55%;
-  animation: scroll-roll-off var(--scene-motion-duration) linear infinite;
-}
-
-@keyframes scroll-roll-off {
-  0%, 16%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-    opacity: 1;
-  }
-  24% {
-    transform: translate(8px, -5px) rotate(15deg);
-    opacity: 1;
-  }
-  38% {
-    transform: translate(calc(var(--roll-distance) * 0.25), calc(var(--roll-drop) * 0.5 - 12px)) rotate(100deg);
-  }
-  50% {
-    transform: translate(calc(var(--roll-distance) * 0.48), calc(var(--roll-drop) - 12px)) rotate(220deg);
-  }
-  59% {
-    transform: translate(calc(var(--roll-distance) * 0.65), calc(var(--roll-drop) - 28px)) rotate(330deg);
-  }
-  69% {
-    transform: translate(calc(var(--roll-distance) * 0.84), calc(var(--roll-drop) - 20px)) rotate(calc(var(--roll-turn) * 0.85));
-    opacity: 1;
-  }
-  78% {
-    transform: translate(var(--roll-distance), calc(var(--roll-drop) - 30px)) rotate(var(--roll-turn));
-    opacity: 1;
-  }
-  85% {
-    transform: translate(calc(var(--roll-distance) + 8px), calc(var(--roll-drop) - 32px)) rotate(calc(var(--roll-turn) + 25deg));
-    opacity: 0;
-  }
-  86%, 91% {
-    transform: translate(0, 0) rotate(0deg);
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .landing-scroll .scroll-row:first-child img {
-    animation: none;
-  }
-}
-
 .scroll-left {
   left: calc(50% - 672px);
   transform: rotate(9deg);
@@ -1698,25 +1647,80 @@ animation: star-spin 6s linear infinite;
 }
 
 
-/* =========================
-   TABLET
-========================= */
-
+/* Keep the desktop composition above 768px. On smaller screens the
+   scene uses the actual viewport instead of shrinking a 1920px canvas. */
 @media (max-width: 768px) {
   .landing {
-    zoom: 0.39;
+    --door-width: min(88vw, 54svh, 560px);
+    zoom: 1;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 100svh;
+    min-height: 480px;
+    transform: none;
   }
+
+  .landing-side-background {
+    display: none;
+  }
+
+  .landing-door,
+  .door-glow {
+    top: max(24px, calc((100svh - var(--door-width) * 907.09 / 879.13 - 190px) / 2));
+    width: var(--door-width);
+    height: auto;
+    aspect-ratio: 879.13 / 907.09;
+  }
+
+  .door-samjae {
+    top: 1%;
+    width: 97%;
+    height: auto;
+  }
+
+  .landing-floor {
+    height: 22%;
+    background: linear-gradient(to bottom, #d2d4c7 0 31%, #e8e5d4 31% 100%);
+  }
+
+  .landing-carpet {
+    width: min(135vw, 950px);
+  }
+
+  .landing-tiger {
+    width: min(30vw, 165px);
+    height: auto;
+    aspect-ratio: 306 / 450.9;
+    bottom: clamp(95px, 13svh, 145px);
+  }
+
+  .tiger-left {
+    left: max(2vw, calc(50% - 330px));
+  }
+
+  .tiger-right {
+    right: max(2vw, calc(50% - 330px));
+  }
+
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 480px) {
+@media (max-width: 768px) and (max-height: 560px) {
   .landing {
-    zoom: 0.24;
+    min-height: 0;
+    --door-width: min(56vw, 68svh);
   }
+
+  .landing-door,
+  .door-glow {
+    top: 8px;
+  }
+
+  .landing-tiger {
+    width: min(19vw, 95px);
+    bottom: 54px;
+  }
+
 }
 
 /* =========================
@@ -1798,4 +1802,25 @@ animation: star-spin 6s linear infinite;
 .landing-enter:hover .go-hover,
 .landing-enter:active .go-hover {
   opacity: 1;
+}
+
+/* The button's desktop hover rules above come after the scene breakpoints. */
+@media (max-width: 768px) {
+  .landing-enter {
+    bottom: max(22px, env(safe-area-inset-bottom));
+  }
+
+  .landing-enter img {
+    width: clamp(170px, 46vw, 250px);
+  }
+}
+
+@media (max-width: 768px) and (max-height: 560px) {
+  .landing-enter {
+    bottom: 8px;
+  }
+
+  .landing-enter img {
+    width: min(32vw, 150px);
+  }
 }

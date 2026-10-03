@@ -2,7 +2,7 @@
 <html lang="ko">
 
 <head>
-  <script src="/samjae/js/diagnosis-session.js"></script>
+  <script src="../js/diagnosis-session.js?v=20261003-pages"></script>
   <meta charset="UTF-8">
 
   <meta
@@ -17,16 +17,17 @@
        CSS
   ====================== -->
 
+  <link rel="preload" href="../font/OnulSijak-Regular.woff" as="font" type="font/woff" crossorigin>
   <link
-    rel="stylesheet" href="/samjae/css/font.css">
+    rel="stylesheet" href="../css/font.css?v=20261003-pages">
 
-  <link rel="stylesheet" href="/samjae/css/header.css">
+  <link rel="stylesheet" href="../css/header.css?v=20261003-pages">
 
-  <link rel="stylesheet" href="/samjae/css/background.css">
-    <link rel="stylesheet" href="/samjae/css/result-common.css?v=icons-stagger-3">
-  <link rel="stylesheet" href="/samjae/css/result-01.css">
+  <link rel="stylesheet" href="../css/background.css?v=20261003-pages">
+    <link rel="stylesheet" href="../css/result-common.css?v=20261003-pages">
+  <link rel="stylesheet" href="../css/result-07.css?v=20261003-pages">
 
-  <script src="/samjae/js/site-cursor.js" defer></script>
+  <script src="../js/site-cursor.js?v=20261003-pages" defer></script>
 
 </head>
 
@@ -39,13 +40,13 @@
   ====================== -->
 
   <img
-    src="/samjae/img/back/back-dote.webp"
+    src="../img/back/back-dote.webp"
     class="back-dote"
     alt=""
   >
-   <video src="/samjae/img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
+   <video src="../img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
   <img
-    src="/samjae/img/back/back-grey-gradient.webp"
+    src="../img/back/back-grey-gradient.webp"
     class="back-grey-gradient"
     alt=""
   >
@@ -60,13 +61,13 @@
   <div class="doors">
 
     <img
-      src="/samjae/img/door.svg"
+      src="../img/door.svg"
       class="door door-left"
       alt=""
     >
 
     <img
-      src="/samjae/img/door.svg"
+      src="../img/door.svg"
       class="door door-right"
       alt=""
     >
@@ -88,13 +89,13 @@
       <button
         type="button"
         class="circle-btn"
-        onclick="location.href='/samjae/landing.html'"
+        onclick="location.href='../landing.html'"
       >
 
         <span class="inner-circle">
 
           <img
-            src="/samjae/img/home.svg"
+            src="../img/home.svg"
             alt="홈"
           >
 
@@ -114,7 +115,7 @@
         <span class="inner-circle">
 
           <img
-            src="/samjae/img/prev.svg"
+            src="../img/prev.svg"
             alt="이전"
           >
 
@@ -134,7 +135,7 @@
         <span class="inner-circle">
 
           <img
-            src="/samjae/img/next.svg"
+            src="../img/next.svg"
             alt="다음"
           >
 
@@ -158,37 +159,37 @@
 
 <main class="result-main">
   <article class="result-paper" aria-labelledby="resultTitle">
-    <img class="result-paper-bottom" src="/samjae/img/result/stroke-up.svg" alt="" aria-hidden="true">
+    <img class="result-paper-bottom" src="../img/result/stroke-up.svg" alt="" aria-hidden="true">
     <header class="result-heading">
       <div class="result-title-layout">
-        <img class="result-stroke-up" src="/samjae/img/result/stroke-up.svg" alt="" aria-hidden="true">
+        <img class="result-stroke-up" src="../img/result/stroke-up.svg" alt="" aria-hidden="true">
         <h1 id="resultTitle" class="result-title-logos" aria-label="海宗共 — 해안 종교 공동체">
-          <img src="/samjae/img/result/logo/logo-ocean.svg" alt="" aria-hidden="true">
-          <img src="/samjae/img/result/logo/logo-religion.svg" alt="" aria-hidden="true">
-          <img src="/samjae/img/result/logo/logo-community.svg" alt="" aria-hidden="true">
+          <img src="../img/result/logo/logo-ocean.svg" alt="" aria-hidden="true">
+          <img src="../img/result/logo/logo-religion.svg" alt="" aria-hidden="true">
+          <img src="../img/result/logo/logo-community.svg" alt="" aria-hidden="true">
         </h1>
         <div class="result-title-bottom" aria-hidden="true">
-          <img src="/samjae/img/result/stroke-up-2.svg" alt="">
-          <img src="/samjae/img/result/stroke-up-2.svg" alt="">
+          <img src="../img/result/stroke-up-2.svg" alt="">
+          <img src="../img/result/stroke-up-2.svg" alt="">
         </div>
       </div>
-      <img class="result-title-divider" src="/samjae/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+      <img class="result-title-divider" src="../img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
       <ul class="result-tags" aria-label="진단 유형">
-        <li><button type="button" class="result-type-button result-type-label" data-result-type="ocean"><img class="result-tag-frame" src="/samjae/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>해안</span></button></li>
-        <li><button type="button" class="result-type-button result-type-label" data-result-type="religion"><img class="result-tag-frame" src="/samjae/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>종교</span></button></li>
-        <li><button type="button" class="result-type-button result-type-label" data-result-type="community"><img class="result-tag-frame" src="/samjae/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>공동체</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="ocean"><img class="result-tag-frame" src="../img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>해안</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="religion"><img class="result-tag-frame" src="../img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>종교</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="community"><img class="result-tag-frame" src="../img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>공동체</span></button></li>
       </ul>
-      <img class="result-tags-divider" src="/samjae/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+      <img class="result-tags-divider" src="../img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
     </header>
 
     <figure class="result-portrait">
-      <img class="result-art-back" src="/samjae/img/result/result-back.svg" alt="">
-      <img class="result-dragon" src="/samjae/img/keyvisual/dragon.svg" alt="해안종교공동체 유형의 용">
-      <img class="result-art-logo" src="/samjae/img/result/result-logo.svg" alt="" aria-hidden="true">
-      <img class="result-art-side side-left" src="/samjae/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
-      <img class="result-art-side side-right" src="/samjae/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
-      <img class="result-art-edge edge-top" src="/samjae/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
-      <img class="result-art-edge edge-bottom" src="/samjae/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+      <img class="result-art-back" src="../img/result/result-back.svg" alt="">
+      <img class="result-dragon result-character-07" src="../img/keyvisual/dragon.svg" alt="해안종교공동체 유형의 용">
+      <img class="result-art-logo" src="../img/result/result-logo.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-left" src="../img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-right" src="../img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-top" src="../img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-bottom" src="../img/result/result-stroke-2.svg" alt="" aria-hidden="true">
     </figure>
 
     <div class="result-introduction samjaerok-body-center">
@@ -209,18 +210,18 @@
           <ol class="result-steps">
             <li>먼저 제물을 준비한 뒤, 당사자가 아닌 다른 한 사람이 축언을 외워 의례를 시작한다.</li>
             <li>이어 세 사람이 함께 절을 올리며 재앙이 물러가기를 기원하는데, 절은 횟수가 많을수록 효험이 크다고 여겨 반복해서 행한다.
-              <img data-src="/samjae/img/result/pray.gif" data-loop-ms="1320" class="method-deco deco-boat" alt="" hidden></li>
+              <img data-src="../img/result/pray.gif" data-loop-ms="1320" class="method-deco result-07-motion-pray-1" alt="" hidden></li>
             <li>당사자가 제물인 닭을 잡고, 제물의 피가 묻은 칼을 남은 한 사람이 미니 배 위에 올려놓는다.
-              <img data-src="/samjae/img/result/chicken.webp" data-loop-ms="5320" class="method-deco deco-pen" alt="" hidden></li>
+              <img data-src="../img/result/chicken.webp" data-loop-ms="5320" class="method-deco result-07-motion-chicken-1" alt="" hidden></li>
             <li>칼끝은 반드시 바깥쪽을 향하도록 놓은 뒤, 배를 물에 띄워 떠내려보내며 의례를 마무리한다.
-              <img data-src="/samjae/img/result/boat.webp" data-loop-ms="5320" class="method-deco deco-boat" alt="" hidden>
-              <img data-src="/samjae/img/result/knife throwing.webp" data-loop-ms="5320" class="method-deco deco-fire" alt="" hidden></li>
+              <img data-src="../img/result/boat.webp" data-loop-ms="5320" class="method-deco result-07-motion-boat-1" alt="" hidden>
+              <img data-src="../img/result/knife throwing.webp" data-loop-ms="5320" class="method-deco result-07-motion-knife-throwing-1" alt="" hidden></li>
           </ol>
         </dd>
         <dt><span class="body1-center-underline">해설</span></dt>
         <dd class="result-explanation">축언은 신에게 액운을 거두어 달라는 뜻을 전하는 기원의 말이며, 당사자가 아닌 제3자가 이를 외우는 것은 재앙과 일정한 거리를 두기 위한 의미를 담고 있다. 여러 사람이 함께 절을 올리는 행위는 개인의 불안을 공동체가 함께 나누고 극복한다는 공동체적 성격을 보여준다. 닭은 재앙을 대신 받아들이는 제물로 여겨졌으며, 피가 묻은 칼은 액운을 끊어내는 상징적인 도구이다. 이를 칼끝이 바깥을 향하도록 배 위에 올려 물에 띄워 보내는 것은 재앙을 먼 곳으로 흘려보내 다시 돌아오지 않기를 바라는 의미를 담고 있다.
 
-          <img data-src="/samjae/img/result/song.gif" data-loop-ms="3320" class="method-deco deco-song" alt="" hidden>
+          <img data-src="../img/result/song.gif" data-loop-ms="3320" class="method-deco result-07-motion-song-1" alt="" hidden>
         </dd>
       </dl>
     </section>
@@ -228,10 +229,10 @@
 
   <nav class="result-controls" aria-label="결과 활용">
     <button type="button" class="result-action button-filter" id="resultPrint"><span>점지법 출력하기</span></button>
-    <a class="result-action  button-filter" href="/samjae/gather.html"><span>다른 방법도 보러가기</span></a>
+    <a class="result-action  button-filter" href="../gather.html"><span>다른 방법도 보러가기</span></a>
     <button type="button" class="result-retry button-filter" id="resultRetry">다시하기</button>
   </nav>
 </main>
-<script src="/samjae/js/result.js?v=icons-stagger-3" defer></script>
+<script src="../js/result.js?v=20261003-pages" defer></script>
 </body>
 </html>

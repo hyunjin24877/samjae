@@ -16,3 +16,76 @@ body.site-stage {
   transform-origin: center center;
   overflow: auto;
 }
+
+/* 모바일에서는 고정 PC 캔버스를 해제하고 실제 뷰포트 안에 배치합니다. */
+@media (max-width: 768px) {
+  html:has(body.site-stage) { height: auto; min-height: 100%; overflow-x: clip; overflow-y: auto; }
+  body.site-stage {
+    position: relative; inset: auto; width: 100%; height: auto; min-height: 100svh;
+    transform: none; overflow: visible;
+  }
+  body.site-stage :is(.testimony-main, .example-main, .samjaerok-main) {
+    position: relative; inset: auto; width: calc(100% - 24px);
+    margin: 100px auto 40px; min-width: 0;
+  }
+  body.site-stage .gather-main { width: calc(100% - 24px); min-height: 100svh; padding-top: 120px; }
+
+  /* 증언: 두 고정 열을 세로로 배치하고 종이 내부 폭도 함께 축소. */
+  body.site-stage .testimony-layout { width: 100%; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  body.site-stage :is(.testimony-list-wrap, .testimony-detail, .testimony-guide, .testimony-answer-scroll) { width: 100%; min-width: 0; }
+  body.site-stage .testimony-list-wrap { height: clamp(320px, 55svh, 614px); }
+  body.site-stage .testimony-list-scroll { width: 100%; }
+  body.site-stage .testimony-list { width: calc(100% - 28px); height: calc(100% - 20px); bottom: 10px; padding-inline: 12px; }
+  body.site-stage .testimony-list-wrap::after { width: calc(100% - 28px); }
+  body.site-stage .testimony-list-head { grid-template-columns: 40px 64px minmax(0, 1fr); }
+  body.site-stage .testimony-row { overflow-wrap: anywhere; }
+  body.site-stage .testimony-guide-text { padding-inline: 16px; font-size: 1.0625rem; line-height: 1.5; }
+  body.site-stage .testimony-guide-center { white-space: normal; }
+  body.site-stage .testimony-detail-content { width: calc(100% - 28px); margin-inline: 14px; padding-inline: 16px; }
+  body.site-stage .testimony-answer-scroll .testimony-detail-content { height: clamp(360px, 65svh, 911px); padding-inline: 16px; }
+  body.site-stage .testimony-detail-content .testimony-answer { padding-left: 0; }
+
+  /* 사례: 지도의 컨테이너와 팝업을 화면 안으로 제한. */
+  body.site-stage .example-paper-wrap { width: 100%; height: clamp(540px, 105vw, 903px); }
+  body.site-stage .example-filter { width: calc(100% - 40px); left: 20px; flex-wrap: wrap; gap: 4px; }
+  body.site-stage .example-filter-btn img { height: clamp(24px, 6vw, 40px); }
+  body.site-stage .example-popup { width: calc(100% - 24px); max-height: calc(100svh - 24px); }
+
+  /* 삼재록: 좁은 화면에서는 내지 두 쪽을 세로로 읽습니다. */
+  body.site-stage .samjaerok-main { display: block; }
+  body.site-stage .samjaerok-cover { width: min(620px, calc(100% - 48px)); margin: auto; }
+  body.site-stage .samjaerok-cover-back { width: 108%; height: 98.4%; transform: translate(-50%, -50%); }
+  body.site-stage .samjaerok-cover .samjaerok-tabs { position: relative; inset: auto; flex-direction: row; flex-wrap: wrap; gap: 4px; margin-top: 12px; }
+  body.site-stage .samjaerok-tab img { height: 36px; max-width: 100%; }
+  body.site-stage .samjaerok-open { width: 100%; aspect-ratio: auto; padding-top: 64px; }
+  body.site-stage .samjaerok-open .samjaerok-tabs { inset: 0 0 auto; flex-direction: row; flex-wrap: wrap; gap: 4px; }
+  body.site-stage .samjaerok-open :is(.samjaerok-book-back, .samjaerok-page, .samjaerok-page-back) { display: none; }
+  body.site-stage .samjaerok-spread > .page-content {
+    position: relative; inset: auto; transform: none; width: 100%; height: auto;
+    margin-bottom: 20px; padding: 20px 16px; background: #fff;
+  }
+  body.site-stage .page-inner-frame { position: relative; inset: auto; height: auto; padding-bottom: 12px; }
+  body.site-stage .page-heading { min-height: 64px; }
+
+  /* 진단: 질문, 입력창, 선택 카드를 실제 화면 폭 안에서 순서대로 배치. */
+  body.site-stage .diagnosis-main { position: relative; inset: auto; padding: 100px 12px 24px; }
+  body.site-stage .diagnosis-open-wrap { position: relative; inset: auto; transform: none; width: 100%; height: 320px; margin-bottom: 24px; }
+  body.site-stage .diagnosis-open { width: 100%; height: 320px; object-fit: fill; }
+  body.site-stage #diagnosisOpen .diagnosis-scroll-motion { width: 100% !important; height: 320px; aspect-ratio: auto; }
+  body.site-stage .diagnosis-result { top: 40px; width: calc(100% - 48px); }
+  body.site-stage .diagnosis-result-text { margin-top: 16px; }
+  body.site-stage .diagnosis-annotation { transform: none; font-size: .9375rem; line-height: 1.5; }
+  body.site-stage .diagnosis-open-wrap:has(.diagnosis-form) { height: 580px; }
+  body.site-stage .diagnosis-form { top: 350px; width: calc(100% - 24px); gap: 16px; }
+  body.site-stage .diagnosis-input-wrap { width: 100%; }
+  body.site-stage .diagnosis-choices { position: relative; inset: auto; transform: none; width: 100%; flex-direction: column; gap: 24px; }
+  body.site-stage .diagnosis-choices :is(.diagnosis-choice, .choice-button) { width: min(328px, 86%); }
+  body.site-stage .diagnosis-controls { position: relative; inset: auto; transform: none; margin: 24px auto; }
+  body.site-stage .result-reveal-loading { width: calc(100% - 24px); }
+  body.site-stage .result-reveal-wheel-wrap { width: calc(100% - 48px); }
+
+  /* 안내 편지와 봉투도 컨테이너 폭을 넘지 않도록 제한. */
+  body.site-stage .welcome-intro .modal { top: 100px; width: calc(100% - 48px); height: 520px; }
+  body.site-stage .welcome-envelope img { width: calc(100% - 48px); }
+  body.site-stage .welcome-text { inset: 50px 24px; }
+}

@@ -3,7 +3,7 @@
   if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
   const cursor = document.createElement("img");
-  cursor.src = "/samjae/img/cussot-red.svg";
+  cursor.src = sitePath("img/cussot-red.svg");
   cursor.className = "site-cursor";
   cursor.alt = "";
   cursor.setAttribute("aria-hidden", "true");

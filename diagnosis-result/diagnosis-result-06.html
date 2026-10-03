@@ -2,7 +2,7 @@
 <html lang="ko">
 
 <head>
-  <script src="/samjae/js/diagnosis-session.js"></script>
+  <script src="../js/diagnosis-session.js?v=20261003-pages"></script>
   <meta charset="UTF-8">
 
   <meta
@@ -17,16 +17,17 @@
        CSS
   ====================== -->
 
+  <link rel="preload" href="../font/OnulSijak-Regular.woff" as="font" type="font/woff" crossorigin>
   <link
-    rel="stylesheet" href="/samjae/css/font.css">
+    rel="stylesheet" href="../css/font.css?v=20261003-pages">
 
-  <link rel="stylesheet" href="/samjae/css/header.css">
+  <link rel="stylesheet" href="../css/header.css?v=20261003-pages">
 
-  <link rel="stylesheet" href="/samjae/css/background.css">
-    <link rel="stylesheet" href="/samjae/css/result-common.css?v=icons-stagger-3">
-  <link rel="stylesheet" href="/samjae/css/result-01.css">
+  <link rel="stylesheet" href="../css/background.css?v=20261003-pages">
+    <link rel="stylesheet" href="../css/result-common.css?v=20261003-pages">
+  <link rel="stylesheet" href="../css/result-06.css?v=20261003-pages">
 
-  <script src="/samjae/js/site-cursor.js" defer></script>
+  <script src="../js/site-cursor.js?v=20261003-pages" defer></script>
 
 </head>
 
@@ -39,13 +40,13 @@
   ====================== -->
 
   <img
-    src="/samjae/img/back/back-dote.webp"
+    src="../img/back/back-dote.webp"
     class="back-dote"
     alt=""
   >
-   <video src="/samjae/img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
+   <video src="../img/back/back2-all.webm" class="back2" autoplay muted loop playsinline aria-hidden="true"></video>
   <img
-    src="/samjae/img/back/back-grey-gradient.webp"
+    src="../img/back/back-grey-gradient.webp"
     class="back-grey-gradient"
     alt=""
   >
@@ -60,13 +61,13 @@
   <div class="doors">
 
     <img
-      src="/samjae/img/door.svg"
+      src="../img/door.svg"
       class="door door-left"
       alt=""
     >
 
     <img
-      src="/samjae/img/door.svg"
+      src="../img/door.svg"
       class="door door-right"
       alt=""
     >
@@ -88,13 +89,13 @@
       <button
         type="button"
         class="circle-btn"
-        onclick="location.href='/samjae/landing.html'"
+        onclick="location.href='../landing.html'"
       >
 
         <span class="inner-circle">
 
           <img
-            src="/samjae/img/home.svg"
+            src="../img/home.svg"
             alt="홈"
           >
 
@@ -114,7 +115,7 @@
         <span class="inner-circle">
 
           <img
-            src="/samjae/img/prev.svg"
+            src="../img/prev.svg"
             alt="이전"
           >
 
@@ -134,7 +135,7 @@
         <span class="inner-circle">
 
           <img
-            src="/samjae/img/next.svg"
+            src="../img/next.svg"
             alt="다음"
           >
 
@@ -158,37 +159,37 @@
 
 <main class="result-main">
   <article class="result-paper" aria-labelledby="resultTitle">
-    <img class="result-paper-bottom" src="/samjae/img/result/stroke-up.svg" alt="" aria-hidden="true">
+    <img class="result-paper-bottom" src="../img/result/stroke-up.svg" alt="" aria-hidden="true">
     <header class="result-heading">
       <div class="result-title-layout">
-        <img class="result-stroke-up" src="/samjae/img/result/stroke-up.svg" alt="" aria-hidden="true">
+        <img class="result-stroke-up" src="../img/result/stroke-up.svg" alt="" aria-hidden="true">
         <h1 id="resultTitle" class="result-title-logos" aria-label="海巫個 — 해안 무속 개인">
-          <img src="/samjae/img/result/logo/logo-ocean.svg" alt="" aria-hidden="true">
-          <img src="/samjae/img/result/logo/shamanism.svg" alt="" aria-hidden="true">
-          <img src="/samjae/img/result/logo/logo-individual.svg" alt="" aria-hidden="true">
+          <img src="../img/result/logo/logo-ocean.svg" alt="" aria-hidden="true">
+          <img src="../img/result/logo/shamanism.svg" alt="" aria-hidden="true">
+          <img src="../img/result/logo/logo-individual.svg" alt="" aria-hidden="true">
         </h1>
         <div class="result-title-bottom" aria-hidden="true">
-          <img src="/samjae/img/result/stroke-up-2.svg" alt="">
-          <img src="/samjae/img/result/stroke-up-2.svg" alt="">
+          <img src="../img/result/stroke-up-2.svg" alt="">
+          <img src="../img/result/stroke-up-2.svg" alt="">
         </div>
       </div>
-      <img class="result-title-divider" src="/samjae/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+      <img class="result-title-divider" src="../img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
       <ul class="result-tags" aria-label="진단 유형">
-        <li><button type="button" class="result-type-button result-type-label" data-result-type="ocean"><img class="result-tag-frame" src="/samjae/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>해안</span></button></li>
-        <li><button type="button" class="result-type-button result-type-label" data-result-type="shamanism"><img class="result-tag-frame" src="/samjae/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>무속</span></button></li>
-        <li><button type="button" class="result-type-button result-type-label" data-result-type="individual"><img class="result-tag-frame" src="/samjae/img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>개인</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="ocean"><img class="result-tag-frame" src="../img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>해안</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="shamanism"><img class="result-tag-frame" src="../img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>무속</span></button></li>
+        <li><button type="button" class="result-type-button result-type-label" data-result-type="individual"><img class="result-tag-frame" src="../img/result/result-tag-frame.svg" alt="" aria-hidden="true"><span>개인</span></button></li>
       </ul>
-      <img class="result-tags-divider" src="/samjae/img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
+      <img class="result-tags-divider" src="../img/result/stroke-2.svg" width="783" alt="" aria-hidden="true">
     </header>
 
     <figure class="result-portrait">
-      <img class="result-art-back" src="/samjae/img/result/result-back.svg" alt="">
-      <img class="result-dragon" src="/samjae/img/keyvisual/dragon3.svg" alt="해안무속개인 유형의 용">
-      <img class="result-art-logo" src="/samjae/img/result/result-logo.svg" alt="" aria-hidden="true">
-      <img class="result-art-side side-left" src="/samjae/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
-      <img class="result-art-side side-right" src="/samjae/img/result/result-stroke-1.svg" alt="" aria-hidden="true">
-      <img class="result-art-edge edge-top" src="/samjae/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
-      <img class="result-art-edge edge-bottom" src="/samjae/img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+      <img class="result-art-back" src="../img/result/result-back.svg" alt="">
+      <img class="result-dragon result-character-06" src="../img/keyvisual/dragon3.svg" alt="해안무속개인 유형의 용">
+      <img class="result-art-logo" src="../img/result/result-logo.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-left" src="../img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-side side-right" src="../img/result/result-stroke-1.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-top" src="../img/result/result-stroke-2.svg" alt="" aria-hidden="true">
+      <img class="result-art-edge edge-bottom" src="../img/result/result-stroke-2.svg" alt="" aria-hidden="true">
     </figure>
 
     <div class="result-introduction samjaerok-body-center">
@@ -208,17 +209,17 @@
         <dd>
           <ol class="result-steps">
             <li>용왕신에게 1년 동안 칠성공을 드리기 위해 매달 한 번씩 시루떡을 쪄 제물로 올린다.
-              <img data-src="/samjae/img/result/sirutdeok.webp" data-loop-ms="5320" class="method-deco deco-pen" alt="" hidden></li>
+              <img data-src="../img/result/sirutdeok.webp" data-loop-ms="5320" class="method-deco result-06-motion-sirutdeok-1" alt="" hidden></li>
             <li>제물을 차린 뒤 절을 올리거나 축원을 외우며 치성을 드린다.
-              <img data-src="/samjae/img/result/chiseong.gif" data-loop-ms="600" class="method-deco deco-pen" alt="" hidden>
-              <img data-src="/samjae/img/result/pray.gif" data-loop-ms="1320" class="method-deco deco-boat" alt="" hidden></li>
+              <img data-src="../img/result/chiseong.gif" data-loop-ms="600" class="method-deco result-06-motion-chiseong-1" alt="" hidden>
+              <img data-src="../img/result/pray.gif" data-loop-ms="1320" class="method-deco result-06-motion-pray-1" alt="" hidden></li>
             <li>같은 의식을 한 달에 한 번씩 총 12개월 동안 반복한다.</li>
           </ol>
         </dd>
         <dt><span class="body1-center-underline">해설</span></dt>
         <dd class="result-explanation">시루떡은 정성과 풍요를 상징하는 제물로, 용왕신에게 무사함과 복을 기원하는 의미를 담고 있다. 매달 같은 의례를 반복하는 것은 일회성 액막이가 아니라 1년 동안 꾸준히 신의 보호를 구하는 행위이며, 지속적인 치성을 통해 삼재를 무사히 지나가기를 바라는 의미를 가진다.
 
-          <img data-src="/samjae/img/result/song.gif" data-loop-ms="3320" class="method-deco deco-song" alt="" hidden>
+          <img data-src="../img/result/song.gif" data-loop-ms="3320" class="method-deco result-06-motion-song-1" alt="" hidden>
         </dd>
       </dl>
     </section>
@@ -226,10 +227,10 @@
 
   <nav class="result-controls" aria-label="결과 활용">
     <button type="button" class="result-action button-filter" id="resultPrint"><span>점지법 출력하기</span></button>
-    <a class="result-action  button-filter" href="/samjae/gather.html"><span>다른 방법도 보러가기</span></a>
+    <a class="result-action  button-filter" href="../gather.html"><span>다른 방법도 보러가기</span></a>
     <button type="button" class="result-retry button-filter" id="resultRetry">다시하기</button>
   </nav>
 </main>
-<script src="/samjae/js/result.js?v=icons-stagger-3" defer></script>
+<script src="../js/result.js?v=20261003-pages" defer></script>
 </body>
 </html>

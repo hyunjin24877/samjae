@@ -22,7 +22,7 @@ let selectedChoice = null;
 
 nextButton.classList.add("is-disabled");
 
-nextImg.src = "/samjae/img/diagnosis/diagnosis-next-disable.svg";
+nextImg.src = sitePath("img/diagnosis/diagnosis-next-disable.svg");
 
 /* =========================
    Q4 이전 저장값 제거
@@ -69,7 +69,7 @@ choices.forEach((choice) => {
 
     nextButton.classList.remove("is-disabled");
 
-    nextImg.src = "/samjae/img/diagnosis/diagnosis-next.svg";
+    nextImg.src = sitePath("img/diagnosis/diagnosis-next.svg");
 
     /* 팝업 제거 */
 
@@ -118,7 +118,7 @@ document.addEventListener("click", (event) => {
 
   nextButton.classList.add("is-disabled");
 
-  nextImg.src = "/samjae/img/diagnosis/diagnosis-next-disable.svg";
+  nextImg.src = sitePath("img/diagnosis/diagnosis-next-disable.svg");
 });
 
 /* =========================

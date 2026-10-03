@@ -20,10 +20,14 @@
       return { left, right: right - width, top, bottom: bottom - height };
     }
 
-    function waitForVisibleSpace(width, height) {
+    function waitForVisibleSpace(width, height, icon) {
       return new Promise(resolve => {
         function check() {
-          const bounds = visibleBounds(width, height);
+          const inFlow = getComputedStyle(icon).position === 'static';
+          const target = inFlow ? icon.getBoundingClientRect() : null;
+          const bounds = inFlow
+            ? (target.top >= 0 && target.bottom <= innerHeight ? { left: 0, right: 0, top: 0, bottom: 0 } : null)
+            : visibleBounds(width, height);
           if (!bounds) return;
           window.removeEventListener('scroll', check);
           window.removeEventListener('resize', check);
@@ -77,10 +81,9 @@
       // A fresh resource starts GIF/WebP at frame one instead of revealing
       // an animation that was already running while hidden during preload.
       const source = URL.createObjectURL(blob);
-      icon.style.left = `${bounds.left + Math.random() * (bounds.right - bounds.left)}px`;
-      icon.style.top = `${bounds.top + Math.random() * (bounds.bottom - bounds.top)}px`;
-      icon.style.right = 'auto';
-      icon.style.bottom = 'auto';
+      // Random defaults remain available; each result's CSS can override placement.
+      icon.style.setProperty('--motion-random-left', `${bounds.left + Math.random() * (bounds.right - bounds.left)}px`);
+      icon.style.setProperty('--motion-random-top', `${bounds.top + Math.random() * (bounds.bottom - bounds.top)}px`);
       icon.removeAttribute('hidden');
       const hide = () => {
         icon.hidden = true;
@@ -89,7 +92,13 @@
       };
       loadImage(icon, source).then(loaded => {
         if (!loaded) { hide(); return; }
-        setTimeout(hide, Number(icon.dataset.loopMs));
+        const loopMs = Number(icon.dataset.loopMs);
+        const fadeMs = Math.min(800, loopMs);
+        icon.style.setProperty('--motion-fade-duration', `${fadeMs}ms`);
+        setTimeout(() => {
+          icon.classList.add('is-fading');
+          setTimeout(hide, fadeMs);
+        }, loopMs - fadeMs);
       });
     }
 
@@ -101,8 +110,8 @@
         const style = getComputedStyle(asset.icon);
         const width = Math.min(parseFloat(style.width) || 80,
           parseFloat(style.maxWidth) || Infinity, method.clientWidth);
-        const height = width * asset.height / asset.width;
-        const bounds = await waitForVisibleSpace(width, Math.max(height, Math.min(120, details.clientHeight)));
+        const height = parseFloat(style.height) || width * asset.height / asset.width;
+        const bounds = await waitForVisibleSpace(width, Math.max(height, Math.min(120, details.clientHeight)), asset.icon);
         // Recalculate for the actual icon height once there is enough visible space.
         showIcon(asset, visibleBounds(width, height) || bounds);
         await new Promise(resolve => setTimeout(resolve, 1000));
@@ -113,18 +122,18 @@
 
   // 점지법 이름과 실제 영수증 PNG 경로를 연결합니다.
   const receipts = {
-    "해안무속공동체": "/samjae/img/result/paper/ocean-shamanism-community.png",
-    "산지무속개인": "/samjae/img/result/paper/mountain-shamanism-individual.png",
-    "산지종교공동체": "/samjae/img/result/paper/mountain-religion-community.png",
-    "산지종교개인": "/samjae/img/result/paper/mountain-religion-individual.png",
-    "산지무속공동체": "/samjae/img/result/paper/mountain-shamanism-community.png",
-    "해안무속개인": "/samjae/img/result/paper/ocean-shamanism-individual.png",
-    "해안종교공동체": "/samjae/img/result/paper/ocean-religion-community.png",
-    "해안종교개인": "/samjae/img/result/paper/ocean-religion-individual.png",
-    "내륙무속공동체": "/samjae/img/result/paper/inland-shamanism-community.png",
-    "내륙무속개인": "/samjae/img/result/paper/inland-shamanism-individual.png",
-    "내륙종교공동체": "/samjae/img/result/paper/inland-religion-community.png",
-    "내륙종교개인": "/samjae/img/result/paper/inland-religion-individual.png"
+    "해안무속공동체": sitePath("img/result/paper/ocean-shamanism-community.png"),
+    "산지무속개인": sitePath("img/result/paper/mountain-shamanism-individual.png"),
+    "산지종교공동체": sitePath("img/result/paper/mountain-religion-community.png"),
+    "산지종교개인": sitePath("img/result/paper/mountain-religion-individual.png"),
+    "산지무속공동체": sitePath("img/result/paper/mountain-shamanism-community.png"),
+    "해안무속개인": sitePath("img/result/paper/ocean-shamanism-individual.png"),
+    "해안종교공동체": sitePath("img/result/paper/ocean-religion-community.png"),
+    "해안종교개인": sitePath("img/result/paper/ocean-religion-individual.png"),
+    "내륙무속공동체": sitePath("img/result/paper/inland-shamanism-community.png"),
+    "내륙무속개인": sitePath("img/result/paper/inland-shamanism-individual.png"),
+    "내륙종교공동체": sitePath("img/result/paper/inland-religion-community.png"),
+    "내륙종교개인": sitePath("img/result/paper/inland-religion-individual.png")
 };
   const printButton = document.getElementById('resultPrint');
   const type = document.body.dataset.receiptType;
@@ -205,6 +214,6 @@
 
   document.getElementById('resultRetry')?.addEventListener('click', () => {
     window.resetDiagnosisSession?.();
-    location.href = '/samjae/diagnosis.html';
+    location.href = sitePath('diagnosis.html');
   });
 })();

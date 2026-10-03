@@ -1,5 +1,5 @@
 (() => {
-  const paths = ['/samjae/diagnosis.html', ...[2, 3, 4, 5].map(n => `/samjae/diagnosis-${n}.html`)];
+  const paths = [sitePath('diagnosis.html'), ...[2, 3, 4, 5].map(n => sitePath(`diagnosis-${n}.html`))];
   const keys = [null, 'diagnosisMethod', 'diagnosisEnvironment', 'diagnosisBelief', 'diagnosisSubject'];
   let current = Math.max(0, paths.indexOf(location.pathname));
   let busy = false;
@@ -18,9 +18,9 @@
       motion = document.createElement('div');
       motion.className = 'diagnosis-scroll-motion is-ready';
       motion.id = 'diagnosisScrollMotion';
-      motion.innerHTML = `<div class="diagnosis-scroll-paper" aria-hidden="true"><img src="/samjae/img/diagnosis/scroll-middle.svg" alt=""></div>
-        <img class="diagnosis-scroll-rod diagnosis-scroll-top" src="/samjae/img/diagnosis/scroll-top2.svg" alt="">
-        <img class="diagnosis-scroll-rod diagnosis-scroll-bottom" src="/samjae/img/diagnosis/scroll-dowon2.svg" alt="">`;
+      motion.innerHTML = `<div class="diagnosis-scroll-paper" aria-hidden="true"><img src="${sitePath('img/diagnosis/scroll-middle.svg')}" alt=""></div>
+        <img class="diagnosis-scroll-rod diagnosis-scroll-top" src="${sitePath('img/diagnosis/scroll-top2.svg')}" alt="">
+        <img class="diagnosis-scroll-rod diagnosis-scroll-bottom" src="${sitePath('img/diagnosis/scroll-dowon2.svg')}" alt="">`;
       motion.append(wrap.querySelector('.diagnosis-result'));
       wrap.querySelector('.diagnosis-open')?.remove();
       wrap.prepend(motion);
@@ -42,7 +42,9 @@
   stage = extract(document);
   if (oldMain) oldMain.replaceWith(stage); else document.body.append(stage);
 
+  let cardPlayback = 0;
   function stopCardVideos(root = stage) {
+    cardPlayback++;
     root.querySelectorAll('.diagnosis-card-video').forEach(video => {
       video.onplaying = null;
       video.onerror = null;
@@ -55,14 +57,20 @@
     stopCardVideos();
     const video = choice.querySelector('.diagnosis-card-video');
     if (!video) return;
+    const playback = cardPlayback;
     video.muted = true;
     video.onplaying = () => {
-      if (choice.isConnected && choice.classList.contains('is-selected')) {
+      if (playback === cardPlayback && choice.isConnected && choice.classList.contains('is-selected')) {
         choice.classList.add('is-video-playing');
       }
     };
-    video.onerror = () => choice.classList.remove('is-video-playing');
-    video.play().catch(() => choice.classList.remove('is-video-playing'));
+    const fallback = () => {
+      if (playback === cardPlayback) choice.classList.remove('is-video-playing');
+    };
+    video.onerror = fallback;
+    // Reset even a pending load, so selecting the same card always starts at frame one.
+    video.currentTime = 0;
+    video.play().catch(fallback);
   }
 
   function updateNext() {
@@ -70,7 +78,7 @@
       ? $('#diagnosisName').value.trim() && $('#diagnosisSituation').value.trim()
       : $('.is-selected[data-value]');
     $('#diagnosisNext').classList.toggle('is-disabled', !valid);
-    $('#diagnosisNextImg').src = `/samjae/img/diagnosis/diagnosis-next${valid ? '' : '-disable'}.svg`;
+    $('#diagnosisNextImg').src = sitePath(`img/diagnosis/diagnosis-next${valid ? '' : '-disable'}.svg`);
   }
   function restore() {
     if (current === 0) {
@@ -128,12 +136,12 @@
     const next = extract(doc);
     const motion = next.querySelector('.diagnosis-scroll-motion');
     motion.classList.add('is-ready'); motion.removeAttribute('aria-busy');
-    motion.querySelector('.diagnosis-scroll-top').src = '/samjae/img/diagnosis/scroll-top2.svg';
-    motion.querySelector('.diagnosis-scroll-bottom').src = '/samjae/img/diagnosis/scroll-dowon2.svg';
+    motion.querySelector('.diagnosis-scroll-top').src = sitePath('img/diagnosis/scroll-top2.svg');
+    motion.querySelector('.diagnosis-scroll-bottom').src = sitePath('img/diagnosis/scroll-dowon2.svg');
     next.querySelector('.diagnosis-form')?.classList.add('is-visible');
     next.querySelector('.diagnosis-result').style.opacity = '0';
     const link = document.createElement('link');
-    link.rel = 'stylesheet'; link.href = `/samjae/css/diagnosis-${index + 1}.css`; link.media = 'not all';
+    link.rel = 'stylesheet'; link.href = sitePath(`css/diagnosis-${index + 1}.css?v=20261003-pages`); link.media = 'not all';
     let cssTimeout;
     const loaded = new Promise((resolve, reject) => {
       cssTimeout = setTimeout(() => reject(new Error('질문 스타일 로딩 시간 초과')), 8000);
@@ -207,35 +215,35 @@
     /* 산지 */
 
     "mountain-shamanism-community":
-      "/samjae/diagnosis-result/diagnosis-result-05.html",
+      sitePath("diagnosis-result/diagnosis-result-05.html"),
 
     "mountain-shamanism-individual":
-      "/samjae/diagnosis-result/diagnosis-result-02.html",
+      sitePath("diagnosis-result/diagnosis-result-02.html"),
 
-    "mountain-religion-community": "/samjae/diagnosis-result/diagnosis-result-03.html",
+    "mountain-religion-community": sitePath("diagnosis-result/diagnosis-result-03.html"),
 
     "mountain-religion-individual":
-      "/samjae/diagnosis-result/diagnosis-result-04.html",
+      sitePath("diagnosis-result/diagnosis-result-04.html"),
 
     /* 해안 */
 
-    "ocean-shamanism-community": "/samjae/diagnosis-result/diagnosis-result-01.html",
+    "ocean-shamanism-community": sitePath("diagnosis-result/diagnosis-result-01.html"),
 
-    "ocean-shamanism-individual": "/samjae/diagnosis-result/diagnosis-result-06.html",
+    "ocean-shamanism-individual": sitePath("diagnosis-result/diagnosis-result-06.html"),
 
-    "ocean-religion-community": "/samjae/diagnosis-result/diagnosis-result-07.html",
+    "ocean-religion-community": sitePath("diagnosis-result/diagnosis-result-07.html"),
 
-    "ocean-religion-individual": "/samjae/diagnosis-result/diagnosis-result-08.html",
+    "ocean-religion-individual": sitePath("diagnosis-result/diagnosis-result-08.html"),
 
     /* 평지 */
 
-    "flat-shamanism-community": "/samjae/diagnosis-result/diagnosis-result-09.html",
+    "flat-shamanism-community": sitePath("diagnosis-result/diagnosis-result-09.html"),
 
-    "flat-shamanism-individual": "/samjae/diagnosis-result/diagnosis-result-10.html",
+    "flat-shamanism-individual": sitePath("diagnosis-result/diagnosis-result-10.html"),
 
-    "flat-religion-community": "/samjae/diagnosis-result/diagnosis-result-11.html",
+    "flat-religion-community": sitePath("diagnosis-result/diagnosis-result-11.html"),
 
-    "flat-religion-individual": "/samjae/diagnosis-result/diagnosis-result-12.html",
+    "flat-religion-individual": sitePath("diagnosis-result/diagnosis-result-12.html"),
   };
 
   async function revealResult(url) {
@@ -254,13 +262,13 @@
       <div class="result-reveal-black"></div>
       <div class="result-reveal-loading">
         <div class="result-reveal-fires" aria-hidden="true">
-          ${Array.from({ length: 3 }, () => '<img src="/samjae/img/diagnosis/fire2.webp" alt="">').join('')}
+          ${Array.from({ length: 3 }, () => `<img src="${sitePath('img/diagnosis/fire2.webp')}" alt="">`).join('')}
         </div>
         <p class="body2">당신에게 맞는 삼재풀이 방식을 점지하고 있습니다.<br>조금만 기다려주세요.</p>
       </div>
       <div class="result-reveal-wheel-wrap" aria-hidden="true">
-        <img class="result-reveal-wheel" src="/samjae/img/gather/gather.svg" alt="">
-        <img class="result-reveal-arrow" src="/samjae/img/gather/arrow.svg" alt="">
+        <img class="result-reveal-wheel" src="${sitePath('img/gather/gather.svg')}" alt="">
+        <img class="result-reveal-arrow" src="${sitePath('img/gather/arrow.svg')}" alt="">
       </div>`;
     const animations = [];
     let cancelled = false;

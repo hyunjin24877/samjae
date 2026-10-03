@@ -22,7 +22,7 @@ let selectedChoice = null;
 
 nextButton.classList.add("is-disabled");
 
-nextImg.src = "/samjae/img/diagnosis/diagnosis-next-disable.svg";
+nextImg.src = sitePath("img/diagnosis/diagnosis-next-disable.svg");
 
 /* =========================
    카드 클릭
@@ -55,7 +55,7 @@ choices.forEach((choice) => {
 
     nextButton.classList.remove("is-disabled");
 
-    nextImg.src = "/samjae/img/diagnosis/diagnosis-next.svg";
+    nextImg.src = sitePath("img/diagnosis/diagnosis-next.svg");
 
     /* 팝업 제거 */
 
@@ -110,7 +110,7 @@ document.addEventListener("click", (event) => {
 
   nextButton.classList.add("is-disabled");
 
-  nextImg.src = "/samjae/img/diagnosis/diagnosis-next-disable.svg";
+  nextImg.src = sitePath("img/diagnosis/diagnosis-next-disable.svg");
 });
 
 /* =========================
@@ -189,35 +189,35 @@ nextButton.addEventListener("click", (event) => {
     /* 산지 */
 
     "mountain-shamanism-community":
-      "/samjae/diagnosis-result/diagnosis-result-05.html",
+      sitePath("diagnosis-result/diagnosis-result-05.html"),
 
     "mountain-shamanism-individual":
-      "/samjae/diagnosis-result/diagnosis-result-02.html",
+      sitePath("diagnosis-result/diagnosis-result-02.html"),
 
-    "mountain-religion-community": "/samjae/diagnosis-result/diagnosis-result-03.html",
+    "mountain-religion-community": sitePath("diagnosis-result/diagnosis-result-03.html"),
 
     "mountain-religion-individual":
-      "/samjae/diagnosis-result/diagnosis-result-04.html",
+      sitePath("diagnosis-result/diagnosis-result-04.html"),
 
     /* 해안 */
 
-    "ocean-shamanism-community": "/samjae/diagnosis-result/diagnosis-result-01.html",
+    "ocean-shamanism-community": sitePath("diagnosis-result/diagnosis-result-01.html"),
 
-    "ocean-shamanism-individual": "/samjae/diagnosis-result/diagnosis-result-06.html",
+    "ocean-shamanism-individual": sitePath("diagnosis-result/diagnosis-result-06.html"),
 
-    "ocean-religion-community": "/samjae/diagnosis-result/diagnosis-result-07.html",
+    "ocean-religion-community": sitePath("diagnosis-result/diagnosis-result-07.html"),
 
-    "ocean-religion-individual": "/samjae/diagnosis-result/diagnosis-result-08.html",
+    "ocean-religion-individual": sitePath("diagnosis-result/diagnosis-result-08.html"),
 
     /* 평지 */
 
-    "flat-shamanism-community": "/samjae/diagnosis-result/diagnosis-result-09.html",
+    "flat-shamanism-community": sitePath("diagnosis-result/diagnosis-result-09.html"),
 
-    "flat-shamanism-individual": "/samjae/diagnosis-result/diagnosis-result-10.html",
+    "flat-shamanism-individual": sitePath("diagnosis-result/diagnosis-result-10.html"),
 
-    "flat-religion-community": "/samjae/diagnosis-result/diagnosis-result-11.html",
+    "flat-religion-community": sitePath("diagnosis-result/diagnosis-result-11.html"),
 
-    "flat-religion-individual": "/samjae/diagnosis-result/diagnosis-result-12.html",
+    "flat-religion-individual": sitePath("diagnosis-result/diagnosis-result-12.html"),
   };
 
   /* =========================
