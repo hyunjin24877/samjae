@@ -5,7 +5,7 @@
 .result-character-07 {
   --character-width: 270px;
   --character-height: auto;
-  --character-top: 50%;
+  --character-top: calc(50% - 10px);
   --character-left: 50%;
   --character-right: auto;
   --character-bottom: auto;
@@ -37,6 +37,12 @@
   --motion-mobile-width: min(80px, 60px, 18%);
   --motion-mobile-height: 64px;
   --motion-mobile-transform: none;
+}
+
+/* 닭이 사라진 뒤 피는 발 아래에 놓는다. */
+.result-07-motion-chicken-1.is-after {
+  --motion-transform: translate(-5px, 60px);
+  --motion-mobile-transform: translate(-5px, 24px);
 }
 
 .result-07-motion-boat-1 {

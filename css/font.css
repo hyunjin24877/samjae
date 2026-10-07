@@ -6,6 +6,40 @@
   font-display: swap;
 }
 
+/* welcome 페이지 팝업: 제목과 본문 글자 설정 */
+.welcome-text h1 {
+  margin: 0 0 24px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid currentColor;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.3125rem;
+}
+
+.welcome-text p {
+  margin: 0 0 14px;
+  max-width: 620px;
+  font-size: 1.375rem;
+  line-height: 1.9375rem;
+  word-break: keep-all;
+  letter-spacing: -2.5px;
+}
+
+.welcome-text p:last-child { margin-bottom: 0; }
+
+.welcome-text .welcome-sender {
+  margin-top: 12px;
+  font-size: 1.125rem;
+}
+
+@media (max-width: 600px) {
+  /* 모바일에서는 위의 36px 대신 아래 제목 크기가 적용됩니다. */
+  .welcome-text h1 { margin-bottom: 14px; font-size: 1.375rem; }
+  .welcome-text p { margin-bottom: 8px; font-size: 0.9375rem; line-height: 1.35; }
+  .welcome-text .welcome-sender { margin-top: 8px; font-size: 0.8125rem; }
+}
+
 /* 공통 커서가 활성화된 페이지에서만 기본 포인터 숨김 */
 html.site-cursor-active,
 html.site-cursor-active *,
@@ -257,6 +291,11 @@ html {
   line-height: 1.8125rem;
   word-spacing: -0.05625rem;
   letter-spacing: -0.09375rem;
+}
+
+.samjaerok-hanja {
+  letter-spacing: 0;
+  margin-inline: 0.04em;
 }
 
 .testimony-body-q{
