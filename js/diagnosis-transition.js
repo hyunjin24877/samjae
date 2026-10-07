@@ -174,13 +174,16 @@
     busy = true; stage.inert = true; stage.setAttribute('aria-busy', 'true');
     let prepared;
     let swapped = false;
+    // 다음 질문을 받는 동안 현재 족자를 닫아 네트워크 대기와 모션을 겹친다.
+    const preparing = prepare(index).then(value => ({ value }), error => ({ error }));
     try {
-      // 새 질문을 준비하는 동안 현재 질문을 유지한다.
-      prepared = await prepare(index);
       const fade = animate($('.diagnosis-result'), [{ opacity: 1 }, { opacity: 0 }], 250);
       await fade.finished;
       $('.diagnosis-result').style.opacity = '0'; fade.cancel();
       await fold(false);
+      const result = await preparing;
+      if (result.error) throw result.error;
+      prepared = result.value;
       const oldStyles = [...document.querySelectorAll('link[rel="stylesheet"]')].filter(link => /\/diagnosis-[1-5]\.css$/.test(new URL(link.href).pathname) && link !== prepared.link);
       const old = stage;
       stopCardVideos(old);

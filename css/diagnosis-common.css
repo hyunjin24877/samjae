@@ -328,7 +328,7 @@
   display: block;
 
   width: auto;
-  height: 43px;
+  height: 46px;
 }
 
 
@@ -369,12 +369,12 @@
   position: absolute;
 
   left: 50%;
-  bottom: calc(100% + 35px);
+  bottom: calc(100% + 20px);
 
   transform: translateX(-50%);
 
-  width: 302px;
-  height: 50px;
+  width: auto;
+  height: 55px;
 
   opacity: 0;
   visibility: hidden;
@@ -464,13 +464,6 @@
 
 .diagnosis-choices.has-selection .diagnosis-card:not(.is-selected) .diagnosis-card-label {
   opacity: 0.4;
-}
-
-/* 선택/hover 전후에도 카드와 그래픽의 표시 크기를 유지합니다. */
-.diagnosis-choices .diagnosis-choice.diagnosis-card,
-.diagnosis-choices .diagnosis-choice.diagnosis-card:hover,
-.diagnosis-choices.has-selection .diagnosis-choice.diagnosis-card:not(.is-selected) {
-  transform: scale(1);
 }
 
 .diagnosis-choices .diagnosis-card { overflow: hidden; }

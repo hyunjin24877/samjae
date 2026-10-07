@@ -535,6 +535,16 @@
   white-space: pre-line;
 }
 
+#examplePopupText .example-popup-number {
+  display: inline-block;
+  width: 0.56em;
+}
+
+#examplePopupText .example-popup-dot {
+  position: relative;
+  top: -2px;
+}
+
 .example-popup-close {
   display: flex;
   align-items: center;

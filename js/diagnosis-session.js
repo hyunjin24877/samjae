@@ -37,7 +37,7 @@
     }
   }, true);
 
-  const isHome = () => location.pathname.endsWith('/landing.html');
+  const isHome = () => location.pathname.endsWith('/samjae/landing.html');
   if (isHome()) {
     window.resetDiagnosisSession();
     pageVersion = version();

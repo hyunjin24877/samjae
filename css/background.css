@@ -112,8 +112,13 @@ body {
 }
 
 
-/* 좌우 문 장식은 스마트폰 폭에서만 제거합니다. */
+/* 스마트폰에서는 장식을 감춥니다. */
 @media (max-width: 768px) {
   .doors { display: none; }
   html, body { overflow-x: clip; }
+}
+
+/* 고정 캔버스를 해제한 태블릿 화면에서도 본문을 가리지 않게 합니다. */
+@media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
+  body.site-stage .doors { display: none; }
 }

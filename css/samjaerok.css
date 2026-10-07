@@ -512,7 +512,18 @@ body * {
 }
 
 
-/* 주석 스타일은 font.css에서 공통 관리합니다. */
+/* 주석 본문을 번호 목록의 텍스트 시작점(45px)에 맞춥니다. */
+#page1 .page-note {
+  padding-left: 27px;
+}
+
+#page1 .page-note > .note-text {
+  text-indent: 3px;
+}
+
+#page1 .page-content-left .page-body ol > li:first-child {
+  text-indent: 3px;
+}
 
 /* =========================
    붓 커서
@@ -672,8 +683,15 @@ body * {
 }
 
 .page-body ol > li::before {
-  content: counter(item) ".";
+  content: counter(item);
   position: absolute;
   left: 0;
   top: 0;
+}
+
+.page-body ol > li::after {
+  content: ".";
+  position: absolute;
+  left: 0.56em;
+  top: -2px;
 }

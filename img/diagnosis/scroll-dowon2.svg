@@ -51,7 +51,7 @@
       }
     </style>
     <clipPath id="clippath">
-      <rect class="cls-1" width="857.31" height="48.92"/>
+      <rect class="cls-1" y="0" width="857.31" height="48.92"/>
     </clipPath>
     <clipPath id="clippath-1">
       <path class="cls-1" d="M82.07,48.42h0s-.08,0-.13,0c-6.56,0-11.88-10.04-11.88-23.29S75.3,1.31,81.79,1.15h0s.12-.01.12-.01c0,0,.02,0,.03,0h0s.13,0,.13,0h0s693.7,0,693.7,0v.04c6.37.43,11.48,10.98,11.48,23.96s-5.1,22.82-11.48,23.25v.04H82.07Z"/>
@@ -64,10 +64,10 @@
       <stop offset="1" stop-color="#fff"/>
     </radialGradient>
     <clipPath id="clippath-2">
-      <rect class="cls-1" width="857.31" height="48.92"/>
+      <rect class="cls-1" y="0" width="857.31" height="48.92"/>
     </clipPath>
     <clipPath id="clippath-3">
-      <rect class="cls-1" x="19.94" y=".27" width="818.45" height="28.22"/>
+      <rect class="cls-1" x="20.44" y="20.62" width="818.45" height="28.22"/>
     </clipPath>
   </defs>
   <g id="Layer_2-2" data-name="Layer 2">
@@ -101,7 +101,7 @@
       </g>
       <g class="cls-10">
         <g class="cls-6">
-          <path d="M41.14,1.16h0s.16,0,.16,0h0s776.36,0,776.36,0v.06c5.95.43,10.97,8.7,12.92,20.17H27.74c1.98-11.67,7.13-20.04,13.22-20.2v-.02h.14s.02,0,.04,0"/>
+          <path d="M41.65,47.95h0s.16,0,.16,0h0s776.36,0,776.36,0v-.06c5.95-.43,10.97-8.7,12.92-20.17H28.25c1.98,11.67,7.13,20.04,13.22,20.2v.02h.14s.02,0,.04,0"/>
         </g>
       </g>
     </g>

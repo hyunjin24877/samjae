@@ -45,8 +45,8 @@
 
       .cls-12 {
         fill: #231f20;
-        font-family: OnulSijak-Regular-KSCpc-EUC-H, OnulSijak;
-        font-size: 23.76px;
+        font-family: OnulSijak;
+        font-size: 1.485rem;
       }
 
       .cls-6 {
@@ -79,7 +79,6 @@
         <line class="cls-5" x1="99.25" y1="9.45" x2="18.66" y2="9.45"/>
         <path class="cls-2" d="M17.63,9.45h-1.52c-.55,0-1,.45-1,1v1.53M103.83,11.98v-1.53c0-.55-.45-1-1-1h-1.53M101.3,52.45h1.53c.55,0,1-.45,1-1v-1.53M15.11,49.92v1.53c0,.55.45,1,1,1h1.52"/>
       </g>
-      <text class="cls-12" transform="translate(36.7 38.15) scale(1 1.01)"><tspan class="cls-11" x="0" y="0">맞</tspan><tspan class="cls-10" x="20.77" y="0">이</tspan></text>
     </g>
   </g>
 </svg>

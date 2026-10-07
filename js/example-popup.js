@@ -22,7 +22,7 @@
 
     당진: "1. 수수팥단지 24개를 만들어 그것을 수숫대에 꽂아 놓는다. 그러면 독경을 하는 경쟁이가 삼거리에 와서 먼저 축원을 한 후 24방위로 하나씩 쏘는 방식이다.\n\n2. 무당이 삼재가 낀 사람의 웃옷을 갖고 삼거리에 가서 간단한 제물을 차린 후 비손을 드리고 태워버리는 경우도 있다.",
 
-    부산: "1 가정에서 굿하기\n제장 주변의 부정을 막은 뒤, 삼재가 든 사람의 속옷과 음식으로 제물을 차린다.\n무당이 경을 읽으며 굿을 하고, 주부는 절과 비손을 하며 액막이를 기원한다.\n\n2 적삼과 명태 버리기\n무당이 정해준 날, 입던 적삼에 마른 명태와 달걀을 싸서 네거리에 버린다.\n남자는 암 달걀, 여자는 숫 달걀을 사용한다.\n\n3 절에서 삼재풀기\n절에서 불공을 드리고 삼재가 든 사람의 속옷을 태운다.\n나이만큼의 동전을 옷에 넣어 함께 태우기도 한다.\n\n4 간단한 삼재막이\n부적을 몸에 지니거나 집에 붙이고, 음식물을 넣은 짚을 삼거리에 버리거나 명태와 동전을 태운다. 또는 삼거리에서 동전 세 개를 던지며 이름을 세 번 부르거나, 이름과 생년월일을 넣은 명태를 네거리에 묻어 액을 보낸다.",
+    부산: "1. 가정에서 굿하기\n제장 주변의 부정을 막은 뒤, 삼재가 든 사람의 속옷과 음식으로 제물을 차린다. 무당이 경을 읽으며 굿을 하고, 주부는 절과 비손을 하며 액막이를 기원한다.\n\n2. 적삼과 명태 버리기\n무당이 정해준 날, 입던 적삼에 마른 명태와 달걀을 싸서 네거리에 버린다. 남자는 암 달걀, 여자는 숫 달걀을 사용한다.\n\n3. 절에서 삼재풀기\n절에서 불공을 드리고 삼재가 든 사람의 속옷을 태운다.\n나이만큼의 동전을 옷에 넣어 함께 태우기도 한다.\n\n4. 간단한 삼재막이\n부적을 몸에 지니거나 집에 붙이고, 음식물을 넣은 짚을 삼거리에 버리거나 명태와 동전을 태운다. 또는 삼거리에서 동전 세 개를 던지며 이름을 세 번 부르거나, 이름과 생년월일을 넣은 명태를 네거리에 묻어 액을 보낸다.",
 
     가덕도:
       "정월 보름 안에 하루를 정해 무당을 불러 액풀이 의례를 진행한다. 마른 명태의 입에 돈, 소금, 고춧가루, 손톱, 발톱, 머리카락 등을 넣고 한지로 감싼 뒤 삼베 끈으로 열두 번 매듭을 짓는다. 이후 액풀이를 마친 명태를 서북쪽으로 던지며, 명태의 머리가 바깥쪽을 향하면 액운이 떠난 것으로 여긴다. 머리가 안쪽을 향할 경우에는 바깥을 향할 때까지 다시 던진다.",
@@ -87,6 +87,30 @@
 
   let previousFocus = null;
 
+  function setPopupText(description) {
+    const content = document.createDocumentFragment();
+    const numberedLine = /(^|\n)(\d+)\. /g;
+    let start = 0;
+
+    for (const match of description.matchAll(numberedLine)) {
+      content.append(document.createTextNode(description.slice(start, match.index) + match[1]));
+
+      const number = document.createElement("span");
+      number.className = "example-popup-number";
+      number.textContent = match[2];
+
+      const dot = document.createElement("span");
+      dot.className = "example-popup-dot";
+      dot.textContent = ".";
+
+      content.append(number, dot, document.createTextNode(" "));
+      start = match.index + match[0].length;
+    }
+
+    content.append(document.createTextNode(description.slice(start)));
+    text.replaceChildren(content);
+  }
+
   // =========================
   // 집 클릭
   // =========================
@@ -109,10 +133,11 @@
       title.textContent = location;
 
       // 설명
-      text.textContent =
+      setPopupText(
         home.dataset.description ||
         descriptions[location] ||
-        "이 지역의 사례 설명은 준비 중입니다.";
+        "이 지역의 사례 설명은 준비 중입니다.",
+      );
 
       // =========================
       // 팝업 배경 이미지
