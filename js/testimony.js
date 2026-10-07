@@ -3899,7 +3899,7 @@ const testimonyData = {
       </p>
       <p class="testimony-answer body2-left">
         <span>답:</span>
-        <span>지인에게 조언을 구하거나 이런 상황에서 내가 다르게 생각 할 수는 없었을까 ? 하고 저에게 질문하는 편인 것 같습니더.</span>
+        <span>지인에게 조언을 구하거나 이런 상황에서 내가 다르게 생각할 수는 없었을까? 하고 저에게 질문하는 편인 것 같습니다.</span>
       </p>
     </div>
   `,
@@ -4019,6 +4019,10 @@ rows.forEach(row => row.addEventListener('click', () => testimonyMotion.select(r
   if (!content || !track || !thumb) return;
 
   function update() {
+    const maxScroll = content.scrollHeight - content.clientHeight;
+    track.hidden = maxScroll <= 1;
+    if (track.hidden) return;
+
     const trackHeight = track.clientHeight;
     if (!trackHeight || !content.clientHeight) return;
 
@@ -4027,7 +4031,6 @@ rows.forEach(row => row.addEventListener('click', () => testimonyMotion.select(r
       Math.max(40, (trackHeight * content.clientHeight) / content.scrollHeight),
     );
 
-    const maxScroll = content.scrollHeight - content.clientHeight;
     const travel = trackHeight - thumbHeight;
 
     thumb.style.height = thumbHeight + "px";

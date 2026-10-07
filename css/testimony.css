@@ -207,6 +207,15 @@
 .testimony-info {
 }
 
+.testimony-info .testimony-cheonan {
+  letter-spacing: -0.175em;
+}
+
+.testimony-info .testimony-age-number {
+  letter-spacing: 0;
+  margin-right: -0.1rem;
+}
+
 .testimony-list-head {
   margin-bottom: 0;
 }
@@ -596,16 +605,14 @@ width: 16px;
 /* 오른쪽 커스텀 스크롤바 */
 .testimony-detail-scrollbar {
   position: absolute;
-  top: 40px;
-  bottom: 64px;
+  top: 26px;
+  bottom: 26px;
   right: 14px;
   width: 10px;
 
   background: #c2c2c2;
   border-left: 1px solid #000;
   border-right: 1px solid #000;
-  box-sizing: border-box;
-  overflow: hidden;
   z-index: 2;
 }
 
@@ -614,6 +621,7 @@ width: 16px;
   top: 0;
   left: 0;
   width: 100%;
+  min-height: 40px;
   background: #000;
   border-radius: 4px;
   touch-action: none;
@@ -692,7 +700,7 @@ width: 16px;
   );
 
   pointer-events: none;
-  z-index: 4;
+  z-index: 2;
 }
 
 .testimony-guide[hidden] { display: none; }

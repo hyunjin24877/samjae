@@ -1,5 +1,6 @@
+import io
 import unittest
-from receipt_server import encode_raster, CUT, HEADER, STRIP_ROWS
+from receipt_server import encode_raster, CUT, HEADER, STRIP_ROWS, Handler
 
 
 class RasterTests(unittest.TestCase):
@@ -26,6 +27,28 @@ class RasterTests(unittest.TestCase):
         for data in (b'', b'\x00' * 73):
             with self.assertRaises(ValueError):
                 encode_raster(data)
+
+    def test_allowed_origin_sets_cors_headers_on_json_errors(self):
+        handler = Handler.__new__(Handler)
+        handler.headers = {'Origin': 'http://127.0.0.1:8000'}
+        handler.wfile = io.BytesIO()
+        sent = []
+
+        def send_header(name, value):
+            sent.append((name, value))
+
+        handler.send_response = lambda status: None
+        handler.send_header = send_header
+        handler.allowed = lambda: True
+        handler.end_headers = lambda: (
+            send_header('Access-Control-Allow-Origin', handler.headers['Origin']),
+            send_header('Vary', 'Origin'),
+        )
+
+        handler.reply(403, {'error': '허용되지 않은 출력 요청입니다.'})
+
+        self.assertEqual(sum(1 for name, _ in sent if name == 'Access-Control-Allow-Origin'), 1)
+        self.assertEqual(sum(1 for name, _ in sent if name == 'Vary'), 1)
 
 
 if __name__ == '__main__':

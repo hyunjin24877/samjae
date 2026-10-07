@@ -148,6 +148,14 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
 .result-divider { height: 5px; margin: 30px 0 38px; background: url('../img/result/stroke-1.svg') left center / 43px 4px repeat-x; }
 .result-method { position: relative; }
 .result-method h2 { font-weight: 400; width: max-content; margin: 0 auto 45px; padding-bottom: 10px; background: url('../img/result/stroke-2.svg') center bottom / 100% 4px no-repeat; }
+.result-method h2,
+.result-details dt .body1-center-underline {
+  font-family: "OnulSijak", sans-serif;
+  font-size: 1.375rem;
+  line-height: 1.375rem;
+  letter-spacing: -0.2rem;
+  word-spacing: 0.125rem;
+}
 .result-details { display: grid; grid-template-columns: 90px minmax(0, 1fr); column-gap: 24px; row-gap: 28px; margin: 0; text-align: left; line-height: 1.65; word-break: keep-all; overflow-wrap: anywhere; }
 .result-details dt, .result-details dd { margin: 0; min-width: 0; }
 .result-details dt { text-align: left; }
@@ -182,6 +190,7 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
   outline-offset: -6px;
 
   line-height: 1.125rem;
+  letter-spacing: -0.18rem;
 
   text-align: center;
   text-decoration: none;
@@ -266,7 +275,7 @@ body[data-receipt-type] { font-family: "OnulSijak", sans-serif; }
 }
 @media (max-width: 600px) {
   .result-type-label { font-size: clamp(1.125rem, 4.5vw, 1.625rem); letter-spacing: -0.0625rem; }
-  .result-details dt .body1-center-underline { font-size: inherit; line-height: inherit; }
+  .result-method h2, .result-details dt .body1-center-underline { font-size: 1.0625rem; line-height: 1.65; }
   .result-controls { margin-top: 40px; }
   .result-action { max-width: 100%; box-sizing: border-box; line-height: 1.4; overflow-wrap: anywhere; }
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Local static site and 576-dot ESC/POS spooler. Run from any directory."""
+"""Local 576-dot ESC/POS spooler. Run from any directory."""
 import argparse
 import json
 from http.server import SimpleHTTPRequestHandler, HTTPServer
@@ -7,7 +7,7 @@ from pathlib import Path
 import subprocess
 from urllib.parse import urlsplit
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parent
 PAGES_ORIGIN = 'https://hyunjin24877.github.io'  # GitHub Pages deployment.
 WIDTH_BYTES = 72
 CUT = b'\x1dV\x42\x20'  # Feed to cutter + 32 motion units, then partial cut.

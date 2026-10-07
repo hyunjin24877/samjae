@@ -15,6 +15,9 @@ html.site-cursor-active *::after {
 }
 
 .site-cursor {
+  /* SVG tip (0.12, 17.55) after object-fit: contain in the 27×44 box. */
+  --cursor-hotspot-x: 0.07px;
+  --cursor-hotspot-y: 17.5px;
   position: fixed;
   left: 0;
   top: 0;
@@ -23,14 +26,14 @@ html.site-cursor-active *::after {
   object-fit: contain;
   pointer-events: none;
   z-index: 2147483647;
-  transform-origin: 0 0;
-  transform: rotate(33deg) scale(1);
+  transform-origin: var(--cursor-hotspot-x) var(--cursor-hotspot-y);
+  transform: translate(calc(0px - var(--cursor-hotspot-x)), calc(0px - var(--cursor-hotspot-y))) rotate(33deg) scale(1);
   filter: drop-shadow(0 0 3px #b51c1c);
   transition: transform 160ms ease-out;
 }
 
 .site-cursor.is-pressed {
-  transform: rotate(33deg) scale(1.18);
+  transform: translate(calc(0px - var(--cursor-hotspot-x)), calc(0px - var(--cursor-hotspot-y))) rotate(33deg) scale(1.18);
 }
 
 .site-cursor[hidden] {

@@ -10,14 +10,15 @@ LaunchAgent 원본: `tools/com.samjae.receipt-server.plist`.
 
 현재 환경에서 확인한 실행 경로:
 - Python: `/Library/Developer/CommandLineTools/usr/bin/python3`
-- 서버: `/Users/hyeonjin/Desktop/samjae_wep/tools/receipt_server.py`
+- 서버 원본: `/Users/hyeonjin/Desktop/samjae_wep/tools/receipt_server.py`
+- 자동 실행용 복사본: `~/Library/Application Support/SamjaeReceipt/receipt_server.py`
 
-프로젝트가 Desktop에 있으므로 macOS가 백그라운드 Python의 접근을 차단하면
-시스템 설정 → 개인정보 보호 및 보안 → 전체 디스크 접근 권한에서 위 Python을
-추가하고 활성화해야 합니다. 권한을 변경한 뒤 다시 등록합니다.
+macOS가 LaunchAgent의 Desktop 접근을 차단할 수 있으므로 서버 파일은
+Application Support에 복사하여 실행합니다. 서버 코드를 수정했다면 복사본도 갱신하고
+LaunchAgent를 재시작합니다.
 
 ```sh
-launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.samjae.receipt-server.plist"
+sh tools/install_receipt_server.sh
 ```
 
 상태 확인 / 재시작 / 현재 로그인 세션에서 중지:
@@ -35,8 +36,9 @@ launchctl bootout "gui/$(id -u)/com.samjae.receipt-server"
 서버 코드에는 2시간 종료 타이머가 없습니다. 30초 요청 수신 제한과 60초 CUPS
 작업 접수 제한은 서버 수명과 무관하며 기존 출력 동작을 보호하므로 유지합니다.
 
-서버가 실행된 상태에서 http://127.0.0.1:8765/landing.html 에 접속합니다.
-기존 localhost/127.0.0.1 HTTP 개발 서버와 GitHub Pages
+사이트는 localhost/127.0.0.1 HTTP 개발 서버 또는 GitHub Pages에서 엽니다.
+백그라운드 서버는 127.0.0.1:8765의 출력 요청을 받습니다.
+GitHub Pages
 (https://hyunjin24877.github.io/samjae/)에서도 출력 버튼을 사용할 수 있습니다.
 GitHub Pages에서 출력하려면 프린터가 연결된 Mac에서 이 서버가 실행 중이어야 하며,
 Chrome이 로컬 네트워크 접근 허용을 물으면 허용합니다. file:// 페이지는 지원하지 않습니다.
