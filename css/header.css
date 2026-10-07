@@ -37,7 +37,7 @@
   gap: 8px;
   flex-shrink: 0;
   margin-left: 12px;
-  margin-right: 6px;
+  margin-right: 10px;
 }
 
 .gnb {
@@ -159,11 +159,11 @@
 .gnb-button.current::after { color: #231f20; }
 .gnb-button[href$="welcome.html"]::after,
 .gnb-button[href$="diagnosis.html"]::after { letter-spacing: -0.18em; }
-.gnb-button[href$="welcome.html"]::after { content: "입관"; }
-.gnb-button[href$="diagnosis.html"]::after { content: "진단"; }
+.gnb-button[href$="welcome.html"]::after { content: "맞이"; }
+.gnb-button[href$="diagnosis.html"]::after { content: "점사"; }
 .gnb-button[href$="gather.html"]::after { content: "풀이"; }
-.gnb-button[href$="testimony.html"]::after { content: "증언"; }
-.gnb-button[href$="example.html"]::after { content: "사례"; }
+.gnb-button[href$="testimony.html"]::after { content: "구술"; }
+.gnb-button[href$="example.html"]::after { content: "채록"; }
 .gnb-button[href$="samjaerok.html"]::after { content: "문헌"; }
 
 
@@ -205,7 +205,7 @@
 
 @media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
   .header { top: 12px; width: calc(100% - 24px); max-width: 100%; }
-  .header-controls { gap: 4px; margin-left: 0; }
+  .header-controls { gap: 4px; margin-left: 0; margin-right: 10px; }
   .circle-btn { width: 36px; height: 36px; }
   .inner-circle { width: 32px; height: 32px; }
   .inner-circle img { width: 20px; height: 20px; }

@@ -97,7 +97,24 @@
         icon.style.setProperty('--motion-fade-duration', `${fadeMs}ms`);
         setTimeout(() => {
           icon.classList.add('is-fading');
-          setTimeout(hide, fadeMs);
+          setTimeout(async () => {
+            hide();
+            if (!icon.dataset.afterSrc) return;
+            icon.classList.remove('is-fading');
+            icon.classList.add('is-after');
+            if (!(await loadImage(icon, icon.dataset.afterSrc))) {
+              icon.removeAttribute('src');
+              return;
+            }
+            icon.removeAttribute('hidden');
+            setTimeout(() => {
+              icon.classList.add('is-fading');
+              setTimeout(() => {
+                icon.hidden = true;
+                icon.removeAttribute('src');
+              }, fadeMs);
+            }, Number(icon.dataset.afterMs) || 5000);
+          }, fadeMs);
         }, loopMs - fadeMs);
       });
     }

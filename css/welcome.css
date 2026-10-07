@@ -29,15 +29,42 @@
 
 .welcome-text {
   position: absolute;
-  inset: 70px 130px;
+  inset: 70px 80px;
+  transform: translateY(-10px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   text-align: center;
 
   z-index: 1;
+}
+
+.welcome-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 100%;
+  margin-bottom: 24px;
+}
+
+.welcome-heading h1 {
+  margin: 0;
+}
+
+.welcome-heading img {
+  width: 60px;
+  height: 60px;
+  flex: none;
+}
+
+@media (max-width: 600px) {
+  .welcome-heading { gap: 5px; margin-bottom: 14px; }
+  .welcome-heading h1 { font-size: 1.125rem; }
+  .welcome-heading img { width: 24px; height: 24px; }
 }
 
 .welcome-sign {
@@ -47,12 +74,17 @@
 .welcome-intro {
   perspective: 1600px;
   pointer-events: none;
+  transform: translateY(-90px);
+}
+
+@media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
+  .welcome-intro { transform: none; }
 }
 
 .welcome-intro .modal {
   position: absolute;
   left: 50%;
-  top: calc(50% - 360px);
+  top: calc(50% - 300px);
   translate: -50% 0;
   width: 790px;
   height: 620px;
@@ -82,23 +114,33 @@
 }
 
 .welcome-envelope .welcome-envelope-back {
-  bottom: 249px;
+  bottom: 57px;
   width: 829px;
   z-index: 1;
 }
 .welcome-envelope .welcome-envelope-front {
-  bottom: 62px;
+  bottom: 52px;
   width: 829px;
-  z-index: 3;
+  z-index: 6;
 }
 .welcome-envelope-closed { z-index: 4; }
 
 .welcome-intro .modal.is-over-envelope,
 .welcome-intro.is-complete .modal {
   z-index: 5;
-  transform: translateY(30px) rotate(-3deg);
+  transform: translateY(-20px);
 }
-.welcome-intro.is-complete .modal { opacity: 1; }
+.welcome-intro.is-complete .modal {
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform 250ms ease;
+}
+
+@media (hover: hover) {
+  .welcome-intro.is-complete .modal:hover {
+    transform: translateY(-20px) rotate(-3deg);
+  }
+}
 .welcome-intro.is-complete .welcome-envelope-back,
 .welcome-intro.is-complete .welcome-envelope-front { opacity: 1; }
 .welcome-intro.is-complete .welcome-envelope-closed { display: none; }
@@ -106,5 +148,5 @@
 /* 앞면의 리본 꼬리(약 100px)를 제외한 봉투 몸통 하단에 맞춘다. */
 .welcome-envelope .welcome-envelope-closed {
   width: 829px;
-  bottom: 162px;
+  bottom: 52px;
 }
