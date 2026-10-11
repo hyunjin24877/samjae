@@ -123,6 +123,17 @@
     const animation = el.animate(frames, { duration: reduced() ? 1 : duration, delay: reduced() ? 0 : delay, easing: ease, fill: 'forwards' });
     return animation;
   }
+  const scrollFrames = [
+    ['.diagnosis-scroll-paper', { clipPath: 'inset(50% 0 50% 0)' }, { clipPath: 'inset(0% 0 0% 0)' }],
+    ['.diagnosis-scroll-top', { top: '50%', transform: 'translateY(calc(-100% + 2px))' }, { top: '0%', transform: 'translateY(0%)' }],
+    ['.diagnosis-scroll-bottom', { bottom: '50%', transform: 'translateY(calc(100% - 2px))' }, { bottom: '0%', transform: 'translateY(0%)' }]
+  ];
+  function setScrollState(root, open) {
+    scrollFrames.forEach(([selector, closed, opened]) => {
+      Object.assign(root.querySelector(selector).style, open ? opened : closed);
+    });
+    root.querySelector('.diagnosis-result').style.opacity = open ? '1' : '0';
+  }
   async function prepare(index) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 8000);
@@ -139,7 +150,7 @@
     motion.querySelector('.diagnosis-scroll-top').src = sitePath('img/diagnosis/scroll-top2.svg');
     motion.querySelector('.diagnosis-scroll-bottom').src = sitePath('img/diagnosis/scroll-dowon2.svg');
     next.querySelector('.diagnosis-form')?.classList.add('is-visible');
-    next.querySelector('.diagnosis-result').style.opacity = '0';
+    setScrollState(next, false);
     const link = document.createElement('link');
     link.rel = 'stylesheet'; link.href = sitePath(`css/diagnosis-${index + 1}.css?v=20261003-pages`); link.media = 'not all';
     let cssTimeout;
@@ -150,23 +161,23 @@
     });
     document.head.append(link);
     try {
-      await Promise.all([loaded, window.waitForSiteAssets(Promise.all([...next.querySelectorAll('img')].map(img => img.decode().catch(() => {}))))]);
+      await Promise.all([
+        loaded,
+        Promise.all([...motion.querySelectorAll('img')].map(img => img.decode().catch(() => {}))),
+        window.waitForSiteAssets(Promise.all([...next.querySelectorAll('img')].map(img => img.decode().catch(() => {}))))
+      ]);
     } catch (error) { link.remove(); throw error; }
     finally { clearTimeout(cssTimeout); link.onload = link.onerror = null; }
     return { next, link };
   }
   async function fold(open) {
-    const frames = [
-      [$('.diagnosis-scroll-paper'), { clipPath: 'inset(50% 0 50% 0)' }, { clipPath: 'inset(0% 0 0% 0)' }],
-      [$('.diagnosis-scroll-top'), { top: '50%', transform: 'translateY(-100%)' }, { top: '0%', transform: 'translateY(0%)' }],
-      [$('.diagnosis-scroll-bottom'), { bottom: '50%', transform: 'translateY(100%)' }, { bottom: '0%', transform: 'translateY(0%)' }]
-    ];
-    const animations = frames.map(([el, closed, opened]) => animate(el, open ? [closed, opened] : [opened, closed], 850));
-    if (open) animations.push(animate($('.diagnosis-result'), [{ opacity: 0 }, { opacity: 1 }], 350, 700));
+    const duration = open ? 950 : 850;
+    const animations = scrollFrames.map(([selector, closed, opened]) =>
+      animate($(selector), open ? [closed, opened] : [opened, closed], duration));
+    if (open) animations.push(animate($('.diagnosis-result'), [{ opacity: 0 }, { opacity: 1 }], 400, duration * 0.82));
     await Promise.all(animations.map(a => a.finished));
     // 종료 스타일을 먼저 고정하고 애니메이션을 제거한다.
-    frames.forEach(([el, closed, opened]) => Object.assign(el.style, open ? opened : closed));
-    if (open) $('.diagnosis-result').style.opacity = '1';
+    setScrollState(stage, open);
     animations.forEach(a => a.cancel());
   }
   async function go(index, push = true) {
@@ -190,9 +201,7 @@
       stage = prepared.next;
       stage.inert = true;
       // 닫힌 족자와 숨겨진 질문을 준비한 뒤 DOM을 한 번에 교체한다.
-      Object.assign($('.diagnosis-scroll-paper').style, { clipPath: 'inset(50% 0 50% 0)' });
-      Object.assign($('.diagnosis-scroll-top').style, { top: '50%', transform: 'translateY(-100%)' });
-      Object.assign($('.diagnosis-scroll-bottom').style, { bottom: '50%', transform: 'translateY(100%)' });
+      setScrollState(stage, false);
       prepared.link.media = 'all';
       oldStyles.forEach(link => link.remove());
       old.replaceWith(stage);
@@ -200,6 +209,7 @@
       restore();
       document.querySelector('.gnb')?.classList.add('is-intro-hidden');
       if (push && pendingPop === null) history.pushState({ diagnosis: index }, '', paths[index]);
+      await new Promise(resolve => requestAnimationFrame(resolve));
       await fold(true);
     } catch (error) {
       console.error(error);
@@ -391,4 +401,23 @@
     go(index, false);
   });
   restore();
+  if (current > 0 && !reduced()) {
+    const motion = $('.diagnosis-scroll-motion');
+    setScrollState(stage, false);
+    motion.setAttribute('aria-busy', 'true');
+    busy = true;
+    stage.inert = true;
+    Promise.all([...motion.querySelectorAll('img')].map(img => img.decode().catch(() => {})))
+      .then(() => new Promise(resolve => requestAnimationFrame(resolve)))
+      .then(() => fold(true))
+      .catch(error => {
+        console.error('진단 족자 펼침 오류:', error);
+        setScrollState(stage, true);
+      })
+      .finally(() => {
+        motion.removeAttribute('aria-busy');
+        stage.inert = false;
+        busy = false;
+      });
+  }
 })();

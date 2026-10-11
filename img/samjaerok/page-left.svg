@@ -7,7 +7,7 @@
       }
 
       .cls-3 {
-        fill: url(#radial-gradient);
+        fill: #FFFFFF;
       }
 
       .cls-4 {
@@ -40,15 +40,6 @@
     <clipPath id="clippath-1">
       <path class="cls-1" d="M619.5.5v838.56H8.5c-4.42,0-8-3.58-8-8V8.5C.5,4.08,4.08.5,8.5.5h611Z"/>
     </clipPath>
-    <radialGradient id="radial-gradient" cx="3493.35" cy="-2195.37" fx="3493.35" fy="-2195.37" r="1" gradientTransform="translate(1050147.6502 1670863.3186) rotate(-90) scale(478.2046)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#dcddde"/>
-      <stop offset="0" stop-color="#dcddde"/>
-      <stop offset=".03" stop-color="#dcddde"/>
-      <stop offset=".05" stop-color="#dddedf"/>
-      <stop offset=".35" stop-color="#f0f0f1"/>
-      <stop offset=".66" stop-color="#fbfbfb"/>
-      <stop offset="1" stop-color="#fff"/>
-    </radialGradient>
     <clipPath id="clippath-2">
       <rect class="cls-1" width="620" height="839.56"/>
     </clipPath>

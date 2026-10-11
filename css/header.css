@@ -214,3 +214,8 @@
   .gnb-button:is([href$="gather.html"], [href$="testimony.html"], [href$="samjaerok.html"]) img { width: 69.34px; }
   .gnb-button::after { font-size: 0.891rem; transform: translate(-1.2px, -1px); }
 }
+
+@media (max-width: 699px) {
+  .header-controls .circle-btn:nth-child(2),
+  .header-controls .circle-btn:nth-child(3) { display: none; }
+}

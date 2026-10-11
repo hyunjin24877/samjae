@@ -1,6 +1,33 @@
 (() => {
   const scene = document.querySelector('.welcome-intro');
   if (!scene) return;
+  scene.querySelectorAll('.welcome-text p').forEach(paragraph => {
+    const walker = document.createTreeWalker(paragraph, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    nodes.forEach(node => {
+      const value = node.nodeValue;
+      const punctuation = /[,<〈]/g;
+      if (!punctuation.test(value)) return;
+      punctuation.lastIndex = 0;
+
+      const fragment = document.createDocumentFragment();
+      let start = 0;
+      for (const match of value.matchAll(punctuation)) {
+        fragment.append(document.createTextNode(value.slice(start, match.index)));
+        const span = document.createElement('span');
+        span.className = match[0] === ','
+          ? 'welcome-punctuation-gap welcome-comma'
+          : 'welcome-punctuation-gap';
+        span.textContent = match[0];
+        fragment.append(span);
+        start = match.index + match[0].length;
+      }
+      fragment.append(document.createTextNode(value.slice(start)));
+      node.replaceWith(fragment);
+    });
+  });
   const letter = scene.querySelector('.modal');
   const closed = scene.querySelector('.welcome-envelope-closed');
   const front = scene.querySelector('.welcome-envelope-front');

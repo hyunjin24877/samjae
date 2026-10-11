@@ -1,4 +1,33 @@
 (() => {
+  // 쉼표와 꺾쇠 뒤의 넓은 글리프 여백만 줄입니다. 텍스트와 공백 자체는 유지합니다.
+  document.querySelectorAll('.result-introduction, .result-details').forEach(section => {
+    const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    nodes.forEach(node => {
+      const value = node.nodeValue;
+      const punctuation = /[,<〈]/g;
+      if (!punctuation.test(value)) return;
+      punctuation.lastIndex = 0;
+
+      const fragment = document.createDocumentFragment();
+      let start = 0;
+      for (const match of value.matchAll(punctuation)) {
+        fragment.append(document.createTextNode(value.slice(start, match.index)));
+        const span = document.createElement('span');
+        span.className = match[0] === ','
+          ? 'result-punctuation-gap result-comma'
+          : 'result-punctuation-gap';
+        span.textContent = match[0];
+        fragment.append(span);
+        start = match.index + match[0].length;
+      }
+      fragment.append(document.createTextNode(value.slice(start)));
+      node.replaceWith(fragment);
+    });
+  });
+
   const method = document.querySelector('.result-method');
   const icons = [...(method?.querySelectorAll('.method-deco[data-src]') || [])];
   const details = method?.querySelector('.result-details');

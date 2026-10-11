@@ -1,3 +1,38 @@
+// 문장부호와 괄호 바깥쪽 여백만 보정합니다. 원문 공백은 유지합니다.
+document.querySelectorAll(".samjaerok-open .page-content").forEach(section => {
+  const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  nodes.forEach(node => {
+    const value = node.nodeValue;
+    const punctuation = /[,<〈.()\[\]]/g;
+    if (!punctuation.test(value)) return;
+    punctuation.lastIndex = 0;
+
+    const fragment = document.createDocumentFragment();
+    let start = 0;
+    for (const match of value.matchAll(punctuation)) {
+      fragment.append(document.createTextNode(value.slice(start, match.index)));
+      const span = document.createElement("span");
+      if (match[0] === "(" || match[0] === "[") {
+        span.className = "samjaerok-bracket-open";
+      } else if (match[0] === ")" || match[0] === "]") {
+        span.className = "samjaerok-bracket-close";
+      } else {
+        span.className = "samjaerok-punctuation-gap";
+        if (match[0] === ",") span.classList.add("samjaerok-comma");
+        if (match[0] === ".") span.classList.add("samjaerok-period");
+      }
+      span.textContent = match[0];
+      fragment.append(span);
+      start = match.index + match[0].length;
+    }
+    fragment.append(document.createTextNode(value.slice(start)));
+    node.replaceWith(fragment);
+  });
+});
+
 const cursor = document.getElementById("cursor");
 if (cursor) document.documentElement.append(cursor);
 const cover = document.getElementById("samjaerokCover");
@@ -12,6 +47,20 @@ const back = sheet.querySelector(".page-turn-face-back");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let currentPage = spreads.findIndex(page => page.classList.contains("active"));
 let runningTurn = null;
+let openingTextAnimations = [];
+
+function fadePageText(container, timing, opening = false) {
+  const frames = opening
+    ? [{ opacity: 0 }, { opacity: 1 }]
+    : [{ opacity: 0 }, { opacity: 0, offset: 0.5 }, { opacity: 1 }];
+  return [...container.querySelectorAll(".page-title, .page-body")]
+    .map(element => element.animate(frames, timing));
+}
+
+function stopOpeningTextFade() {
+  openingTextAnimations.forEach(animation => animation.cancel());
+  openingTextAnimations = [];
+}
 
 // 기존 페이지와 같은 크기로 종이와 내용을 복제한다.
 function fillPage(container, spread, side, withShade = false) {
@@ -56,6 +105,7 @@ function finishTurn() {
 
 function turnTo(index) {
   if (runningTurn || index === currentPage || index < 0) return;
+  stopOpeningTextFade();
   if (reducedMotion.matches) {
     selectPage(index);
     return;
@@ -96,7 +146,11 @@ function turnTo(index) {
     { opacity: 0.4, transform: "scaleX(0.5)", offset: 0.8 },
     { opacity: 0, transform: "scaleX(0.08)" }
   ], timing);
-  const turn = { animations: [rotation, shadow, cast, ...shades] };
+  const textFades = [
+    ...fadePageText(next, timing),
+    ...fadePageText(back, timing)
+  ];
+  const turn = { animations: [rotation, shadow, cast, ...shades, ...textFades] };
   runningTurn = turn;
   rotation.finished.then(() => {
     if (runningTurn === turn) finishTurn();
@@ -120,11 +174,18 @@ cover.addEventListener("click", event => {
   }
   cover.style.display = "none";
   openBook.style.display = "block";
+  if (!reducedMotion.matches) {
+    stopOpeningTextFade();
+    openingTextAnimations = fadePageText(spreads[currentPage], {
+      duration: 500, easing: "ease-out", fill: "both"
+    }, true);
+  }
 });
 openBook.addEventListener("click", event => event.stopPropagation());
 document.addEventListener("click", event => {
   if (openBook.style.display !== "block" || event.target.closest(".header")) return;
   finishTurn();
+  stopOpeningTextFade();
   openBook.style.display = "none";
   cover.style.display = "block";
 });
@@ -133,6 +194,9 @@ openTabs.forEach(tab => tab.addEventListener("click", event => {
   turnTo(spreads.findIndex(spread => spread.id === tab.dataset.page));
 }));
 reducedMotion.addEventListener("change", () => {
-  if (reducedMotion.matches) finishTurn();
+  if (reducedMotion.matches) {
+    finishTurn();
+    stopOpeningTextFade();
+  }
 });
 selectPage(Math.max(0, currentPage));

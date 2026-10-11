@@ -66,6 +66,8 @@ async function playDiagnosisEntrance() {
     // 디코딩 전에 빈 막대가 보이지 않도록 필요한 세 이미지가 준비된 후 시작.
     await window.waitForSiteAssets(Promise.all([openedRodsReady, ...[...motion.querySelectorAll("img")].map(image => image.decode().catch(() => {}))]));
     if (stopped) return;
+    // 좁은 화면에서는 고정 폭 족자 모션을 건너뛰고 내용에 맞춘 배치를 바로 보여준다.
+    if (matchMedia("(max-width: 699px)").matches) return;
     // 메뉴 페이드의 마지막 100ms와 낙하 시작을 겹쳐 한 흐름으로 연결.
     const menuExit = menu ? animate(menu, [
       { opacity: 1, transform: "translateY(0)" },

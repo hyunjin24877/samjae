@@ -54,8 +54,8 @@ body {
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  -webkit-mask-image: url("../img/landing/side-feather-mask.svg");
-  mask-image: url("../img/landing/side-feather-mask.svg");
+  -webkit-mask-image: linear-gradient(to right, #000 0 29%, transparent 31% 69%, #000 71% 100%);
+  mask-image: linear-gradient(to right, #000 0 29%, transparent 31% 69%, #000 71% 100%);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;

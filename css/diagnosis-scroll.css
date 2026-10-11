@@ -1,4 +1,9 @@
 /* Q1 족자 진입: 입력창을 움직이지 않도록 내부 족자만 애니메이션 */
+/* Q2~Q5의 정적 대체 이미지는 스크립트가 닫힌 족자로 교체할 때까지 감춥니다. */
+body:has(.diagnosis-open-wrap > .diagnosis-open) .diagnosis-open-wrap {
+  visibility: hidden;
+}
+
 #diagnosisOpen .diagnosis-scroll-motion {
   --scroll-rod-height: calc(48.92 / 372.99 * 100%);
   --scroll-seam-overlap: 4px;
