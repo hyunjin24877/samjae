@@ -1,0 +1,107 @@
+/* 기존 부적 모션 위에 놓이는 입력/효과 레이어. 원본의 크기와 배치는 건드리지 않습니다. */
+.amulet-burn-hotspot {
+  position: fixed;
+  z-index: 30;
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+}
+.amulet-burn-hotspot[hidden], .amulet-burn-hint[hidden] { display: none; }
+.amulet-burn-hotspot:focus-visible { outline: 2px solid #a32d20; outline-offset: 2px; }
+.amulet-burn-effect { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+
+/* 결과지에서 사용하는 fire 모션만 소각 효과로 표시합니다. */
+.amulet-burn-fire {
+  position: absolute;
+  left: -30%;
+  top: calc(var(--burn-front, 100%) - 85%);
+  width: 160%;
+  height: 85%;
+  object-fit: contain;
+  opacity: 0;
+}
+.amulet-burn-hotspot.is-burning .amulet-burn-fire { opacity: 1; }
+
+.amulet-burn-ash {
+  position: absolute;
+  left: var(--ash-left);
+  top: var(--ash-top);
+  width: 3px;
+  height: 3px;
+  background: #382622;
+  opacity: 0;
+  pointer-events: none;
+}
+.amulet-burn-hotspot.is-complete .amulet-burn-fire { opacity: 0; }
+.amulet-burn-hotspot.is-complete .amulet-burn-ash {
+  animation: amuletAshRise 620ms ease-out var(--ash-delay) both;
+}
+@keyframes amuletAshRise {
+  0% { opacity: .9; transform: translate(0, 0) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--ash-drift), -75px) rotate(140deg); }
+}
+
+.amulet-burn-hint {
+  position: fixed;
+  z-index: 31;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  max-width: calc(100vw - 16px);
+  height: 50px;
+  padding: 7px 30px;
+  border: 1px solid #231f20;
+  border-radius: 2px;
+  background: #eb4a26;
+  color: #ffce52;
+  font-family: "OnulSijak", sans-serif;
+  font-size: 18px;
+  line-height: 1.35;
+  text-align: center;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.amulet-burn-hint::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed #ffed91;
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+html.site-cursor-active .amulet-burn-hotspot { cursor: pointer !important; }
+html.site-cursor-active:has(.amulet-burn-hotspot:hover) .site-cursor { visibility: hidden; }
+
+/* 팝업이 열리며 X 버튼에 자동 포커스될 때 보이는 흰 사각 테두리 제거. */
+.example-popup-close:focus-visible { outline: none; }
+
+/* 채록 페이지가 좁은 화면에서 사용하는 팝업 폭을 결과 페이지에도 적용합니다. */
+@media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
+  .example-popup { width: min(620px, calc(100% - 24px)); max-height: calc(100svh - 24px); }
+  .example-popup-close {
+    position: fixed;
+    left: 50%;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    transform: translateX(-50%);
+    background: #000;
+    border-radius: 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .amulet-burn-hotspot.is-complete .amulet-burn-ash { animation-duration: 1ms; }
+}

@@ -1,0 +1,27 @@
+/* 원래 붓 모션의 크기와 배치는 유지하고 드래그 입력만 받습니다. */
+.result-method .method-deco[data-src$="/pen.gif"] {
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.result-brush-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+html.site-cursor-active .result-method .method-deco[data-src$="/pen.gif"] {
+  cursor: grab !important;
+}
+html.site-cursor-active:has(.result-method .method-deco[data-src$="/pen.gif"]:hover) .site-cursor,
+html.is-brush-writing .site-cursor {
+  visibility: hidden;
+}
+html.is-brush-writing,
+html.is-brush-writing * {
+  cursor: grabbing !important;
+}
