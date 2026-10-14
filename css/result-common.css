@@ -60,7 +60,17 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
   pointer-events: none;
 }
 .result-tags-divider { margin-top: 0; }
-.result-tags { position: relative; isolation: isolate; display: grid; grid-template-columns: repeat(3, 200px); justify-content: center; list-style: none; padding: 0; margin: 0 -32px; gap: 0; }
+.result-tags {
+  /* 상단 유형 버튼 3개의 글자 설정: 여기의 값만 바꾸면 12개 결과에 공통 적용됩니다. */
+  --result-tag-font-family: "OnulSijak", sans-serif;
+  --result-tag-font-size: 1.625rem;
+  --result-tag-font-weight: 400;
+  --result-tag-line-height: 1.75rem;
+  --result-tag-letter-spacing: -0.1875rem;
+  --result-tag-color: #000;
+  --result-tag-text-offset-y: -3px;
+  position: relative; isolation: isolate; display: grid; grid-template-columns: repeat(3, 200px); justify-content: center; list-style: none; padding: 0; margin: 0 -32px; gap: 0;
+}
 .result-tags::before {
   content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background-image: url('../img/result/stroke-2.svg'), url('../img/result/stroke-2.svg');
@@ -70,7 +80,15 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
 }
 .result-tags li { position: relative; box-sizing: border-box; display: grid; place-items: center; width: 200px; height: 58px; margin: 0; padding: 0; background: white; }
 .result-type-button { position: relative; display: grid; place-items: center; width: 200px; height: 58px; box-sizing: border-box; padding: 0; margin: 0; border: 0; border-radius: 0; background: white; appearance: none; cursor: pointer; }
-.result-type-button > span { transform: translateY(-3px); }
+.result-tags .result-type-label {
+  font-family: var(--result-tag-font-family);
+  font-size: var(--result-tag-font-size);
+  font-weight: var(--result-tag-font-weight);
+  line-height: var(--result-tag-line-height);
+  letter-spacing: var(--result-tag-letter-spacing);
+  color: var(--result-tag-color);
+}
+.result-type-button > span { transform: translateY(var(--result-tag-text-offset-y, -3px)); }
 .result-type-button:hover { background: #f5f5ef; }
 .result-type-button:active { background: #eaeae0; }
 .result-type-button:focus-visible { outline: 2px solid #000; outline-offset: -9px; }
@@ -145,11 +163,12 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
   transform: translateX(-50%) rotate(180deg);
 }
 .result-introduction p { margin: 0 0 20px; }
-/* 모든 결과 페이지의 소개글 띄어쓰기와 풀이 본문 자간. */
+/* 모든 결과 페이지의 소개글 자간·어간을 풀이 본문과 맞춥니다. */
 .result-paper .result-introduction {
   max-width: 32.5em; /* 한글 약 35자 */
   margin-inline: auto;
-  word-spacing: -0.11rem;
+  letter-spacing: -0.1875rem;
+  word-spacing: 0.0625rem;
   word-break: keep-all;
   overflow-wrap: normal;
 }
@@ -257,6 +276,8 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
 body[data-receipt-type] { font-family: "OnulSijak", sans-serif; }
 @media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
   .result-paper .result-details { letter-spacing: -0.035em; }
+  .result-paper .result-introduction { letter-spacing: -0.035em; }
+  .result-tags { --result-tag-letter-spacing: -0.075em; }
 }
 @media (max-width: 1688px) {
   body[data-receipt-type] .header { width: calc(100% - 24px); }
@@ -294,7 +315,11 @@ body[data-receipt-type] { font-family: "OnulSijak", sans-serif; }
   .result-method > .method-deco[hidden] { display: inline-block; visibility: hidden; }
 }
 @media (max-width: 600px) {
-  .result-type-label { font-size: clamp(1.125rem, 4.5vw, 1.625rem); letter-spacing: -0.0625rem; }
+  /* 모바일 글자 크기와 자간은 이 두 값으로 조절합니다. */
+  .result-tags {
+    --result-tag-font-size: clamp(1.125rem, 4.5vw, 1.625rem);
+    --result-tag-letter-spacing: -0.125rem;
+  }
   .result-method h2, .result-details dt .body1-center-underline { font-size: 1.0625rem; line-height: 1.65; }
   .result-controls { margin-top: 40px; }
   .result-action { max-width: 100%; box-sizing: border-box; line-height: 1.4; overflow-wrap: anywhere; }

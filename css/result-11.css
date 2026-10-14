@@ -3,9 +3,9 @@
  * 직접 지정하고 반대편 right/bottom은 auto로 두세요. 모바일 값도 에셋별 조절 가능합니다. */
 
 .result-character-11 {
-  --character-width: 180px;
+  --character-width: 250px;
   --character-height: auto;
-  --character-top: 50%;
+  --character-top: 48%;
   --character-left: 50%;
   --character-right: auto;
   --character-bottom: auto;

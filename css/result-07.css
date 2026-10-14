@@ -6,8 +6,8 @@
   /* 줄글 글자 조절: 위쪽은 소개글, 아래쪽은 풀이 방법/해설 본문입니다. */
   --result-07-intro-font-size: 1.25rem;
   --result-07-intro-line-height: 1.6875rem;
-  --result-07-intro-letter-spacing: -0.09375rem;
-  --result-07-intro-word-spacing: -0.125rem;
+  --result-07-intro-letter-spacing: -0.1875rem;
+  --result-07-intro-word-spacing: 0.0625rem;
   --result-07-method-font-size: 1.25rem;
   --result-07-method-line-height: 1.9375rem;
   --result-07-method-letter-spacing: -0.1875rem;
@@ -32,6 +32,7 @@
   .result-paper {
     --result-07-intro-font-size: clamp(1.0625rem, 3.8vw, 1.25rem);
     --result-07-intro-line-height: 1.5;
+    --result-07-intro-letter-spacing: -0.035em;
     --result-07-method-font-size: clamp(1.0625rem, 3.8vw, 1.25rem);
     --result-07-method-line-height: 1.5;
     --result-07-method-letter-spacing: -0.035em;
@@ -51,14 +52,14 @@
 }
 
 .result-character-07 {
-  --character-width: 270px;
+  --character-width: 300px;
   --character-height: auto;
   --character-top: calc(50% - 10px);
   --character-left: 50%;
   --character-right: auto;
   --character-bottom: auto;
   --character-transform: translate(-50%, -50%);
-  --character-mobile-width: min(220px, 29.233cqw);
+  --character-mobile-width: 280px;
 }
 
 .result-07-motion-pray-1 {
