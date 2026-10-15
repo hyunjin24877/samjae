@@ -1,0 +1,27 @@
+.result-method .method-deco[data-src$="/chiseong.gif"] {
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.result-method .method-deco[data-src$="/chiseong.gif"]:focus-visible {
+  outline: 2px solid #821717;
+  outline-offset: 3px;
+}
+
+.result-method .method-deco.chiseong-jumping {
+  animation: chiseong-jump 650ms ease-in-out;
+}
+
+@keyframes chiseong-jump {
+  0%, 100% { translate: 0 0; }
+  18% { translate: 0 0; }
+  48% { translate: 0 -28%; }
+  75% { translate: 0 -12%; }
+}
+
+@media print {
+  .result-method .method-deco.chiseong-jumping { animation: none !important; }
+}

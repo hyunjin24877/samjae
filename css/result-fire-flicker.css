@@ -1,0 +1,32 @@
+.result-method .method-deco[data-src$="/fire.webp"] {
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.result-method.has-fire-glow { isolation: isolate; }
+.result-method.has-fire-glow > h2,
+.result-method.has-fire-glow > .result-details {
+  position: relative;
+  z-index: 1;
+}
+
+.fire-click-glow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--fire-glow-size, 180px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(174, 31, 22, .82) 0%, rgba(190, 39, 27, .52) 35%, rgba(190, 39, 27, 0) 74%);
+  filter: blur(8px);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.65);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fire-click-glow[hidden] { display: none; }
+
+@media print {
+  .fire-click-glow { display: none !important; }
+}

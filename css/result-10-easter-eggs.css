@@ -1,0 +1,29 @@
+.result-method .result-10-motion-panttie-1,
+.result-method .result-10-motion-house-1 {
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-drag: none;
+  transform-origin: center;
+}
+
+.result-method .result-10-motion-panttie-1:focus-visible,
+.result-method .result-10-motion-house-1:focus-visible {
+  outline: 2px solid #821717;
+  outline-offset: 3px;
+}
+
+.result-method .result-10-pop {
+  animation: result-10-pop 600ms ease-out;
+}
+
+@keyframes result-10-pop {
+  0%, 100% { scale: 1; }
+  45% { scale: 1.2; }
+  72% { scale: 1.07; }
+}
+
+@media print {
+  .result-method .result-10-pop { animation: none !important; }
+}

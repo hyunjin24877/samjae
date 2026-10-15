@@ -1,4 +1,20 @@
 (() => {
+  const resultMain = document.querySelector('.result-main');
+  if (resultMain) {
+    const fitReceipt = () => {
+      // The source receipt is 850px wide; scale its HTML counterpart uniformly.
+      const receiptScale = resultMain.clientWidth / 850;
+      const contentScale = parseFloat(getComputedStyle(resultMain).getPropertyValue('--receipt-content-scale')) || 1;
+      const noteScale = receiptScale * contentScale;
+      resultMain.style.setProperty('--receipt-zoom', String(receiptScale));
+      // Notes were 15px/22px before the receipt layout and stay readable after zoom.
+      resultMain.style.setProperty('--receipt-note-font-size', `${15 / noteScale}px`);
+      resultMain.style.setProperty('--receipt-note-line-height', `${22 / noteScale}px`);
+    };
+    new ResizeObserver(fitReceipt).observe(resultMain);
+    fitReceipt();
+  }
+
   // 쉼표와 꺾쇠 뒤의 넓은 글리프 여백만 줄입니다. 텍스트와 공백 자체는 유지합니다.
   document.querySelectorAll('.result-introduction, .result-details').forEach(section => {
     const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT);
@@ -114,7 +130,12 @@
       icon.style.setProperty('--motion-random-left', `${bounds.left + Math.random() * (bounds.right - bounds.left)}px`);
       icon.style.setProperty('--motion-random-top', `${bounds.top + Math.random() * (bounds.bottom - bounds.top)}px`);
       icon.removeAttribute('hidden');
+      const keepVisible = () => icon.dataset.lanternReplay === 'true' || icon.dataset.prayInteractive === 'true' || icon.dataset.chickenReplay === 'true' || icon.dataset.appleReplay === 'true' || icon.dataset.boatReplay === 'true';
       const hide = () => {
+        if (keepVisible()) {
+          if (icon.dataset.prayInteractive === 'true') icon.dataset.prayHidePending = 'true';
+          return;
+        }
         icon.hidden = true;
         icon.removeAttribute('src');
         URL.revokeObjectURL(source);
@@ -124,9 +145,20 @@
         const loopMs = Number(icon.dataset.loopMs);
         const fadeMs = Math.min(800, loopMs);
         icon.style.setProperty('--motion-fade-duration', `${fadeMs}ms`);
+        icon.addEventListener('result-pray-resume', () => {
+          if (icon.dataset.prayHidePending !== 'true') return;
+          delete icon.dataset.prayHidePending;
+          icon.classList.add('is-fading');
+          setTimeout(hide, fadeMs);
+        });
         setTimeout(() => {
+          if (keepVisible()) {
+            if (icon.dataset.prayInteractive === 'true') icon.dataset.prayHidePending = 'true';
+            return;
+          }
           icon.classList.add('is-fading');
           setTimeout(async () => {
+            if (keepVisible()) return;
             hide();
             if (!icon.dataset.afterSrc) return;
             icon.classList.remove('is-fading');

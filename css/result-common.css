@@ -88,6 +88,9 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
   letter-spacing: var(--result-tag-letter-spacing);
   color: var(--result-tag-color);
 }
+.result-tags .result-type-label[data-result-type="individual"] {
+  letter-spacing: calc(var(--result-tag-letter-spacing) - 0.125rem);
+}
 .result-type-button > span { transform: translateY(var(--result-tag-text-offset-y, -3px)); }
 .result-type-button:hover { background: #f5f5ef; }
 .result-type-button:active { background: #eaeae0; }

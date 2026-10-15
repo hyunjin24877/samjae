@@ -1,0 +1,24 @@
+.result-method .method-deco[data-src$="straw doll.webp"] {
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.result-method .method-deco[data-src$="straw doll.webp"]:focus-visible {
+  outline: 2px solid #821717;
+  outline-offset: 3px;
+}
+
+.result-straw-doll-anger {
+  position: absolute;
+  z-index: 8;
+  display: block;
+  aspect-ratio: 11 / 11.55;
+  background: url('../img/result/anger.svg') center / contain no-repeat;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+.result-straw-doll-anger[hidden] { display: none; }
