@@ -65,10 +65,17 @@
         { transform: `translateX(${distance * 0.83}px) rotate(10deg)`, offset: 0.82 },
         { transform: `translateX(${distance}px) rotate(0deg)`, offset: 1 }
       ], { duration: 1300, easing: 'ease-in', fill: 'forwards' });
-      await animation.finished;
+      const departureFade = layer.animate([
+        { opacity: 1, offset: 0 },
+        { opacity: 1, offset: .6 },
+        { opacity: .5, offset: .8 },
+        { opacity: 0, offset: 1 }
+      ], { duration: 1300, easing: 'linear', fill: 'forwards' });
+      await Promise.all([animation.finished, departureFade.finished]);
       layer.style.visibility = 'hidden';
       layer.style.opacity = '0';
       animation.cancel();
+      departureFade.cancel();
       await wait(2000);
       layer.style.visibility = '';
       requestAnimationFrame(() => { layer.style.opacity = '1'; });

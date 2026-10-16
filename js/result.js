@@ -130,7 +130,7 @@
       icon.style.setProperty('--motion-random-left', `${bounds.left + Math.random() * (bounds.right - bounds.left)}px`);
       icon.style.setProperty('--motion-random-top', `${bounds.top + Math.random() * (bounds.bottom - bounds.top)}px`);
       icon.removeAttribute('hidden');
-      const keepVisible = () => icon.dataset.lanternReplay === 'true' || icon.dataset.prayInteractive === 'true' || icon.dataset.chickenReplay === 'true' || icon.dataset.appleReplay === 'true' || icon.dataset.boatReplay === 'true' || icon.dataset.siruStack === 'true';
+      const keepVisible = () => icon.dataset.lanternReplay === 'true' || icon.dataset.prayInteractive === 'true' || icon.dataset.chickenReplay === 'true' || icon.dataset.appleReplay === 'true' || icon.dataset.boatReplay === 'true' || icon.dataset.siruStack === 'true' || icon.dataset.knifeReplay === 'true';
       const hide = () => {
         if (keepVisible()) {
           if (icon.dataset.prayInteractive === 'true') icon.dataset.prayHidePending = 'true';

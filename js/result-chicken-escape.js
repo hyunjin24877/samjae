@@ -31,6 +31,7 @@
     layer.style.transformOrigin = `${chicken.offsetLeft + chicken.offsetWidth / 2}px ${chicken.offsetTop + chicken.offsetHeight / 2}px`;
 
     let flight;
+    let departureFade;
     let fade;
     try {
       flight = layer.animate([
@@ -48,9 +49,17 @@
         { offset: .82, transform: `translate(${travel * .52}px, -5px) scale(1)` },
         { offset: 1, transform: `translate(${travel}px, 0) scale(1)` }
       ], { duration: 2000, fill: 'forwards' });
-      await flight.finished;
+      // The run begins at 45% of the full sequence. Fade over its last 40%.
+      departureFade = layer.animate([
+        { opacity: 1, offset: 0 },
+        { opacity: 1, offset: .78 },
+        { opacity: .5, offset: .89 },
+        { opacity: 0, offset: 1 }
+      ], { duration: 2000, easing: 'linear', fill: 'forwards' });
+      await Promise.all([flight.finished, departureFade.finished]);
       layer.style.opacity = '0';
       flight.cancel();
+      departureFade.cancel();
 
       await wait(2000);
       fade = layer.animate([{ opacity: 0 }, { opacity: 1 }], {
@@ -62,6 +71,7 @@
     } catch (error) {
       if (error.name !== 'AbortError') console.error('닭 도망 모션 오류:', error);
       flight?.cancel();
+      departureFade?.cancel();
       fade?.cancel();
       layer.style.opacity = '1';
     } finally {

@@ -1,0 +1,49 @@
+.result-method .result-simple-motion-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+body[data-receipt-type] .result-method .result-simple-motion-layer > .method-deco {
+  position: absolute;
+  display: block;
+  visibility: visible;
+  width: calc(var(--motion-width, 80px) * 1.4);
+  height: var(--motion-height, auto);
+  margin: 0;
+  transform: var(--motion-transform, none);
+  pointer-events: auto;
+}
+
+body[data-receipt-type] .result-method .result-simple-motion-layer > .method-deco[hidden] {
+  display: none;
+}
+
+.result-method .result-simple-motion-layer[data-motion="writer"] {
+  transition: filter .3s ease-in-out;
+}
+
+.result-method .result-simple-motion-layer[data-motion="writer"].is-hovered {
+  filter: drop-shadow(0 0 7px rgba(160, 30, 25, .38))
+          drop-shadow(0 0 16px rgba(160, 30, 25, .2));
+}
+
+.result-method .result-simple-motion-layer[data-motion="paper"] {
+  transition: transform .8s ease-in-out;
+}
+
+.result-method .result-simple-motion-layer[data-motion="paper"].is-hovered {
+  transform: translate(15px, -5px) rotate(3deg);
+}
+
+.result-simple-motion-layer[data-motion="knife"] > .method-deco {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+}
+
+.result-simple-motion-layer[data-motion="knife"] > .method-deco:focus-visible {
+  outline: 2px solid #821717;
+  outline-offset: 3px;
+}
