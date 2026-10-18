@@ -5,6 +5,9 @@
   )];
   if (!amulets.length) return;
 
+  const popupSound = new Audio(sitePath('sound/popup.mp3'));
+  popupSound.preload = 'auto';
+
   // 채록 팝업의 마크업과 스타일을 그대로 사용합니다.
   const popup = document.createElement('dialog');
   popup.className = 'example-popup';
@@ -37,6 +40,8 @@
       : (previousMessage + 1 + Math.floor(Math.random() * (burnMessages.length - 1))) % burnMessages.length;
     message.textContent = burnMessages[previousMessage];
     popup.showModal();
+    popupSound.currentTime = 0;
+    popupSound.play().catch(() => {});
     const cursor = document.querySelector('.site-cursor');
     if (cursor) popup.append(cursor);
   }
@@ -54,6 +59,9 @@
   });
 
   amulets.forEach(amulet => {
+    const fireSound = new Audio(sitePath('sound/fire.mp3'));
+    fireSound.preload = 'auto';
+    fireSound.volume = 0.4;
     const hotspot = document.createElement('button');
     hotspot.type = 'button';
     hotspot.className = 'amulet-burn-hotspot';
@@ -138,6 +146,8 @@
     function reset() {
       cancelAnimationFrame(frame);
       clearTimeout(ashTimer);
+      fireSound.pause();
+      fireSound.currentTime = 0;
       state = 'idle';
       pointerId = null;
       progress = 0;
@@ -195,6 +205,8 @@
       hint.hidden = true;
       fire.src = '../img/result/fire.webp';
       hotspot.classList.add('is-burning');
+      fireSound.currentTime = 0;
+      fireSound.play().catch(() => {});
       frame = requestAnimationFrame(tick);
     }
 

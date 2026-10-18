@@ -19,6 +19,7 @@
   function launch() {
     if (flying || lantern.hidden || !lantern.currentSrc) return;
     flying = true;
+    lantern.dispatchEvent(new Event('result-lantern-launch'));
     lantern.dataset.lanternReplay = 'true';
     lantern.classList.remove('is-fading');
     lantern.style.pointerEvents = 'none';

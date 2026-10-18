@@ -19,6 +19,8 @@ const diagnosisPopup =
 
 
 let popupTimer;
+const warningPopupSound = new Audio(sitePath("sound/waring_popup.mp3"));
+warningPopupSound.preload = "auto";
 
 
 /* =========================
@@ -59,6 +61,8 @@ function showIncompletePopup(popup = document.getElementById("diagnosisPopup")) 
   if (!popup || popup.classList.contains("is-show")) return;
   // 재생 중 추가 클릭은 무시하여 세 번의 페이드를 중간에 재시작하지 않는다.
   popup.classList.add("is-show");
+  warningPopupSound.currentTime = 0;
+  warningPopupSound.play().catch(() => {});
 }
 
 // 질문 DOM이 교체되어도 동작하며, 세 번째 반복 완료 후 display:none으로 돌아간다.

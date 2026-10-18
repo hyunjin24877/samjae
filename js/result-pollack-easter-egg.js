@@ -9,6 +9,9 @@
   fish.forEach(image => {
     const method = image.closest('.result-method');
     if (!method) return;
+    const runSound = new Audio(sitePath('sound/run.mp3'));
+    runSound.preload = 'auto';
+    runSound.volume = 0.4;
 
     // result.js가 북어를 method의 직접 자식으로 옮긴 뒤 실행됩니다.
     const layer = document.createElement('span');
@@ -57,6 +60,8 @@
 
     async function escape(fishRect) {
       const distance = Math.max(0, window.innerWidth - fishRect.left + fishRect.width + 80);
+      runSound.currentTime = 0;
+      runSound.play().catch(() => {});
       const animation = layer.animate([
         { transform: 'translateX(0) rotate(0deg)', offset: 0 },
         { transform: `translateX(${distance * 0.14}px) rotate(-15deg)`, offset: 0.18 },
@@ -71,7 +76,12 @@
         { opacity: .5, offset: .8 },
         { opacity: 0, offset: 1 }
       ], { duration: 1300, easing: 'linear', fill: 'forwards' });
-      await Promise.all([animation.finished, departureFade.finished]);
+      try {
+        await Promise.all([animation.finished, departureFade.finished]);
+      } finally {
+        runSound.pause();
+        runSound.currentTime = 0;
+      }
       layer.style.visibility = 'hidden';
       layer.style.opacity = '0';
       animation.cancel();

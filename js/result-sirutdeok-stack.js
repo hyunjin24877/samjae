@@ -61,6 +61,7 @@
     newLayer.style.height = `${cake.offsetHeight}px`;
     stack.append(newLayer);
     added.push(newLayer);
+    cake.dispatchEvent(new Event('result-siru-layer-added'));
 
     const entrance = newLayer.animate([
       { opacity: 0, transform: `translateY(${step * .55}px)` },

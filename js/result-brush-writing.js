@@ -172,6 +172,7 @@
     activePointer = null;
     brush.style.translate = originalTranslate;
     document.documentElement.classList.remove('is-brush-writing');
+    brush.dispatchEvent(new Event('result-pen-writing-end'));
   }
 
   brush.addEventListener('pointerdown', event => {
@@ -183,6 +184,7 @@
     activePointer = event.pointerId;
     brush.setPointerCapture(event.pointerId);
     document.documentElement.classList.add('is-brush-writing');
+    brush.dispatchEvent(new Event('result-pen-writing-start'));
     move(event);
   });
   brush.addEventListener('pointermove', move);

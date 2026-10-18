@@ -494,6 +494,28 @@ body * {
   padding-left: 0;
 }
 
+.samjae-type-list-illustrated > li {
+  isolation: isolate;
+  pointer-events: auto;
+}
+
+.samjae-type-list-illustrated .samjae-type-illustration {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 65px;
+  height: auto;
+  transform: translateY(-50%);
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.samjae-type-list-illustrated > li:hover > .samjae-type-illustration {
+  opacity: 0.1;
+}
+
 .page-body .samjae-type-list .type-name {
   display: block;
   padding-left: 1.4em;

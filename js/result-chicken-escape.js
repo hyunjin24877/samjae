@@ -14,10 +14,14 @@
 
   let escaping = false;
   const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const runSound = new Audio(sitePath('sound/run.mp3'));
+  runSound.preload = 'auto';
+  runSound.volume = 0.4;
 
   async function escape() {
     if (escaping || chicken.hidden || !chicken.currentSrc || chicken.classList.contains('is-after')) return;
     escaping = true;
+    chicken.dispatchEvent(new CustomEvent('result-motion-click', { detail: 900 }));
     chicken.dataset.chickenReplay = 'true';
     chicken.classList.remove('is-fading');
     chicken.style.pointerEvents = 'none';
@@ -33,6 +37,7 @@
     let flight;
     let departureFade;
     let fade;
+    let runTimer;
     try {
       flight = layer.animate([
         { offset: 0, transform: 'translate(0, 0) scale(1)' },
@@ -56,7 +61,13 @@
         { opacity: .5, offset: .89 },
         { opacity: 0, offset: 1 }
       ], { duration: 2000, easing: 'linear', fill: 'forwards' });
+      runTimer = setTimeout(() => {
+        runSound.currentTime = 0;
+        runSound.play().catch(() => {});
+      }, 900);
       await Promise.all([flight.finished, departureFade.finished]);
+      runSound.pause();
+      runSound.currentTime = 0;
       layer.style.opacity = '0';
       flight.cancel();
       departureFade.cancel();
@@ -75,6 +86,9 @@
       fade?.cancel();
       layer.style.opacity = '1';
     } finally {
+      clearTimeout(runTimer);
+      runSound.pause();
+      runSound.currentTime = 0;
       chicken.style.removeProperty('pointer-events');
       escaping = false;
     }

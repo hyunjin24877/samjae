@@ -1,5 +1,8 @@
 (() => {
   document.querySelectorAll('.result-method .method-deco[data-src$="/fire.webp"]').forEach(fire => {
+    const fireSound = new Audio(sitePath('sound/fire.mp3'));
+    fireSound.preload = 'auto';
+    fireSound.volume = 0.4;
     const method = fire.closest('.result-method');
     method.classList.add('has-fire-glow');
     const glow = document.createElement('span');
@@ -25,6 +28,8 @@
 
     function flash() {
       if (fire.hidden || !fire.currentSrc) return;
+      fireSound.currentTime = 0;
+      fireSound.play().catch(() => {});
       flicker?.cancel();
       const opacity = Number.parseFloat(getComputedStyle(fire).opacity);
       const original = Number.isFinite(opacity) ? opacity : 1;

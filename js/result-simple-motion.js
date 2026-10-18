@@ -53,6 +53,7 @@
       let shake;
       const play = () => {
         if (image.hidden || !image.currentSrc) return;
+        image.dispatchEvent(new CustomEvent('result-motion-click', { detail: 500 }));
         setPivot();
         shake?.cancel();
         shake = layer.animate([

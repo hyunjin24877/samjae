@@ -329,6 +329,12 @@
 
   width: auto;
   height: 46px;
+
+  transition: filter 0.2s ease;
+}
+
+.diagnosis-btn:not(.is-disabled):hover .diagnosis-btn-img {
+  filter: brightness(1.17);
 }
 
 
@@ -489,6 +495,19 @@
 /* diagnosis-religion-art.webm 영상 크기만 조절 */
 .diagnosis-choices .diagnosis-card .diagnosis-card-art-wrap > video.diagnosis-motion-religion {
   transform: scale(.8);
+}
+
+/* iOS Safari는 이 WebM의 투명 배경을 검정으로 합성하므로 원본 SVG를 보여줍니다. */
+@supports (-webkit-touch-callout: none) {
+  @media (hover: none) and (pointer: coarse) {
+    .diagnosis-choices .diagnosis-card[data-value="religion"].is-selected.is-video-playing .diagnosis-card-art {
+      visibility: visible;
+    }
+
+    .diagnosis-choices .diagnosis-card[data-value="religion"].is-selected.is-video-playing .diagnosis-card-video {
+      visibility: hidden;
+    }
+  }
 }
 
 /* 영상 원본의 투명 여백/방향만 보정합니다. 공통 wrapper 크기는 유지합니다.

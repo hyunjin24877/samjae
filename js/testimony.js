@@ -3908,6 +3908,44 @@ const testimonyList = document.querySelector(".testimony-list");
 const scrollbar = document.querySelector(".testimony-scrollbar");
 const scrollbarThumb = document.querySelector(".testimony-scrollbar-thumb");
 
+const testimonyScrollSound = (() => {
+  const sound = new Audio(sitePath("sound/looling.mp3"));
+  sound.preload = "auto";
+  sound.loop = true;
+  const positions = new WeakMap();
+  let pauseTimer;
+  let activeArea = null;
+
+  function stop() {
+    clearTimeout(pauseTimer);
+    sound.pause();
+    activeArea = null;
+  }
+
+  function sync(area) {
+    if (area) positions.set(area, area.scrollTop);
+  }
+
+  [testimonyList, detail].filter(Boolean).forEach(area => {
+    sync(area);
+    area.addEventListener("scroll", () => {
+      const previous = positions.get(area) ?? area.scrollTop;
+      const distance = Math.abs(area.scrollTop - previous);
+      sync(area);
+      if (distance < 1 || (area === detail && !detail.classList.contains("is-open"))) return;
+
+      if (activeArea !== area) stop();
+      activeArea = area;
+      if (sound.paused) sound.play().catch(() => {});
+      clearTimeout(pauseTimer);
+      pauseTimer = setTimeout(stop, Math.min(600, Math.max(60, distance * 2)));
+    }, { passive: true });
+  });
+
+  window.addEventListener("pagehide", stop);
+  return { stop, sync };
+})();
+
 function updateTestimonyScrollbar() {
   if (
     !testimonyList ||
@@ -3979,26 +4017,38 @@ const testimonyMotion = (() => {
   const guide = document.querySelector('.testimony-guide');
   const scroll = document.querySelector('.testimony-answer-scroll');
   const body = document.getElementById('testimonyDetailBody');
+  const detailOpenSound = new Audio(sitePath('sound/looling2.mp3'));
+  detailOpenSound.preload = 'auto';
   let selected = null;
 
   function reset() {
+    detailOpenSound.pause();
+    detailOpenSound.currentTime = 0;
+    testimonyScrollSound.stop();
     scroll.hidden = true;
     guide.hidden = false;
     body.innerHTML = '';
     detail.classList.remove('is-open');
     detail.scrollTop = 0;
+    testimonyScrollSound.sync(detail);
     rows.forEach(row => row.classList.remove('is-selected'));
     selected = null;
   }
 
   function select(row) {
     if (selected === row) return;
+    const wasClosed = scroll.hidden;
     body.innerHTML = testimonyData[row.dataset.id] ||
       '<p class="body2-left">이 증언의 내용은 준비 중입니다.</p>';
     detail.classList.add('is-open');
     detail.scrollTop = 0;
+    testimonyScrollSound.sync(detail);
     guide.hidden = true;
     scroll.hidden = false;
+    if (wasClosed) {
+      detailOpenSound.currentTime = 0;
+      detailOpenSound.play().catch(() => {});
+    }
     rows.forEach(item => item.classList.toggle('is-selected', item === row));
     selected = row;
     detail.dispatchEvent(new Event('scroll'));

@@ -4,6 +4,9 @@
   )];
   if (!coins.length) return;
 
+  const popupSound = new Audio(sitePath('sound/popup.mp3'));
+  popupSound.preload = 'auto';
+
   const fortunes = [
     '오늘의 불운은 내일의 이야깃거리가 될지도 모릅니다.',
     '길을 잘못 들었다면, 새로운 길을 발견한 셈입니다.',
@@ -43,6 +46,8 @@
       : (previousIndex + 1 + Math.floor(Math.random() * (fortunes.length - 1))) % fortunes.length;
     message.textContent = fortunes[previousIndex];
     popup.showModal();
+    popupSound.currentTime = 0;
+    popupSound.play().catch(() => {});
     const cursor = document.querySelector('.site-cursor');
     if (cursor) popup.append(cursor);
   }

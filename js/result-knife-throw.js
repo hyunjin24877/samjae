@@ -18,6 +18,7 @@
   async function throwKnife() {
     if (throwing || knife.hidden || !knife.currentSrc) return;
     throwing = true;
+    knife.dispatchEvent(new CustomEvent('result-motion-click', { detail: 1350 }));
     knife.dataset.knifeReplay = 'true';
     knife.classList.remove('is-fading');
     knife.style.pointerEvents = 'none';

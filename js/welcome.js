@@ -32,6 +32,54 @@
   const closed = scene.querySelector('.welcome-envelope-closed');
   const front = scene.querySelector('.welcome-envelope-front');
   const back = scene.querySelector('.welcome-envelope-back');
+  const paperSound = new Audio(sitePath('sound/paper.mp3'));
+  paperSound.preload = 'auto';
+  let paperAudioContext;
+  function playPaperSound() {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!paperAudioContext && AudioContextClass) {
+      try {
+        paperAudioContext = new AudioContextClass();
+        const source = paperAudioContext.createMediaElementSource(paperSound);
+        const gain = paperAudioContext.createGain();
+        gain.gain.value = 1.8;
+        source.connect(gain).connect(paperAudioContext.destination);
+      } catch (error) {
+        console.warn('편지 소리 증폭 오류:', error);
+      }
+    }
+    paperAudioContext?.resume().catch(() => {});
+    paperSound.currentTime = 0;
+    paperSound.play().catch(() => {});
+  }
+  const paperTurnSound = new Audio(sitePath('sound/paper_1.mp3'));
+  paperTurnSound.preload = 'auto';
+  paperTurnSound.volume = 0.8;
+  let paperTurnTimer;
+  let paperTurnRun = 0;
+  function playPaperTurn() {
+    if (!scene.classList.contains('is-complete') ||
+        !matchMedia('(hover: hover)').matches) return;
+    const run = ++paperTurnRun;
+    clearTimeout(paperTurnTimer);
+    paperTurnSound.pause();
+    // 원본 앞쪽의 거의 들리지 않는 구간을 건너뛰고 짧은 종이 소리만 사용한다.
+    paperTurnSound.currentTime = 0.55;
+    paperTurnSound.play().then(() => {
+      if (run !== paperTurnRun) return;
+      paperTurnTimer = setTimeout(() => {
+        if (run === paperTurnRun) paperTurnSound.pause();
+      }, 300);
+    }).catch(() => {});
+  }
+  letter.addEventListener('mouseenter', playPaperTurn);
+  letter.addEventListener('mouseleave', playPaperTurn);
+  let letterClicks = 0;
+  letter.addEventListener('click', () => {
+    if (!scene.classList.contains('is-complete')) return;
+    letterClicks += 1;
+    if (letterClicks === 3) window.location.assign('diagnosis.html');
+  });
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const animations = [];
   let stopped = false;
@@ -73,6 +121,7 @@
         { transform: 'translateY(0)' }
       ], timings.lower);
       // 열린 봉투는 닫힌 봉투가 내려온 자리에서 그대로 열린다.
+      if (!stopped) playPaperSound();
       await Promise.all([
         animate(closed, [{ opacity: 1 }, { opacity: 0 }], timings.open),
         animate(front, [{ opacity: 0 }, { opacity: 1 }], timings.open),

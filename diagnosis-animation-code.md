@@ -143,17 +143,9 @@
         href="welcome.html"
         class="gnb-button"
       >
-        <img
-          class="menu-default"
-          src="/img/header-menu-welcome.svg"
-          alt="인삿말"
-        >
+        <span class="menu-default" role="img" aria-label="맞이"></span>
 
-        <img
-          class="menu-hover"
-          src="/img/header-menu-welcome-hover.svg"
-          alt=""
-        >
+        <span class="menu-hover" aria-hidden="true"></span>
       </a>
 
 
@@ -163,17 +155,9 @@
         href="diagnosis.html"
         class="gnb-button current"
       >
-        <img
-          class="menu-default"
-          src="/img/header-menu-diagnosis-select.svg"
-          alt="진단"
-        >
+        <span class="menu-default" role="img" aria-label="점사"></span>
 
-        <img
-          class="menu-hover"
-          src="/img/header-menu-diagnosis-hover.svg"
-          alt=""
-        >
+        <span class="menu-hover" aria-hidden="true"></span>
       </a>
 
 
@@ -183,17 +167,9 @@
         href="gather.html"
         class="gnb-button"
       >
-        <img
-          class="menu-default"
-          src="/img/header-menu-gather.svg"
-          alt="도감"
-        >
+        <span class="menu-default" role="img" aria-label="풀이"></span>
 
-        <img
-          class="menu-hover"
-          src="/img/header-menu-gather-hover.svg"
-          alt=""
-        >
+        <span class="menu-hover" aria-hidden="true"></span>
       </a>
 
 
@@ -203,17 +179,9 @@
         href="testimony.html"
         class="gnb-button"
       >
-        <img
-          class="menu-default"
-          src="/img/header-menu-testimony.svg"
-          alt="증언"
-        >
+        <span class="menu-default" role="img" aria-label="구술"></span>
 
-        <img
-          class="menu-hover"
-          src="/img/header-menu-testimony-hover.svg"
-          alt=""
-        >
+        <span class="menu-hover" aria-hidden="true"></span>
       </a>
 
 
@@ -223,17 +191,9 @@
         href="example.html"
         class="gnb-button"
       >
-        <img
-          class="menu-default"
-          src="/img/header-menu-example.svg"
-          alt="사례"
-        >
+        <span class="menu-default" role="img" aria-label="채록"></span>
 
-        <img
-          class="menu-hover"
-          src="/img/header-menu-example-hover.svg"
-          alt=""
-        >
+        <span class="menu-hover" aria-hidden="true"></span>
       </a>
 
 
@@ -243,17 +203,9 @@
         href="samjaerok.html"
         class="gnb-button"
       >
-        <img
-          class="menu-default"
-          src="/img/header-menu-samjaerok.svg"
-          alt="삼재록"
-        >
+        <span class="menu-default" role="img" aria-label="문헌"></span>
 
-        <img
-          class="menu-hover"
-          src="/img/header-menu-samjaerok-hover.svg"
-          alt=""
-        >
+        <span class="menu-hover" aria-hidden="true"></span>
       </a>
 
     </nav>

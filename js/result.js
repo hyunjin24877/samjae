@@ -15,6 +15,196 @@
     fitReceipt();
   }
 
+  const scrollPaperSound = new Audio(sitePath('sound/paper_1.mp3'));
+  scrollPaperSound.preload = 'auto';
+  scrollPaperSound.volume = 0.4;
+  const motionPaperSound = new Audio(sitePath('sound/paper_1.mp3'));
+  motionPaperSound.preload = 'auto';
+  motionPaperSound.volume = 0.4;
+  let motionSoundTimer;
+  function playMotionPaperSound() {
+    clearTimeout(motionSoundTimer);
+    motionPaperSound.pause();
+    motionPaperSound.currentTime = 0.55;
+    motionPaperSound.play().catch(() => {});
+    motionSoundTimer = setTimeout(() => motionPaperSound.pause(), 300);
+  }
+  const motionSoundFiles = {
+    'apple.webp': 'drop.mp3',
+    'boat.webp': 'boat.mp3',
+    'burning amulet.webp': 'fire.mp3',
+    'chicken.webp': 'chicken.mp3',
+    'chiseong.gif': 'chiseong.mp3',
+    'cloth.webp': 'home,cloth.mp3',
+    'cutting the bottom of a knife.gif': 'cutting the bottom of a knife.mp3',
+    'fire.webp': 'fire.mp3',
+    'gosire.webp': 'gosire.mp3',
+    'house.webp': 'home,cloth.mp3',
+    'knife throwing.webp': 'knife throwing.mp3',
+    'knife.webp': 'knife.mp3',
+    'light.webp': 'light.mp3',
+    'money1.gif': 'money1.mp3',
+    'money2.webp': 'money2.mp3',
+    'panttie.webp': 'fire.mp3',
+    'pen.gif': 'pen.mp3',
+    'pollack.webp': 'pollack.mp3',
+    'pray.gif': 'pray.mp3',
+    'sirutdeok.webp': 'sirutdeok.mp3',
+    'song.gif': 'song.mp3',
+    'straw doll.webp': 'straw doll-click-trim.mp3',
+    'writer.webp': 'writer.mp3'
+  };
+  const motionSounds = new Map();
+  if (document.querySelector('.result-method .method-deco[data-src$="/pray.gif"]')) {
+    const praySound = new Audio(sitePath('sound/pray.mp3'));
+    praySound.preload = 'auto';
+    praySound.volume = 1;
+    motionSounds.set('pray.mp3', praySound);
+  }
+  const motionSoundTimers = new Map();
+  function playMotionSound(icon, overrideSoundFile, overrideDurationMs) {
+    const filename = icon.dataset.src.split('/').pop();
+    const soundFile = overrideSoundFile || motionSoundFiles[filename];
+    if (!soundFile) { playMotionPaperSound(); return; }
+    if (filename === 'writer.webp') {
+      const ignitionFile = 'writer_on.mp3';
+      let ignitionSound = motionSounds.get(ignitionFile);
+      if (!ignitionSound) {
+        ignitionSound = new Audio(sitePath(`sound/${ignitionFile}`));
+        ignitionSound.preload = 'auto';
+        ignitionSound.volume = 0.25;
+        motionSounds.set(ignitionFile, ignitionSound);
+      }
+      clearTimeout(motionSoundTimers.get(ignitionFile));
+      ignitionSound.pause();
+      ignitionSound.currentTime = 0;
+    }
+    let sound = motionSounds.get(soundFile);
+    if (!sound) {
+      sound = new Audio(sitePath(`sound/${soundFile}`));
+      sound.preload = 'auto';
+      sound.volume = soundFile === 'pray.mp3' ? 1
+        : soundFile === 'song.mp3' ? 1
+        : soundFile === 'chiseong.mp3' ? 0.7
+        : soundFile === 'boat.mp3' ? 0.6
+        : ['chicken.mp3', 'knife.mp3', 'knife throwing.mp3', 'cutting the bottom of a knife.mp3'].includes(soundFile) ? 0.7
+        : soundFile === 'straw doll-click-trim.mp3' ? 0.6
+        : soundFile === 'pen.mp3' ? 0.5
+        : soundFile === 'light.mp3' ? 0.02 : 0.25;
+      motionSounds.set(soundFile, sound);
+    }
+    clearTimeout(motionSoundTimers.get(soundFile));
+    sound.pause();
+    sound.currentTime = soundFile === 'chiseong.mp3' ? 2.1 : 0;
+    sound.play().catch(() => {});
+    if (filename === 'writer.webp') {
+      // writer.webp의 25번째 프레임(2.32초)에 불꽃이 처음 나타납니다.
+      const ignitionAt = 2320;
+      const ignitionFile = 'writer_on.mp3';
+      motionSoundTimers.set(soundFile, setTimeout(() => {
+        sound.pause();
+        sound.currentTime = 0;
+        motionSoundTimers.delete(soundFile);
+        if (document.hidden || icon.hidden) return;
+        const ignitionSound = motionSounds.get(ignitionFile);
+        ignitionSound.currentTime = 0;
+        ignitionSound.play().catch(() => {});
+        motionSoundTimers.set(ignitionFile, setTimeout(() => {
+          ignitionSound.pause();
+          ignitionSound.currentTime = 0;
+          motionSoundTimers.delete(ignitionFile);
+        }, Math.max(0, Number(icon.dataset.loopMs) - ignitionAt)));
+      }, ignitionAt));
+      return;
+    }
+    const playMs = soundFile === 'pray.mp3'
+      ? 5000
+      : soundFile === 'chiseong.mp3'
+        ? Number(icon.dataset.loopMs) || 3000
+      : soundFile === 'song.mp3'
+        ? Number(icon.dataset.loopMs) || 3320
+      : soundFile === 'straw doll-click-trim.mp3'
+        ? 1008
+      : Math.min(Number(icon.dataset.loopMs) || 2500, 2500);
+    motionSoundTimers.set(soundFile, setTimeout(() => {
+      sound.pause();
+      sound.currentTime = 0;
+      motionSoundTimers.delete(soundFile);
+    }, overrideDurationMs ?? playMs));
+  }
+  document.querySelectorAll('.result-method .method-deco[data-src$="/straw doll.webp"]').forEach(icon => {
+    icon.addEventListener('result-straw-react', () => playMotionSound(icon));
+    icon.addEventListener('result-straw-escape', () => {
+      const soundFile = 'straw doll-click-trim.mp3';
+      clearTimeout(motionSoundTimers.get(soundFile));
+      motionSoundTimers.delete(soundFile);
+      const sound = motionSounds.get(soundFile);
+      sound?.pause();
+      if (sound) sound.currentTime = 0;
+    });
+  });
+  document.querySelectorAll('.result-method .method-deco[data-src$="/light.webp"]').forEach(icon => {
+    icon.addEventListener('result-lantern-launch', () => playMotionSound(icon));
+  });
+  document.querySelectorAll('.result-method .method-deco[data-src$="/song.gif"]').forEach(icon => {
+    icon.addEventListener('result-song-shake', () => playMotionSound(icon));
+  });
+  document.querySelectorAll('.result-method .method-deco[data-src$="/chiseong.gif"]').forEach(icon => {
+    icon.addEventListener('result-chiseong-jump', () => playMotionSound(icon, undefined, 650));
+  });
+  document.querySelectorAll('.result-method .method-deco[data-src$="/sirutdeok.webp"]').forEach(icon => {
+    icon.addEventListener('result-siru-layer-added', () => playMotionSound(icon));
+  });
+  document.querySelectorAll('.result-method .method-deco[data-src$="/chicken.webp"], .result-method .method-deco[data-src$="/knife.webp"], .result-method .method-deco[data-src$="/knife throwing.webp"], .result-method .method-deco[data-src$="/cutting the bottom of a knife.gif"]').forEach(icon => {
+    icon.addEventListener('result-motion-click', event => playMotionSound(icon, undefined, event.detail));
+  });
+  document.querySelectorAll('.result-method .method-deco[data-src$="/pen.gif"]').forEach(icon => {
+    icon.addEventListener('result-pen-writing-start', () => {
+      playMotionSound(icon);
+      clearTimeout(motionSoundTimers.get('pen.mp3'));
+      motionSoundTimers.delete('pen.mp3');
+      motionSounds.get('pen.mp3').loop = true;
+    });
+    icon.addEventListener('result-pen-writing-end', () => {
+      const sound = motionSounds.get('pen.mp3');
+      if (!sound) return;
+      sound.loop = false;
+      sound.pause();
+      sound.currentTime = 0;
+    });
+  });
+  document.querySelectorAll('.result-method .method-deco[data-src$="/cloth.webp"], .result-method .method-deco[data-src$="/house.webp"], .result-method .method-deco[data-src$="/panttie.webp"]').forEach(icon => {
+    const playClickSound = () => {
+      if (icon.hidden || !icon.currentSrc || icon.classList.contains('result-10-pop')) return;
+      playMotionSound(icon, 'home,cloth.mp3');
+    };
+    icon.addEventListener('click', playClickSound);
+    icon.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') playClickSound();
+    });
+  });
+  let scrollSoundTimer;
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const nextY = window.scrollY;
+    if (Math.abs(nextY - lastScrollY) < 1) return;
+    lastScrollY = nextY;
+    if (scrollPaperSound.paused) {
+      scrollPaperSound.currentTime = 0.55;
+      scrollPaperSound.play().catch(() => {});
+    }
+    clearTimeout(scrollSoundTimer);
+    scrollSoundTimer = setTimeout(() => scrollPaperSound.pause(), 160);
+  }, { passive: true });
+  window.addEventListener('pagehide', () => {
+    clearTimeout(scrollSoundTimer);
+    clearTimeout(motionSoundTimer);
+    scrollPaperSound.pause();
+    motionPaperSound.pause();
+    motionSoundTimers.forEach(timer => clearTimeout(timer));
+    motionSounds.forEach(sound => sound.pause());
+  });
+
   // 쉼표와 꺾쇠 뒤의 넓은 글리프 여백만 줄입니다. 텍스트와 공백 자체는 유지합니다.
   document.querySelectorAll('.result-introduction, .result-details').forEach(section => {
     const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT);
@@ -130,7 +320,7 @@
       icon.style.setProperty('--motion-random-left', `${bounds.left + Math.random() * (bounds.right - bounds.left)}px`);
       icon.style.setProperty('--motion-random-top', `${bounds.top + Math.random() * (bounds.bottom - bounds.top)}px`);
       icon.removeAttribute('hidden');
-      const keepVisible = () => icon.dataset.lanternReplay === 'true' || icon.dataset.prayInteractive === 'true' || icon.dataset.chickenReplay === 'true' || icon.dataset.appleReplay === 'true' || icon.dataset.boatReplay === 'true' || icon.dataset.siruStack === 'true' || icon.dataset.knifeReplay === 'true';
+      const keepVisible = () => icon.dataset.lanternReplay === 'true' || icon.dataset.prayInteractive === 'true' || icon.dataset.chickenReplay === 'true' || icon.dataset.appleReplay === 'true' || icon.dataset.boatReplay === 'true' || icon.dataset.siruStack === 'true' || icon.dataset.knifeReplay === 'true' || icon.dataset.strawReplay === 'true';
       const hide = () => {
         if (keepVisible()) {
           if (icon.dataset.prayInteractive === 'true') icon.dataset.prayHidePending = 'true';
@@ -142,7 +332,8 @@
       };
       loadImage(icon, source).then(loaded => {
         if (!loaded) { hide(); return; }
-        const loopMs = Number(icon.dataset.loopMs);
+        if (!document.hidden && !['/light.webp', '/straw doll.webp', '/cloth.webp', '/house.webp'].some(file => icon.dataset.src.endsWith(file))) playMotionSound(icon);
+        const loopMs = icon.dataset.src.endsWith('/pray.gif') ? 5000 : Number(icon.dataset.loopMs);
         const fadeMs = Math.min(800, loopMs);
         icon.style.setProperty('--motion-fade-duration', `${fadeMs}ms`);
         icon.addEventListener('result-pray-resume', () => {

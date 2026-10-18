@@ -8,6 +8,7 @@
     const jump = () => {
       if (icon.hidden || !icon.currentSrc || icon.classList.contains('chiseong-jumping')) return;
       icon.classList.add('chiseong-jumping');
+      icon.dispatchEvent(new Event('result-chiseong-jump'));
     };
 
     icon.addEventListener('click', jump);

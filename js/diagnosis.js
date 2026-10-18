@@ -24,6 +24,10 @@ async function playDiagnosisEntrance() {
   const top = motion.querySelector(".diagnosis-scroll-top");
   const bottom = motion.querySelector(".diagnosis-scroll-bottom");
   const question = motion.querySelector(".diagnosis-result");
+  const dropSound = new Audio(sitePath("sound/drop.mp3"));
+  dropSound.preload = "auto";
+  const shrinkSound = new Audio(sitePath("sound/dowon.mp3"));
+  shrinkSound.preload = "auto";
   const openedRodSources = [sitePath("img/diagnosis/scroll-top2.svg"), sitePath("img/diagnosis/scroll-dowon2.svg")];
   const openedRodsReady = Promise.all(openedRodSources.map(src => {
     const image = new Image();
@@ -77,6 +81,8 @@ async function playDiagnosisEntrance() {
       { opacity: 0, transform: "translateY(-110vh) rotate(0deg)" },
       { opacity: 1, transform: "translateY(170px) rotate(0deg)" }
     ], timings.drop, { delay: menu ? 700 : 0, easing: "cubic-bezier(0.42, 0, 0.85, 0.65)" })]);
+    if (stopped) return;
+    dropSound.play().catch(() => {});
     menu?.classList.add("is-intro-hidden");
     // 착지 → 반동으로 42px 상승하며 살짝 회전 → 내려앉으며 수평 복귀.
     await animate(motion, [
@@ -98,6 +104,8 @@ async function playDiagnosisEntrance() {
       motion.append(overlay);
       rodOverlays.push(overlay);
     });
+    if (stopped) return;
+    shrinkSound.play().catch(() => {});
     await Promise.all([
       animate(motion, [
         { width: introWidth, transform: "translateY(170px) rotate(0deg)" },
@@ -119,6 +127,7 @@ async function playDiagnosisEntrance() {
     if (stopped) return;
     useOpenedRods();
     rodOverlays.forEach(rod => rod.remove());
+    window.playDiagnosisScrollPaper?.(true, timings.unfold);
     const unfolding = [
       animate(paper, [{ clipPath: "inset(50% 0 50% 0)" }, { clipPath: "inset(0% 0 0% 0)" }], timings.unfold),
       animate(top, [{ top: "50%", transform: "translateY(calc(-100% + 2px))" }, { top: "0%", transform: "translateY(0%)" }], timings.unfold),

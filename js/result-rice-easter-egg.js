@@ -4,6 +4,9 @@
   const plusOneSource = '../img/result/+1.svg';
   const preload = new Image();
   preload.src = plusOneSource;
+  const plusOneSound = new Audio(sitePath('sound/+1.mp3'));
+  plusOneSound.preload = 'auto';
+  let plusOneSoundTimer;
 
   riceImages.forEach(rice => {
     rice.addEventListener('click', event => {
@@ -17,6 +20,14 @@
       plusOne.style.left = `${event.clientX}px`;
       plusOne.style.top = `${event.clientY - 4}px`;
       document.body.append(plusOne);
+      clearTimeout(plusOneSoundTimer);
+      plusOneSound.pause();
+      plusOneSound.currentTime = 0;
+      plusOneSound.play().catch(() => {});
+      plusOneSoundTimer = setTimeout(() => {
+        plusOneSound.pause();
+        plusOneSound.currentTime = 0;
+      }, 500);
       plusOne.addEventListener('animationend', () => plusOne.remove(), { once: true });
       window.setTimeout(() => plusOne.remove(), 1000);
     });

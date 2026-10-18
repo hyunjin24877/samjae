@@ -45,6 +45,31 @@ const castShadow = document.getElementById("pageTurnCastShadow");
 const front = sheet.querySelector(".page-turn-face-front");
 const back = sheet.querySelector(".page-turn-face-back");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const pageTurnSound = new Audio("sound/paper1.mp3");
+pageTurnSound.preload = "auto";
+let pageTurnAudioContext;
+
+function playPageTurnSound() {
+  if (!pageTurnAudioContext) {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (AudioContextClass) {
+      try {
+        const context = new AudioContextClass();
+        const source = context.createMediaElementSource(pageTurnSound);
+        const gain = context.createGain();
+        gain.gain.value = 2;
+        source.connect(gain).connect(context.destination);
+        pageTurnAudioContext = context;
+      } catch {
+        // Web Audio를 쓸 수 없는 환경에서는 원본 음량으로 재생합니다.
+      }
+    }
+  }
+  pageTurnAudioContext?.resume().catch(() => {});
+  pageTurnSound.currentTime = 0;
+  pageTurnSound.play().catch(() => {});
+}
+
 let currentPage = spreads.findIndex(page => page.classList.contains("active"));
 let runningTurn = null;
 let openingTextAnimations = [];
@@ -105,6 +130,7 @@ function finishTurn() {
 
 function turnTo(index) {
   if (runningTurn || index === currentPage || index < 0) return;
+  playPageTurnSound();
   stopOpeningTextFade();
   if (reducedMotion.matches) {
     selectPage(index);
@@ -167,6 +193,7 @@ document.addEventListener("mousemove", event => {
 
 cover.addEventListener("click", event => {
   event.stopPropagation();
+  playPageTurnSound();
   const tab = event.target.closest(".samjaerok-tab[data-page]");
   if (tab) {
     const index = spreads.findIndex(spread => spread.id === tab.dataset.page);

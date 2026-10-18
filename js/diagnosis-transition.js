@@ -9,6 +9,92 @@
   const ease = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
   const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = selector => stage.querySelector(selector);
+  const cardSelectSound = new Audio(sitePath('sound/card_select.mp3'));
+  cardSelectSound.preload = 'auto';
+  cardSelectSound.volume = 0.35;
+  const shamanismSound = new Audio(sitePath('sound/shamunism.mp3'));
+  shamanismSound.preload = 'auto';
+  shamanismSound.volume = 0.45;
+  const religionSound = new Audio(sitePath('sound/pray.mp3'));
+  religionSound.preload = 'auto';
+  religionSound.volume = 0.55;
+  const flowSound = new Audio(sitePath('sound/boat.mp3'));
+  flowSound.preload = 'auto';
+  flowSound.volume = 0.65;
+  const obstructSound = new Audio(sitePath('sound/drop.mp3'));
+  obstructSound.preload = 'auto';
+  obstructSound.volume = 0.4;
+  const obstructKnifeSound = new Audio(sitePath('sound/knife.mp3'));
+  obstructKnifeSound.preload = 'auto';
+  obstructKnifeSound.volume = 0.3;
+  obstructKnifeSound.playbackRate = 2;
+  const burnSound = new Audio(sitePath('sound/writer.mp3'));
+  burnSound.preload = 'auto';
+  burnSound.volume = 0.35;
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  let typingContext;
+  let typingBuffer;
+  let typingSampleStart = 0;
+  let typingLoad;
+  let lastTypingKeydown = -Infinity;
+  const activeTypingSounds = new Set();
+  function prepareTypingSound() {
+    if (!AudioContextClass) return;
+    if (typingLoad) return typingLoad;
+    typingContext = new AudioContextClass();
+    typingLoad = fetch(sitePath('sound/typing.mp3'))
+      .then(response => {
+        if (!response.ok) throw new Error(`타이핑 음원 로딩 실패: ${response.status}`);
+        return response.arrayBuffer();
+      })
+      .then(data => typingContext.decodeAudioData(data))
+      .then(buffer => {
+        typingBuffer = buffer;
+        // 원본 녹음에서 가장 또렷한 타건의 시작점을 골라 짧게 재생한다.
+        const samples = buffer.getChannelData(0);
+        const windowSize = Math.max(1, Math.round(buffer.sampleRate * 0.005));
+        const limit = Math.min(samples.length, Math.round(buffer.sampleRate * 5));
+        let loudest = 0;
+        let loudestIndex = 0;
+        const energies = [];
+        for (let index = 0; index < limit; index += windowSize) {
+          let energy = 0;
+          for (let sample = index; sample < Math.min(index + windowSize, limit); sample++) {
+            energy += samples[sample] * samples[sample];
+          }
+          energies.push(energy);
+          if (energy > loudest) { loudest = energy; loudestIndex = index; }
+        }
+        let onset = Math.floor(loudestIndex / windowSize);
+        const earliest = Math.max(0, onset - Math.round(0.08 * buffer.sampleRate / windowSize));
+        while (onset > earliest && energies[onset - 1] > loudest * 0.2) onset--;
+        typingSampleStart = Math.max(0, onset * windowSize / buffer.sampleRate - 0.002);
+      })
+      .catch(error => { console.warn(error); });
+    return typingLoad;
+  }
+  function stopTypingSound() {
+    activeTypingSounds.forEach(source => { try { source.stop(); } catch (_) {} });
+    activeTypingSounds.clear();
+  }
+  function playTypingSound() {
+    prepareTypingSound();
+    if (!typingBuffer) return;
+    typingContext.resume().catch(() => {});
+    const duration = Math.min(0.12, typingBuffer.duration - typingSampleStart);
+    const source = typingContext.createBufferSource();
+    const gain = typingContext.createGain();
+    const now = typingContext.currentTime;
+    source.buffer = typingBuffer;
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.5, now + 0.005);
+    gain.gain.setValueAtTime(0.5, now + Math.max(0.005, duration - 0.035));
+    gain.gain.linearRampToValueAtTime(0, now + duration);
+    source.connect(gain).connect(typingContext.destination);
+    source.onended = () => activeTypingSounds.delete(source);
+    activeTypingSounds.add(source);
+    source.start(now, typingSampleStart, duration);
+  }
 
   function normalize(root) {
     const wrap = root.querySelector('.diagnosis-open-wrap');
@@ -45,8 +131,22 @@
   let cardPlayback = 0;
   function stopCardVideos(root = stage) {
     cardPlayback++;
+    shamanismSound.pause();
+    shamanismSound.currentTime = 0;
+    religionSound.pause();
+    religionSound.currentTime = 0;
+    flowSound.pause();
+    flowSound.currentTime = 0;
+    obstructSound.pause();
+    obstructSound.currentTime = 0;
+    obstructKnifeSound.pause();
+    obstructKnifeSound.currentTime = 0;
+    burnSound.pause();
+    burnSound.currentTime = 0;
     root.querySelectorAll('.diagnosis-card-video').forEach(video => {
       video.onplaying = null;
+      video.ontimeupdate = null;
+      video.onended = null;
       video.onerror = null;
       video.pause();
       if (video.readyState > 0) video.currentTime = 0;
@@ -59,10 +159,62 @@
     if (!video) return;
     const playback = cardPlayback;
     video.muted = true;
+    let obstructDropPlayed = false;
+    if (choice.dataset.value === 'obstruct') {
+      video.ontimeupdate = () => {
+        if (obstructDropPlayed || playback !== cardPlayback || video.currentTime < 0.8) return;
+        obstructDropPlayed = true;
+        obstructKnifeSound.pause();
+        obstructKnifeSound.currentTime = 0;
+        obstructSound.currentTime = 0;
+        obstructSound.play().catch(() => {});
+      };
+    }
     video.onplaying = () => {
       if (playback === cardPlayback && choice.isConnected && choice.classList.contains('is-selected')) {
         choice.classList.add('is-video-playing');
+        if (choice.dataset.value === 'shamanism') {
+          // 메타데이터가 늦어도 실제 음원(2.299초)이 영상(3.003초)보다 먼저 끝나지 않게 합니다.
+          const soundDuration = Number.isFinite(shamanismSound.duration) && shamanismSound.duration > 0
+            ? shamanismSound.duration : 2.29875;
+          const videoDuration = Number.isFinite(video.duration) && video.duration > 0
+            ? video.duration : 3.003;
+          shamanismSound.playbackRate = soundDuration / (videoDuration + 0.05);
+          shamanismSound.currentTime = 0;
+          shamanismSound.play().catch(() => {});
+        } else if (choice.dataset.value === 'religion') {
+          if (Number.isFinite(video.duration) && video.duration > 0 &&
+              Number.isFinite(religionSound.duration) && religionSound.duration > 0) {
+            religionSound.playbackRate = religionSound.duration / video.duration;
+          }
+          religionSound.currentTime = 0;
+          religionSound.play().catch(() => {});
+        } else if (choice.dataset.value === 'flow') {
+          flowSound.currentTime = 0;
+          flowSound.play().catch(() => {});
+        } else if (choice.dataset.value === 'obstruct') {
+          obstructKnifeSound.currentTime = 0;
+          obstructKnifeSound.play().catch(() => {});
+        } else if (choice.dataset.value === 'burn') {
+          burnSound.currentTime = 0;
+          burnSound.play().catch(() => {});
+        }
       }
+    };
+    video.onended = () => {
+      if (playback !== cardPlayback) return;
+      shamanismSound.pause();
+      shamanismSound.currentTime = 0;
+      religionSound.pause();
+      religionSound.currentTime = 0;
+      flowSound.pause();
+      flowSound.currentTime = 0;
+      obstructSound.pause();
+      obstructSound.currentTime = 0;
+      obstructKnifeSound.pause();
+      obstructKnifeSound.currentTime = 0;
+      burnSound.pause();
+      burnSound.currentTime = 0;
     };
     const fallback = () => {
       if (playback === cardPlayback) choice.classList.remove('is-video-playing');
@@ -172,6 +324,7 @@
   }
   async function fold(open) {
     const duration = open ? 950 : 850;
+    window.playDiagnosisScrollPaper?.(open, duration);
     const animations = scrollFrames.map(([selector, closed, opened]) =>
       animate($(selector), open ? [closed, opened] : [opened, closed], duration));
     if (open) animations.push(animate($('.diagnosis-result'), [{ opacity: 0 }, { opacity: 1 }], 400, duration * 0.82));
@@ -182,6 +335,8 @@
   }
   async function go(index, push = true) {
     if (busy || index === current || index < 0 || index > 4) return;
+    stopTypingSound();
+    if (index === 0 || index === 4) prepareTypingSound();
     busy = true; stage.inert = true; stage.setAttribute('aria-busy', 'true');
     let prepared;
     let swapped = false;
@@ -267,6 +422,12 @@
     const section = wheelResults.indexOf(number);
     if (section < 0) return;
     const timings = { hold: 1000, extinguish: 550, reveal: 500, spin: 6500, settle: 800 };
+    const rotationSound = createWheelRotationSound();
+    const fireSound = new Audio(sitePath('sound/fire.mp3'));
+    fireSound.preload = 'auto';
+    fireSound.loop = true;
+    fireSound.volume = 0.4;
+    if (!reduced()) rotationSound.prime();
     const overlay = document.createElement('section');
     overlay.className = 'diagnosis-result-reveal';
     overlay.setAttribute('role', 'status');
@@ -283,15 +444,47 @@
         <img class="result-reveal-wheel" src="${sitePath('img/gather/gather.svg')}" alt="">
         <img class="result-reveal-arrow" src="${sitePath('img/gather/arrow.svg')}" alt="">
       </div>`;
+    const loadingText = overlay.querySelector('.result-reveal-loading p');
+    loadingText.setAttribute('aria-label', '당신에게 맞는 삼재풀이 방식을 점지하고 있습니다. 조금만 기다려주세요.');
+    const letters = [];
+    for (const node of [...loadingText.childNodes]) {
+      if (node.nodeType !== Node.TEXT_NODE) continue;
+      const fragment = document.createDocumentFragment();
+      for (const character of node.textContent) {
+        const letter = document.createElement('span');
+        letter.textContent = character;
+        letter.style.visibility = 'hidden';
+        fragment.append(letter);
+        letters.push({ letter, character });
+      }
+      node.replaceWith(fragment);
+    }
+    const typingReady = prepareTypingSound();
+    typingContext?.resume().catch(() => {});
     const animations = [];
     let cancelled = false;
-    const run = (el, frames, duration, easing = ease) => {
+    const typeLoadingText = async () => {
+      if (!reduced()) {
+        await Promise.race([typingReady, new Promise(resolve => setTimeout(resolve, 300))]);
+      }
+      for (const { letter, character } of letters) {
+        if (cancelled) return;
+        letter.style.visibility = 'visible';
+        if (!reduced() && character.trim()) playTypingSound();
+        if (!reduced()) await new Promise(resolve => setTimeout(resolve, 55));
+      }
+    };
+    const run = (el, frames, duration, easing = ease, onStart) => {
       const animation = el.animate(frames, { duration: reduced() ? 1 : duration, easing, fill: 'forwards' });
       animations.push(animation);
+      onStart?.(animation);
       return animation.finished;
     };
     const cancel = () => {
       cancelled = true;
+      fireSound.pause();
+      rotationSound.stop();
+      stopTypingSound();
       animations.forEach(animation => animation.cancel());
     };
     cancelResultReveal = cancel;
@@ -299,11 +492,15 @@
     stage.inert = true;
     document.body.classList.add('is-revealing-result');
     document.body.append(overlay);
+    if (!reduced()) fireSound.play().catch(() => {});
     try {
       await window.waitForSiteAssets(Promise.all([...overlay.querySelectorAll('img')].map(img => img.decode().catch(() => {}))));
       if (cancelled) return;
       const loading = overlay.querySelector('.result-reveal-loading');
+      const typingFinished = typeLoadingText();
       await run(loading, [{ opacity: 1 }, { opacity: 1 }], timings.hold);
+      await typingFinished;
+      if (cancelled) return;
       for (const fire of [...overlay.querySelectorAll('.result-reveal-fires img')].reverse()) {
         await run(fire, [
           { opacity: 1, transform: 'scale(1)', filter: 'brightness(1)' },
@@ -311,6 +508,8 @@
           { opacity: 0, transform: 'scale(0.4, 0)', filter: 'brightness(0.2)' }
         ], timings.extinguish);
       }
+      fireSound.pause();
+      fireSound.currentTime = 0;
       const wheelWrap = overlay.querySelector('.result-reveal-wheel-wrap');
       await Promise.all([
         run(loading, [{ opacity: 1 }, { opacity: 0 }], timings.reveal),
@@ -318,7 +517,9 @@
         run(wheelWrap, [{ opacity: 0 }, { opacity: 1 }], timings.reveal)
       ]);
       const wheel = overlay.querySelector('.result-reveal-wheel');
-      await run(wheel, [{ transform: 'rotate(0deg)' }, { transform: `rotate(${360 * 5 - section * 30}deg)` }], timings.spin, 'cubic-bezier(0.65, 0, 0.25, 1)');
+      await run(wheel, [{ transform: 'rotate(0deg)' }, { transform: `rotate(${360 * 5 - section * 30}deg)` }], timings.spin, 'cubic-bezier(0.65, 0, 0.25, 1)', animation => {
+        if (!reduced()) rotationSound.start(wheel, animation);
+      });
       await run(wheelWrap, [{ opacity: 1 }, { opacity: 1 }], timings.settle);
       if (!cancelled) location.href = url;
     } catch (error) {
@@ -327,6 +528,9 @@
         location.href = url;
       }
     } finally {
+      fireSound.pause();
+      rotationSound.stop();
+      stopTypingSound();
       if (cancelled) {
         overlay.remove();
         document.body.classList.remove('is-revealing-result');
@@ -355,6 +559,8 @@
       if (choice) {
         stage.querySelectorAll('[data-value]').forEach(item => item.classList.toggle('is-selected', item === choice));
         $('.diagnosis-choices').classList.add('has-selection');
+        cardSelectSound.currentTime = 0;
+        cardSelectSound.play().catch(() => {});
         playCardVideo(choice);
         sessionStorage.setItem(keys[current], choice.dataset.value);
         $('#diagnosisPopup').classList.remove('is-show'); updateNext(); return;
@@ -382,12 +588,30 @@
     $('#diagnosisPopup')?.classList.remove('is-show');
     updateNext();
   });
+  document.addEventListener('keydown', event => {
+    if (!stage.contains(event.target) || !event.target.matches('.diagnosis-input')) return;
+    if (event.metaKey || event.ctrlKey || event.altKey) return;
+    if (event.key.length !== 1 && !['Backspace', 'Delete', 'Process'].includes(event.key) && !event.isComposing) return;
+    lastTypingKeydown = performance.now();
+    playTypingSound();
+  });
   document.addEventListener('input', event => {
     if (!stage.contains(event.target) || !event.target.matches('.diagnosis-input')) return;
+    if (performance.now() - lastTypingKeydown > 160 &&
+        (!event.inputType || /^(insertText|insertCompositionText|insertFromComposition|deleteContentBackward|deleteContentForward)$/.test(event.inputType))) {
+      playTypingSound();
+    }
     event.target.closest('.diagnosis-input-wrap').classList.toggle('is-filled', !!event.target.value.trim());
     sessionStorage.setItem(event.target.id, event.target.value);
     updateNext();
   });
+  document.addEventListener('focusout', event => {
+    if (event.target.matches('.diagnosis-input')) stopTypingSound();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopTypingSound();
+  });
+  window.addEventListener('pagehide', stopTypingSound);
   history.replaceState({ diagnosis: current }, '', location.href);
   window.addEventListener('popstate', () => {
     if (cancelResultReveal) {
@@ -400,6 +624,7 @@
     if (busy) { pendingPop = index; return; }
     go(index, false);
   });
+  if (current === 0 || current === 4) prepareTypingSound();
   restore();
   if (current > 0 && !reduced()) {
     const motion = $('.diagnosis-scroll-motion');

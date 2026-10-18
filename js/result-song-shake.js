@@ -13,6 +13,7 @@
     function shake() {
       if (shaking || song.hidden || !song.currentSrc) return;
       shaking = true;
+      song.dispatchEvent(new Event('result-song-shake'));
       layer.style.transformOrigin = `${song.offsetLeft + song.offsetWidth / 2}px ${song.offsetTop + song.offsetHeight / 2}px`;
       const zoom = layer.getBoundingClientRect().width / layer.offsetWidth || 1;
       const maxShift = 4 / zoom;
