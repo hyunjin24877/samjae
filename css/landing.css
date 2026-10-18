@@ -98,6 +98,7 @@ body::before {
     drop-shadow(0 0 32px rgba(255, 255, 255, 0.85));
   opacity: 0.85;
   z-index: 4;
+  transition: opacity 0.35s ease, filter 0.35s ease;
 }
 
 .door-glow img,
@@ -132,7 +133,7 @@ body::before {
   aspect-ratio: 336.15 / 599.55;
   z-index: 1;
   transform-style: preserve-3d;
-  transition: transform 2s cubic-bezier(.45, 0, .2, 1);
+  transition: transform 0.5s cubic-bezier(.45, 0, .2, 1);
 }
 
 .door-leaf-left {
@@ -184,6 +185,24 @@ body::before {
 
 .door-leaf-right .door-back {
   transform: rotateY(180deg) scaleX(-1);
+}
+
+.landing.is-enter-hovered:not(.is-entering) .door-leaf-left {
+  transform: rotateY(-8deg);
+}
+
+.landing.is-enter-hovered:not(.is-entering) .door-leaf-right {
+  transform: rotateY(8deg);
+}
+
+.landing.is-enter-hovered:not(.is-entering) .door-glow {
+  opacity: 1;
+  filter: brightness(0) invert(1) blur(24px)
+    drop-shadow(0 0 46px rgba(255, 255, 255, 0.95));
+}
+
+.landing.is-entering .door-leaf {
+  transition-duration: 2s;
 }
 
 .landing.is-entering .door-leaf-left {
