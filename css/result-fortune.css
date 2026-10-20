@@ -1,0 +1,17 @@
+/* 기존 동전 이미지의 박스만 클릭할 수 있게 합니다. 기본 크기와 재생은 그대로 둡니다. */
+.result-method .method-deco[data-src*="money1"],
+.result-method .method-deco[data-src*="money2"] { pointer-events: auto; cursor: pointer; }
+
+/* 두 번째 동전만 클릭 시 한 바퀴 회전합니다. 기존 이미지 재생은 유지합니다. */
+.result-method .result-01-motion-money2-1.fortune-coin-spinning {
+  animation: fortuneCoinTurn 480ms ease-in-out both;
+}
+@keyframes fortuneCoinTurn {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+
+/* 사이트의 장식 커서가 켜져 있어도 동전에서는 기본 손 모양을 보여줍니다. */
+html.site-cursor-active .result-method .method-deco[data-src*="money1"],
+html.site-cursor-active .result-method .method-deco[data-src*="money2"] { cursor: pointer !important; }
+html.site-cursor-active:has(.result-method .method-deco[data-src*="money1"]:hover, .result-method .method-deco[data-src*="money2"]:hover) .site-cursor { visibility: hidden; }

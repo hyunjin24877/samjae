@@ -60,7 +60,17 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
   pointer-events: none;
 }
 .result-tags-divider { margin-top: 0; }
-.result-tags { position: relative; isolation: isolate; display: grid; grid-template-columns: repeat(3, 200px); justify-content: center; list-style: none; padding: 0; margin: 0 -32px; gap: 0; }
+.result-tags {
+  /* 상단 유형 버튼 3개의 글자 설정: 여기의 값만 바꾸면 12개 결과에 공통 적용됩니다. */
+  --result-tag-font-family: "OnulSijak", sans-serif;
+  --result-tag-font-size: 1.625rem;
+  --result-tag-font-weight: 400;
+  --result-tag-line-height: 1.75rem;
+  --result-tag-letter-spacing: -0.1875rem;
+  --result-tag-color: #000;
+  --result-tag-text-offset-y: -3px;
+  position: relative; isolation: isolate; display: grid; grid-template-columns: repeat(3, 200px); justify-content: center; list-style: none; padding: 0; margin: 0 -32px; gap: 0;
+}
 .result-tags::before {
   content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background-image: url('../img/result/stroke-2.svg'), url('../img/result/stroke-2.svg');
@@ -70,7 +80,18 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
 }
 .result-tags li { position: relative; box-sizing: border-box; display: grid; place-items: center; width: 200px; height: 58px; margin: 0; padding: 0; background: white; }
 .result-type-button { position: relative; display: grid; place-items: center; width: 200px; height: 58px; box-sizing: border-box; padding: 0; margin: 0; border: 0; border-radius: 0; background: white; appearance: none; cursor: pointer; }
-.result-type-button > span { transform: translateY(-3px); }
+.result-tags .result-type-label {
+  font-family: var(--result-tag-font-family);
+  font-size: var(--result-tag-font-size);
+  font-weight: var(--result-tag-font-weight);
+  line-height: var(--result-tag-line-height);
+  letter-spacing: var(--result-tag-letter-spacing);
+  color: var(--result-tag-color);
+}
+.result-tags .result-type-label[data-result-type="individual"] {
+  letter-spacing: calc(var(--result-tag-letter-spacing) - 0.125rem);
+}
+.result-type-button > span { transform: translateY(var(--result-tag-text-offset-y, -3px)); }
 .result-type-button:hover { background: #f5f5ef; }
 .result-type-button:active { background: #eaeae0; }
 .result-type-button:focus-visible { outline: 2px solid #000; outline-offset: -9px; }
@@ -96,7 +117,7 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
   height: 450px; /* ← 여기서 전체 프레임 높이 조절 */
   aspect-ratio: auto; /* ← 기존 aspect-ratio 해제 */
 
-  margin: 14px 0 25px;
+  margin: 14px 0 12px;
   --ornament-gap: 30px;
 }
 .result-art-back { position: absolute; left: 50%;
@@ -145,6 +166,20 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
   transform: translateX(-50%) rotate(180deg);
 }
 .result-introduction p { margin: 0 0 20px; }
+/* 모든 결과 페이지의 소개글 자간·어간을 풀이 본문과 맞춥니다. */
+.result-paper .result-introduction {
+  max-width: 32.5em; /* 한글 약 35자 */
+  margin-inline: auto;
+  letter-spacing: -0.1875rem;
+  word-spacing: 0.0625rem;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+.result-paper .result-details { letter-spacing: -0.1875rem; }
+/* 폰트의 넓은 문장부호 폭만 보정하고 나머지 글자 간격은 유지합니다. */
+.result-paper .result-punctuation-gap { margin-inline-end: -0.2em; }
+/* 쉼표 앞만 약 1px 띄웁니다. 뒤쪽 보정은 위 규칙을 그대로 사용합니다. */
+.result-paper .result-punctuation-gap.result-comma { margin-inline-start: 0.15em; }
 .result-divider { height: 5px; margin: 30px 0 38px; background: url('../img/result/stroke-1.svg') left center / 43px 4px repeat-x; }
 .result-method { position: relative; }
 .result-method h2 { font-weight: 400; width: max-content; margin: 0 auto 45px; padding-bottom: 10px; background: url('../img/result/stroke-2.svg') center bottom / 100% 4px no-repeat; }
@@ -158,6 +193,8 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
 }
 .result-details { display: grid; grid-template-columns: 90px minmax(0, 1fr); column-gap: 24px; row-gap: 28px; margin: 0; text-align: left; line-height: 1.65; word-break: keep-all; overflow-wrap: anywhere; }
 .result-details dt, .result-details dd { margin: 0; min-width: 0; }
+.result-details dd { max-width: 30em; /* 한글 약 35자 */ }
+.result-details .result-method-note { max-width: 31em; /* 작은 주석 글자 약 35자 */ }
 .result-details dt { text-align: left; }
 .result-details dt .body1-center-underline {
   display: inline-block;
@@ -165,6 +202,7 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
 }
 .result-steps { list-style: none; counter-reset: step; margin: 0; padding: 0; }
 .result-steps li { position: relative; padding-left: 45px; margin: 0; counter-increment: step; }
+.result-steps li + li { margin-top: 0.6em; }
 .result-steps li::before { content: counter(step); position: absolute; left: 0; top: 0; }
 .result-steps li::after { content: "."; position: absolute; left: 0.56em; top: -2px; }
 .result-explanation { position: relative; }
@@ -239,6 +277,11 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
 
 /* 결과 페이지만 적용: PC 원본 치수는 유지하고 좁은 컨테이너에서만 조절. */
 body[data-receipt-type] { font-family: "OnulSijak", sans-serif; }
+@media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
+  .result-paper .result-details { letter-spacing: -0.035em; }
+  .result-paper .result-introduction { letter-spacing: -0.035em; }
+  .result-tags { --result-tag-letter-spacing: -0.075em; }
+}
 @media (max-width: 1688px) {
   body[data-receipt-type] .header { width: calc(100% - 24px); }
 }
@@ -275,7 +318,11 @@ body[data-receipt-type] { font-family: "OnulSijak", sans-serif; }
   .result-method > .method-deco[hidden] { display: inline-block; visibility: hidden; }
 }
 @media (max-width: 600px) {
-  .result-type-label { font-size: clamp(1.125rem, 4.5vw, 1.625rem); letter-spacing: -0.0625rem; }
+  /* 모바일 글자 크기와 자간은 이 두 값으로 조절합니다. */
+  .result-tags {
+    --result-tag-font-size: clamp(1.125rem, 4.5vw, 1.625rem);
+    --result-tag-letter-spacing: -0.125rem;
+  }
   .result-method h2, .result-details dt .body1-center-underline { font-size: 1.0625rem; line-height: 1.65; }
   .result-controls { margin-top: 40px; }
   .result-action { max-width: 100%; box-sizing: border-box; line-height: 1.4; overflow-wrap: anywhere; }

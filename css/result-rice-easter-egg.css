@@ -1,0 +1,27 @@
+/* 기존 쌀알 이미지의 배치와 모션은 유지하고 클릭만 받습니다. */
+.result-method .method-deco[data-src$="/rice2.gif"] {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+html.site-cursor-active .result-method .method-deco[data-src$="/rice2.gif"] {
+  cursor: pointer !important;
+}
+html.site-cursor-active:has(.result-method .method-deco[data-src$="/rice2.gif"]:hover) .site-cursor {
+  visibility: hidden;
+}
+
+.rice-plus-one {
+  --rice-plus-one-width: 1.125rem; /* +1 크기는 이 값으로 조절 */
+  position: fixed;
+  z-index: 31;
+  width: var(--rice-plus-one-width);
+  height: auto;
+  pointer-events: none;
+  animation: ricePlusOneFloat 600ms ease-out both;
+}
+
+@keyframes ricePlusOneFloat {
+  from { opacity: 1; transform: translate(-50%, -100%); }
+  to { opacity: 0; transform: translate(-50%, calc(-100% - 24px)); }
+}

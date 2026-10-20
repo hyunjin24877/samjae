@@ -2,7 +2,7 @@
 <html lang="ko">
 
 <head>
-  <script src="../js/diagnosis-session.js?v=20261003-pages"></script>
+  <script src="../js/diagnosis-session.js?v=20261017-mobile-audio-fix"></script>
   <meta charset="UTF-8">
 
   <meta
@@ -21,14 +21,20 @@
   <link
     rel="stylesheet" href="../css/font.css?v=20261004-font">
 
-  <link rel="stylesheet" href="../css/header.css?v=20261004-center">
+  <link rel="stylesheet" href="../css/header.css?v=20261009-mobile-controls">
 
   <link rel="stylesheet" href="../css/background.css?v=20261004-font">
-    <link rel="stylesheet" href="../css/result-common.css?v=20261003-pages">
+    <link rel="stylesheet" href="../css/result-common.css?v=20261015-individual-spacing">
   <link rel="stylesheet" href="../css/result-10.css?v=20261003-pages">
 
   <script src="../js/site-cursor.js?v=20261003-pages" defer></script>
 
+  <link rel="stylesheet" href="../css/result-receipt-layout.css?v=20261016-logo-box">
+  <link rel="stylesheet" href="../css/result-pray-halo.css?v=20261016-pray-2">
+  <link rel="stylesheet" href="../css/result-chiseong-jump.css?v=20261016-1">
+  <link rel="stylesheet" href="../css/result-10-easter-eggs.css?v=20261016-pop">
+  <link rel="preload" href="../img/result/anger.svg" as="image">
+  <link rel="stylesheet" href="../css/result-straw-doll-anger.css?v=20261016-anger">
 </head>
 
 
@@ -160,6 +166,7 @@
 <main class="result-main">
   <article class="result-paper" aria-labelledby="resultTitle">
     <img class="result-paper-bottom" src="../img/result/stroke-up.svg" alt="" aria-hidden="true">
+    <div class="result-receipt-content">
     <header class="result-heading">
       <div class="result-title-layout">
         <img class="result-stroke-up" src="../img/result/stroke-up.svg" alt="" aria-hidden="true">
@@ -212,7 +219,7 @@
               <img data-src="../img/result/panttie.webp" data-loop-ms="9666" class="method-deco result-10-motion-panttie-1" alt="" hidden></li>
             <li>삼거리에 간단한 제물을 차리고 치성을 드린 뒤, 당사자의 속옷을 불에 태운다.
               <img data-src="../img/result/pray.gif" data-loop-ms="1320" class="method-deco result-10-motion-pray-1" alt="" hidden>
-              <img data-src="../img/result/chiseong.gif" data-loop-ms="600" class="method-deco result-10-motion-chiseong-1" alt="" hidden></li>
+              <img data-src="../img/result/chiseong.gif" data-loop-ms="3000" class="method-deco result-10-motion-chiseong-1" alt="" hidden></li>
             <li>속옷이 모두 타고 나면 허재비를 함께 두거나 길 밖으로 버려 액운을 대신 가져가도록 한다.
               <img data-src="../img/result/straw doll.webp" data-loop-ms="9666" class="method-deco result-10-motion-straw-doll-1" alt="" hidden></li>
             <li>의례를 마친 후에는 뒤를 돌아보지 않고 곧바로 집으로 돌아오며, 집에 도착할 때까지 다른 사람과 말을 섞지 않는 것이 좋다고 여겨졌다.
@@ -224,6 +231,7 @@
         </dd>
       </dl>
     </section>
+    </div>
   </article>
 
   <nav class="result-controls" aria-label="결과 활용">
@@ -232,6 +240,10 @@
     <button type="button" class="result-retry button-filter" id="resultRetry">다시하기</button>
   </nav>
 </main>
-<script src="../js/result.js?v=20261003-pages" defer></script>
+<script src="../js/result.js?v=20261019-siru-layer-sound" defer></script>
+<script src="../js/result-pray-halo.js?v=20261016-pray-2" defer></script>
+<script src="../js/result-chiseong-jump.js?v=20261019-jump-sound" defer></script>
+<script src="../js/result-10-easter-eggs.js?v=20261016-pop" defer></script>
+<script src="../js/result-straw-doll-anger.js?v=20261019-click-sound" defer></script>
 </body>
 </html>

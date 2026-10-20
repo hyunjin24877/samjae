@@ -1,0 +1,59 @@
+.result-method.has-pray-halo {
+  isolation: isolate;
+}
+
+.result-method.has-pray-halo > h2,
+.result-method.has-pray-halo > .result-details {
+  position: relative;
+  z-index: 1;
+}
+
+.result-method .method-deco[data-src$="/pray.gif"] {
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+
+.result-method .method-deco[data-src$="/pray.gif"]:focus-visible {
+  outline: 2px solid #821717;
+  outline-offset: 3px;
+}
+
+.pray-halo,
+.pray-halo-wave {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--pray-halo-size, 240px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.55);
+  transform-origin: center;
+}
+
+.pray-halo {
+  background: radial-gradient(circle, rgba(255, 224, 136, .98) 0%, rgba(239, 185, 70, .82) 27%, rgba(222, 160, 55, .48) 48%, rgba(222, 160, 55, 0) 76%);
+  filter: blur(8px);
+}
+
+.pray-halo-wave {
+  background: radial-gradient(circle, transparent 43%, rgba(218, 164, 63, .68) 59%, transparent 76%);
+  filter: blur(7px);
+}
+
+.pray-halo[hidden],
+.pray-halo-wave[hidden] {
+  display: none;
+}
+
+@media print {
+  .pray-halo,
+  .pray-halo-wave { display: none !important; }
+}

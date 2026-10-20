@@ -2,7 +2,7 @@
 <html lang="ko">
 
 <head>
-  <script src="../js/diagnosis-session.js?v=20261003-pages"></script>
+  <script src="../js/diagnosis-session.js?v=20261017-mobile-audio-fix"></script>
   <meta charset="UTF-8">
 
   <meta
@@ -21,14 +21,18 @@
   <link
     rel="stylesheet" href="../css/font.css?v=20261004-font">
 
-  <link rel="stylesheet" href="../css/header.css?v=20261004-center">
+  <link rel="stylesheet" href="../css/header.css?v=20261009-mobile-controls">
 
   <link rel="stylesheet" href="../css/background.css?v=20261004-font">
-    <link rel="stylesheet" href="../css/result-common.css?v=20261003-pages">
+    <link rel="stylesheet" href="../css/result-common.css?v=20261015-intro-spacing">
   <link rel="stylesheet" href="../css/result-09.css?v=20261003-pages">
+  <link rel="stylesheet" href="../css/result-pollack-easter-egg.css?v=20261016-size">
 
   <script src="../js/site-cursor.js?v=20261003-pages" defer></script>
 
+  <link rel="stylesheet" href="../css/result-receipt-layout.css?v=20261016-logo-box">
+  <link rel="stylesheet" href="../css/result-simple-motion.css?v=20261017-1">
+  <link rel="stylesheet" href="../css/result-knife-throw.css?v=20261017-knife-pages">
 </head>
 
 
@@ -160,6 +164,7 @@
 <main class="result-main">
   <article class="result-paper" aria-labelledby="resultTitle">
     <img class="result-paper-bottom" src="../img/result/stroke-up.svg" alt="" aria-hidden="true">
+    <div class="result-receipt-content">
     <header class="result-heading">
       <div class="result-title-layout">
         <img class="result-stroke-up" src="../img/result/stroke-up.svg" alt="" aria-hidden="true">
@@ -209,9 +214,10 @@
         <dd>
           <ol class="result-steps">
             <li>훔친 칼을 들고 삼거리에 가 흙바닥에 십자가 모양을 그린다.
-              <img data-src="../img/result/knife.webp" data-loop-ms="5320" class="method-deco result-09-motion-knife-1" alt="" hidden></li>
+              <img data-src="../img/result/cutting the bottom of a knife.gif" data-loop-ms="5320" class="method-deco result-09-motion-knife-1" alt="" hidden></li>
             <li>이후 제물인 북어를 땅에 묻고, 칼의 머리가 바깥쪽을 향할 때까지 여러 번 던져 액운을 밖으로 내보내는 의례를 진행한다.
-              <img data-src="../img/result/pollack.webp" data-loop-ms="5320" class="method-deco result-09-motion-pollack-1" alt="" hidden></li>
+              <img data-src="../img/result/pollack.webp" data-loop-ms="5320" class="method-deco result-09-motion-pollack-1" alt="" hidden>
+              <img data-src="../img/result/knife throwing.webp" data-loop-ms="5320" class="method-deco result-09-motion-knife-throwing-1" alt="" hidden></li>
           </ol>
         </dd>
         <dt><span class="body1-center-underline">해설</span></dt>
@@ -219,6 +225,7 @@
         </dd>
       </dl>
     </section>
+    </div>
   </article>
 
   <nav class="result-controls" aria-label="결과 활용">
@@ -227,6 +234,9 @@
     <button type="button" class="result-retry button-filter" id="resultRetry">다시하기</button>
   </nav>
 </main>
-<script src="../js/result.js?v=20261003-pages" defer></script>
+<script src="../js/result.js?v=20261019-siru-layer-sound" defer></script>
+<script src="../js/result-pollack-easter-egg.js?v=20261017-run-sound" defer></script>
+<script src="../js/result-simple-motion.js?v=20261019-knife-sound" defer></script>
+<script src="../js/result-knife-throw.js?v=20261019-click-sound" defer></script>
 </body>
 </html>

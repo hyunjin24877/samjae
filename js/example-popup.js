@@ -7,6 +7,9 @@
 
   if (!popup || !title || !text || !closeButton || !panel) return;
 
+  const popupSound = new Audio(sitePath("sound/popup.mp3"));
+  popupSound.preload = "auto";
+
   // =========================
   // 지역별 팝업 설명
   // =========================
@@ -162,6 +165,8 @@
       if (!popup.open) {
         previousFocus = home;
         popup.showModal();
+        popupSound.currentTime = 0;
+        popupSound.play().catch(() => {});
         // Modal dialogs sit above every normal z-index; keep the cursor
         // in the dialog's top layer while it is open.
         const cursor = document.querySelector(".site-cursor");

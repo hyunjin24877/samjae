@@ -6,24 +6,51 @@
 
   if (!area || !cursor || !wrap || !wheel) return;
 
+  const rotationSound = createWheelRotationSound();
+  const bellSound = new Audio(sitePath('sound/shamunism.mp3'));
+  bellSound.preload = 'auto';
+  bellSound.volume = 0.45;
+  let bellTimer;
+  let bellFadeFrame;
+
+  function playBell() {
+    clearTimeout(bellTimer);
+    cancelAnimationFrame(bellFadeFrame);
+    bellSound.pause();
+    bellSound.currentTime = 0;
+    bellSound.volume = 0.45;
+    bellSound.play().catch(() => {});
+
+    bellTimer = setTimeout(() => {
+      const fadeStart = performance.now();
+      const fadeDuration = 250;
+      const fade = (now) => {
+        const progress = Math.min((now - fadeStart) / fadeDuration, 1);
+        bellSound.volume = 0.45 * (1 - progress);
+        if (progress < 1) {
+          bellFadeFrame = requestAnimationFrame(fade);
+        } else {
+          bellSound.pause();
+        }
+      };
+      bellFadeFrame = requestAnimationFrame(fade);
+    }, 250);
+  }
   document.documentElement.append(cursor);
 
-  /*
-   * 맨 위 칸부터 시계 방향.
-   * 첨부 시안의 칸 순서를 기준으로 연결했습니다.
-   */
+  // gather.svg의 맨 위 칸부터 시계 방향으로 보이는 조합에 연결합니다.
   const resultNumbers = [
     "01", // 해안 + 무속 + 공동체
-    "12", // 평지 + 종교 + 개인
+    "12", // 내륙 + 종교 + 개인
     "05", // 산지 + 무속 + 공동체
     "08", // 해안 + 종교 + 개인
-    "09", // 평지 + 무속 + 공동체
-    "04", // 산지 + 종교 + 개인
-    "06", // 해안 + 무속 + 개인
-    "11", // 평지 + 종교 + 공동체
+    "09", // 내륙 + 무속 + 공동체
     "02", // 산지 + 무속 + 개인
+    "06", // 해안 + 무속 + 개인
+    "10", // 내륙 + 무속 + 개인
+    "04", // 산지 + 종교 + 개인
     "07", // 해안 + 종교 + 공동체
-    "10", // 평지 + 무속 + 개인
+    "11", // 내륙 + 종교 + 공동체
     "03", // 산지 + 종교 + 공동체
   ];
 
@@ -51,6 +78,7 @@
 
   // bfcache로 복원되어도 클릭 잠금과 이전 회전/이동 작업을 남기지 않습니다.
   function resetInteraction() {
+    rotationSound.stop();
     clearTimeout(navigationTimer);
     navigationTimer = undefined;
     const previousAnimation = spinAnimation;
@@ -84,6 +112,7 @@
 
   // 방울 클릭 모션
   area.addEventListener("click", (event) => {
+    playBell();
     if (cursor.hidden) return;
 
     cancelAnimationFrame(frame);
@@ -144,6 +173,7 @@
     );
 
     spinAnimation = animation;
+    if (!reducedMotion) rotationSound.start(wheel, animation);
 
     animation.finished
       .then(() => {

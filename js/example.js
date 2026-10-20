@@ -1,5 +1,8 @@
 const filterButtons = document.querySelectorAll(".example-filter-btn");
 const homes = document.querySelectorAll(".example-home");
+const homeHoverSound = new Audio(sitePath("sound/pop.mp3"));
+homeHoverSound.preload = "auto";
+homeHoverSound.volume = 0.5;
 
 let currentFilter = "all";
 
@@ -58,8 +61,9 @@ filterButtons.forEach((button) => {
 homes.forEach((home) => {
   home.addEventListener("mouseenter", () => {
     if (currentFilter !== "all") return;
-
     home.classList.add("is-hovered");
+    homeHoverSound.currentTime = 0;
+    homeHoverSound.play().catch(() => {});
   });
 
   home.addEventListener("mouseleave", () => {

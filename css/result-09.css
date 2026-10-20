@@ -38,3 +38,16 @@
   --motion-mobile-height: 64px;
   --motion-mobile-transform: none;
 }
+
+.result-09-motion-knife-throwing-1 {
+  --motion-width: 120px;
+  --motion-height: auto;
+  --motion-top: var(--motion-random-top, -30px);
+  --motion-left: var(--motion-random-left, auto);
+  --motion-right: auto;
+  --motion-bottom: auto;
+  --motion-transform: none;
+  --motion-mobile-width: min(70px, 60px, 18%);
+  --motion-mobile-height: 64px;
+  --motion-mobile-transform: none;
+}

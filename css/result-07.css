@@ -2,15 +2,64 @@
  * PC 모션은 기존 무작위 배치를 유지합니다. 고정하려면 해당 --motion-top/left를
  * 직접 지정하고 반대편 right/bottom은 auto로 두세요. 모바일 값도 에셋별 조절 가능합니다. */
 
+.result-paper {
+  /* 줄글 글자 조절: 위쪽은 소개글, 아래쪽은 풀이 방법/해설 본문입니다. */
+  --result-07-intro-font-size: 1.25rem;
+  --result-07-intro-line-height: 1.6875rem;
+  --result-07-intro-letter-spacing: -0.1875rem;
+  --result-07-intro-word-spacing: 0.0625rem;
+  --result-07-method-font-size: 1.25rem;
+  --result-07-method-line-height: 1.9375rem;
+  --result-07-method-letter-spacing: -0.1875rem;
+  --result-07-method-word-spacing: 0.0625rem;
+}
+
+.result-paper .result-introduction {
+  font-size: var(--result-07-intro-font-size);
+  line-height: var(--result-07-intro-line-height);
+  letter-spacing: var(--result-07-intro-letter-spacing);
+  word-spacing: var(--result-07-intro-word-spacing);
+}
+
+.result-paper .result-details {
+  font-size: var(--result-07-method-font-size);
+  line-height: var(--result-07-method-line-height);
+  letter-spacing: var(--result-07-method-letter-spacing);
+  word-spacing: var(--result-07-method-word-spacing);
+}
+
+@media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
+  .result-paper {
+    --result-07-intro-font-size: clamp(1.0625rem, 3.8vw, 1.25rem);
+    --result-07-intro-line-height: 1.5;
+    --result-07-intro-letter-spacing: -0.035em;
+    --result-07-method-font-size: clamp(1.0625rem, 3.8vw, 1.25rem);
+    --result-07-method-line-height: 1.5;
+    --result-07-method-letter-spacing: -0.035em;
+  }
+}
+
+@media (max-width: 1148px) {
+  .result-paper {
+    --result-07-intro-font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .result-paper {
+    --result-07-method-font-size: 1.0625rem;
+  }
+}
+
 .result-character-07 {
-  --character-width: 270px;
+  --character-width: 300px;
   --character-height: auto;
   --character-top: calc(50% - 10px);
   --character-left: 50%;
   --character-right: auto;
   --character-bottom: auto;
   --character-transform: translate(-50%, -50%);
-  --character-mobile-width: min(220px, 29.233cqw);
+  --character-mobile-width: 280px;
 }
 
 .result-07-motion-pray-1 {
@@ -58,7 +107,7 @@
   --motion-mobile-transform: none;
 }
 
-.result-07-motion-knife-throwing-1 {
+.result-07-motion-knife-1 {
   --motion-width: 120px;
   --motion-height: auto;
   --motion-top: var(--motion-random-top, -30px);

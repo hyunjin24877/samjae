@@ -1,0 +1,33 @@
+.result-method .boat-sail-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+body[data-receipt-type] .result-method .boat-sail-layer > .method-deco {
+  position: absolute;
+  display: block;
+  visibility: visible;
+  width: calc(var(--motion-width, 80px) * 1.4);
+  height: var(--motion-height, auto);
+  margin: 0;
+  transform: var(--motion-transform, none);
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+}
+
+body[data-receipt-type] .result-method .boat-sail-layer > .method-deco[hidden] {
+  display: none;
+}
+
+.boat-sail-layer > .method-deco:focus-visible {
+  outline: 2px solid #821717;
+  outline-offset: 3px;
+}
+
+@media print {
+  .result-method .boat-sail-layer { display: none !important; }
+}
