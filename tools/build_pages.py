@@ -17,7 +17,7 @@ def build(output, base):
     # such as img[src$="/home.svg"] and external URLs.
     pattern = re.compile(r'''(["'`(])/((?:img|css|js|font|diagnosis-result)/|(?:landing|welcome|diagnosis|example|gather|samjaerok|testimony|index)(?=[.\-$]))''')
     tracked = subprocess.check_output(['git', 'ls-files', '-z'], cwd=ROOT).split(b'\0')
-    directories = {'css', 'js', 'font', 'img', 'diagnosis-result'}
+    directories = {'css', 'js', 'font', 'img', 'sound', 'diagnosis-result'}
     paths = [ROOT / item.decode() for item in tracked if item and (
         (b'/' not in item and item.endswith(b'.html'))
         or item.decode().split('/', 1)[0] in directories
