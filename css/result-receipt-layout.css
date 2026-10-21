@@ -237,36 +237,3 @@ body[data-receipt-type] .result-method > .method-deco[hidden] { display: none; }
   body[data-receipt-type] .result-main { margin-top: 100px; }
   body[data-receipt-type] .result-portrait { --receipt-visual-scale: .72; }
 }
-
-/* Match the other desktop pages' 1920 × 1080 viewport scale while keeping
-   the long receipt in normal document flow for reading and printing. */
-@media (min-width: 1200px) and (hover: hover), (min-width: 1440px) {
-  body[data-receipt-type] .result-main {
-    zoom: var(--result-display-scale, 1);
-  }
-  body[data-receipt-type] .header {
-    top: var(--result-header-top, 20px);
-    width: 1664px;
-    max-width: none;
-    transform: translateX(-50%) scale(var(--result-display-scale, 1));
-    transform-origin: top center;
-  }
-  body[data-receipt-type] .doors {
-    inset: auto;
-    left: 50%;
-    top: 50%;
-    width: 1920px;
-    height: 1080px;
-    transform: translate(-50%, -50%) scale(var(--result-display-scale, 1));
-    transform-origin: center center;
-  }
-  body[data-receipt-type] .back2 {
-    width: 1664px;
-    height: 1080px;
-    left: 50%;
-    top: 50%;
-    bottom: auto;
-    transform: translate(-50%, -50%) scale(var(--result-display-scale, 1));
-    transform-origin: center center;
-  }
-}

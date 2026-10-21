@@ -6,6 +6,27 @@ html:has(body[data-receipt-type]),
 body[data-receipt-type] { scrollbar-width: none; }
 html:has(body[data-receipt-type])::-webkit-scrollbar,
 body[data-receipt-type]::-webkit-scrollbar { display: none; }
+
+/* The result shares the fixed page stage; only its long receipt scrolls. */
+body.site-stage[data-receipt-type] { overflow: hidden; }
+body.site-stage .result-scroll {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+body.site-stage .result-scroll::-webkit-scrollbar { display: none; }
+
+@media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
+  body.site-stage[data-receipt-type] { overflow: visible; }
+  body.site-stage .result-scroll {
+    position: relative;
+    inset: auto;
+    overflow: visible;
+  }
+}
 .result-main { position: relative; z-index: 10; width: min(828px, calc(100% - 320px)); margin: 50px auto 0; }
 .result-paper { --result-line-extension: 64px; position: relative; box-sizing: border-box; width: 100%; padding: 20px 52px 85px; background: #fff; color: #000; border: 1px solid #231f20; }
 .result-paper::before,
