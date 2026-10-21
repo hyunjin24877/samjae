@@ -256,7 +256,8 @@ body[data-receipt-type] .result-method > .method-deco[hidden] { display: none; }
     height: calc(1080px * var(--result-display-scale, 1));
   }
   body[data-receipt-type] .back2 {
-    width: calc(1664px * var(--result-display-scale, 1));
-    height: calc(1080px * var(--result-display-scale, 1));
+    /* Keep the motion at its native size on smaller desktop viewports. */
+    width: max(1664px, calc(1664px * var(--result-display-scale, 1)));
+    height: max(1080px, calc(1080px * var(--result-display-scale, 1)));
   }
 }
