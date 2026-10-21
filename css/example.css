@@ -401,7 +401,13 @@
   background: transparent;
   color: #fff;
   overflow: auto;
+  scrollbar-width: none;
 }
+
+.example-popup::-webkit-scrollbar { display: none; }
+
+/* Do not leave the page's own scrollbar visible behind an open dialog. */
+body.site-stage:has(.example-popup[open]) { overflow: hidden; }
 
 .example-popup-panel {
   --popup-frame: url("../img/example/popup-1.svg");
