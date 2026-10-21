@@ -1,6 +1,11 @@
 /* Results use normal document scrolling, with the room and navigation fixed. */
 html { min-height: 100%; }
 body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #323232; }
+/* Result articles remain scrollable without a visible browser gutter. */
+html:has(body[data-receipt-type]),
+body[data-receipt-type] { scrollbar-width: none; }
+html:has(body[data-receipt-type])::-webkit-scrollbar,
+body[data-receipt-type]::-webkit-scrollbar { display: none; }
 .result-main { position: relative; z-index: 10; width: min(828px, calc(100% - 320px)); margin: 50px auto 0; }
 .result-paper { --result-line-extension: 64px; position: relative; box-sizing: border-box; width: 100%; padding: 20px 52px 85px; background: #fff; color: #000; border: 1px solid #231f20; }
 .result-paper::before,

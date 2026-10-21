@@ -2,6 +2,7 @@
 .gather-main {
   position: relative;
   z-index: 10;
+  box-sizing: border-box;
   width: calc(100% - 256px);
   max-width: 1664px;
   min-height: 1080px;
@@ -11,6 +12,13 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+/* The spinning wheel can extend beyond the fixed desktop canvas. */
+body.site-stage:has(.gather-main) { overflow: hidden; }
+
+@media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
+  body.site-stage:has(.gather-main) { overflow: visible; }
 }
 
 /* 원판 기준 영역 */
