@@ -441,7 +441,7 @@
         <p class="body2">당신에게 맞는 삼재풀이 방식을 점지하고 있습니다.<br>조금만 기다려주세요.</p>
       </div>
       <div class="result-reveal-wheel-wrap" aria-hidden="true">
-        <img class="result-reveal-wheel" src="${sitePath('img/gather/gather.svg')}" alt="">
+        <img class="result-reveal-wheel" src="${sitePath('img/gather/gather.svg?v=20261021-outlined')}" alt="">
         <img class="result-reveal-arrow" src="${sitePath('img/gather/arrow.svg')}" alt="">
       </div>`;
     const loadingText = overlay.querySelector('.result-reveal-loading p');

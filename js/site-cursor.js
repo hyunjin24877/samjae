@@ -18,8 +18,16 @@
 
   document.addEventListener("pointermove", (event) => {
     if (event.pointerType === "touch") return;
-    cursor.style.left = `${event.clientX}px`;
-    cursor.style.top = `${event.clientY}px`;
+    const dialog = cursor.closest("dialog");
+    if (dialog && getComputedStyle(dialog).transform !== "none") {
+      const rect = dialog.getBoundingClientRect();
+      const scale = rect.width / dialog.offsetWidth || 1;
+      cursor.style.left = `${(event.clientX - rect.left) / scale}px`;
+      cursor.style.top = `${(event.clientY - rect.top) / scale}px`;
+    } else {
+      cursor.style.left = `${event.clientX}px`;
+      cursor.style.top = `${event.clientY}px`;
+    }
     cursor.hidden = false;
   });
 
