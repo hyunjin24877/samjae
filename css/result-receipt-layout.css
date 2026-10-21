@@ -237,3 +237,26 @@ body[data-receipt-type] .result-method > .method-deco[hidden] { display: none; }
   body[data-receipt-type] .result-main { margin-top: 100px; }
   body[data-receipt-type] .result-portrait { --receipt-visual-scale: .72; }
 }
+
+/* Match the other desktop pages' 1920 × 1080 viewport scale while keeping
+   the long receipt in normal document flow for reading and printing. */
+@media (min-width: 1200px) and (hover: hover), (min-width: 1440px) {
+  body[data-receipt-type] .result-main {
+    zoom: var(--result-display-scale, 1);
+  }
+  body[data-receipt-type] .header {
+    top: calc(20px * var(--result-display-scale, 1));
+    width: 1664px;
+    max-width: none;
+    transform: translateX(-50%) scale(var(--result-display-scale, 1));
+    transform-origin: top center;
+  }
+  body[data-receipt-type] .door {
+    width: calc(128px * var(--result-display-scale, 1));
+    height: calc(1080px * var(--result-display-scale, 1));
+  }
+  body[data-receipt-type] .back2 {
+    width: calc(1664px * var(--result-display-scale, 1));
+    height: calc(1080px * var(--result-display-scale, 1));
+  }
+}

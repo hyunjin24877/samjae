@@ -1,4 +1,11 @@
 (() => {
+  const fitResultViewport = () => {
+    const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    document.documentElement.style.setProperty('--result-display-scale', String(scale));
+  };
+  fitResultViewport();
+  window.addEventListener('resize', fitResultViewport);
+
   const resultMain = document.querySelector('.result-main');
   if (resultMain) {
     const fitReceipt = () => {
