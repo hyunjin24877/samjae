@@ -18,6 +18,12 @@ body.site-stage {
   overflow: auto;
 }
 
+/* Modal dialogs enter the browser's top layer, outside the scaled body. */
+body.site-stage .example-popup {
+  transform: scale(var(--page-scale, 1));
+  transform-origin: center center;
+}
+
 /* 모바일과 태블릿에서는 고정 PC 캔버스를 해제합니다. */
 @media (max-width: 1199px), (max-width: 1439px) and (hover: none) and (pointer: coarse) {
   html:has(body.site-stage) { height: auto; min-height: 100%; overflow-x: clip; overflow-y: auto; }
@@ -54,6 +60,7 @@ body.site-stage {
   body.site-stage .example-popup {
     width: min(620px, calc(100% - 24px));
     max-height: calc(100svh - 24px);
+    transform: none;
   }
   body.site-stage .example-popup-panel {
     padding: clamp(32px, 4vw, 36px) clamp(40px, 8vw, 64px) clamp(32px, 4vw, 40px);
